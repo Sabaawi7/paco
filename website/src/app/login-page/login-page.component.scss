@@ -1,36 +1,97 @@
 
+/* Standardstil für Eingabefelder */
 
-    /* Standardstil für Eingabefelder */
-    input[type="email"]{
-        background-color: white;
-        width: 220px;
-        height: 35px;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 3px  ;
-     
+.container {
+    display: flex;
+    justify-content: center; /* Horizontal zentrieren */
+    align-items: center; /* Vertikal zentrieren */
+    height: 80vh; /* Optional: Um den Container auf die volle Höhe des Viewports zu dehnen */
+    margin-bottom: 50px; /* Beispiel: Ändere den Wert nach Bedarf */
+    font-family:Arial,  sans-serif;
+    font-size: 20px;
+}
 
-    }
+#title{
+   
+    font-size: 60px;
+    text-align: center ;
+    
+}
 
-    #passwordField{
 
-        background-color: white;
-        width: 220px;
-        height: 35px;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 3px  ;
+input[type="email"],
+#passwordField {
+    
+  
+    background-color: white;
+    width: 600px;
+    height: 35px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: background-color 0.3s; /* Übergangseffekt für Farbänderung */
+}
 
-    }
+
+
+
   
 
-   
-   
-
     
-#passwordForgotten{
+#passwordForgotten{ //Art link Passwort vergessen?
     color: black;
     text-decoration: none;
     cursor: pointer;
 
+}
+
+#button{
+    font-family:Arial,  sans-serif;
+    font-size: 20px;
+    background-color:#b4f152;
+    width: 80px;
+    height: 40px;
+    border-radius: 12px; /* Abgerundete Ecken */
+}
+
+#gastanmeldung-link{
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+
+
+
+.info-icon {
+    position: relative;
+    cursor: pointer;
+    display: inline-block; /* Damit die Höhe und Breite automatisch berechnet werden */
+    vertical-align: middle;
+    color: grey;
+}
+.info-circle {
+    display: inline-block;
+    width: 30px; /* Durchmesser des Kreises */
+    height: 30px; /* Durchmesser des Kreises */
+    border-radius: 50%; /* Kreisform */
+    border: 1px solid grey; /* Schwarze Umrandung */
+    text-align: center; /* Zentrieren des Symbols im Kreis */
+    line-height: 30px; /* Zentrieren des Symbols im Kreis */
+    font-size: 16px; /* Größe des Symbols */
+    position: relative;
+}
+.info-popup {
+    position: absolute;
+    top: 10px; /* Anpassen der vertikalen Positionierung */
+    left: 20px; /* Anpassen der horizontalen Positionierung */
+    background-color: #b4f152;
+    color: black;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
+    width: 300px;
+}
+.info-icon:hover .info-popup {
+    display: block;
 }
