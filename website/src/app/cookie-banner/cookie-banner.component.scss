@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+  
+ 
+ 
+
+  /* Hinzufügen eines halbtransparenten Overlays, um den Fokus auf die Cookie-Benachrichtigung zu lenken */
+  .cookie-overlay {
+    position: fixed; /* Festes Positionieren, um das Overlay über der Seite zu halten */
+    top: 0; /* Abstand vom oberen Rand des Viewports */
+    left: 0; /* Abstand vom linken Rand des Viewports */
+    width: 100%; /* Volle Breite des Viewports */
+    height: 100%; /* Volle Höhe des Viewports */
+    background-color: rgba(0, 0, 0, 0.5); /* Halbtransparentes Overlay mit schwarzem Hintergrund */
+    z-index: 999; /* Stelle sicher, dass das Overlay über anderen Inhalten liegt */
+
+  }
+  
+  /* Stil für die Cookie-Benachrichtigung */
+  .cookie-notification {
+    position: fixed; /* Festes Positionieren, um die Benachrichtigung anzuzeigen */
+    top: 50%; /* Zentrierte vertikale Position */
+    left: 50%; /* Zentrierte horizontale Position */
+    transform: translate(-50%, -50%); /* Zentrieren der Benachrichtigung relativ zum Mittelpunkt */
+    background-color: white; /* Hintergrundfarbe der Benachrichtigung */
+    padding: 20px; /* Innenabstand der Benachrichtigung */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Schatten für die Benachrichtigung */
+    z-index: 1000; /* Stelle sicher, dass die Benachrichtigung über dem Overlay liegt */
+    font-family: 'Ubuntu', sans-serif; /* Schriftart auf Ubuntu Sans-Serif setzen */
+    width: 700px; /* Breite der Benachrichtigung */
+    height: 400px; /* Höhe der Benachrichtigung */
+    display: flex; /* Verwende Flexbox-Layout */
+    flex-direction: column; /* Staple die Elemente vertikal */
+    justify-content: center; /* Zentriere den Inhalt vertikal */
+    align-items: center; /* Zentriere den Inhalt horizontal */
+    text-align: center; /* Zentriere den Text horizontal */
+
+   
+  }
+
+  .cookie-buttons {
+    display: flex; /* Verwende Flexbox für die Buttons */
+    flex-direction: row; /* Stelle sicher, dass die Buttons nebeneinander angeordnet sind */
+    justify-content: center; /* Zentriere die Buttons horizontal */
+   
+   
+
+}
+.cookie-buttons button:first-child { /*linke button;*/
+    background-color: #90BF2A; /* Hintergrundfarbe des linken Buttons */
+    color: black; /* Schriftfarbe des linken Buttons */
+    margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
+    padding: 10px 20px; /* Innenabstand  */
+    font-size: 16px; /* Schriftgröße  */
+    border-radius: 10px; /* Runde die Ecken d */
+    
+}
+
+.cookie-buttons button:last-child { /*rechte button;*/
+    background-color: white; /* Hintergrundfarbe des rechten Buttons */
+    color: black; /* Schriftfarbe des rechten Buttons */
+    margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
+    padding: 10px 20px; /* Innenabstand  */
+    font-size: 16px; /* Schriftgröße  */
+    border-radius: 10px; /* Runde die Ecken  */
+    border: 2px solid black; /* Füge eine blaue Umrandung hinzu */
+}
+
+/* Media Query für kleinere Bildschirme */
+@media screen and (max-width: 768px) {
+  .cookie-notification {
+      width: 70%; /* Breite der Benachrichtigung auf 70% des Viewports setzen */
+      height: auto; /* Automatische Höhe basierend auf Inhalt */
+  }
+}
+  
+  img {
+    width: 80px; /* Passe die Breite des Symbols an */
+   height: auto; /* Erlaube das Ändern der Höhe, um das Bildverhältnis beizubehalten */
+margin-right: 10px; /* Füge etwas Abstand zwischen dem Bild und dem Text hinzu */
+  background-color: white;
+}
