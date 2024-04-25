@@ -45,9 +45,12 @@ nav a {
 /* Hero Section styles */
 .hero {
     height: 600px;
-    background-color: #f0f0f0;
+    background-image: url(../../assets/Landing\ Page\ Wallpaper.jpg);
+    background-size:  cover;
     padding: 50px;
     text-align: center;
+    filter: brightness(0.8);
+    align-content: center;
 }
 
 .hero-content h1 {
@@ -90,6 +93,7 @@ nav a {
 }
 
 .feature {
+    
     background-color: white;
     padding: 20px;
     border-radius: 5px;
@@ -102,7 +106,12 @@ nav a {
         display: none;
     }
 
-    feature-grid {
-        grid-template-columns: 1fr;
+    .feature-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .feature{
+        max-width: 346px;
     }
 }
