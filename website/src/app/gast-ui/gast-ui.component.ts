@@ -23,7 +23,7 @@ export class GastUIComponent implements OnInit {
   ];
 
   BOT_IMG = "https://media.istockphoto.com/id/928709688/vector/smiling-man-icon.jpg?s=612x612&w=0&k=20&c=WfB6FVKJ37M1kzS8VNNr9HYVgfUOZahYfFZuaky7Yl0=";
-  PERSON_IMG = "https://creazilla-store.fra1.digitaloceanspaces.com/icons/3251108/person-icon-md.png";
+  PERSON_IMG = "https://360collegereview.com/wp-content/uploads/2022/08/Profile-FEMALE-ICON-TEAM.png";
   BOT_NAME = "PACO";
   PERSON_NAME = "Me";
 
