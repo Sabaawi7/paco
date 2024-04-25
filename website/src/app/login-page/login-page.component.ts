@@ -11,42 +11,38 @@ import { FormsModule } from '@angular/forms';
 
 
 export class LoginPageComponent {
-  passwordFieldType: string = 'password'; // Standardwert: Passwort versteckt
-  email: string = ''; // Variable für E-Mail
-  password: string = ''; // Variable für Passwort
+  passwordFieldType: string = 'password'; // Variable für den Anzeigetyp des Passwortfelds (standardmäßig versteckt)
+  email: string = ''; // Variable für die E-Mail-Adresse
+  password: string = ''; // Variable für das Passwort
 
-
-
+  // Methode zum Umschalten der Sichtbarkeit des Passwortfelds zwischen Text und Passwort
   togglePasswordVisibility() {
-    this.passwordFieldType = (this.passwordFieldType === 'password') ? 'text' : 'password';
+    this.passwordFieldType = (this.passwordFieldType === 'password') ? 'text' : 'password'; // Ändert den Anzeigetyp des Passwortfelds
   }
 
+  // Methode zur Überprüfung der Eingabe in E-Mail- und Passwortfeldern
   checkInput() {
-    // Überprüfe, ob E-Mail und Passwort mindestens ein Zeichen enthalten
+    // Überprüft, ob E-Mail und Passwort mindestens ein Zeichen enthalten
     if (this.email.length > 0) {
-      this.setFieldBackgroundColor('emailInput', '#b4f152');
+      this.setFieldBackgroundColor('emailInput', '#b4f152'); // Setzt die Hintergrundfarbe des E-Mail-Felds
     } else {
-      this.setFieldBackgroundColor('emailInput', '');
+      this.setFieldBackgroundColor('emailInput', ''); // Setzt die Hintergrundfarbe des E-Mail-Felds zurück
     }
 
     if (this.password.length > 0) {
-      this.setFieldBackgroundColor('passwordField', '#b4f152');
+      this.setFieldBackgroundColor('passwordField', '#b4f152'); // Setzt die Hintergrundfarbe des Passwortfelds
     } else {
-      this.setFieldBackgroundColor('passwordField', '');
+      this.setFieldBackgroundColor('passwordField', ''); // Setzt die Hintergrundfarbe des Passwortfelds zurück
     }
   }
 
-  // Methode zur Änderung der Hintergrundfarbe eines Feldes
+  // Private Methode zum Ändern der Hintergrundfarbe eines Feldes
   private setFieldBackgroundColor(fieldId: string, color: string) {
-    const field = document.getElementById(fieldId);
+    const field = document.getElementById(fieldId); // Holt das HTML-Element mit der angegebenen ID
     if (field) {
-      field.style.backgroundColor = color;
+      field.style.backgroundColor = color; // Setzt die Hintergrundfarbe des Elements
     }
   }
-
-
- 
-
 
 
 
