@@ -1,0 +1,36 @@
+
+
+    /* Standardstil für Eingabefelder */
+    input[type="email"]{
+        background-color: white;
+        width: 220px;
+        height: 35px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px  ;
+     
+
+    }
+
+    #passwordField{
+
+        background-color: white;
+        width: 220px;
+        height: 35px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px  ;
+
+    }
+  
+
+   
+   
+
+    
+#passwordForgotten{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+
+}
