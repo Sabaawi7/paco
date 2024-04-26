@@ -5,8 +5,9 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
 
 export const routes: Routes = [
-    { path: 'paco.com', component: AppComponent },
-    { path: 'paco/admin.com', component: AdminComponent }
+  { path: '', redirectTo: '/paco.com', pathMatch: 'full' }, // Standardroute
+  { path: 'paco.com', component: AppComponent },
+  { path: 'admin.com', component: AdminComponent }
 ];
 
 @NgModule({

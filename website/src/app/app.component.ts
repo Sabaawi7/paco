@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgFor } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -21,18 +23,23 @@ export class AppComponent {
   selectedRole: string | undefined; // Die ausgewählte Rolle
   roles: string[] = ['SuperAdmin', 'InstitutionsAdmin', 'OtherRole']; // Liste der verfügbaren Rollen
 
-  onRoleChange() {
-    // Hier kannst du die Logik hinzufügen, um auf die Auswahl zu reagieren
-    // z.B. Navigation zu der entsprechenden Admin-Seite basierend auf der ausgewählten Rolle
-    console.log('Selected Role:', this.selectedRole);
-    // Beispiel: Navigation zu paco/admin.com
-    if (this.selectedRole === 'SuperAdmin' || this.selectedRole === 'InstitutionsAdmin') {
-      // Hier kannst du den Code ausführen, der für Administratoren benötigt wird
-      console.log('Administrator selected');
+
+
+
+  constructor(private router: Router) {}
+
+
+    onSubmit() {
+     // Überprüfe, ob eine der Admin-Rollen ausgewählt wurde
+     if (this.selectedRole === 'SuperAdmin' || this.selectedRole === 'InstitutionsAdmin') {
+      // Öffne ein neues Browserfenster zur entsprechenden Admin-Seite
+      window.open('paco/admin.com', '_blank');
     } else {
-      // Hier kannst du den Code ausführen, der für andere Benutzer benötigt wird
+      // Handle den Fall, wenn keine Admin-Rolle ausgewählt wurde
       console.log('Regular user selected');
     }
-  }
+    }
+  
+  
 
 }
