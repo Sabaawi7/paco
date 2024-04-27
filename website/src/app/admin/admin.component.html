@@ -1,1 +1,9 @@
-<p>admin works!</p>
+
+<p>test</p>
+<div *ngIf="selectedRole === 'SuperAdmin'">
+    <app-superadmin></app-superadmin>
+  </div>
+  
+  <div *ngIf="selectedRole === 'InstitutionsAdmin'">
+    <app-instadmin></app-instadmin>
+  </div>

@@ -1,26 +1,12 @@
 
-<form (ngSubmit)="onSubmit()">
-  <div>
-    <h1>Welcome to paco homepage!</h1>
-  
-    <select [(ngModel)]="selectedRole" >
-      <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
-    </select>
-  
 
- 
-    <button type="submit">Submit</button>
-
-    
 <router-outlet>
 
-  <!--Inhalt im router-outlet tag immer frei, nur Platzhalter-->
  
  </router-outlet>
 
  
-  </div>
-</form>
+ 
 
 
 
