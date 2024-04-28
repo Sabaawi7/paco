@@ -1,0 +1,16 @@
+
+
+<div>
+    <h1>Welcome to paco role selection page!</h1>
+  
+    <select [(ngModel)]="selectedRole" >
+      <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+    </select>
+  
+
+    <button (click)="onSubmit()">Submit</button>
+
+
+
+ 
+  </div>

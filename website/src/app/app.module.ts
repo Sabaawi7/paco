@@ -4,16 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routes';
 import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
-import { RollenauswahlComponent } from './rollenauswahl/rollenauswahl.component';
+
+
 import { SuperadminComponent } from './superadmin/superadmin.component';
 import { InstadminComponent } from './instadmin/instadmin.component';
+import { RoleselectionComponent } from './roleselection/roleselection.component';
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    RollenauswahlComponent,
     SuperadminComponent,
-    InstadminComponent
+    InstadminComponent,
+    RoleselectionComponent
     // Weitere Komponenten, Direktiven, Pipes etc. hier deklarieren
   ],
   imports: [

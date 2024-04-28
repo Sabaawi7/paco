@@ -1,9 +1,12 @@
 
-<p>test</p>
+<!-- Die folgenden div-Elemente zeigen entweder die Superadmin- oder die Instadmin-Komponente basierend auf der ausgewählten Rolle an -->
+
+<!-- Zeige die Superadmin-Komponente an, wenn die ausgewählte Rolle 'SuperAdmin' ist -->
 <div *ngIf="selectedRole === 'SuperAdmin'">
-    <app-superadmin></app-superadmin>
-  </div>
-  
-  <div *ngIf="selectedRole === 'InstitutionsAdmin'">
-    <app-instadmin></app-instadmin>
-  </div>
+  <app-superadmin></app-superadmin>
+</div>
+
+<!-- Zeige die Instadmin-Komponente an, wenn die ausgewählte Rolle 'InstitutionsAdmin' ist -->
+<div *ngIf="selectedRole === 'InstitutionsAdmin'">
+  <app-instadmin></app-instadmin>
+</div>

@@ -12,15 +12,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './admin.component.scss'
 })
 export class AdminComponent implements OnInit {
-
-  selectedRole: string | null = null;
+  selectedRole: string | undefined;
 
   constructor(private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.selectedRole = params.get('role');
-    });
+  ngOnInit() {
+      // Die ausgewählte Rolle wird aus dem Zustand des Router-Objekts abgerufen
+    this.selectedRole = history.state.role;
   }
 
 }
