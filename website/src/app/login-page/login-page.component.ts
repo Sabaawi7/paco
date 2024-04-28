@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NavigationsbarComponent } from '../navigationsbar/navigationsbar.component';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NavigationsbarComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
