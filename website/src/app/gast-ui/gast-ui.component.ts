@@ -13,6 +13,7 @@ export class GastUIComponent implements OnInit {
   msgerForm!: HTMLElement;
   msgerInput!: HTMLInputElement;
   msgerChat!: HTMLElement;
+  
 
   BOT_MSGS = [
     "Hi, how are you?",
@@ -29,7 +30,7 @@ export class GastUIComponent implements OnInit {
 
   ngOnInit(): void {
 
-  
+    this.generateRandomToken();
     
     const msgerFormElement = document.querySelector<HTMLElement>(".msger-inputarea");
     this.msgerForm = msgerFormElement ?? document.createElement('div');
@@ -97,7 +98,17 @@ export class GastUIComponent implements OnInit {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
- 
+  generateRandomToken(): void {
+    const tokenLength = 10;
+    let token = '';
+    for (let i = 0; i < tokenLength; i++) {
+        token += Math.floor(Math.random() * 10); // Fügt nur Zahlen von 0 bis 9 hinzu
+    }
+    const tokenElement = document.getElementById('token');
+    if (tokenElement) {
+        tokenElement.textContent = 'Token: ' + token;
+    }
+}
 }
 
 
