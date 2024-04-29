@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
+
 @Component({
   selector: 'app-gast-ui',
   standalone: true,
@@ -9,6 +10,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class GastUIComponent implements OnInit {
+
+  answeredQuestions = 3;
+  totalQuestions = 10;
+  progressValue!: number;
 
   msgerForm!: HTMLElement;
   msgerInput!: HTMLInputElement;
@@ -29,7 +34,7 @@ export class GastUIComponent implements OnInit {
 
   ngOnInit(): void {
 
-  
+    this.updateProgressValue();
     
     const msgerFormElement = document.querySelector<HTMLElement>(".msger-inputarea");
     this.msgerForm = msgerFormElement ?? document.createElement('div');
@@ -97,6 +102,10 @@ export class GastUIComponent implements OnInit {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
+  updateProgressValue(): void {
+    this.progressValue = (this.answeredQuestions / this.totalQuestions) * 100;
+  }
+  
  
 }
 

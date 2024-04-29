@@ -180,3 +180,29 @@
       font-size: 0.5rem;
     }
   }
+
+  .progress-bar-container {
+    width: 70%; // Volle Breite des Elternelements
+    margin: 0 auto; // Zentriert die Fortschrittsleiste
+    
+  
+    .progress-bar {
+      width: 100%; // Volle Breite der Fortschrittsleiste
+      height: 20px; // Höhe der Fortschrittsleiste
+      background-color: lightgray; // Hintergrundfarbe der Fortschrittsleiste
+  
+      // Hier kannst du bei Bedarf weitere Stiloptionen hinzufügen, wie z.B. abgerundete Ecken, Schatten usw.
+  
+      &::-webkit-progress-bar {
+        background-color: lightgray; // Hintergrundfarbe des Fortschrittsbalkens für Webkit-Browser
+      }
+  
+      &::-webkit-progress-value {
+        background-color: blue; // Farbe des Fortschrittsbalkens für Webkit-Browser
+      }
+  
+      &::-moz-progress-bar {
+        background-color: blue; // Farbe des Fortschrittsbalkens für Mozilla-Browser
+      }
+    }
+  }
