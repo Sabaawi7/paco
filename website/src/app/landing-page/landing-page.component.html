@@ -12,19 +12,21 @@
 <body>
     <!-- Header -->
     <app-navigationsbar></app-navigationsbar>
-
+   
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Willkommen bei PACO</h1>
             <p>Wir helfen Ihnen, Ihre Studienwahl zu treffen.</p>
             <a href="#" class="cta-button">Chatte mit Paco</a>
-            <a href="/login" class="cta-button">Anmelden</a>
+            <a href="/login.com" class="cta-button">Anmelden</a>
         </div>
     </section>
+    <app-cookie-banner *ngIf="showCookieNotification" (accept)="onAccept()" (decline)="onDecline()"></app-cookie-banner>
 
     <!-- Features Section -->
     <section class="features">
+       
         <h2>Merkmale</h2>
         <div class="feature-grid">
             <div class="feature">
@@ -41,6 +43,7 @@
             </div>
         </div>
     </section>
+
 </body>
 
 </html>

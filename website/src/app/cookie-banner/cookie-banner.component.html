@@ -1,5 +1,5 @@
-<div class="cookie-overlay" *ngIf="showCookieNotification"></div>
-<div class="cookie-notification" *ngIf="showCookieNotification">
+<div class="cookie-overlay" *ngIf="showCookieNotification">
+<div class="cookie-notification">
     <!-- Quelle Bild: https://wordpress.org/plugins/cookie-notice/ -->
     <img src="./assets/icon-256x256.png" alt="Cookies Symbol">
     <h2>  Cookie-Einstellungen </h2>
@@ -13,5 +13,6 @@
         <button  (click)="onAccept()">Akzeptieren</button> <button (click)="onDecline()">Ablehnen</button> <!--Event Binding-->
     </div>
     
+</div>
 </div>
 
