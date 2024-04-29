@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NavigationsbarComponent } from '../navigationsbar/navigationsbar.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-page',
   standalone: true,
@@ -43,6 +43,12 @@ export class LoginPageComponent {
     if (field) {
       field.style.backgroundColor = color; // Setzt die Hintergrundfarbe des Elements
     }
+  }
+
+  constructor(private router: Router) {}
+
+  navigateToRoleSelection() {
+    this.router.navigate(['/role.com']);
   }
 
 
