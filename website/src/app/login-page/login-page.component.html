@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <app-navigationsbar></app-navigationsbar> <!--Navigationsbar Komponente hinzugefuegt-->
+    <main>
+<div class="container">
+
+
+        <div >
+
+            <h1 id="title">Login</h1>
+
+            <br/>
+            <br/>
+
+
+        <p>Bitte meldet euch als Mitarbeiter:in der Universität zu Köln mit euren Unidaten an oder wählt 
+            als Studierende den link zur Gastanmeldung. </p>
+
+
+
+        <p>Email *:</p> 
+        <span class="email-container">
+            <input type="email" [(ngModel)]="email" id="emailInput" (input)="checkInput()">
+
+        </span>
+     
+        
+        <p>Passwort *:</p>
+        <span class="password-container">
+            <input type="{{ passwordFieldType }}" [(ngModel)]="password" id="passwordField" data-visible="false" (input)="checkInput()">
+         
+        <span id="togglePassword" (click)="togglePasswordVisibility()" style="cursor: pointer;"> 👁️<!-- Hier ist das Augen-Symbol -->
+        </span>
+
+        </span>
+        
+        <br/>
+        <a id="passwordForgotten" href="passwort-vergessen.html">Passwort vergessen?</a>
+        <br/>
+        <br/>
+       
+        
+        <button id="button">uniKIM</button>
+
+<br/>
+<br/>
+
+<a id="gastanmeldung-link" href="gastanmeldung.html" style="display: flex; align-items: center;"> <!-- Flexbox-Container für den Link -->
+    <span aria-hidden="true">🔗</span> <!-- Symbol für den Link -->
+    <span style="margin-right: 5px;">Gastanmeldung</span> <!-- Text für den Link mit einem kleinen Abstand zum Symbol -->
+    <span class="info-icon" style="margin-left: 5px;"> <!-- Info-Symbol -->
+        <span class="info-circle" aria-hidden="true">ℹ️</span> <!-- Kreis um das Info-Symbol -->
+        <span class="info-popup">Hier könnt ihr euch als Student:in anmelden und individuelle Beratung über euren passenden Studiengang bekommen.</span> <!-- Popup für weitere Informationen -->
+    </span>
+</a>
+
+
+
+
+
+<br/>
+<br/>
+<input type="checkbox" id="angemeldetBleibenCheckbox">
+<label for="angemeldetBleibenCheckbox">&nbsp;Durch Anklicken dieses Feldes bestätige ich, dass ich angemeldet bleiben möchte.</label> <!-- Checkbox für Angemeldet bleiben -->
+
+        
+        </div>
+    </div>
+
+        
+    </main>
+</html>
+
+
