@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
+import { NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-gast-ui',
   standalone: true,
-  imports: [],
+  imports: [NgIf, NgClass],
   templateUrl: './gast-ui.component.html',
   styleUrl: './gast-ui.component.scss',
   encapsulation: ViewEncapsulation.Emulated
@@ -27,6 +28,8 @@ export class GastUIComponent implements OnInit {
   PERSON_IMG = "https://360collegereview.com/wp-content/uploads/2022/08/Profile-FEMALE-ICON-TEAM.png";
   BOT_NAME = "PACO";
   PERSON_NAME = "Me";
+  accepted_privacy_and_agbs = false;
+
 
   ngOnInit(): void {
 
@@ -108,7 +111,11 @@ export class GastUIComponent implements OnInit {
     if (tokenElement) {
         tokenElement.textContent = 'Token: ' + token;
     }
-}
+  }
+  acceptPrivacyAndAGBs(): void {
+    this.accepted_privacy_and_agbs = true;
+
+  }
 }
 
 

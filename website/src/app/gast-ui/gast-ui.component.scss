@@ -180,3 +180,35 @@
       font-size: 0.5rem;
     }
   }
+
+  #acceptButton {
+    width: 100px; /* Adjust size according to your requirements */
+    height: 40px; /* Adjust size according to your requirements */
+    background-color: #579ffb; /* Matches right message bubble background color */
+    color: #fff; /* White text color */
+    border: 2px solid #000000; /* Black border */
+    border-radius: 10px; /* Rounded corners */
+    font-weight: bold; /* Bold font */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color change */
+}
+
+#acceptButton:hover {
+    background-color: rgb(0, 180, 50); /* Similar to msger-send-btn hover background color */
+}
+
+#acceptButton:active {
+    background-color: rgb(0, 160, 45); /* Slightly darker green on active state */
+}
+.greyed-out {
+  background-color: #ccc; /* Grey background color */
+  cursor: not-allowed; /* Changes cursor style to indicate disabled state */
+}
+.greyed-out:hover {
+  background-color: #ccc; /* Keep the grey background when hovered */
+}
+/* Custom styles for the acceptance message */
+.acceptance-message {
+  font-weight: bold;
+  color: green; /* Customize the color if desired */
+}

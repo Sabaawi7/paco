@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NgIf } from '@angular/common';
 import { GastUIComponent } from './gast-ui.component';
 
 describe('GastUIComponent', () => {
@@ -8,7 +8,7 @@ describe('GastUIComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GastUIComponent]
+      imports: [GastUIComponent, NgIf]
     })
     .compileComponents();
     
