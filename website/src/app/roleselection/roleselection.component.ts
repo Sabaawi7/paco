@@ -14,7 +14,7 @@ import { OnInit } from '@angular/core';
 })
 export class RoleselectionComponent implements OnInit{
   selectedRole: string | undefined; // Die ausgewählte Rolle
-  roles: string[] = ['SuperAdmin', 'InstitutionsAdmin', 'OtherRole']; // Liste der verfügbaren Rollen
+  roles: string[] = ['SuperAdmin', 'InstitutionsAdmin', 'Studienberater:in']; // Liste der verfügbaren Rollen
 
   constructor(private router: Router) {}
 
