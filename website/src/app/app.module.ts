@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app.routes';
 import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
 
-
 import { SuperadminComponent } from './superadmin/superadmin.component';
 import { InstadminComponent } from './instadmin/instadmin.component';
 import { RoleselectionComponent } from './roleselection/roleselection.component';
@@ -15,7 +14,8 @@ import { RoleselectionComponent } from './roleselection/roleselection.component'
     AdminComponent,
     SuperadminComponent,
     InstadminComponent,
-    RoleselectionComponent
+    RoleselectionComponent,
+
     // Weitere Komponenten, Direktiven, Pipes etc. hier deklarieren
   ],
   imports: [

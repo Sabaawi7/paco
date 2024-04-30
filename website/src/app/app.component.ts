@@ -5,10 +5,13 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { CookieBannerComponent } from './cookie-banner/cookie-banner.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgFor, CommonModule, FormsModule, LandingPageComponent],
+  imports: [RouterOutlet, NgFor, CommonModule, FormsModule, LandingPageComponent, CookieBannerComponent],
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -1,0 +1,18 @@
+<div class="cookie-overlay" *ngIf="showCookieNotification">
+<div class="cookie-notification">
+    <!-- Quelle Bild: https://wordpress.org/plugins/cookie-notice/ -->
+    <img src="./assets/icon-256x256.png" alt="Cookies Symbol">
+    <h2>  Cookie-Einstellungen </h2>
+    <p >Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien anbieten zu können und die Zugriffe auf unsere Website zu analysieren. 
+        Außerdem geben wir Informationen über Ihre Nutzung unserer Website an unsere Partner für soziale Medien, Werbung und Analysen weiter. 
+        Unsere Partner können diese Informationen möglicherweise mit weiteren Daten zusammenführen, die Sie ihnen bereitgestellt haben 
+        oder die sie im Rahmen Ihrer Nutzung der Dienste gesammelt haben.
+    </p>
+    <p></p>
+    <div class="cookie-buttons" >
+        <button  (click)="onAccept()">Akzeptieren</button> <button (click)="onDecline()">Ablehnen</button> <!--Event Binding-->
+    </div>
+    
+</div>
+</div>
+
