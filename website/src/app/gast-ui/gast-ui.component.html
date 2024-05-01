@@ -1,0 +1,100 @@
+<!-- 
+************************
+
+QUELLE DES CHATS:
+https://codepen.io/sajadhsm/pen/odaBdd
+
+************************
+-->
+
+<app-navigationsbar></app-navigationsbar>
+
+<br><br><br>
+
+
+<div class="progress-bar-container">
+  <h3>Beantwortete Fragen:</h3>
+  <progress class="progress-bar" max="100" [value]="progressValue"></progress>
+</div>
+<br>
+<div id="chatKasten">
+    <section class="msger">
+        <header class="msger-header">
+          <div class="msger-header-title">
+            <i class="fas fa-comment-alt"></i> PACO
+          </div>
+          <div class="msger-header-options">
+            <span><i class="fas fa-cog"></i></span>
+          </div>
+        </header>
+      
+        <main class="msger-chat">
+          <div class="msg left-msg">
+            <div
+             class="msg-img"
+             style="background-image: url(https://media.istockphoto.com/id/928709688/vector/smiling-man-icon.jpg?s=612x612&w=0&k=20&c=WfB6FVKJ37M1kzS8VNNr9HYVgfUOZahYfFZuaky7Yl0=)"
+            ></div>
+      
+            <div class="msg-bubble">
+              <div class="msg-info">
+                <div class="msg-info-name">PACO</div>
+                <div class="msg-info-time">12:45</div>
+              </div>
+      
+              <div class="msg-text">
+                Hi, mein Name ist PACO. Ich werde dich bei der Wahl deines Studiengangs unterstützen. 😄
+                <br>
+                <br>
+                Bitte akzeptiere unsere AGBs und Datenschutzerklärung, um mit dem Chat anzufangen.
+                <br>
+                <br>
+              </div>
+              <div>
+                <button *ngIf="!accepted_privacy_and_agbs" (click)="acceptPrivacyAndAGBs()" id="acceptButton">
+                    Ich akzeptiere
+                </button>
+                <p *ngIf="accepted_privacy_and_agbs" class="acceptance-message">
+                    ✅ You accepted our AGBs and Datenschutzerklärung
+                </p>
+            </div>
+            
+            
+            </div>
+          </div>
+      
+          <div class="msg right-msg">
+            <div
+             class="msg-img"
+             style="background-image: url(https://360collegereview.com/wp-content/uploads/2022/08/Profile-FEMALE-ICON-TEAM.png)"
+            ></div>
+      
+            <div class="msg-bubble">
+              <div class="msg-info">
+                <div class="msg-info-name">Me</div>
+                <div class="msg-info-time">12:46</div>
+              </div>
+      
+              <div class="msg-text">
+                Super! Lass uns starten.
+              </div>
+            </div>
+          </div>
+        </main>
+      
+        <form class="msger-inputarea">
+          <input type="text" class="msger-input" placeholder="Enter your message..." [disabled]="!accepted_privacy_and_agbs">
+          <button type="submit" class="msger-send-btn"
+                  [disabled]="!accepted_privacy_and_agbs"
+                  [ngClass]="{'greyed-out': !accepted_privacy_and_agbs}">
+              Send
+          </button>
+      </form>
+      
+      
+      </section>
+      
+</div>
+
+<div id="tokendiv">
+    <p id="token">Token: 6525026284</p>
+</div>
