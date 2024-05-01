@@ -48,7 +48,7 @@ export class LoginPageComponent {
   constructor(private router: Router) {}
 
   navigateToRoleSelection() {
-    this.router.navigate(['/role.com']);
+    this.router.navigate(['/role']);
   }
 
 

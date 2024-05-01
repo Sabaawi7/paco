@@ -9,10 +9,10 @@ import { GastUIComponent } from './gast-ui/gast-ui.component';
 
 export const routes: Routes = [
     { path: '', component: LandingPageComponent},
-    { path: 'login.com', component: LoginPageComponent },
-    { path: 'role.com', component: RoleselectionComponent}, // Rollenauswahlseite, Puffer um zu testen;
-    { path: 'admin.com', component: AdminComponent }, // Pfad für die Admin-Komponente bleibt unverändert, zeigt entweder Superadmin oder Instadmin Seite;
-    { path: 'paco.com', component: GastUIComponent} //Pfad für Chat seite
+    { path: 'login', component: LoginPageComponent },
+    { path: 'role', component: RoleselectionComponent}, // Rollenauswahlseite, Puffer um zu testen;
+    { path: 'admin', component: AdminComponent }, // Pfad für die Admin-Komponente bleibt unverändert, zeigt entweder Superadmin oder Instadmin Seite;
+    { path: 'chat', component: GastUIComponent} //Pfad für Chat seite
 ];
 
 

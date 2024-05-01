@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NgFor } from '@angular/common';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { NgFor, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CookieBannerComponent } from './cookie-banner/cookie-banner.component';
@@ -20,7 +18,7 @@ import { CookieBannerComponent } from './cookie-banner/cookie-banner.component';
 export class AppComponent {
  
 
-  title = 'website';
+  title = 'PACO';
 
   
   
