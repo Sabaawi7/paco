@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Docker Executin
+
+To pull the docker image, you need to create a personal github token (Github -> Setting -> Developer Settings -> Personal Access Token -> Token Classic)
+then run `docker login ghcr.io`, type in your username and then the token you previously created.
+
+After successfully logging in, run `docker run -p 4200:4200 ghcr.io/sabaawi7/paco:latest
+` to pull/run the latest version of the app. Once it runs, you can access the web app on your browser by navigate to `http://localhost:4200/`
