@@ -230,11 +230,11 @@
     }
 
     &::-webkit-progress-value {
-      background-color: blue; // Farbe des Fortschrittsbalkens für Webkit-Browser
+      background-color: #7ed177; // Farbe des Fortschrittsbalkens für Webkit-Browser
     }
 
     &::-moz-progress-bar {
-      background-color: blue; // Farbe des Fortschrittsbalkens für Mozilla-Browser
+      background-color: #7ed177; // Farbe des Fortschrittsbalkens für Mozilla-Browser
     }
   }
 }
