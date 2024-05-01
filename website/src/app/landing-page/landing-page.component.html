@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PACO Landing Page</title>
+    <link rel="stylesheet" href="landing-page.component.scss">
+</head>
+
+<body>
+    <!-- Header -->
+    <app-navigationsbar></app-navigationsbar>
+   
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Willkommen bei PACO</h1>
+            <p>Wir helfen Ihnen, Ihre Studienwahl zu treffen.</p>
+            <a href="/paco.com" class="cta-button">Chatte mit Paco</a>
+            <a href="/login.com" class="cta-button">Anmelden</a>
+        </div>
+    </section>
+    <app-cookie-banner *ngIf="showCookieNotification" (accept)="onAccept()" (decline)="onDecline()"></app-cookie-banner>
+
+    <!-- Features Section -->
+    <section class="features">
+       
+        <h2>Merkmale</h2>
+        <div class="feature-grid">
+            <div class="feature">
+                <h3>Beratung</h3>
+                <p>Individuelle Beratung, um Ihnen bei der Wahl des besten Weges zu helfen.</p>
+            </div>
+            <div class="feature">
+                <h3>Ressourcen</h3>
+                <p>Zugang zu einer Vielzahl von Bildungsressourcen.</p>
+            </div>
+            <div class="feature">
+                <h3>Unterstützung</h3>
+                <p>Erhalten Sie prompt Antworten auf all Ihre Fragen.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
