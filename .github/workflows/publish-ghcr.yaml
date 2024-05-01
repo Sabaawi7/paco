@@ -12,5 +12,5 @@ jobs:
         run: |
           docker login --username sabaawi7 --password ${{ secrets.GH_PAT}} ghcr.io
           docker build . -t ghcr.io/sabaawi7/paco:latest
-          docker push . -t ghcr.io/sabaawi7/paco:latest
+          docker push ghcr.io/sabaawi7/paco:latest
 
