@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
+import { NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-gast-ui',
   standalone: true,
-  imports: [],
+  imports: [NgIf, NgClass],
   templateUrl: './gast-ui.component.html',
   styleUrl: './gast-ui.component.scss',
   encapsulation: ViewEncapsulation.Emulated
@@ -18,6 +19,7 @@ export class GastUIComponent implements OnInit {
   msgerForm!: HTMLElement;
   msgerInput!: HTMLInputElement;
   msgerChat!: HTMLElement;
+  
 
   BOT_MSGS = [
     "Hi, how are you?",
@@ -31,10 +33,14 @@ export class GastUIComponent implements OnInit {
   PERSON_IMG = "https://360collegereview.com/wp-content/uploads/2022/08/Profile-FEMALE-ICON-TEAM.png";
   BOT_NAME = "PACO";
   PERSON_NAME = "Me";
+  accepted_privacy_and_agbs = false;
+
 
   ngOnInit(): void {
 
+    this.generateRandomToken();
     this.updateProgressValue();
+  
     
     const msgerFormElement = document.querySelector<HTMLElement>(".msger-inputarea");
     this.msgerForm = msgerFormElement ?? document.createElement('div');
@@ -101,11 +107,24 @@ export class GastUIComponent implements OnInit {
   random(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min) + min);
   }
+  generateRandomToken(): void {
+    const tokenLength = 10;
+    let token = '';
+    for (let i = 0; i < tokenLength; i++) {
+        token += Math.floor(Math.random() * 10); // Fügt nur Zahlen von 0 bis 9 hinzu
+    }
+    const tokenElement = document.getElementById('token');
+    if (tokenElement) {
+        tokenElement.textContent = 'Token: ' + token;
+    }
+  }
+  acceptPrivacyAndAGBs(): void {
+    this.accepted_privacy_and_agbs = true;
 
+  }
   updateProgressValue(): void {
     this.progressValue = (this.answeredQuestions / this.totalQuestions) * 100;
   }
-  
  
 }
 

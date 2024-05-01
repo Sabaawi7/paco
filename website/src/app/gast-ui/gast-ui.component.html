@@ -42,8 +42,23 @@ https://codepen.io/sajadhsm/pen/odaBdd
               </div>
       
               <div class="msg-text">
-                Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
+                Hi, mein Name ist PACO. Ich werde dich bei der Wahl deines Studiengangs unterstützen. 😄
+                <br>
+                <br>
+                Bitte akzeptiere unsere AGBs und Datenschutzerklärung, um mit dem Chat anzufangen.
+                <br>
+                <br>
               </div>
+              <div>
+                <button *ngIf="!accepted_privacy_and_agbs" (click)="acceptPrivacyAndAGBs()" id="acceptButton">
+                    Ich akzeptiere
+                </button>
+                <p *ngIf="accepted_privacy_and_agbs" class="acceptance-message">
+                    ✅ You accepted our AGBs and Datenschutzerklärung
+                </p>
+            </div>
+            
+            
             </div>
           </div>
       
@@ -60,16 +75,22 @@ https://codepen.io/sajadhsm/pen/odaBdd
               </div>
       
               <div class="msg-text">
-                You can change your name in JS section!
+                Super! Lass uns starten.
               </div>
             </div>
           </div>
         </main>
       
         <form class="msger-inputarea">
-          <input type="text" class="msger-input" placeholder="Enter your message...">
-          <button type="submit" class="msger-send-btn">Send</button>
-        </form>
+          <input type="text" class="msger-input" placeholder="Enter your message..." [disabled]="!accepted_privacy_and_agbs">
+          <button type="submit" class="msger-send-btn"
+                  [disabled]="!accepted_privacy_and_agbs"
+                  [ngClass]="{'greyed-out': !accepted_privacy_and_agbs}">
+              Send
+          </button>
+      </form>
+      
+      
       </section>
       
 </div>
