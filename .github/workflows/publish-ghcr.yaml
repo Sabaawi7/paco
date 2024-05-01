@@ -1,0 +1,16 @@
+name: Docker Image CI for GHCR
+
+on:
+  push:
+    
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push the Image
+        run: |
+          docker login --username sabaawi7 --password ${{ secrets.GH_PAT}} ghcr.io
+          docker build . -t ghcr.io/sabaawi7/paco:latest
+          docker push ghcr.io/sabaawi7/paco:latest
+

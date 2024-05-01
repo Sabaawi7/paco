@@ -18,12 +18,12 @@
         <div class="hero-content">
             <h1>Willkommen bei PACO</h1>
             <p>Wir helfen Ihnen, Ihre Studienwahl zu treffen.</p>
-            <a href="/paco.com" class="cta-button">Chatte mit Paco</a>
-            <a href="/login.com" class="cta-button">Anmelden</a>
+            <a routerLink="/chat" routerLinkActive="active" class="cta-button">Chatte mit Paco</a>
+            <a routerLink="/login" routerLinkActive="active" class="cta-button">Anmelden</a>
         </div>
     </section>
     <app-cookie-banner *ngIf="showCookieNotification" (accept)="onAccept()" (decline)="onDecline()"></app-cookie-banner>
-
+    <router-outlet></router-outlet>
     <!-- Features Section -->
     <section class="features">
        

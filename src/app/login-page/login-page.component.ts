@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NavigationsbarComponent } from '../navigationsbar/navigationsbar.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [FormsModule, NavigationsbarComponent],
+  imports: [FormsModule, NavigationsbarComponent, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
@@ -48,7 +48,7 @@ export class LoginPageComponent {
   constructor(private router: Router) {}
 
   navigateToRoleSelection() {
-    this.router.navigate(['/role.com']);
+    this.router.navigate(['/role']);
   }
 
 

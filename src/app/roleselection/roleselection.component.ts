@@ -1,10 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NgFor } from '@angular/common';
-import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { NgFor, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { OnInit } from '@angular/core';
 @Component({
   selector: 'app-roleselection',
   standalone: true,
@@ -22,12 +19,12 @@ export class RoleselectionComponent implements OnInit{
     // Überprüfen, ob die ausgewählte Rolle 'SuperAdmin' ist
     if (this.selectedRole === 'SuperAdmin') {
       // Navigiere zur '/admin.com' und übergebe die Rolle 'SuperAdmin' als Zustand
-      this.router.navigate(['/admin.com'], { state: { role: 'SuperAdmin' } });
+      this.router.navigate(['/admin'], { state: { role: 'SuperAdmin' } });
     } 
     // Überprüfen, ob die ausgewählte Rolle 'InstitutionsAdmin' ist
     else if (this.selectedRole === 'InstitutionsAdmin') {
       // Navigiere zur '/admin.com' und übergebe die Rolle 'InstitutionsAdmin' als Zustand
-      this.router.navigate(['/admin.com'], { state: { role: 'InstitutionsAdmin' } });
+      this.router.navigate(['/admin'], { state: { role: 'InstitutionsAdmin' } });
     } 
     // Wenn die ausgewählte Rolle keine der oben genannten ist
     else {
