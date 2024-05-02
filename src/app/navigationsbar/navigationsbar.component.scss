@@ -63,6 +63,7 @@ a:visited {
     @media (max-width: 768px) {
         margin-left: 0;
         margin-bottom: 10px;
+        padding: 0px;
     }
 }
 
@@ -80,4 +81,9 @@ a:visited {
     background-color: #e0e0e0; /* Light gray hover color */
     border-radius: 4px;
     cursor: pointer;
+}
+@media (max-width: 768px) {
+    .navItem a{
+        padding: 0px;
+    }
 }
