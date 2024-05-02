@@ -1,13 +1,24 @@
+/* Navbar styling */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 .navbar {
-    background-color: #90BF2A; 
-    color: white;
+    background-color: #f2f2f2; /* Light gray background */
+    color: #333; /* Dark gray color for text */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px 20px; /* Consistent padding */
+    height: 80px; /* Set consistent height for navbar */
+    border-bottom: 1px solid #e0e0e0; /* Light border at the bottom for definition */
 }
 
+a {
+    text-decoration: none;
+}
+a:visited {
+    color:black;
+}
+/* Navbar logo styling */
 .navbar-logo {
     display: flex;
     align-items: center;
@@ -17,49 +28,56 @@
     margin-left: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 50px;
-    display: inline-block; 
-    vertical-align: middle; 
+    font-size: 30px;
+    display: inline-block;
+    vertical-align: middle;
 
     @media (max-width: 768px) {
-        font-size: 30px; 
+        font-size: 24px; /* Adjust font size for smaller screens */
     }
 }
 
+/* Navbar links styling */
 .navbar-links {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex; 
+    display: flex;
+    align-items: center;
 
     @media (max-width: 768px) {
-        flex-direction: column; 
-        align-items: flex-end; 
-        margin-top: 10px; 
+        flex-direction: column;
+        align-items: flex-end;
+        margin-top: 10px;
     }
 }
 
-.navbar-links li {
-    margin-left: 30px;
+/* Navigation item styling */
+.navItem {
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     @media (max-width: 768px) {
-        margin-left: 0; 
-        margin-bottom: 10px; 
+        margin-left: 0;
+        margin-bottom: 10px;
     }
 }
 
-.navbar-links li:first-child {
-    margin-left: 0; 
-}
-
-.navbar-links li a {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
+/* Navigation link styling */
+.navItem a {
+    font-family: "Poppins", sans-serif; /* Matching font family with sidenav */
+    color: #333; /* Dark gray text color */
+    padding: 8px 12px;
+    border-radius: 4px; /* Subtle rounding */
     text-decoration: none;
-    cursor: pointer; /* Ändert den Mauszeiger zu einer Hand */
 }
 
-.navbar-links li a:hover {
-    text-decoration: underline;
+/* Navigation item hover effect */
+.navItem:hover {
+    background-color: #e0e0e0; /* Light gray hover color */
+    border-radius: 4px;
+    cursor: pointer;
 }
-

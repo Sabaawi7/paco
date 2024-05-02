@@ -26,6 +26,9 @@ export class RoleselectionComponent implements OnInit{
       // Navigiere zur '/admin.com' und übergebe die Rolle 'InstitutionsAdmin' als Zustand
       this.router.navigate(['/admin'], { state: { role: 'InstitutionsAdmin' } });
     } 
+    else if (this.selectedRole === 'Studienberater:in') {
+      this.router.navigate(['/consultant']);
+    }
     // Wenn die ausgewählte Rolle keine der oben genannten ist
     else {
       console.log('Regular user selected');
