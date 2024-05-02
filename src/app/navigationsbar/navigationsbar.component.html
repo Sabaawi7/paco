@@ -1,14 +1,16 @@
 <nav class="navbar">
-    <div class="navbar-logo">
-        <img src="assets/wiso-logo.png" alt="WISO Köln Logo" style="height: 80px;">
-        <span class="navbar-title">PACO</span>
-    </div>
+    <a routerLink="/"  routerLinkActive="active">
+        <div class="navbar-logo">
+            <img src="assets\OIG3-removebg-preview.ico" alt="WISO Köln Logo" style="height: 80px;">
+            <span class="navbar-title">PACO</span>
+        </div>
+    </a>
     
-    <ul class="navbar-links">
-        <li><a routerLink="/login" routerLinkActive="active">Anmelden</a></li>
-        <li><a routerLink="/Impressum" routerLinkActive="active">Impressum</a></li>
-        <li><a routerLink="/Kontakt" routerLinkActive="active">Kontakt</a></li>
-    </ul>
+    <div class="navbar-links">
+        <div class="navItem"><a routerLink="/login" routerLinkActive="active">Anmelden</a></div>
+        <div class="navItem"><a routerLink="/Impressum" routerLinkActive="active">Impressum</a></div>
+        <div class="navItem"><a routerLink="/Kontakt" routerLinkActive="active">Kontakt</a></div>
+    </div>
 </nav>
 <router-outlet></router-outlet>
 

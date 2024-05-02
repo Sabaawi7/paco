@@ -55,6 +55,10 @@
     
 }
 
+.cookie-buttons button:hover {
+  cursor: pointer;
+}
+
 .cookie-buttons button:last-child { /*rechte button;*/
     background-color: white; /* Hintergrundfarbe des rechten Buttons */
     color: black; /* Schriftfarbe des rechten Buttons */

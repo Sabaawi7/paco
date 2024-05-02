@@ -1,0 +1,76 @@
+/* Importing Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* Reset default styling */
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Body styling */
+body {
+    background: rgb(233, 233, 233);
+}
+
+/* Navigation styling */
+nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 280px;
+    background: #fff; /* White background for consistency */
+    height: 100vh; /* Full height for sidenav */
+    border-right: 1px solid #e0e0e0; /* Light border for definition */
+    padding: 10px;
+}
+
+/* Navbar styling */
+.navbar {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+/* Navigation list styling */
+ul {
+    margin: 0 auto;
+}
+
+/* List item styling */
+li {
+    padding-bottom: 2rem;
+}
+
+/* Navigation link styling */
+li a {
+    font-family: "Poppins", sans-serif; /* Matching font family with navbar */
+    color: #333; /* Dark gray color */
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Navigation item hover effect */
+li a:hover {
+    background: linear-gradient(to right, #7fa925, #90BF2A); /* Gradient hover effect matching main color scheme */
+    color: white;
+}
+
+/* Icon styling */
+nav i {
+    width: 50px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Logout button styling */
+.logout {
+    position: absolute;
+    bottom: 20px;
+}
