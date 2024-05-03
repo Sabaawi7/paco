@@ -1,18 +1,26 @@
 <nav class="navbar">
-    <a routerLink="/"  routerLinkActive="active">
+    <a [routerLink]="['/']" routerLinkActive="active">
         <div class="navbar-logo">
-            <img src="assets\OIG3-removebg-preview.ico" alt="WISO Köln Logo" style="height: 80px;">
+            <img src="assets/OIG3-removebg-preview.ico" alt="WISO Köln Logo" style="height: 80px;">
             <span class="navbar-title">PACO</span>
         </div>
     </a>
-    
-    <div class="navbar-links">
-        <div class="navItem"><a routerLink="/login" routerLinkActive="active">Anmelden</a></div>
-        <div class="navItem"><a routerLink="/Impressum" routerLinkActive="active">Impressum</a></div>
-        <div class="navItem"><a routerLink="/Kontakt" routerLinkActive="active">Kontakt</a></div>
+
+    <!-- Checkbox input for the menu button -->
+    <input type="checkbox" id="menu-btn" class="menu-btn" (change)="toggleMenu()" />
+
+    <!-- Label for the checkbox input (Hamburger menu icon) -->
+    <label for="menu-btn" class="navbar-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <!-- Navigation links container -->
+    <div class="navbar-menu" [class.show]="isMenuOpen">
+        <div class="navItem"><a [routerLink]="['/login']" routerLinkActive="active">Anmelden</a></div>
+        <div class="navItem"><a [routerLink]="['/Impressum']" routerLinkActive="active">Impressum</a></div>
+        <div class="navItem"><a [routerLink]="['/Kontakt']" routerLinkActive="active">Kontakt</a></div>
     </div>
 </nav>
 <router-outlet></router-outlet>
-
-
-

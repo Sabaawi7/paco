@@ -74,12 +74,13 @@
   .cookie-notification {
       width: 70%; /* Breite der Benachrichtigung auf 70% des Viewports setzen */
       height: auto; /* Automatische Höhe basierend auf Inhalt */
+      font-size: 12px;
   }
 }
   
-  img {
+img {
     width: 80px; /* Passe die Breite des Symbols an */
-   height: auto; /* Erlaube das Ändern der Höhe, um das Bildverhältnis beizubehalten */
-margin-right: 10px; /* Füge etwas Abstand zwischen dem Bild und dem Text hinzu */
-  background-color: white;
+    height: auto; /* Erlaube das Ändern der Höhe, um das Bildverhältnis beizubehalten */
+    margin-right: 10px; /* Füge etwas Abstand zwischen dem Bild und dem Text hinzu */
+    background-color: white;
 }

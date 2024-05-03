@@ -1,6 +1,7 @@
-/* Navbar styling */
+/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+/* Navbar styling */
 .navbar {
     background-color: #f2f2f2; /* Light gray background */
     color: #333; /* Dark gray color for text */
@@ -8,16 +9,19 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px; /* Consistent padding */
-    height: 80px; /* Set consistent height for navbar */
+    height: max-content; /* Set consistent height for navbar */
     border-bottom: 1px solid #e0e0e0; /* Light border at the bottom for definition */
 }
 
 a {
     text-decoration: none;
+
 }
-a:visited {
+
+a:visited{
     color:black;
 }
+
 /* Navbar logo styling */
 .navbar-logo {
     display: flex;
@@ -32,44 +36,24 @@ a:visited {
     display: inline-block;
     vertical-align: middle;
 
-    @media (max-width: 768px) {
-        font-size: 24px; /* Adjust font size for smaller screens */
-    }
 }
 
-/* Navbar links styling */
-.navbar-links {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-        align-items: flex-end;
-        margin-top: 10px;
-    }
-}
-
-/* Navigation item styling */
+/* Navigation link styling */
 .navItem {
-    height: 100%;
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     @media (max-width: 768px) {
         margin-left: 0;
         margin-bottom: 10px;
-        padding: 0px;
+        padding: 0;
     }
 }
 
-/* Navigation link styling */
 .navItem a {
-    font-family: "Poppins", sans-serif; /* Matching font family with sidenav */
+    font-family: "Poppins", sans-serif; /* Matching font family */
     color: #333; /* Dark gray text color */
     padding: 8px 12px;
     border-radius: 4px; /* Subtle rounding */
@@ -82,8 +66,76 @@ a:visited {
     border-radius: 4px;
     cursor: pointer;
 }
+
+/* Checkbox input for menu button */
+.menu-btn {
+    display: none; /* Hidden by default */
+}
+
+/* Hamburger menu icon styling */
+.navbar-hamburger {
+    display: none; /* Hidden on larger screens */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+}
+
+.navbar-hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Toggle icon appearance when the menu is open */
+.menu-btn:checked ~ .navbar-hamburger span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.menu-btn:checked ~ .navbar-hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn:checked ~ .navbar-hamburger span:nth-child(3) {
+    transform: rotate(45deg) translate(-8px, -9px);
+}
+
+/* Navigation links container */
+.navbar-menu {
+    display: flex;
+    flex-direction: row; /* Default layout */
+    align-items: center;
+}
+
+.menu-btn:checked ~ .navbar-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+/* Media query for smaller screens */
 @media (max-width: 768px) {
-    .navItem a{
-        padding: 0px;
+    /* Show the hamburger menu icon on smaller screens */
+    .navbar-hamburger {
+        display: flex;
+    }
+
+    /* Hide the navigation links container initially */
+    .navbar-menu {
+        display: none;
+    }
+
+    /* Display the navigation links when the menu is open */
+    .menu-btn:checked ~ .navbar-menu {
+        background-color: #f2f2f2;
+        height:min-content;
+        display: block;
+        padding-top: 20px;
     }
 }

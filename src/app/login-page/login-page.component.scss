@@ -1,278 +1,141 @@
-/* Standardstil für Eingabefelder */
-
-/* Container für den gesamten Inhalt der Seite */
-.container {
-    display: flex; /* Flexbox verwenden */
-    flex-direction: column; /* Elemente in einer Spalte anordnen */
-    justify-content: center; /* Horizontal zentrieren */
-    align-items: center; /* Vertikal zentrieren */
-    height: auto; /* Automatische Höhe, um den Inhalt anzupassen */
-    margin-bottom: 50px; /* Unten Abstand zum nächsten Element */
-    font-family: Arial, sans-serif; /* Schriftart festlegen */
-    font-size: 20px; /* Schriftgröße festlegen */
-    max-width: none; /* Maximale Breite entfernen, um die volle Breite zu nutzen */
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Titel-Stil */
-#title {
-    text-align: center; /* Titel zentrieren */
-    margin-bottom: 20px; /* Unten Abstand zum nächsten Element */
+/* Container styles */
+.login-container {
+    display: grid;
+    place-items: center;
+    min-height: 90vh;
+    padding: 20px;
+    background-color: #f0f0f0;
+
 }
 
-/* Container für E-Mail-Eingabefeld */
-.email-container {
-    display: flex; /* Flexbox verwenden */
-    align-items: center; /* Vertikal zentrieren */
-    width: 90%; /* Breite auf 90% des Containers begrenzen */
+.login-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
 }
 
-/* Container für Passwort-Eingabefeld */
-.password-container {
-    display: flex; /* Flexbox verwenden */
-    align-items: center; /* Vertikal zentrieren */
-    margin-bottom: 10px; /* Unten Abstand zum nächsten Element */
+/* Title */
+.login-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-/* Stil für E-Mail- und Passwort-Eingabefelder */
-input[type="email"],
+/* Input group */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+}
+
 #passwordField {
-    width: 80%; /* Breite auf 80% des Containers begrenzen */
-    max-width: 400px; /* Maximale Breite auf 400px begrenzen */
-    background-color: white; /* Hintergrundfarbe festlegen */
-    height: 35px; /* Höhe festlegen */
-    padding: 5px; /* Innenabstand festlegen */
-    border: 1px solid #ccc; /* Randstil und Farbe festlegen */
-    border-radius: 3px; /* Randradius festlegen */
-    transition: background-color 0.3s; /* Übergangseffekt für Hintergrundfarbe */
-    margin-bottom: 10px; /* Unten Abstand zum nächsten Element */
+    width: 100%;
 }
 
-/* Stil für den "Passwort vergessen?"-Link */
-#passwordForgotten {
-    color: black; /* Textfarbe festlegen */
-    text-decoration: none; /* Unterstreichung entfernen */
-    cursor: pointer; /* Zeiger-Cursor anzeigen */
-    margin-bottom: 20px; /* Unten Abstand zum nächsten Element */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-/* Stil für den Button */
-#button {
-    font-family: Arial, sans-serif; /* Schriftart festlegen */
-    font-size: 20px; /* Schriftgröße festlegen */
-    background-color: #b4f152; /* Hintergrundfarbe festlegen */
-    width: 80px; /* Breite festlegen */
-    height: 40px; /* Höhe festlegen */
-    border-radius: 12px; /* Randradius festlegen */
-    margin-bottom: 20px; /* Unten Abstand zum nächsten Element */
+.forgot-password-link {
+    text-align: center;
+    color: #219e90;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
-/* Stil für den "Gastanmeldung"-Link */
-#gastanmeldung-link {
-    text-decoration: none; /* Unterstreichung entfernen */
-    vertical-align: middle; /* Vertikale Ausrichtung mittig */
-    margin-bottom: 20px; /* Unten Abstand zum nächsten Element */
-}
-.gastanmeldung-ebene{
-    display: flex; /* Flexbox verwenden */
-    align-items: center; /* Vertikal zentrieren */
+.forgot-password-link:hover {
+    text-decoration: underline;
 }
 
-
-/* Stil für das Info-Symbol */
-.info-icon {
-    position: relative; /* Position relativ zum Elternelement */
-    cursor: pointer; /* Zeiger-Cursor anzeigen */
-    display: inline-block; /* Inline-Block-Element */
-    vertical-align: middle; /* Vertikale Ausrichtung mittig */
-    color: grey; /* Textfarbe festlegen */
+/* Button group */
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
-/* Stil für den Kreis im Info-Symbol */
-.info-circle {
-    display: inline-block; /* Inline-Block-Element */
-    width: 30px; /* Breite des Kreises */
-    height: 30px; /* Höhe des Kreises */
-    border-radius: 50%; /* Randradius für Kreisform */
-    border: 1px solid grey; /* Randstil und Farbe festlegen */
-    text-align: center; /* Text zentrieren */
-    line-height: 30px; /* Zeilenhöhe für vertikale Ausrichtung */
-    font-size: 16px; /* Schriftgröße festlegen */
-    position: relative; /* Position relativ zum Elternelement */
+.login-button,
+.unikim-button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-/* Stil für das Popup-Info-Fenster */
-.info-popup {
-    position: absolute; /* Absolute Positionierung */
-    top: calc(100% + 10px); /* Position unterhalb des Info-Symbols */
-    left: 50%; /* Horizontal zentrieren */
-    transform: translateX(-50%); /* Horizontal zentrieren */
-    background-color: #b4f152; /* Hintergrundfarbe festlegen */
-    color: black; /* Textfarbe festlegen */
-    padding: 10px; /* Innenabstand festlegen */
-    border: 1px solid #ccc; /* Randstil und Farbe festlegen */
-    border-radius: 5px; /* Randradius festlegen */
-    display: none; /* Standardmäßig ausblenden */
-    width: 300px; /* Breite festlegen */
+.login-button {
+    background-color: #219e90;
+    color: white;
 }
 
-/* Bei Hover über das Info-Symbol das Popup anzeigen */
-.info-icon:hover .info-popup {
-    display: block; /* Popup anzeigen */
+.unikim-button {
+    background-color: #219e90;
+    color: white;
 }
 
-/* Media Queries für Responsive Design */
-@media screen and (max-width: 768px) {
-    .container {
-        padding: 60px; /* Größerer Innenabstand auf kleinen Bildschirmen */
-    }
-
-    #title {
-        max-width: none; /* Maximale Breite entfernen */
-    }
-
-    input[type="email"],
-    #passwordField {
-        width: 100%; /* Vollständige Breite auf kleinen Bildschirmen */
-        max-width: none; /* Maximale Breite entfernen */
-    }
+.login-button:hover {
+    background-color: #1b8175;
 }
 
-/* Standardstil für Eingabefelder */
-
-/* Container für den gesamten Inhalt der Seite */
-.container {
-    display: flex; /* Flexbox verwenden */
-    flex-direction: column; /* Elemente in einer Spalte anordnen */
-    justify-content: center; /* Horizontal zentrieren */
-    align-items: center; /* Vertikal zentrieren */
-    height: auto; /* Automatische Höhe, um den Inhalt anzupassen */
-    margin-bottom: 50px; /* Unten Abstand zum nächsten Element */
-    font-family: Arial, sans-serif; /* Schriftart festlegen */
-    font-size: 20px; /* Schriftgröße festlegen */
-    max-width: none; /* Maximale Breite entfernen, um die volle Breite zu nutzen */
+.unikim-button:hover {
+    background-color: #1b8175;
 }
 
-/* Titel-Stil */
-#title {
-    text-align: center; /* Titel zentrieren */
-    margin-bottom: 20px; /* Unten Abstand zum nächsten Element */
+/* Guest link */
+.guest-link {
+    display: block;
+    text-align: center;
+    color: #219e90;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
-/* Container für E-Mail-Eingabefeld */
-.email-container {
-    display: flex; /* Flexbox verwenden */
-    align-items: center; /* Vertikal zentrieren */
-    width: 90%; /* Breite auf 90% des Containers begrenzen */
+.guest-link:hover {
+    text-decoration: underline;
 }
 
-/* Container für Passwort-Eingabefeld */
-.password-container {
-    display: flex; /* Flexbox verwenden */
-    align-items: center; /* Vertikal zentrieren */
-    margin-bottom: 10px; /* Unten Abstand zum nächsten Element */
+/* Stay logged in */
+.stay-logged-in {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    
 }
 
-/* Stil für E-Mail- und Passwort-Eingabefelder */
-input[type="email"],
-#passwordField {
-    width: 80%; /* Breite auf 80% des Containers begrenzen */
-    max-width: 400px; /* Maximale Breite auf 400px begrenzen */
-    background-color: white; /* Hintergrundfarbe festlegen */
-    height: 35px; /* Höhe festlegen */
-    padding: 5px; /* Innenabstand festlegen */
-    border: 1px solid #ccc; /* Randstil und Farbe festlegen */
-    border-radius: 3px; /* Randradius festlegen */
-    transition: background-color 0.3s; /* Übergangseffekt für Hintergrundfarbe */
-    margin-bottom: 10px; /* Unten Abstand zum nächsten Element */
-}
-
-/* Stil für den "Passwort vergessen?"-Link */
-#passwordForgotten {
-    color: black; /* Textfarbe festlegen */
-    text-decoration: none; /* Unterstreichung entfernen */
-    cursor: pointer; /* Zeiger-Cursor anzeigen */
-    margin-bottom: 20px; /* Unten Abstand zum nächsten Element */
-}
-
-/* Stil für den Button */
-#button {
-    font-family: Arial, sans-serif; /* Schriftart festlegen */
-    font-size: 20px; /* Schriftgröße festlegen */
-    background-color: #b4f152; /* Hintergrundfarbe festlegen */
-    width: 80px; /* Breite festlegen */
-    height: 40px; /* Höhe festlegen */
-    border-radius: 12px; /* Randradius festlegen */
-    margin-bottom: 20px; /* Unten Abstand zum nächsten Element */
-}
-
-/* Stil für den "Gastanmeldung"-Link */
-#gastanmeldung-link {
-    text-decoration: none; /* Unterstreichung entfernen */
-    vertical-align: middle; /* Vertikale Ausrichtung mittig */
-    margin-bottom: 20px; /* Unten Abstand zum nächsten Element */
-}
-.gastanmeldung-ebene{
-    display: flex; /* Flexbox verwenden */
-    align-items: center; /* Vertikal zentrieren */
-}
-
-
-
-/* Stil für das Info-Symbol */
-.info-icon {
-    position: relative; /* Position relativ zum Elternelement */
-    cursor: pointer; /* Zeiger-Cursor anzeigen */
-    display: inline-block; /* Inline-Block-Element */
-    vertical-align: middle; /* Vertikale Ausrichtung mittig */
-    color: grey; /* Textfarbe festlegen */
-}
-
-/* Stil für den Kreis im Info-Symbol */
-.info-circle {
-    display: inline-block; /* Inline-Block-Element */
-    width: 30px; /* Breite des Kreises */
-    height: 30px; /* Höhe des Kreises */
-    border-radius: 50%; /* Randradius für Kreisform */
-    border: 1px solid grey; /* Randstil und Farbe festlegen */
-    text-align: center; /* Text zentrieren */
-    line-height: 30px; /* Zeilenhöhe für vertikale Ausrichtung */
-    font-size: 16px; /* Schriftgröße festlegen */
-    position: relative; /* Position relativ zum Elternelement */
-}
-
-/* Stil für das Popup-Info-Fenster */
-.info-popup {
-    position: absolute; /* Absolute Positionierung */
-    top: calc(100% + 10px); /* Position unterhalb des Info-Symbols */
-    left: 50%; /* Horizontal zentrieren */
-    transform: translateX(-50%); /* Horizontal zentrieren */
-    background-color: #b4f152; /* Hintergrundfarbe festlegen */
-    color: black; /* Textfarbe festlegen */
-    padding: 10px; /* Innenabstand festlegen */
-    border: 1px solid #ccc; /* Randstil und Farbe festlegen */
-    border-radius: 5px; /* Randradius festlegen */
-    display: none; /* Standardmäßig ausblenden */
-    width: 300px; /* Breite festlegen */
-}
-
-/* Bei Hover über das Info-Symbol das Popup anzeigen */
-.info-icon:hover .info-popup {
-    display: block; /* Popup anzeigen */
-}
-
-/* Media Queries für Responsive Design */
-@media screen and (max-width: 768px) {
-    .container {
-        padding: 60px; /* Größerer Innenabstand auf kleinen Bildschirmen */
-    }
-
-    #title {
-        max-width: none; /* Maximale Breite entfernen */
-    }
-
-    input[type="email"],
-    #passwordField {
-        width: 100%; /* Vollständige Breite auf kleinen Bildschirmen */
-        max-width: none; /* Maximale Breite entfernen */
-    }
+#stayLoggedInCheckbox {
+    margin-right: 10px;
 }

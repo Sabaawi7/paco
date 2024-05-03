@@ -12,6 +12,9 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
 
 
 export class LoginPageComponent {
+handleLogin() {
+throw new Error('Method not implemented.');
+}
   passwordFieldType: string = 'password'; // Variable für den Anzeigetyp des Passwortfelds (standardmäßig versteckt)
   email: string = ''; // Variable für die E-Mail-Adresse
   password: string = ''; // Variable für das Passwort
