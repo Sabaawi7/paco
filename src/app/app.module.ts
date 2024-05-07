@@ -6,7 +6,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
 
 import { SuperadminComponent } from './superadmin/superadmin.component';
-import { InstadminComponent } from './instadmin/instadmin.component';
+import { InstadminComponent } from './admin/instadmin/instadmin.component';
 import { RoleselectionComponent } from './roleselection/roleselection.component';
 
 export class AppModule { }
