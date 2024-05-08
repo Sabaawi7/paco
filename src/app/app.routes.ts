@@ -6,14 +6,18 @@ import { AdminComponent } from './admin/admin.component';
 import { RoleselectionComponent } from './roleselection/roleselection.component';
 import { ChatbotPageComponent } from './chatbot-page/chatbot-page.component';
 import { ConsultantUIComponent } from './consultant-ui/consultant-ui.component';
-
+import { ContactPageComponent } from './contact-page/contact-page.component';
+import { ImpressumPageComponent } from './impressum-page/impressum-page.component';
 export const routes: Routes = [
     { path: '', component: LandingPageComponent},
     { path: 'login', component: LoginPageComponent },
     { path: 'role', component: RoleselectionComponent}, // Rollenauswahlseite, Puffer um zu testen;
     { path: 'admin', component: AdminComponent }, // Pfad für die Admin-Komponente bleibt unverändert, zeigt entweder Superadmin oder Instadmin Seite;
     { path: 'consultant', component: ConsultantUIComponent}, //Pfad für Chat seite
-    { path: 'chat', component: ChatbotPageComponent} //Pfad für Chat seite
+    { path: 'chat', component: ChatbotPageComponent}, //Pfad für Chat seite
+    { path: 'contact', component: ContactPageComponent}, //Pfad für Chat seite
+    { path: 'impressum', component: ImpressumPageComponent} //Pfad für Chat seite
+
 ];
 
 
