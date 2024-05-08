@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { NgClass } from '@angular/common';
-import { NavigationsbarComponent } from '../navigationsbar/navigationsbar.component';
-
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 @Component({
   selector: 'app-chatbot-page',
   standalone: true,
-  imports: [NgIf, NgClass, NavigationsbarComponent],
+  imports: [NgIf, NgClass, NavigationBarComponent],
   templateUrl: './chatbot-page.component.html',
   styleUrl: './chatbot-page.component.scss'
 })
