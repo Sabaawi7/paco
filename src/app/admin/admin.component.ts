@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SuperadminComponent } from '../superadmin/superadmin.component';
-import { InstadminComponent } from '../instadmin/instadmin.component';
+import { SuperadminComponent } from './superadmin/superadmin.component';
+import { InstadminComponent } from './instadmin/instadmin.component';
 import { NgIf, CommonModule } from '@angular/common';
 @Component({
   selector: 'app-admin',
