@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NavigationsbarComponent } from '../navigationsbar/navigationsbar.component';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [FormsModule, NavigationsbarComponent, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [FormsModule,NavigationBarComponent, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })

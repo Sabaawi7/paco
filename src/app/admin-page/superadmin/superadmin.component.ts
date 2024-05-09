@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavigationsbarComponent } from '../../navigationsbar/navigationsbar.component';
+import { NavigationBarComponent } from '../../navigation-bar/navigation-bar.component';
 @Component({
   selector: 'app-superadmin',
   standalone: true,
-  imports: [NavigationsbarComponent],
+  imports: [NavigationBarComponent],
   templateUrl: './superadmin.component.html',
   styleUrl: './superadmin.component.scss'
 })
