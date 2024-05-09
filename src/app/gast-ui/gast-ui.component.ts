@@ -54,8 +54,8 @@ export class GastUIComponent implements OnInit {
     console.log(interviewJson[0].answers)
    
 
-
-
+  
+      
     this.generateRandomToken();
     this.updateProgressValue();
   
@@ -126,11 +126,7 @@ export class GastUIComponent implements OnInit {
     return Math.floor(Math.random() * (max - min) + min);
   }
   generateRandomToken(): void {
-    const tokenLength = 10;
-    let token = '';
-    for (let i = 0; i < tokenLength; i++) {
-        token += Math.floor(Math.random() * 10); // Fügt nur Zahlen von 0 bis 9 hinzu
-    }
+    let token = self.crypto.randomUUID()
     const tokenElement = document.getElementById('token');
     if (tokenElement) {
         tokenElement.textContent = 'Token: ' + token;
