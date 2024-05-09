@@ -6,13 +6,13 @@
         
         <div class="input-group">
             <label for="emailInput">Email *:</label>
-            <input type="email" [(ngModel)]="email" id="emailInput" required>
+            <input type="email" [(ngModel)]="email" id="emailInput" name="email" required>
         </div>
 
         <div class="input-group">
             <label for="passwordField">Passwort *:</label>
             <div class="password-wrapper">
-                <input type="{{ passwordFieldType }}" [(ngModel)]="password" id="passwordField" required>
+                <input type="{{ passwordFieldType }}" [(ngModel)]="password" id="passwordField" name="password" required>
                 <span class="toggle-password" (click)="togglePasswordVisibility()">👁️</span>
             </div>
         </div>
