@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgIf } from '@angular/common';
-import { GastUIComponent } from './gast-ui.component';
 
-describe('GastUIComponent', () => {
-  let component: GastUIComponent;
-  let fixture: ComponentFixture<GastUIComponent>;
+import { AdminPageComponent } from './admin-page.component';
+
+describe('AdminPageComponent', () => {
+  let component: AdminPageComponent;
+  let fixture: ComponentFixture<AdminPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GastUIComponent, NgIf]
+      imports: [AdminPageComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(GastUIComponent);
+    fixture = TestBed.createComponent(AdminPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

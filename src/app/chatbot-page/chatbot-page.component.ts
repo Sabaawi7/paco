@@ -1,19 +1,17 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { NgClass } from '@angular/common';
-import { NavigationsbarComponent } from '../navigationsbar/navigationsbar.component';
 import  interviewJson from '../../assets/interview.json';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 
 @Component({
-  selector: 'app-gast-ui',
+  selector: 'app-chatbot-page',
   standalone: true,
-  imports: [NgIf, NgClass, NavigationsbarComponent],
-  templateUrl: './gast-ui.component.html',
-  styleUrl: './gast-ui.component.scss',
-  encapsulation: ViewEncapsulation.Emulated
+  imports: [NgIf, NgClass, NavigationBarComponent],
+  templateUrl: './chatbot-page.component.html',
+  styleUrl: './chatbot-page.component.scss'
 })
-export class GastUIComponent implements OnInit {
-
+export class ChatbotPageComponent implements OnInit {
   answeredQuestions = 3;
   totalQuestions = 10;
   progressValue!: number;
@@ -140,9 +138,5 @@ export class GastUIComponent implements OnInit {
     this.progressValue = (this.answeredQuestions / this.totalQuestions) * 100;
   }
  
+
 }
-
-
-
-
-

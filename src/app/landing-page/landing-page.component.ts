@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationsbarComponent } from "../navigationsbar/navigationsbar.component";
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { CookieBannerComponent } from '../cookie-banner/cookie-banner.component';
 import { NgIf } from '@angular/common';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     standalone: true,
     templateUrl: './landing-page.component.html',
     styleUrl: './landing-page.component.scss',
-    imports: [NavigationsbarComponent,CookieBannerComponent,CommonModule, RouterLink, RouterLinkActive, RouterOutlet]
+    imports: [NavigationBarComponent,CookieBannerComponent,CommonModule, RouterLink, RouterLinkActive, RouterOutlet]
 })
 export class LandingPageComponent {
 
