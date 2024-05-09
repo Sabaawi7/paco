@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { NgClass } from '@angular/common';
 import { NavigationsbarComponent } from '../navigationsbar/navigationsbar.component';
+import  interviewJson from '../../assets/interview.json';
 
 @Component({
   selector: 'app-gast-ui',
@@ -38,6 +39,22 @@ export class GastUIComponent implements OnInit {
 
 
   ngOnInit(): void {
+    /**
+     * Die JSON Datei wurde oben importiert über den Pfad im Projekt. Die Datei wurde in der
+     * Variable "interviewJson" gespeichert. Durch diese Variable kann man auf den Inhalt
+     * der JSON Datei zugreifen und es nutzen um das Interview zu gestalten.
+     * Die Attribute der JSON sind : 
+     * "question" (String); 
+     * "answers" (Array an Antwortmöglichkeiten) answers=null, falls Schreibantwort gefordert ist ;
+     * "answer_type" (String) ob multiple_choice, single_choice, writing oder dropdown ; 
+     * "subtext_info" dieses Attribut haben nur writing-fragen, wo weitere infos gegeben sind.
+     */
+    console.log(interviewJson);
+    console.log(interviewJson.length);
+    console.log(interviewJson[0].answers)
+   
+
+
 
     this.generateRandomToken();
     this.updateProgressValue();
