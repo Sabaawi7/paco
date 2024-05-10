@@ -1,19 +1,29 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { NgClass } from '@angular/common';
+<<<<<<< HEAD:src/app/gast-ui/gast-ui.component.ts
 import { NavigationsbarComponent } from '../navigationsbar/navigationsbar.component';
 import { ProgressbarComponent } from '../progressbar/progressbar.component';
+=======
+import  interviewJson from '../../assets/interview.json';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
+>>>>>>> main:src/app/chatbot-page/chatbot-page.component.ts
 
 @Component({
-  selector: 'app-gast-ui',
+  selector: 'app-chatbot-page',
   standalone: true,
+<<<<<<< HEAD:src/app/gast-ui/gast-ui.component.ts
   imports: [NgIf, NgClass, NavigationsbarComponent, ProgressbarComponent],
   templateUrl: './gast-ui.component.html',
   styleUrl: './gast-ui.component.scss',
   encapsulation: ViewEncapsulation.Emulated
+=======
+  imports: [NgIf, NgClass, NavigationBarComponent],
+  templateUrl: './chatbot-page.component.html',
+  styleUrl: './chatbot-page.component.scss'
+>>>>>>> main:src/app/chatbot-page/chatbot-page.component.ts
 })
-export class GastUIComponent implements OnInit {
-
+export class ChatbotPageComponent implements OnInit {
   answeredQuestions = 3;
   totalQuestions = 10;
   progressValue!: number;
@@ -39,7 +49,23 @@ export class GastUIComponent implements OnInit {
 
 
   ngOnInit(): void {
+    /**
+     * Die JSON Datei wurde oben importiert über den Pfad im Projekt. Die Datei wurde in der
+     * Variable "interviewJson" gespeichert. Durch diese Variable kann man auf den Inhalt
+     * der JSON Datei zugreifen und es nutzen um das Interview zu gestalten.
+     * Die Attribute der JSON sind : 
+     * "question" (String); 
+     * "answers" (Array an Antwortmöglichkeiten) answers=null, falls Schreibantwort gefordert ist ;
+     * "answer_type" (String) ob multiple_choice, single_choice, writing oder dropdown ; 
+     * "subtext_info" dieses Attribut haben nur writing-fragen, wo weitere infos gegeben sind.
+     */
+    console.log(interviewJson);
+    console.log(interviewJson.length);
+    console.log(interviewJson[0].answers)
+   
 
+  
+      
     this.generateRandomToken();
     this.updateProgressValue();
   
@@ -110,11 +136,7 @@ export class GastUIComponent implements OnInit {
     return Math.floor(Math.random() * (max - min) + min);
   }
   generateRandomToken(): void {
-    const tokenLength = 10;
-    let token = '';
-    for (let i = 0; i < tokenLength; i++) {
-        token += Math.floor(Math.random() * 10); // Fügt nur Zahlen von 0 bis 9 hinzu
-    }
+    let token = self.crypto.randomUUID()
     const tokenElement = document.getElementById('token');
     if (tokenElement) {
         tokenElement.textContent = 'Token: ' + token;
@@ -128,9 +150,5 @@ export class GastUIComponent implements OnInit {
     this.progressValue = (this.answeredQuestions / this.totalQuestions) * 100;
   }
  
+
 }
-
-
-
-
-

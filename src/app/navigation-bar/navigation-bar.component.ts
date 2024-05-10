@@ -2,13 +2,13 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-navigationsbar',
+  selector: 'app-navigation-bar',
   standalone: true,
   imports: [RouterLink, RouterLinkActive, RouterOutlet],
-  templateUrl: './navigationsbar.component.html',
-  styleUrls: ['./navigationsbar.component.scss']
+  templateUrl: './navigation-bar.component.html',
+  styleUrl: './navigation-bar.component.scss'
 })
-export class NavigationsbarComponent {
+export class NavigationBarComponent {
   isMenuOpen: boolean = false;
 
   // Access the navbar-menu DOM element
@@ -26,4 +26,5 @@ export class NavigationsbarComponent {
       this.navbarMenu.nativeElement.style.maxHeight = '0';
     }
   }
+
 }
