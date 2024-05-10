@@ -1,0 +1,35 @@
+
+.language-overlay{
+    position: fixed; /* Festes Positionieren, um das Overlay über der Seite zu halten */
+    top: 0; /* Abstand vom oberen Rand des Viewports */
+    left: 0; /* Abstand vom linken Rand des Viewports */
+    width: 100%; /* Volle Breite des Viewports */
+    height: 100%; /* Volle Höhe des Viewports */
+    background-color: rgba(0, 0, 0, 0.5); /* Halbtransparentes Overlay mit schwarzem Hintergrund */
+    z-index: 999; /* Stelle sicher, dass das Overlay über anderen Inhalten liegt */
+}
+
+.language-popup {
+    position: fixed; /* Festes Positionieren, um die Benachrichtigung anzuzeigen */
+    top: 50%; /* Zentrierte vertikale Position */
+    left: 50%; /* Zentrierte horizontale Position */
+    transform: translate(-50%, -50%); /* Zentrieren der Benachrichtigung relativ zum Mittelpunkt */
+    background-color: white; /* Hintergrundfarbe der Benachrichtigung */
+    padding: 20px; /* Innenabstand der Benachrichtigung */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Schatten für die Benachrichtigung */
+    z-index: 1000; /* Stelle sicher, dass die Benachrichtigung über dem Overlay liegt */
+    font-family: 'Ubuntu', sans-serif; /* Schriftart auf Ubuntu Sans-Serif setzen */
+    width: 700px; /* Breite der Benachrichtigung */
+    height: 400px; /* Höhe der Benachrichtigung */
+    display: flex; /* Verwende Flexbox-Layout */
+    flex-direction: column; /* Staple die Elemente vertikal */
+    justify-content: center; /* Zentriere den Inhalt vertikal */
+    align-items: center; /* Zentriere den Inhalt horizontal */
+    text-align: center; /* Zentriere den Text horizontal */
+
+   
+  }
+
+
+
+

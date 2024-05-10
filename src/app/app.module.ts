@@ -9,3 +9,4 @@ import { InstAdminComponent } from './admin-page/inst-admin/inst-admin.component
 import { RoleselectionComponent } from './roleselection/roleselection.component';
 
 export class AppModule { }
+
