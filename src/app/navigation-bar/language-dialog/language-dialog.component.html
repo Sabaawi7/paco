@@ -1,11 +1,22 @@
 <div class="language-overlay">
-    <div class="language-popup">
+  <div class="language-popup">
       <button class="close-button" (click)="closeLanguagePopup()">X</button>
-      <select  id="languageSelect" (change)="changeLanguage($event)">
-        <option value="de">Deutsch</option>
-        <option value="en">Englisch</option>
-        <!-- Weitere Sprachoptionen hier hinzufügen -->
-      </select>
-      <button (click)="applyLanguage()">Okay</button>
-    </div>
+          <p id="title">Select your language.</p>
+          <br/><br/>
+          <div class="dropdown-menu">Your language:
+            <br/>
+  
+            <select id="languageSelect" (change)="changeLanguage($event)">
+              <option value="de"> German</option>
+              <option value="en">English</option>
+              <!-- Weitere Sprachoptionen hier hinzufügen -->
+          </select>
+
+          </div>
+          <br/>
+          <br/>
+    
+ 
+      <button id="accept" (click)="applyLanguage()">OK</button>
   </div>
+</div>
