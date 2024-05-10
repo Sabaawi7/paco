@@ -1,0 +1,9 @@
+<!-- progressbar.component.html -->
+<div class="progressbar">
+    <div *ngFor="let question of questions; let i = index"
+         [ngClass]="{'current': i === currentQuestionIndex, 'answered': isAnswered(i), 'unanswered': i > currentQuestionIndex}"
+         (click)="navigateToQuestion(i)"
+         [style.backgroundColor]="getBackgroundColor(i)">
+        Frage {{ i + 1 }}
+    </div>
+  </div>
