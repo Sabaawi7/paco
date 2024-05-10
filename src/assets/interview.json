@@ -10,7 +10,7 @@
         "answer_type": "multiple_choice"
     },
     {
-        "question": "Was magst Du nicht?",
+        "question": "Was magst du nicht?",
         "answers": ["Mathe anwenden","Schwere Matheprobleme lösen","Kurse geben","Ethische Fragen diskutieren","Anderen etwas beibringen","Projekte leiten","Präsentieren","Umweltthemen diskutieren","Unternehmen verstehen","Theorien verstehen","Events organisieren","Aktienmärkte verstehen","Soziale Probleme diskutieren","Programmieren","Wirtschaftspolitik verstehen"],
         "answer_type": "multiple_choice"
     },    
