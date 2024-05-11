@@ -1,9 +1,22 @@
-<!-- progressbar.component.html -->
 <div class="progressbar">
-    <div *ngFor="let question of questions; let i = index"
-         [ngClass]="{'current': i === currentQuestionIndex, 'answered': isAnswered(i), 'unanswered': i > currentQuestionIndex}"
-         (click)="navigateToQuestion(i)"
-         [style.backgroundColor]="getBackgroundColor(i)">
-        Frage {{ i + 1 }}
-    </div>
+  <div *ngFor="let question of questions; let i = index"
+       [ngStyle]="{ 'background-color': getBackgroundColor(i) }"
+       (click)="navigateToQuestion(i)">
+    Frage {{ i + 1 }}
   </div>
+</div>
+
+<div *ngIf="currentQuestion">
+  <h2>{{ currentQuestion.question }}</h2>
+  <ng-container *ngIf="currentQuestion.answers; else noAnswers">
+    <div *ngFor="let answer of getAnswersArray(currentQuestion.answers)">
+      {{ answer }}
+    </div>
+  </ng-container>
+  <ng-template #noAnswers>
+    <p>Keine Antworten verfügbar.</p>
+  </ng-template>
+</div>
+
+
+

@@ -1,27 +1,16 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { NgClass } from '@angular/common';
-<<<<<<< HEAD:src/app/gast-ui/gast-ui.component.ts
-import { NavigationsbarComponent } from '../navigationsbar/navigationsbar.component';
-import { ProgressbarComponent } from '../progressbar/progressbar.component';
-=======
 import  interviewJson from '../../assets/interview.json';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
->>>>>>> main:src/app/chatbot-page/chatbot-page.component.ts
+import { ProgressbarComponent } from '../progressbar/progressbar.component';
 
 @Component({
   selector: 'app-chatbot-page',
   standalone: true,
-<<<<<<< HEAD:src/app/gast-ui/gast-ui.component.ts
-  imports: [NgIf, NgClass, NavigationsbarComponent, ProgressbarComponent],
-  templateUrl: './gast-ui.component.html',
-  styleUrl: './gast-ui.component.scss',
-  encapsulation: ViewEncapsulation.Emulated
-=======
-  imports: [NgIf, NgClass, NavigationBarComponent],
+  imports: [NgIf, NgClass, NavigationBarComponent,ProgressbarComponent],
   templateUrl: './chatbot-page.component.html',
   styleUrl: './chatbot-page.component.scss'
->>>>>>> main:src/app/chatbot-page/chatbot-page.component.ts
 })
 export class ChatbotPageComponent implements OnInit {
   answeredQuestions = 3;
