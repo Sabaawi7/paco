@@ -37,6 +37,10 @@ $paco-theme: mat.define-light-theme((
 @include mat.all-component-themes($paco-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
+:root {
+  --color-primary: #{map-get($map: $paco-primary, $key: default )};
+  --color-accent: #{map-get($map: $paco-accent, $key: default )};
+  --color-warn: #{map-get($map: $paco-warn, $key: default )};
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
