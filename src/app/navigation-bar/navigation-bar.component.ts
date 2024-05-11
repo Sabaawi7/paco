@@ -8,7 +8,7 @@ import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-navigation-bar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet,LanguageDialogComponent, NgIf,NgFor],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, NgIf,NgFor],
   templateUrl: './navigation-bar.component.html',
   styleUrl: './navigation-bar.component.scss'
 })

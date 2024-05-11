@@ -7,26 +7,31 @@
     height: 100%; /* Volle Höhe des Viewports */
     background-color: rgba(0, 0, 0, 0.5); /* Halbtransparentes Overlay mit schwarzem Hintergrund */
     z-index: 999; /* Stelle sicher, dass das Overlay über anderen Inhalten liegt */
+
 }
 
 
 .language-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    font-family: 'Ubuntu', sans-serif;
-    width: 700px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+ 
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white; /* Hintergrundfarbe des Popups */
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        font-family: 'Ubuntu', sans-serif;
+        width: 400px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 30px; /* Hinzufügen von abgerundeten Ecken */
+        border: 1px solid #ccc; /* Hinzufügen einer Randlinie für visuelle Trennung */
+}
 
     // Ändere die Positionierung des Close-Buttons
     .close-button {
@@ -35,7 +40,7 @@
         right: 10px; // Abstand vom rechten Rand des Elternelements
         background: none;
         border: none;
-        padding: 0;
+        padding: 10px;
         cursor: pointer;
     }
     #title {
@@ -48,9 +53,10 @@
     }
     .dropdown-menu{
         text-align: left; // Text links ausrichten
-        margin-left: 20px; // Abstand zum linken Rand hinzufügen
+        margin-left: auto; // Abstand zum linken Rand hinzufügen
         margin-bottom: 2px; // Abstand zwischen der Überschrift und dem Dropdown-Menü
         font-family: 'Ubuntu', sans-serif;
+     
     }
     
 
@@ -61,14 +67,28 @@
         height: 40px; // Ändere die Höhe des Dropdown-Menüs
         font-family: 'Ubuntu', sans-serif;
         font-size:20px;
+
+        .flag-icon {
+            height: 1em; /* Höhe auf die Höhe der Schriftgröße einstellen */
+            width: auto; /* Automatische Breite basierend auf der Höhe */
+            margin-right: 5px; /* Abstand zwischen Flagge und Text */
+
+        }
+    
     
     }
     #accept{
         font-family: 'Ubuntu', sans-serif;
-        font-size:20px;
+        background-color: global-variable-exists($name:primary ); /* Hintergrundfarbe des rechten Buttons */
+        color: black; /* Schriftfarbe des rechten Buttons */
+        margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
+        padding: 10px 20px; /* Innenabstand  */
+        font-size: 16px; /* Schriftgröße  */
+        border-radius: 10px; /* Runde die Ecken  */
+        border: 2px solid black; /* Füge eine blaue Umrandung hinzu */
         
     }
-}
+    
 
 
 

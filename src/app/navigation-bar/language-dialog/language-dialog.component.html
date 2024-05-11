@@ -6,17 +6,21 @@
           <div class="dropdown-menu">Your language:
             <br/>
   
-            <select id="languageSelect" (change)="changeLanguage($event)">
-              <option value="de"> German</option>
-              <option value="en">English</option>
-              <!-- Weitere Sprachoptionen hier hinzufügen -->
-          </select>
+          <select id="languageSelect" (change)="changeLanguage($event)">
+              <option value="" disabled selected></option>
+              <option *ngFor="let option of languageOptions" [value]="option.value">
+                  <img [src]="option.flag" class="flag-icon" alt="{{ option.label }} Flag">
+                  {{ option.label }}
+              </option>
+          </select> 
+
+      
 
           </div>
           <br/>
           <br/>
     
  
-      <button id="accept" (click)="applyLanguage()">OK</button>
+      <button id="accept" (click)="applyLanguage() ">OK</button>
   </div>
 </div>

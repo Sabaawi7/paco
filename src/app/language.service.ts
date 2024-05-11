@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LanguageService {
-  private currentLanguage: string = 'de'; // Standardmäßig Deutsch
+  private currentLanguage: string = ''; 
 
   constructor() {}
 
