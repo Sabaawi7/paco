@@ -88,6 +88,36 @@
         border: 2px solid black; /* Füge eine blaue Umrandung hinzu */
         
     }
+
+    /* Media Query für kleinere Bildschirme */
+@media screen and (max-width: 768px) {
+    .language-popup {
+        width: 70%; /* Breite der Benachrichtigung auf 70% des Viewports setzen */
+        height: auto; /* Automatische Höhe basierend auf Inhalt */
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+  
+    #languageSelect {
+        width: 100%; /* Vollbreite */
+        height: 100%;
+    }
+
+    .dropdown-menu{
+
+   
+        margin: 10px auto; /* Oben und unten 10px Abstand, horizontal zentriert */
+       
+    }
+
+
+
+
+
+  }
     
 
 
