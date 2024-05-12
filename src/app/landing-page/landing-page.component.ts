@@ -4,12 +4,13 @@ import { CookieBannerComponent } from '../cookie-banner/cookie-banner.component'
 import { NgIf } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { MaterialModule } from '../material/material.module';
 @Component({
     selector: 'app-landing-page',
     standalone: true,
     templateUrl: './landing-page.component.html',
     styleUrl: './landing-page.component.scss',
-    imports: [NavigationBarComponent,CookieBannerComponent,CommonModule, RouterLink, RouterLinkActive, RouterOutlet]
+    imports: [NavigationBarComponent,CookieBannerComponent,CommonModule, RouterLink, RouterLinkActive, RouterOutlet,MaterialModule]
 })
 export class LandingPageComponent {
 
