@@ -69,9 +69,11 @@
         font-size:20px;
 
         .flag-icon {
-            height: 1em; /* Höhe auf die Höhe der Schriftgröße einstellen */
-            width: auto; /* Automatische Breite basierend auf der Höhe */
-            margin-right: 5px; /* Abstand zwischen Flagge und Text */
+            height: 40px; /* Höhe auf die Höhe der Schriftgröße einstellen */
+            width: 1px; /* Automatische Breite basierend auf der Höhe */
+            margin-right: 400px; /* Abstand zwischen Flagge und Text */
+            background-size: 100% 49494%;
+            flex-shrink: 0
 
         }
     
