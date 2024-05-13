@@ -1,0 +1,36 @@
+<div class="progressbar">
+  <div *ngFor="let question of questions; let i = index"
+       [ngStyle]="{ 'background-color': getBackgroundColor(i) }"
+       (click)="navigateToQuestion(i)">
+    Frage {{ i + 1 }}
+  </div>
+</div>
+
+<div class="interview">
+  <div class="questions">
+    <div *ngIf="currentQuestion">
+      <h2>{{ currentQuestion.question }}</h2>
+    </div>
+  </div>
+
+
+  <div class="answers">
+    <div *ngIf="currentQuestion">
+      <ng-container *ngIf="currentQuestion.answers; else noAnswers">
+        <div *ngFor="let answer of getAnswersArray(currentQuestion.answers)">
+           <mat-checkbox *ngIf="currentQuestion.answer_type=='multiple_choice'">{{ answer }}</mat-checkbox>
+           <mat-radio-button *ngIf="currentQuestion.answer_type=='single_choice'">{{ answer }}</mat-radio-button>
+           <mat-label *ngIf="currentQuestion.answer_type=='writing'">{{ answer }}</mat-label>
+           <mat-select *ngIf="currentQuestion.answer_type=='dropdown'"><mat-option value=answer>{{ answer }}</mat-option></mat-select>
+           
+        </div>
+      </ng-container>
+      <ng-template #noAnswers>
+        <input type="text" placeholder="Antwort eingeben" [(ngModel)]="customAnswer">
+        <button (click)="submitAnswer()">Absenden</button> <!-- Absenden-Button hinzugefügt -->
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+

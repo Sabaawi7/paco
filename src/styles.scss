@@ -39,7 +39,7 @@ $paco-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 :root {
   --color-primary: #{map-get($map: $paco-primary, $key: 400 )};
-  --color-accent: #{map-get($map: $paco-accent, $key: 900 )};
+  --color-accent: #{map-get($map: $paco-accent, $key: 400 )};
   --color-warn: #{map-get($map: $paco-warn, $key: default )};
 }
 html, body { height: 100%; }

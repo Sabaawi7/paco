@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+
+/* progressbar.component.scss */
+.progressbar {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none; /* Listenstil entfernen */
+   
+
+  }
+  
+  .progressbar div {
+    font-family: "Poppins", sans-serif;
+    flex-grow: 1;
+    cursor: pointer;
+    background-color: #ccc;
+    padding: 10px;
+    text-align: center;
+    user-select: none; /* Deaktiviert die Textauswahl */
+    border: 1px solid #ffffff;
+  }
+  
+  .progressbar div:first-child {
+    border-top-left-radius: 10px; /* Abgerundete Ecken oben links */
+    border-bottom-left-radius: 10px; /* Abgerundete Ecken unten links */
+  }
+
+  .progressbar div:last-child {
+    border-top-right-radius: 10px; /* Abgerundete Ecken oben rechts */
+    border-bottom-right-radius: 10px; /* Abgerundete Ecken unten rechts */
+  }
+
+  .progressbar div.current {
+    background-color: var(--color-accent); /* Hintergrundfarbe für die aktuelle Frage */
+  }
+  
+  .progressbar div.answered {
+    background-color: var(--color-primary); /* Hintergrundfarbe für beantwortete Fragen */
+  }
+  
+  .progressbar div.unanswered {
+    background-color: #ccc;
+    opacity: 0.5; /* Reduzierte Deckkraft für nicht beantwortete Fragen */
+  }
+
+  .interview {
+    display: flex;
+    gap: 40px;
+  }
+
+  .interview .questions {
+    max-width: 50%;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+
+    margin-bottom: 10px;
+  }
+
+  .interview .questions div h2 {
+    font-size: 50px;
+    animation: text-animation 1s ease-in-out;
+  }
+
+  @keyframes text-animation {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .interview .answers {
+    margin-top: 40px;
+    max-width: 50%;
+  }
+  .interview .answers div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+
+  
