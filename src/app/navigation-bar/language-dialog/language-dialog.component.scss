@@ -1,0 +1,128 @@
+
+.language-overlay{
+    position: fixed; /* Festes Positionieren, um das Overlay über der Seite zu halten */
+    top: 0; /* Abstand vom oberen Rand des Viewports */
+    left: 0; /* Abstand vom linken Rand des Viewports */
+    width: 100%; /* Volle Breite des Viewports */
+    height: 100%; /* Volle Höhe des Viewports */
+    background-color: rgba(0, 0, 0, 0.5); /* Halbtransparentes Overlay mit schwarzem Hintergrund */
+    z-index: 999; /* Stelle sicher, dass das Overlay über anderen Inhalten liegt */
+
+}
+
+
+.language-popup {
+ 
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white; /* Hintergrundfarbe des Popups */
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        font-family: 'Ubuntu', sans-serif;
+        width: 400px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 30px; /* Hinzufügen von abgerundeten Ecken */
+        border: 1px solid #ccc; /* Hinzufügen einer Randlinie für visuelle Trennung */
+}
+
+    // Ändere die Positionierung des Close-Buttons
+    .close-button {
+        position: absolute; // Positionierung relativ zum Elternelement (.language-popup)
+        top: 10px; // Abstand vom oberen Rand des Elternelements
+        right: 10px; // Abstand vom rechten Rand des Elternelements
+        background: none;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    #title {
+        margin-bottom: 10px; // Verringere den Abstand zum oberen Rand des Containers
+        font-size:30px;
+        font-family: 'Ubuntu', sans-serif;
+
+ 
+
+    }
+    .dropdown-menu{
+        text-align: left; // Text links ausrichten
+        margin-left: auto; // Abstand zum linken Rand hinzufügen
+        margin-bottom: 2px; // Abstand zwischen der Überschrift und dem Dropdown-Menü
+        font-family: 'Ubuntu', sans-serif;
+     
+    }
+    
+
+    #languageSelect{
+    
+        margin-top: 10px; // Ändere den Abstand des Dropdown-Menüs zum Titel
+        width: 400px; // Ändere die Breite des Dropdown-Menüs
+        height: 40px; // Ändere die Höhe des Dropdown-Menüs
+        font-family: 'Ubuntu', sans-serif;
+        font-size:20px;
+
+        .flag-icon {
+            height: 40px; /* Höhe auf die Höhe der Schriftgröße einstellen */
+            width: 1px; /* Automatische Breite basierend auf der Höhe */
+            margin-right: 400px; /* Abstand zwischen Flagge und Text */
+            background-size: 100% 49494%;
+            flex-shrink: 0
+
+        }
+    
+    
+    }
+    #accept{
+        font-family: 'Ubuntu', sans-serif;
+        background-color: global-variable-exists($name:primary ); /* Hintergrundfarbe des rechten Buttons */
+        color: black; /* Schriftfarbe des rechten Buttons */
+        margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
+        padding: 10px 20px; /* Innenabstand  */
+        font-size: 16px; /* Schriftgröße  */
+        border-radius: 10px; /* Runde die Ecken  */
+        border: 2px solid black; /* Füge eine blaue Umrandung hinzu */
+        
+    }
+
+    /* Media Query für kleinere Bildschirme */
+@media screen and (max-width: 768px) {
+    .language-popup {
+        width: 70%; /* Breite der Benachrichtigung auf 70% des Viewports setzen */
+        height: auto; /* Automatische Höhe basierend auf Inhalt */
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+  
+    #languageSelect {
+        width: 100%; /* Vollbreite */
+        height: 100%;
+    }
+
+    .dropdown-menu{
+
+   
+        margin: 10px auto; /* Oben und unten 10px Abstand, horizontal zentriert */
+       
+    }
+   
+
+
+
+
+
+  }
+    
+
+
+
+

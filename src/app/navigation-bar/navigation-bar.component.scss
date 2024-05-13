@@ -11,6 +11,16 @@
     padding: 10px 20px; /* Consistent padding */
     height: max-content; /* Set consistent height for navbar */
     border-bottom: 1px solid #e0e0e0; /* Light border at the bottom for definition */
+  
+}
+
+
+
+.navbar-language img {
+    width: 30px;
+    height: 30px;
+    padding: 0 40px; //0: kein padding für oberen und unteren Rand, 40px: Wert für linken und rechten Rand;
+  
 }
 
 a {

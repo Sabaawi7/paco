@@ -17,6 +17,7 @@ showCookieNotification = true;
 onAccept(): void {
   // Setze den Zustand von showCookieNotification auf false, um die Benachrichtigung auszublenden
   this.showCookieNotification = false;
+  localStorage.setItem('cookieAccepted', 'true'); // Speichern des Zustands der Cookie-Akzeptanz
 }
 
 // Methode, die aufgerufen wird, wenn der Benutzer die Cookies ablehnt
@@ -24,6 +25,8 @@ onDecline(): void {
   // Setze den Zustand von showCookieNotification auf false, um die Benachrichtigung auszublenden
   this.showCookieNotification = false;
 }
+
+
 
 
 }

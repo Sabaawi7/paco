@@ -1,0 +1,27 @@
+<div class="language-overlay">
+  <div class="language-popup">
+      <button class="close-button" (click)="closeLanguagePopup()">X</button>
+          <p id="title">Select your language.</p>
+          <br/><br/>
+          <div class="dropdown-menu">Your language:
+            <br/>
+  
+          <select id="languageSelect" (change)="changeLanguage($event)">
+              <option value="" disabled selected></option>
+              <option *ngFor="let option of languageOptions" [value]="option.value">
+                  <img [src]="option.flag" class="flag-icon" alt="{{ option.label }} Flag">
+                  {{ option.label }}
+              </option>
+          </select> 
+
+      
+
+          </div>
+          <br/>
+          <br/>
+    
+ 
+      <button id="accept" (click)="applyLanguage() ">OK</button>
+    
+  </div>
+</div>
