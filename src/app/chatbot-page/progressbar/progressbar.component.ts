@@ -1,13 +1,15 @@
 import { Component, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../material/material.module';
 import { Question } from './question.model';
 import interviewJson from '../../../assets/interview.json';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-progressbar',
   standalone: true,
-  imports: [CommonModule, MaterialModule],
+  imports: [CommonModule, MaterialModule, FormsModule],
   templateUrl: './progressbar.component.html',
   styleUrl: './progressbar.component.scss'
 })
@@ -16,6 +18,7 @@ export class ProgressbarComponent {
   currentQuestionIndex: number = 0;
   answeredQuestions: Set<number> = new Set<number>();
   currentQuestion: Question | null = null;
+  customAnswer: string = ''; // Variable für das Textfeld hinzugefügt
 
   constructor() {}
 
@@ -31,15 +34,29 @@ export class ProgressbarComponent {
     return [];
   }
 
-  handleCheckboxChange(event: Event) {
-    const checkbox = event.target as HTMLInputElement;
-    const checkedIndex = parseInt(checkbox.value, 10);
-    // Hier kannst du die Logik hinzufügen, um die ausgewählte Antwort zu verarbeiten
+  handleCheckboxChange(index: number) {
+    if (this.answeredQuestions.has(index)) {
+      this.answeredQuestions.delete(index);
+    } else {
+      this.answeredQuestions.add(index);
+    }
+    // Farbe der Fortschrittsleiste aktualisieren, wenn eine Frage ausgewählt wird
+    this.getBackgroundColor(index);
   }
   
 
   isAnswered(index: number) {
-    return this.answeredQuestions.has(index);
+    return this.currentQuestionIndex === index && this.answeredQuestions.has(index);
+  }
+
+  submitAnswer() {
+    this.answeredQuestions.add(this.currentQuestionIndex);
+    // Hintergrund der aktuellen Frage aktualisieren, um sie als beantwortet anzuzeigen
+    this.getBackgroundColor(this.currentQuestionIndex);
+  }
+
+  isChecked(index: number) {
+    return this.answeredQuestions.has(index) && this.currentQuestionIndex === index;
   }
 
   getBackgroundColor(index: number) {

@@ -18,11 +18,16 @@
     <div *ngIf="currentQuestion">
       <ng-container *ngIf="currentQuestion.answers; else noAnswers">
         <div *ngFor="let answer of getAnswersArray(currentQuestion.answers)">
-          <mat-checkbox>{{ answer }}</mat-checkbox>
+           <mat-checkbox *ngIf="currentQuestion.answer_type=='multiple_choice'">{{ answer }}</mat-checkbox>
+           <mat-radio-button *ngIf="currentQuestion.answer_type=='single_choice'">{{ answer }}</mat-radio-button>
+           <mat-label *ngIf="currentQuestion.answer_type=='writing'">{{ answer }}</mat-label>
+           <mat-select *ngIf="currentQuestion.answer_type=='dropdown'"><mat-option value=answer>{{ answer }}</mat-option></mat-select>
+           
         </div>
       </ng-container>
       <ng-template #noAnswers>
-        <p>Keine Antworten verfügbar.</p>
+        <input type="text" placeholder="Antwort eingeben" [(ngModel)]="customAnswer">
+        <button (click)="submitAnswer()">Absenden</button> <!-- Absenden-Button hinzugefügt -->
       </ng-template>
     </div>
   </div>
