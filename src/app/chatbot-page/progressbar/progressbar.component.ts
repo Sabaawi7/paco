@@ -27,6 +27,10 @@ export class ProgressbarComponent implements OnInit{
     this.interviewService.answeredQuestions$.subscribe(questions => {
       this.answeredQuestions = new Set<number>(questions);
     });
+    this.interviewService.selectedQuestion$.subscribe(questionNumber => {
+      this.currentQuestionIndex = questionNumber;
+      this.currentQuestion = this.questions[questionNumber];
+    });
   }
 
   navigateToQuestion(questionNumber: number) {

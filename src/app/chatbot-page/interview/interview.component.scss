@@ -32,6 +32,8 @@
     justify-content: center;
     margin-top: 40px;
     max-width: 50%;
+    width: 50%;
+    min-height: 100%;;
 }
 
 .MultipleChoiceAnswers {
@@ -64,8 +66,13 @@ mat-button-toggle-group {
     border-radius: 5px;
 }
 
+.mat-mdc-form-field {
+    min-width: 100%;
+}
 
-
+textarea {
+    min-height: 150px;
+}
 
 
 .dropdown-question {
@@ -74,4 +81,16 @@ mat-button-toggle-group {
     align-items: center;
     padding: 10px;
     border-radius: 5px;
+}
+
+.NavigationButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.NavigationButtons button {
+    width: 150px;
+    border-radius: 5px;
+    cursor: pointer;
 }

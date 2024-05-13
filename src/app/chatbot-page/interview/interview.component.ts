@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import interviewJson from '../../../assets/interview.json';
 import { Question } from './question.model';
 import { MaterialModule } from '../../material/material.module';
 import { InterviewService } from '../interview-service.service';
 import { CommonModule } from '@angular/common';
+import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 
 
 @Component({
@@ -15,10 +16,10 @@ import { CommonModule } from '@angular/common';
 })
 export class InterviewComponent implements OnInit {
 
-
+  @ViewChild('userSelection', { static: false }) userSelection: MatButtonToggleGroup | undefined;
   selectedQuestion: number = 1; // Assuming the default selected question is 1
-  totalQuestions: number = 10; // Assuming there are 10 questions in total, adjust according to your requirement
-
+  totalQuestions: number = this.interviewService.questions.length;
+  
   constructor(private interviewService: InterviewService) { }
 
   ngOnInit(): void {
@@ -36,14 +37,23 @@ export class InterviewComponent implements OnInit {
     return this.selectedQuestion === questionNumber;
   }
 
-  navigateToNextQuestion() {
-    if (this.selectedQuestion < this.totalQuestions) {
+  navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+    if (this.userSelection !== undefined ) {
+      if(this.userSelection.value !== null) {
+        this.interviewService.markQuestionAsAnswered(this.selectedQuestion);
+      }
+    }
+
+    if (this.selectedQuestion < this.totalQuestions -1) {
       this.selectQuestion(this.selectedQuestion + 1);
     }
+
+    
+    
   }
 
   navigateToPreviousQuestion() {
-    if (this.selectedQuestion > 1) {
+    if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
     }
   }
