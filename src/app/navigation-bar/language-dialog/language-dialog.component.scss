@@ -1,0 +1,109 @@
+.language-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-family: 'Ubuntu', sans-serif;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#title {
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--color-primary);
+}
+
+.dropdown-menu {
+    text-align: center;
+ 
+    margin-bottom: 2px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#languageSelect {
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+}
+
+#accept {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+ 
+}
+
+.flag-option {
+    background-color: transparent; /* Hintergrundfarbe des Optionsfelds transparent machen */
+  }
+  
+  .flag-icon {
+    display: inline-block;
+   width: 20px; /* Breite der Flagge anpassen */
+   height: 20px; /* Höhe der Flagge anpassen */
+   background-size: cover;
+   margin-right: 10px; /* Abstand zwischen Flagge und Text anpassen */
+   vertical-align: middle; /* Vertikale Ausrichtung der Flagge mittig */
+  }
+  
+  //Bildquelle:<a href="https://www.flaticon.com/free-icons/germany" title="germany icons">Germany icons created by Freepik - Flaticon</a>
+  .germany {
+    background-image: url('../../../assets/germany.png'); /* Pfad zur Deutschlandflagge */
+  }
+  //Bildquelle: <a href="https://www.flaticon.com/free-icons/uk-flag" title="uk flag icons">Uk flag icons created by IconsBox - Flaticon</a>
+  
+  .uk {
+    background-image: url('../../../assets/united-kingdom.png'); /* Pfad zur UK-Flagge */
+  }
+
+@media screen and (max-width: 768px) {
+    .language-popup {
+        width: 70%;
+        height: auto;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #languageSelect {
+        width: 100%;
+        height: 100%;
+    }
+
+    .dropdown-menu {
+        margin: 10px auto;
+    }
+}
+
+
+
+

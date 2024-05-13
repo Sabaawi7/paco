@@ -28,6 +28,15 @@
     font-family: Arial, sans-serif;
 }
 
+.bild{
+    height: 40px; /* Höhe auf die Höhe der Schriftgröße einstellen */
+    width: 1px; /* Automatische Breite basierend auf der Höhe */
+    margin-right: 400px; /* Abstand zwischen Flagge und Text */
+    background-size: 100% 49494%;
+    flex-shrink: 0
+}
+
+
 /* Title */
 .login-title {
     text-align: center;
