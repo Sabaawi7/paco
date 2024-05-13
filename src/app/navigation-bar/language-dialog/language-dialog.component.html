@@ -1,27 +1,29 @@
 <div class="language-overlay">
   <div class="language-popup">
-      <button class="close-button" (click)="closeLanguagePopup()">X</button>
-          <p id="title">Select your language.</p>
-          <br/><br/>
-          <div class="dropdown-menu">Your language:
-            <br/>
-  
-          <select id="languageSelect" (change)="changeLanguage($event)">
-              <option value="" disabled selected></option>
-              <option *ngFor="let option of languageOptions" [value]="option.value">
-                  <img [src]="option.flag" class="flag-icon" alt="{{ option.label }} Flag">
-                  {{ option.label }}
-              </option>
-          </select> 
-
+    <button class="close-button" (click)="closeLanguagePopup()">X</button>
+    <p id="title">Select your language.</p>
+    <br/><br/>
+    <div class="dropdown-menu">
+      <br/>
+      <mat-form-field>
+        <mat-label>Choose your language</mat-label>
+        <!-- Hier wird das Dropdown-Menü mit den Sprachoptionen definiert -->
       
+<mat-select (selectionChange)="changeLanguage($event.value)">
+  <mat-option value="de" class="flag-option"> <!-- Hinzugefügt: CSS-Klasse flag-option -->
+    <span class="flag-icon germany"></span> <!-- Hinzugefügt: Span-Element für die Flagge -->
+    German
+  </mat-option>
+  <mat-option value="en" class="flag-option"> <!-- Hinzugefügt: CSS-Klasse flag-option -->
+    <span class="flag-icon uk"></span> <!-- Hinzugefügt: Span-Element für die Flagge -->
+    English
+  </mat-option>
+</mat-select>
 
-          </div>
-          <br/>
-          <br/>
-    
- 
-      <button mat-raised-button color="primary" id="accept" (click)="applyLanguage() ">OK</button>
-    
+      </mat-form-field>
+    </div>
+    <br/>
+    <br/>
+    <button mat-raised-button color="primary" id="accept" (click)="applyLanguage()">OK</button>
   </div>
 </div>
