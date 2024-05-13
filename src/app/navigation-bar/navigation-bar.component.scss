@@ -14,15 +14,26 @@
   
 }
 
+.navbar-language {
+    display: flex;
+    flex-direction: column; /* Anordnung der Symbole in einer Spalte */
+    align-items: center; /* Zentrierte Ausrichtung */
 
+}
 
 .navbar-language img {
     width: 30px;
     height: 30px;
-    padding: 0 40px; //0: kein padding für oberen und unteren Rand, 40px: Wert für linken und rechten Rand;
+    padding: 8px 12px; //8px:  padding für oberen und unteren Rand, 12px: Wert für linken und rechten Rand;
+
   
 }
 
+.navbar-language img:hover{
+    background-color: #e0e0e0; /* Light gray hover color */
+    border-radius: 4px;
+    cursor: pointer;
+}
 a {
     text-decoration: none;
 
