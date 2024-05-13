@@ -7,26 +7,24 @@
 }
 
 /* Body styles */
-body,html {
+body {
     font-family: Arial, sans-serif;
     background-image: url(../../assets/background.png);
     background-size: cover;
-    background-attachment: 200vh; /* Hintergrundbild fixieren, damit es beim Scrollen nicht verschoben wird */
-   
-
-    
+    height: fit-content;
 
 }
 
 
 /* Hero Section styles */
 .hero {
-  
-    background-size: cover;
+    height: 70vh;
+    background-size:  cover;
     padding: 50px;
     text-align: center;
     align-content: center;
 }
+
 .hero-content h1 {
     font-size: 4rem;
     margin-bottom: 10px;
@@ -51,12 +49,10 @@ body,html {
 .cta-button:hover {
     padding: 25px 25px;
 }
-
 /* Features Section styles */
 .features {
     padding: 50px;
     text-align: center;
-     background-size: cover;
 }
 
 .features h2 {
@@ -65,7 +61,6 @@ body,html {
 }
 
 .feature-grid {
-   
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
@@ -80,11 +75,6 @@ body,html {
 }
 
 @media (max-width: 768px) {
-    
-    body, html {
-        min-height: 100vh; /* Ändern der Mindesthöhe für kleine Bildschirme */
-    }
-
     .hero-content h1 {
         font-size: 2rem;
     }
@@ -96,7 +86,6 @@ body,html {
     .cta-button {
         font-size: 1.2rem;
     }
-   
     nav ul {
         display: none;
     }
