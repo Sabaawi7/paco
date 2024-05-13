@@ -1,0 +1,45 @@
+
+.interview {
+    display: flex;
+    gap: 40px;
+  }
+
+  .interview .questions {
+    max-width: 50%;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+
+    margin-bottom: 10px;
+  }
+
+  .interview .questions div h2 {
+    font-size: 50px;
+    animation: text-animation 1s ease-in-out;
+  }
+
+  @keyframes text-animation {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .interview .answers {
+    margin-top: 40px;
+    max-width: 50%;
+  }
+  .interview .answers div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+
+  

@@ -1,0 +1,27 @@
+
+<div class="interview">
+    <div class="questions">
+      <div *ngIf="getQuestion(selectedQuestion)">
+        <h2>{{ getQuestion(selectedQuestion).question }}</h2>
+      </div>
+    </div>
+  
+  
+    <div class="answers">
+      <div *ngIf="getQuestion(selectedQuestion)">
+        <ng-container *ngIf="getQuestion(selectedQuestion).answers; else noAnswers">
+          <div *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])">
+             <mat-checkbox *ngIf="getQuestion(selectedQuestion).answer_type=='multiple_choice'">{{ answer }}</mat-checkbox>
+             <mat-radio-button *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">{{ answer }}</mat-radio-button>
+             <mat-label *ngIf="getQuestion(selectedQuestion).answer_type=='writing'">{{ answer }}</mat-label>
+             <mat-select *ngIf="getQuestion(selectedQuestion).answer_type=='dropdown'"><mat-option value=answer>{{ answer }}</mat-option></mat-select>
+             
+          </div>
+        </ng-container>
+        <ng-template #noAnswers>
+            <p>Keine Antworten vorhanden</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  
