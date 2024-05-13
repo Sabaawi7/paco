@@ -10,13 +10,39 @@
     <div class="answers">
       <div *ngIf="getQuestion(selectedQuestion)">
         <ng-container *ngIf="getQuestion(selectedQuestion).answers; else noAnswers">
-          <div *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])">
-             <mat-checkbox *ngIf="getQuestion(selectedQuestion).answer_type=='multiple_choice'">{{ answer }}</mat-checkbox>
-             <mat-radio-button *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">{{ answer }}</mat-radio-button>
-             <mat-label *ngIf="getQuestion(selectedQuestion).answer_type=='writing'">{{ answer }}</mat-label>
-             <mat-select *ngIf="getQuestion(selectedQuestion).answer_type=='dropdown'"><mat-option value=answer>{{ answer }}</mat-option></mat-select>
-             
-          </div>
+
+            <!-- Multiple Choice-->
+            <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='multiple_choice'">
+                <mat-button-toggle-group  multiple>
+                    <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" >{{ answer }}</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <!-- Single Choice-->
+            <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">
+                <mat-button-toggle-group >
+                    <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])">{{ answer }}</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <!-- Writing -->
+            <div *ngIf="getQuestion(selectedQuestion).answer_type=='writing'">
+
+                <mat-label>Answer</mat-label>
+                <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
+            </div>
+
+            <!-- Dropdown -->
+            <div *ngIf="getQuestion(selectedQuestion).answer_type=='dropdown'">
+                <mat-form-field>
+                    <mat-select placeholder="Antwort">
+                        <mat-option *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">
+                            {{ answer }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
+
         </ng-container>
         <ng-template #noAnswers>
             <p>Keine Antworten vorhanden</p>
