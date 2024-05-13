@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { LanguageService } from '../../language.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
+import { MaterialModule } from '../../material/material.module';
 import { NgIf } from '@angular/common';
 import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-language-dialog',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [NgIf, NgFor, MaterialModule],
   templateUrl: './language-dialog.component.html',
   styleUrl: './language-dialog.component.scss'
 })
@@ -16,7 +17,7 @@ export class LanguageDialogComponent {
   showLanguageOptions: boolean = false;
   
   languageOptions: { value: string, label: string, flag: string }[] = [
-    { value: 'de', label: 'German', flag: "assets/germany.png" },
+    { value: 'de', label: 'German', flag: "../../../assets/germany.png" },
     { value: 'en', label: 'English', flag: 'assets/flags/en.png' },
     // Weitere Sprachoptionen hier hinzufügen
 ];

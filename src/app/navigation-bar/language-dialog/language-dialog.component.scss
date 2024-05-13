@@ -47,6 +47,7 @@
         margin-bottom: 10px; // Verringere den Abstand zum oberen Rand des Containers
         font-size:30px;
         font-family: 'Ubuntu', sans-serif;
+        color: var(--color-primary);
 
  
 
@@ -81,8 +82,6 @@
     }
     #accept{
         font-family: 'Ubuntu', sans-serif;
-        background-color: global-variable-exists($name:primary ); /* Hintergrundfarbe des rechten Buttons */
-        color: black; /* Schriftfarbe des rechten Buttons */
         margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
         padding: 10px 20px; /* Innenabstand  */
         font-size: 16px; /* Schriftgröße  */
