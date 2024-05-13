@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $paco-primary: mat.define-palette($earth-green-palette);
-$paco-accent: mat.define-palette($purple-palette, A200, A100, A400);
+$paco-accent: mat.define-palette($dark-red-palette, A200, A100, A400);
 $paco-warn: mat.define-palette($md-pink);
 
 // The warn palette is optional (defaults to red).
@@ -37,6 +37,10 @@ $paco-theme: mat.define-light-theme((
 @include mat.all-component-themes($paco-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
+:root {
+  --color-primary: #{map-get($map: $paco-primary, $key: 400 )};
+  --color-accent: #{map-get($map: $paco-accent, $key: 900 )};
+  --color-warn: #{map-get($map: $paco-warn, $key: default )};
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

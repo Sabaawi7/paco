@@ -48,8 +48,6 @@
 
 }
 .cookie-buttons button:first-child { /*linke button;*/
-    background-color: #90BF2A; /* Hintergrundfarbe des linken Buttons */
-    color: black; /* Schriftfarbe des linken Buttons */
     margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
     padding: 10px 20px; /* Innenabstand  */
     font-size: 16px; /* Schriftgröße  */
@@ -62,13 +60,12 @@
 }
 
 .cookie-buttons button:last-child { /*rechte button;*/
-    background-color: white; /* Hintergrundfarbe des rechten Buttons */
-    color: black; /* Schriftfarbe des rechten Buttons */
+
     margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
     padding: 10px 20px; /* Innenabstand  */
     font-size: 16px; /* Schriftgröße  */
     border-radius: 10px; /* Runde die Ecken  */
-    border: 2px solid black; /* Füge eine blaue Umrandung hinzu */
+
 }
 
 /* Media Query für kleinere Bildschirme */

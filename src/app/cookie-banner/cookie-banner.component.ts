@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
+import { MaterialModule } from '../material/material.module';
 @Component({
   selector: 'app-cookie-banner',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, MaterialModule],
   templateUrl: './cookie-banner.component.html',
   styleUrl: './cookie-banner.component.scss'
 })
