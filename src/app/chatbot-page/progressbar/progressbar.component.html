@@ -6,17 +6,26 @@
   </div>
 </div>
 
-<div *ngIf="currentQuestion">
-  <h2>{{ currentQuestion.question }}</h2>
-  <ng-container *ngIf="currentQuestion.answers; else noAnswers">
-    <div *ngFor="let answer of getAnswersArray(currentQuestion.answers)">
-      {{ answer }}
+<div class="interview">
+  <div class="questions">
+    <div *ngIf="currentQuestion">
+      <h2>{{ currentQuestion.question }}</h2>
     </div>
-  </ng-container>
-  <ng-template #noAnswers>
-    <p>Keine Antworten verfügbar.</p>
-  </ng-template>
-</div>
+  </div>
 
+
+  <div class="answers">
+    <div *ngIf="currentQuestion">
+      <ng-container *ngIf="currentQuestion.answers; else noAnswers">
+        <div *ngFor="let answer of getAnswersArray(currentQuestion.answers)">
+          <mat-checkbox>{{ answer }}</mat-checkbox>
+        </div>
+      </ng-container>
+      <ng-template #noAnswers>
+        <p>Keine Antworten verfügbar.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
 
 

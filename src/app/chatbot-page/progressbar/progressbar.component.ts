@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../material/material.module';
 import { Question } from './question.model';
 import interviewJson from '../../../assets/interview.json';
 
 @Component({
   selector: 'app-progressbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MaterialModule],
   templateUrl: './progressbar.component.html',
   styleUrl: './progressbar.component.scss'
 })
@@ -43,9 +44,9 @@ export class ProgressbarComponent {
 
   getBackgroundColor(index: number) {
     if (index === this.currentQuestionIndex) {
-      return '#ffc107'; // Hintergrundfarbe für die aktuelle Frage
+      return 'var(--color-accent)'; // Hintergrundfarbe für die aktuelle Frage
     } else if (this.isAnswered(index)) {
-      return '#28a745'; // Hintergrundfarbe für beantwortete Fragen
+      return 'var(--color-primary)'; // Hintergrundfarbe für beantwortete Fragen
     } else {
       return '#ccc'; // Standard-Hintergrundfarbe für unbeantwortete Fragen
     }
