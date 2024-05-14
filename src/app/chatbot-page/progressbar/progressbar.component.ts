@@ -46,7 +46,7 @@ export class ProgressbarComponent implements OnInit{
   }
 
   submitAnswer() {
-    this.answeredQuestions.add(this.currentQuestionIndex);
+    this.interviewService.markQuestionAsAnswered(this.currentQuestionIndex);
     // Hintergrund der aktuellen Frage aktualisieren, um sie als beantwortet anzuzeigen
     this.getBackgroundColor(this.currentQuestionIndex);
   }
