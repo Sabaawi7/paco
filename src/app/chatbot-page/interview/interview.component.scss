@@ -1,0 +1,96 @@
+.interview {
+    display: flex;
+    gap: 40px;
+}
+
+.interview .questions {
+    max-width: 50%;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    text-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.interview .questions div h2 {
+    font-size: 50px;
+    animation: text-animation 1s ease-in-out;
+    overflow: auto;
+}
+
+@keyframes text-animation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.interview .answers {
+    justify-content: center;
+    margin-top: 40px;
+    max-width: 50%;
+    width: 50%;
+    min-height: 100%;;
+}
+
+.MultipleChoiceAnswers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: left;
+}
+
+mat-button-toggle-group {
+    flex-wrap: wrap;
+    border: none;
+    gap: 10px;
+    outline: none;
+}
+
+.mat-button-toggle {
+    background-color: #ccc;
+    border-radius: 5px;
+
+}
+
+.mat-button-toggle-checked {
+    background-color: var(--color-primary) !important;
+    color: white;
+}
+
+.mat-button-toggle-group-appearance-standard .mat-button-toggle-appearance-standard+.mat-button-toggle-appearance-standard {
+    border: none;
+    border-radius: 5px;
+}
+
+.mat-mdc-form-field {
+    min-width: 100%;
+}
+
+textarea {
+    min-height: 150px;
+}
+
+
+.dropdown-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.NavigationButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.NavigationButtons button {
+    width: 150px;
+    border-radius: 5px;
+    cursor: pointer;
+}

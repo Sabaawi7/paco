@@ -1,0 +1,62 @@
+
+<div class="interview">
+    <div class="questions">
+      <div *ngIf="getQuestion(selectedQuestion)">
+        <h2>{{ getQuestion(selectedQuestion).question }}</h2>
+      </div>
+    </div>
+  
+  
+    <div class="answers">
+      <div *ngIf="getQuestion(selectedQuestion)">
+        <ng-container>
+
+            <!-- Multiple Choice-->
+            <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='multiple_choice'">
+                <mat-button-toggle-group #userSelection="matButtonToggleGroup" multiple>
+                    <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" value="{{ answer }}">{{ answer }}</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <!-- Single Choice-->
+            <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">
+                <mat-button-toggle-group #userSelection="matButtonToggleGroup">
+                    <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])">{{ answer }}</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <!-- Writing -->
+            <div *ngIf="getQuestion(selectedQuestion).answer_type=='writing'">
+
+                <mat-form-field>
+                    <mat-label>Message</mat-label>
+                    <textarea matInput #userSelection maxlength="1000" placeholder="In 5 Jahre sehe ich mich als Ingenieur"></textarea>
+                </mat-form-field>
+            </div>
+
+            <!-- Dropdown -->
+            <div *ngIf="getQuestion(selectedQuestion).answer_type=='dropdown'">
+                <mat-form-field>
+                    <mat-select placeholder="Antwort">
+                        <mat-option #userSelection *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">
+                            {{ answer }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
+
+        </ng-container>
+        <ng-template #noAnswers>
+            <p>Keine Antworten vorhanden</p>
+        </ng-template>
+      </div>
+    </div>
+</div>
+<div class="NavigationButtons">
+    <button mat-raised-button style ="background-color: var(--color-accent);color:white" (click)="navigateToPreviousQuestion()"> Zurück</button>
+
+    <button mat-raised-button color="primary" (click)="navigateToNextQuestion(userSelection)">
+        Weiter
+    </button>
+</div>
+  

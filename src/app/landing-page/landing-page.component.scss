@@ -11,13 +11,14 @@ body {
     font-family: Arial, sans-serif;
     background-image: url(../../assets/background.png);
     background-size: cover;
+    height: fit-content;
 
 }
 
 
 /* Hero Section styles */
 .hero {
-    height: 100vw;
+    height: 70vh;
     background-size:  cover;
     padding: 50px;
     text-align: center;
@@ -48,22 +49,6 @@ body {
 .cta-button:hover {
     padding: 25px 25px;
 }
-
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .cta-button {
-        font-size: 1.2rem;
-    }
-
-}
-
 /* Features Section styles */
 .features {
     padding: 50px;
@@ -89,8 +74,18 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        font-size: 1.2rem;
+    }
     nav ul {
         display: none;
     }
@@ -103,4 +98,8 @@ body {
     .feature{
         max-width: 346px;
     }
+
 }
+
+
+
