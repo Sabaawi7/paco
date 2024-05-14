@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../material/material.module';
-import { Question } from './question.model';
+import { Question } from '../interview/question.model';
 import interviewJson from '../../../assets/interview.json';
-import { NgModel } from '@angular/forms';
+import { InterviewService } from '../interview-service.service';
 
 @Component({
   selector: 'app-progressbar',
@@ -13,40 +13,36 @@ import { NgModel } from '@angular/forms';
   templateUrl: './progressbar.component.html',
   styleUrl: './progressbar.component.scss'
 })
-export class ProgressbarComponent {
+export class ProgressbarComponent implements OnInit{
   questions: Question[] = interviewJson; // Direkter Zugriff auf das interviewJson-Array
   currentQuestionIndex: number = 0;
   answeredQuestions: Set<number> = new Set<number>();
+
   currentQuestion: Question | null = null;
-  customAnswer: string = ''; // Variable für das Textfeld hinzugefügt
 
-  constructor() {}
+  constructor(private interviewService: InterviewService) {}
 
-  navigateToQuestion(index: number) {
-    this.currentQuestionIndex = index;
-    this.currentQuestion = this.questions[index];
+  ngOnInit(): void {
+    // Subscribe to answeredQuestions$ to get notified of changes
+    this.interviewService.answeredQuestions$.subscribe(questions => {
+      this.answeredQuestions = new Set<number>(questions);
+    });
+    this.interviewService.selectedQuestion$.subscribe(questionNumber => {
+      this.currentQuestionIndex = questionNumber;
+      this.currentQuestion = this.questions[questionNumber];
+    });
   }
 
-  getAnswersArray(answers: string[] | number[]): (string | number)[] {
-    if (Array.isArray(answers)) {
-      return answers;
-    }
-    return [];
+  navigateToQuestion(questionNumber: number) {
+    this.currentQuestionIndex = questionNumber;
+    this.currentQuestion = this.questions[questionNumber];
+    this.interviewService.selectQuestion(questionNumber);
+    this.getBackgroundColor(questionNumber);
+
   }
 
-  handleCheckboxChange(index: number) {
-    if (this.answeredQuestions.has(index)) {
-      this.answeredQuestions.delete(index);
-    } else {
-      this.answeredQuestions.add(index);
-    }
-    // Farbe der Fortschrittsleiste aktualisieren, wenn eine Frage ausgewählt wird
-    this.getBackgroundColor(index);
-  }
-  
-
-  isAnswered(index: number) {
-    return this.currentQuestionIndex === index && this.answeredQuestions.has(index);
+  isQuestionAnswered(questionNumber: number): boolean {
+    return this.answeredQuestions.has(questionNumber);
   }
 
   submitAnswer() {
@@ -62,7 +58,7 @@ export class ProgressbarComponent {
   getBackgroundColor(index: number) {
     if (index === this.currentQuestionIndex) {
       return 'var(--color-accent)'; // Hintergrundfarbe für die aktuelle Frage
-    } else if (this.isAnswered(index)) {
+    } else if (this.isQuestionAnswered(index)) {
       return 'var(--color-primary)'; // Hintergrundfarbe für beantwortete Fragen
     } else {
       return '#ccc'; // Standard-Hintergrundfarbe für unbeantwortete Fragen
