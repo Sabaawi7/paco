@@ -21,7 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatSelectModule,
     MatButtonToggleModule,
-    MatIconModule
+    MatIconModule,
     MatDialogModule
 
   ],
@@ -32,7 +32,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatSelectModule,
     MatButtonToggleModule,
-    MatIconModule
+    MatIconModule,
     MatDialogModule
   ]
 })
