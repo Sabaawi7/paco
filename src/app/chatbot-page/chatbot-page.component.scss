@@ -1,240 +1,29 @@
-#chatKasten{
-    max-width: 800px;
-    width: 70%; 
-    height: 80vh; 
-    background-color: #c6c1c1; 
-    border: 2px solid #000000; 
-    border-radius: 10px; 
-    display: flex; 
-    margin: auto;
-}
 #tokendiv{
-  max-width: 800px;
-  width: 70%;
-  margin: auto;
-}
-:root {
-    --body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    --msger-bg: #fff;
-    --border: 2px solid #ddd;
-    --left-msg-bg: #ececec;
-  }
-  
-  html {
-    box-sizing: border-box;
-  }
-  
-  *,
-  *:before,
-  *:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-  }
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    font-family: Helvetica, sans-serif;
-  }
-  
-  .msger {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 867px;
-    margin: 25px 10px;
-    height: calc(100% - 50px);
-    border: 2px solid #ddd;;
-    border-radius: 5px;
-    background: #fff;
-    box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .msger-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 2px solid #ddd;
-    background: #90BF2A;
-    color: #666;
-  }
-  
-  .msger-header-title{
-    margin: auto;
-  }
-
-  .msger-chat {
-    flex: 1;
-    overflow-y: auto;
-    padding: 10px;
-  }
-  .msger-chat::-webkit-scrollbar {
-    width: 6px;
-  }
-  .msger-chat::-webkit-scrollbar-track {
-    background: #ddd;
-  }
-  .msger-chat::-webkit-scrollbar-thumb {
-    background: #bdbdbd;
-  }
-  .msg {
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 10px;
-  }
-  .msg:last-of-type {
-    margin: 0;
-  }
-  .msg-img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    background: #ddd;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    border-radius: 50%;
-  }
-  .msg-bubble {
-    max-width: 450px;
-    padding: 15px;
-    border-radius: 15px;
-    background: #c4bcbc;;
-  }
-  .msg-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  .msg-info-name {
-    margin-right: 10px;
-    font-weight: bold;
-  }
-  .msg-info-time {
-    font-size: 0.85em;
-  }
-  
-  .left-msg .msg-bubble {
-    border-bottom-left-radius: 0;
-  }
-  
-  .right-msg {
-    flex-direction: row-reverse;
-  }
-  .right-msg .msg-bubble {
-    background: #579ffb;
-    color: #ffffff;
-    border-bottom-right-radius: 0;
-  }
-  .right-msg .msg-img {
-    margin: 0 0 0 10px;
-  }
-  
-  .msger-inputarea {
-    display: flex;
-    padding: 10px;
-    border-top: 2px solid #ddd;
-    background: #eee;
-  }
-  .msger-inputarea * {
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    font-size: 1em;
-  }
-  .msger-input {
-    flex: 1;
-    background: #ddd;
-  }
-  .msger-send-btn {
-    margin-left: 10px;
-    background: rgb(0, 196, 65);
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.23s;
-  }
-  .msger-send-btn:hover {
-    background: rgb(0, 180, 50);
-  }
-  
-  .msger-chat {
-    background-color: #fcfcfe;
-  }
-
-
-  @media only screen and (max-width: 600px) {
-    #chatKasten{
-      width: 95%;
-    }
-    #tokendiv{
-      width: 95%;
-    }
-    .msger-inputarea{
-      font-size: 0.5rem;
-    }
-  }
-  #acceptButton {
-    width: 100px; /* Adjust size according to your requirements */
-    height: 40px; /* Adjust size according to your requirements */
-    background-color: #579ffb; /* Matches right message bubble background color */
-    color: #fff; /* White text color */
-    border: 2px solid #000000; /* Black border */
-    border-radius: 10px; /* Rounded corners */
-    font-weight: bold; /* Bold font */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth transition for background color change */
+  background-color: var(--color-primary);
+  color: white;
+  max-width: fit-content;
+  border-radius: 5px;
+  padding: 3px;
+  margin-left: 5%;
+  margin-top: 10px;
 }
 
-#acceptButton:hover {
-    background-color: rgb(0, 180, 50); /* Similar to msger-send-btn hover background color */
-}
-
-#acceptButton:active {
-    background-color: rgb(0, 160, 45); /* Slightly darker green on active state */
-}
-.greyed-out {
-  background-color: #ccc; /* Grey background color */
-  cursor: not-allowed; /* Changes cursor style to indicate disabled state */
-}
-.greyed-out:hover {
-  background-color: #ccc; /* Keep the grey background when hovered */
-}
-/* Custom styles for the acceptance message */
-.acceptance-message {
-  font-weight: bold;
-  color: green; /* Customize the color if desired */
-}
-
-.progress-bar-container {
-  max-width: 800px; // Maximal so breit wie Chatfeld
-  width: 70%; // Volle Breite des Elternelements
+.interview-container {
+  max-width: 100%; // Maximal so breit wie Chatfeld
+  width: 90%; // Volle Breite des Elternelements
   margin: 0 auto; // Zentriert die Fortschrittsleiste
-  
-
-  .progress-bar {
-    width: 100%; // Volle Breite der Fortschrittsleiste
-    height: 20px; // Höhe der Fortschrittsleiste
-    background-color: lightgray; // Hintergrundfarbe der Fortschrittsleiste
-
-    // Hier kannst du bei Bedarf weitere Stiloptionen hinzufügen, wie z.B. abgerundete Ecken, Schatten usw.
-
-    &::-webkit-progress-bar {
-      background-color: lightgray; // Hintergrundfarbe des Fortschrittsbalkens für Webkit-Browser
-    }
-
-    &::-webkit-progress-value {
-      background-color: #90BF2A; // Farbe des Fortschrittsbalkens für Webkit-Browser
-    }
-
-    &::-moz-progress-bar {
-      background-color: #90BF2A; // Farbe des Fortschrittsbalkens für Mozilla-Browser
-    }
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translate(30px) scale(0.9);
   }
+  100% {
+    opacity: 1;
+    transform: translate(0px) scale(1);
+  }
+}
+.intro{
+  padding-top: 125px;
+  animation: fade-up 0.8s;
+}
 }

@@ -1,0 +1,7 @@
+<div class="progressbar">
+  <div *ngFor="let question of questions; let i = index"
+       [ngStyle]="{ 'background-color': getBackgroundColor(i) }"
+       (click)="navigateToQuestion(i)">
+    Frage {{ i + 1 }}
+  </div>
+</div>
