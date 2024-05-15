@@ -14,13 +14,13 @@
             <!-- Multiple Choice-->
             <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='multiple_choice'">
                 <mat-button-toggle-group #userSelection="matButtonToggleGroup" multiple>
-                    <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" value="{{ answer }}">{{ answer }}</mat-button-toggle>
+                    <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">{{ answer }}</mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
             <!-- Single Choice-->
             <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">
                 <mat-button-toggle-group #userSelection="matButtonToggleGroup">
-                    <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])">{{ answer }}</mat-button-toggle>
+                    <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">{{ answer }}</mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
@@ -29,15 +29,15 @@
 
                 <mat-form-field>
                     <mat-label>Message</mat-label>
-                    <textarea matInput #userSelection maxlength="1000" placeholder="In 5 Jahre sehe ich mich als Ingenieur"></textarea>
+                    <textarea matInput [(ngModel)]="TextInput" placeholder="In 5 Jahre sehe ich mich als Ingenieur"></textarea>
                 </mat-form-field>
             </div>
 
             <!-- Dropdown -->
             <div *ngIf="getQuestion(selectedQuestion).answer_type=='dropdown'">
                 <mat-form-field>
-                    <mat-select placeholder="Antwort">
-                        <mat-option #userSelection *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">
+                    <mat-select  placeholder="Antwort" [(value)]="selected">
+                        <mat-option *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">
                             {{ answer }}
                         </mat-option>
                     </mat-select>
