@@ -40,6 +40,8 @@ export class LandingPageComponent implements OnInit{
          this.kasten1_p = 'Individuelle Beratung, um Ihnen bei der Wahl des besten Weges zu helfen.';
          this.kasten2_h3 = 'Ressourcen';
          this.kasten2_p = 'Zugang zu einer Vielzahl von Bildungsressourcen.';
+         this.kasten3_h3 = 'Unterstützung';
+         this.kasten3_p = 'Erhalten Sie prompt Antworten auf all Ihre Fragen.';
          this.x='de';
      } else if (selectedLang === 'en' ) {
          this.title_h1 = 'Welcome to PACO';
@@ -49,7 +51,8 @@ export class LandingPageComponent implements OnInit{
          this.kasten1_p = 'Individual consultation to assist you in choosing the best path.';
          this.kasten2_h3 = 'Resources'
          this.kasten2_p = 'Access to a wide range of educational resources.';
-
+         this.kasten3_h3 = 'Support';
+         this.kasten3_p = 'Receive prompt answers to all your questions.';
          this.x='en';
      }
   }
