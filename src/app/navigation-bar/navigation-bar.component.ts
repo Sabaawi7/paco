@@ -12,6 +12,31 @@ import { NgFor } from '@angular/common';
   styleUrl: './navigation-bar.component.scss'
 })
 export class NavigationBarComponent {
+
+    /**
+   * Text auf der Seite und die Übersetzung
+  */
+  //default werte
+  login_button: string = '';
+  legalNotice_button: string = '';
+  contact_button: string = '';
+
+  ngOnInit(): void {
+     const selectedLang = localStorage.getItem('lang'); 
+     if (selectedLang === 'de' || selectedLang== null) {
+        this.login_button = 'Anmelden';
+        this.legalNotice_button = 'Impressum';
+        this.contact_button = 'Kontakt';
+     } else if (selectedLang === 'en' ) {
+        this.login_button = 'Log in';
+        this.legalNotice_button = 'Legal Notice';
+        this.contact_button = 'Contact';   
+     }
+  }
+
+
+
+
   links: { path: string, label: string }[] = [];
   isMenuOpen: boolean = false;
 
