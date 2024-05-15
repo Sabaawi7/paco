@@ -2,7 +2,6 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { LanguageDialogComponent } from './language-dialog/language-dialog.component';
-import { LanguageService } from '../language.service';
 import { NgIf } from '@angular/common';
 import { NgFor } from '@angular/common';
 @Component({
@@ -18,7 +17,7 @@ export class NavigationBarComponent {
 
   @ViewChild('navbarMenu', { static: false }) navbarMenu!: ElementRef;
 
-  constructor(private dialog: MatDialog, private languageService: LanguageService) {
+  constructor(private dialog: MatDialog) {
    
   }
 

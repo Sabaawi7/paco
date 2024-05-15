@@ -1,43 +1,44 @@
-import { Component } from '@angular/core';
-import { LanguageService } from '../../language.service';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MaterialModule } from '../../material/material.module';
+import { FormsModule } from '@angular/forms';
 
-import { NgIf } from '@angular/common';
-import { NgFor } from '@angular/common';
+
 
 @Component({
   selector: 'app-language-dialog',
   standalone: true,
-  imports: [NgIf, NgFor, MaterialModule],
+  imports: [ MaterialModule, FormsModule],
   templateUrl: './language-dialog.component.html',
   styleUrl: './language-dialog.component.scss'
 })
 export class LanguageDialogComponent {
+  selectedOption = 'de';
+  lang='de';
+//MIN 12 GLOBAL IMPORTIEREN
+
+  ChangeLang(event: any) {
+    //falls fehler direkt von localstorage lesen
+    const selectedValue = event.value;
+    console.log('Selected value:', selectedValue);
+    localStorage.setItem("lang",selectedValue);
+    this.reloadPage();
+
+    // Hier können Sie die Logik für die Verarbeitung des ausgewählten Werts implementieren
+  }
   
   constructor(
-    private languageService: LanguageService,
     private dialogRef: MatDialogRef<LanguageDialogComponent>,
     private dialog: MatDialog
   ) {}
 
   changeLanguage(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    if (target instanceof HTMLSelectElement) {
-      const selectedValue = target.value;
-      this.languageService.setCurrentLanguage(selectedValue);
-      this.closeLanguagePopup(); // Schließe das Dialogfenster nach der Auswahl
-    }
+
   }
 
   applyLanguage(): void {
-
-    // Schließe das Popup-Fenster
     this.closeLanguagePopup();
-    const selectedLanguage = (document.getElementById('languageSelect') as HTMLSelectElement).value;
-  
     // Setze die ausgewählte Sprache im LanguageService
-    this.languageService.setCurrentLanguage(selectedLanguage);
   
 
       // Schließe das Popup-Fenster
@@ -53,7 +54,9 @@ export class LanguageDialogComponent {
   }
 
 
-
+   reloadPage(): void {
+    window.location.reload(); // Lädt die Seite neu
+}
  
 }
 //<a href="https://www.flaticon.com/free-icons/germany" title="germany icons">Germany icons created by Dighital - Flaticon</a>
