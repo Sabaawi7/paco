@@ -12,4 +12,17 @@
   max-width: 100%; // Maximal so breit wie Chatfeld
   width: 90%; // Volle Breite des Elternelements
   margin: 0 auto; // Zentriert die Fortschrittsleiste
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translate(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px) scale(1);
+  }
+}
+.intro{
+  padding-top: 125px;
+  animation: fade-up 0.8s;
 }
