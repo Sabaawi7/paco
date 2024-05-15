@@ -43,8 +43,8 @@ export class LandingPageComponent implements OnInit{
          this.kasten3_p = 'Erhalten Sie prompt Antworten auf all Ihre Fragen.';
      } else if (selectedLang === 'en' ) {
          this.title_h1 = 'Welcome to PACO';
-         this.title_p = 'We will help you make your choice of study.'
-         this.title_h2 = 'Characteristics';
+         this.title_p = 'We will help you make your major.';
+         this.title_h2 = 'Features';
          this.kasten1_h3 = 'Consultation';
          this.kasten1_p = 'Individual consultation to assist you in choosing the best path.';
          this.kasten2_h3 = 'Resources'
