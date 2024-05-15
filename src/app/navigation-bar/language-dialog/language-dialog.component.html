@@ -2,28 +2,24 @@
   <div class="language-popup">
     <button class="close-button" (click)="closeLanguagePopup()">X</button>
     <p id="title">Select your language.</p>
-    <br/><br/>
+    <br /><br />
     <div class="dropdown-menu">
-      <br/>
+      <br />
       <mat-form-field>
         <mat-label>Choose your language</mat-label>
         <!-- Hier wird das Dropdown-Menü mit den Sprachoptionen definiert -->
-      
-<mat-select (selectionChange)="changeLanguage($event.value)">
-  <mat-option value="de" class="flag-option"> <!-- Hinzugefügt: CSS-Klasse flag-option -->
-    <span class="flag-icon germany"></span> <!-- Hinzugefügt: Span-Element für die Flagge -->
-    German
-  </mat-option>
-  <mat-option value="en" class="flag-option"> <!-- Hinzugefügt: CSS-Klasse flag-option -->
-    <span class="flag-icon uk"></span> <!-- Hinzugefügt: Span-Element für die Flagge -->
-    English
-  </mat-option>
-</mat-select>
+
+        <mat-select value="selectedOption" class="form-select" (selectionChange)="ChangeLang($event)">
+          <mat-option (click)="applyLanguage()" value="de" class="flag-option"> 
+            <span class="flag-icon germany"></span>
+            German
+          </mat-option>
+          <mat-option (click)="applyLanguage()" value="en" class="flag-option"> 
+            <span class="flag-icon uk"></span> <!-- Hinzugefügt: Span-Element für die Flagge -->
+            English
+          </mat-option>
+        </mat-select>
 
       </mat-form-field>
-    </div>
-    <br/>
-    <br/>
-    <button mat-raised-button color="primary" id="accept" (click)="applyLanguage()">OK</button>
-  </div>
+  
 </div>

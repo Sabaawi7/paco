@@ -16,8 +16,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Willkommen bei PACO</h1>
-            <p>Wir helfen Ihnen, Ihre Studienwahl zu treffen.</p>
+            <h1>{{ title_h1 }}</h1> <!-- Dynamischer Titel -->
+            <p>{{  title_p }}</p>
             <a mat-raised-button color="primary" routerLink="/chat" routerLinkActive="active" class="cta-button">Chat</a>
         </div>
     </section>
@@ -26,19 +26,19 @@
     <!-- Features Section -->
     <section class="features">
        
-        <h2>Merkmale</h2>
+        <h2>{{  title_h2 }}</h2>
         <div class="feature-grid">
             <div class="feature">
-                <h3>Beratung</h3>
-                <p>Individuelle Beratung, um Ihnen bei der Wahl des besten Weges zu helfen.</p>
+                <h3>{{  kasten1_h3 }}</h3>
+                <p>{{  kasten1_p }}</p>
             </div>
             <div class="feature">
-                <h3>Ressourcen</h3>
-                <p>Zugang zu einer Vielzahl von Bildungsressourcen.</p>
+                <h3>{{  kasten2_h3 }}</h3>
+                <p>{{  kasten2_p }}</p>
             </div>
             <div class="feature">
-                <h3>Unterstützung</h3>
-                <p>Erhalten Sie prompt Antworten auf all Ihre Fragen.</p>
+                <h3>{{  kasten3_h3 }}</h3>
+                <p>{{  kasten3_p }}</p>
             </div>
         </div>
     </section>

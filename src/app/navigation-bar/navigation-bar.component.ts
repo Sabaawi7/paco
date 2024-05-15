@@ -2,7 +2,6 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { LanguageDialogComponent } from './language-dialog/language-dialog.component';
-import { LanguageService } from '../language.service';
 import { NgIf } from '@angular/common';
 import { NgFor } from '@angular/common';
 @Component({
@@ -13,12 +12,37 @@ import { NgFor } from '@angular/common';
   styleUrl: './navigation-bar.component.scss'
 })
 export class NavigationBarComponent {
+
+    /**
+   * Text auf der Seite und die Übersetzung
+  */
+  //default werte
+  login_button: string = '';
+  legalNotice_button: string = '';
+  contact_button: string = '';
+
+  ngOnInit(): void {
+     const selectedLang = localStorage.getItem('lang'); 
+     if (selectedLang === 'de' || selectedLang== null) {
+        this.login_button = 'Anmelden';
+        this.legalNotice_button = 'Impressum';
+        this.contact_button = 'Kontakt';
+     } else if (selectedLang === 'en' ) {
+        this.login_button = 'Log in';
+        this.legalNotice_button = 'Legal Notice';
+        this.contact_button = 'Contact';   
+     }
+  }
+
+
+
+
   links: { path: string, label: string }[] = [];
   isMenuOpen: boolean = false;
 
   @ViewChild('navbarMenu', { static: false }) navbarMenu!: ElementRef;
 
-  constructor(private dialog: MatDialog, private languageService: LanguageService) {
+  constructor(private dialog: MatDialog) {
    
   }
 

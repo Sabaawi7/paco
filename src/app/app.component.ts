@@ -21,7 +21,4 @@ export class AppComponent {
   title = 'PACO';
 
   
-  
-  
-
 }
