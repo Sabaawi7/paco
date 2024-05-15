@@ -13,6 +13,39 @@ import { MaterialModule } from '../material/material.module';
 
 
 export class LoginPageComponent {
+
+  /**
+   * Text auf der Seite und die Übersetzung
+  */
+  //default werte
+  text_p: string = '';
+  password_field: string = '';
+  forgot_password: string = '';
+  guest_login: string = '';
+  remain_signedIn:string ='';
+
+  ngOnInit(): void {
+     const selectedLang = localStorage.getItem('lang'); 
+     if (selectedLang === 'de' || selectedLang== null) {
+         this.text_p = 'Bitte meldet euch als Mitarbeiter:in der Universität zu Köln mit euren Unidaten an oder wählt als Studierende den link zur Gastanmeldung.';
+         this.password_field = 'Passwort *:';
+         this.forgot_password = 'Passwort vergessen?';
+         this.guest_login = 'Gastanmeldung';
+         this.remain_signedIn= 'Angemeldet bleiben';
+
+     } else if (selectedLang === 'en' ) {
+         this.text_p = 'Please log in as a University of Cologne staff member using your university credentials, or select the link for guest registration if you are a student.';
+         this.password_field = 'Password *:';
+         this.forgot_password = 'Forgot password?';
+         this.guest_login = 'Guest Registration';
+         this.remain_signedIn = 'Stay Signed In';
+     }
+  }
+
+
+
+
+
 handleLogin() {
 throw new Error('Method not implemented.');
 }
