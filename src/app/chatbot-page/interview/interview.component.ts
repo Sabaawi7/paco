@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-interview',
   templateUrl: './interview.component.html',

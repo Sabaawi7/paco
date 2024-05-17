@@ -8,6 +8,7 @@ import { ChatbotPageComponent } from './chatbot-page/chatbot-page.component';
 import { ConsultantPageComponent } from './consultant-page/consultant-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { ImpressumPageComponent } from './impressum-page/impressum-page.component';
+
 export const routes: Routes = [
     { path: '', component: LandingPageComponent},
     { path: 'login', component: LoginPageComponent },
@@ -20,14 +21,11 @@ export const routes: Routes = [
 
 ];
 
-
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
 
-export class AppRoutingModule {};
+export class AppRoutingModule {
 
-
-
-
+};

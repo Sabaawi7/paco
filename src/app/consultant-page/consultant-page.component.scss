@@ -9,18 +9,22 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body{
   background: rgb(233, 233, 233);
 }
+
 .container{
     width: 100%;
     display: flex;
     justify-content: center;
 
 }
+
 .container app-side-nav{
     padding-top: 20px;
 }
+
 .container app-main-dashboard {
     width: 70%;
 }

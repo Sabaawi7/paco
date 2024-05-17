@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
+
 @Component({
   selector: 'app-login-page',
   standalone: true,
@@ -11,9 +12,7 @@ import { MaterialModule } from '../material/material.module';
   styleUrl: './login-page.component.scss'
 })
 
-
 export class LoginPageComponent {
-
   /**
    * Text auf der Seite und die Übersetzung
   */
@@ -41,10 +40,6 @@ export class LoginPageComponent {
          this.remain_signedIn = 'Stay Signed In';
      }
   }
-
-
-
-
 
 handleLogin() {
 throw new Error('Method not implemented.');
@@ -87,10 +82,4 @@ throw new Error('Method not implemented.');
   navigateToRoleSelection() {
     this.router.navigate(['/role']);
   }
-
-
-
-    
-  }
-
-
+}

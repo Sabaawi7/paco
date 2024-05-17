@@ -8,11 +8,6 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 
-
-
-
-
-
 @NgModule({
   imports: [
     MatButtonModule,
@@ -36,4 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule
   ]
 })
-export class MaterialModule { }
+
+export class MaterialModule { 
+
+}

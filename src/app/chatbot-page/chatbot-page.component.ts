@@ -5,6 +5,7 @@ import  interviewJson from '../../assets/interview.json';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { InterviewComponent } from './interview/interview.component';
+
 @Component({
   selector: 'app-chatbot-page',
   standalone: true,
@@ -12,6 +13,7 @@ import { InterviewComponent } from './interview/interview.component';
   templateUrl: './chatbot-page.component.html',
   styleUrl: './chatbot-page.component.scss'
 })
+
 export class ChatbotPageComponent implements OnInit {
   answeredQuestions = 3;
   totalQuestions = 10;
@@ -20,7 +22,6 @@ export class ChatbotPageComponent implements OnInit {
   msgerForm!: HTMLElement;
   msgerInput!: HTMLInputElement;
   msgerChat!: HTMLElement;
-  
 
   BOT_MSGS = [
     "Hi, how are you?",
@@ -36,7 +37,6 @@ export class ChatbotPageComponent implements OnInit {
   PERSON_NAME = "Me";
   accepted_privacy_and_agbs = false;
 
-
   ngOnInit(): void {
     /**
      * Die JSON Datei wurde oben importiert über den Pfad im Projekt. Die Datei wurde in der
@@ -50,14 +50,10 @@ export class ChatbotPageComponent implements OnInit {
      */
     console.log(interviewJson);
     console.log(interviewJson.length);
-    console.log(interviewJson[0].answers)
+    console.log(interviewJson[0].answers);
    
-
-  
-      
     this.generateRandomToken();
     this.updateProgressValue();
-  
     
     const msgerFormElement = document.querySelector<HTMLElement>(".msger-inputarea");
     this.msgerForm = msgerFormElement ?? document.createElement('div');
@@ -67,7 +63,6 @@ export class ChatbotPageComponent implements OnInit {
   
     const msgerChatElement = document.querySelector<HTMLElement>(".msger-chat");
     this.msgerChat = msgerChatElement ?? document.createElement('div');
-  
   
     this.msgerForm.addEventListener("submit", (event: Event) => {
       event.preventDefault();
@@ -124,6 +119,7 @@ export class ChatbotPageComponent implements OnInit {
   random(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min) + min);
   }
+
   generateRandomToken(): void {
     let token = self.crypto.randomUUID()
     const tokenElement = document.getElementById('token');
@@ -131,13 +127,12 @@ export class ChatbotPageComponent implements OnInit {
         tokenElement.textContent = 'Token: ' + token;
     }
   }
+
   acceptPrivacyAndAGBs(): void {
     this.accepted_privacy_and_agbs = true;
-
   }
+
   updateProgressValue(): void {
     this.progressValue = (this.answeredQuestions / this.totalQuestions) * 100;
   }
- 
-
 }
