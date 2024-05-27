@@ -23,7 +23,7 @@
             </div>
 
             <!-- Writing -->
-            <div *ngIf="getQuestion(selectedQuestion).answer_type=='writing'">
+            <div  *ngIf="getQuestion(selectedQuestion).answer_type=='writing'">
 
                 <mat-form-field>
                     <mat-label>Message</mat-label>
@@ -32,7 +32,7 @@
             </div>
 
             <!-- Dropdown -->
-            <div *ngIf="getQuestion(selectedQuestion).answer_type=='dropdown'">
+            <div  *ngIf="getQuestion(selectedQuestion).answer_type=='dropdown'">
                 <mat-form-field>
                     <mat-select  placeholder="Antwort" [(value)]="selected">
                         <mat-option *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">

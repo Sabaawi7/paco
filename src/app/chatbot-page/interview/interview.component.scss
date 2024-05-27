@@ -1,7 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
 .interview {
     display: flex;
     gap: 40px;
+
+
+  
+    
 }
+
+
 
 .interview .questions {
     max-width: 50%;
@@ -34,6 +43,8 @@
     max-width: 50%;
     width: 50%;
     min-height: 100%;;
+ 
+
 }
 
 .MultipleChoiceAnswers {
@@ -41,37 +52,72 @@
     flex-wrap: wrap;
     gap: 10px;
     justify-content: left;
+    
 }
 
-mat-button-toggle-group {
+
+
+mat-button-toggle-group { //Rahmen in dem alle Antwort buttons sind;
     flex-wrap: wrap;
-    border: none;
+ 
     gap: 10px;
     outline: none;
+    padding: 20px; /* Fügt innen Abstand hinzu und vergrößert somit den Rahmen */
+    margin: 20px;  /* Fügt außen Abstand hinzu und vergrößert den Abstand um den Rahmen herum */
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 0px 25px 5px;
+    border-radius: 30px; /* Fügt abgerundete Ecken hinzu */
+   
 }
-
-.mat-button-toggle {
-    background-color: #ccc;
-    border-radius: 5px;
-
+//nur für die Auswahl ,,Englisch"
+.mat-button-toggle { 
+   
+    border: none;
+    background-color: white;
+    border-radius: 30px;
+    font-family: "Rubik", sans-serif;
+    padding:24px 42px;   /* Du kannst die Polsterung hier hinzufügen oder ändern */
+    margin: 0px 12px 12px 0px;  
+    border: 1px solid black;  /* Du kannst die Rahmenfarbe und -breite hier ändern */
+    border-radius: 30px;
+    font:14px;
 }
 
 .mat-button-toggle-checked {
     background-color: var(--color-primary) !important;
-    color: white;
+    border: none;
+    border-radius: 30px;
+    font-family: "Rubik", sans-serif;
+    padding:24px 42px;   /* Du kannst die Polsterung hier hinzufügen oder ändern */
+    margin: 0px 12px 12px 0px;  
+    font:14px;
+
+    border-radius: 30px;
+    
 }
 
+//Aussehen fuer jeden einzelnden Antwort button;
 .mat-button-toggle-group-appearance-standard .mat-button-toggle-appearance-standard+.mat-button-toggle-appearance-standard {
     border: none;
-    border-radius: 5px;
+    background-color: white;
+    border-radius: 30px;
+    font-family: "Rubik", sans-serif;
+    padding: 24px 42px; /* Du kannst die Polsterung hier hinzufügen oder ändern */
+    margin: 0px 12px 12px 0px;    /* Du kannst den Abstand hier hinzufügen oder ändern */
+    border: 1px solid black;  /* Du kannst die Rahmenfarbe und -breite hier ändern */
+    border-radius: 30px;
+    font:14px;
+ 
 }
 
 .mat-mdc-form-field {
     min-width: 100%;
+
+   
 }
 
 textarea {
     min-height: 150px;
+  
 }
 
 .dropdown-question {
@@ -80,6 +126,8 @@ textarea {
     align-items: center;
     padding: 10px;
     border-radius: 5px;
+  
+  
 }
 
 .NavigationButtons {
@@ -92,4 +140,5 @@ textarea {
     width: 150px;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "Rubik", sans-serif;
 }

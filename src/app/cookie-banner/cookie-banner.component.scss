@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
   /* Hinzufügen eines halbtransparenten Overlays, um den Fokus auf die Cookie-Benachrichtigung zu lenken */
   .cookie-overlay {
@@ -9,6 +9,7 @@
     height: 100%; /* Volle Höhe des Viewports */
     background-color: rgba(0, 0, 0, 0.5); /* Halbtransparentes Overlay mit schwarzem Hintergrund */
     z-index: 999; /* Stelle sicher, dass das Overlay über anderen Inhalten liegt */
+    font-family: "Rubik", sans-serif; /* Schriftart auf Ubuntu Sans-Serif setzen */
   }
   
   /* Stil für die Cookie-Benachrichtigung */
@@ -21,9 +22,9 @@
     padding: 20px; /* Innenabstand der Benachrichtigung */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Schatten für die Benachrichtigung */
     z-index: 1000; /* Stelle sicher, dass die Benachrichtigung über dem Overlay liegt */
-    font-family: 'Ubuntu', sans-serif; /* Schriftart auf Ubuntu Sans-Serif setzen */
+  
     width: 700px; /* Breite der Benachrichtigung */
-    height: 400px; /* Höhe der Benachrichtigung */
+    height: 500px; /* Höhe der Benachrichtigung */
     display: flex; /* Verwende Flexbox-Layout */
     flex-direction: column; /* Staple die Elemente vertikal */
     justify-content: center; /* Zentriere den Inhalt vertikal */
@@ -33,17 +34,37 @@
     border: 1px solid #ccc; /* Hinzufügen einer Randlinie für visuelle Trennung */
   }
 
+  .cookie-notification p{
+    font-size: 20px;
+  }
+
   .cookie-buttons {
     display: flex; /* Verwende Flexbox für die Buttons */
     flex-direction: row; /* Stelle sicher, dass die Buttons nebeneinander angeordnet sind */
     justify-content: center; /* Zentriere die Buttons horizontal */
+    gap: 10px; /* Füge einen Abstand zwischen den Buttons hinzu */
+    padding: 20px;
+
+  
 }
 
 .cookie-buttons button:first-child { /*linke button;*/
-    margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
-    padding: 10px 20px; /* Innenabstand  */
-    font-size: 16px; /* Schriftgröße  */
-    border-radius: 10px; /* Runde die Ecken d */ 
+  animation: 0.5s ease-out 0s 1 normal none running fadeInFromNone;
+  cursor: pointer;
+  pointer-events: all;
+  position: relative;
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+  border-radius: 60px;
+  padding: 3px 15px;
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 1;
+  line-height: 19px;
+  margin-top: auto;
+  margin-bottom: 24px;
+  height: 55px;
+  touch-action: manipulation;
 }
 
 .cookie-buttons button:hover {
@@ -51,11 +72,24 @@
 }
 
 .cookie-buttons button:last-child { /*rechte button;*/
-    margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
-    padding: 10px 20px; /* Innenabstand  */
-    font-size: 16px; /* Schriftgröße  */
-    border-radius: 10px; /* Runde die Ecken  */
+  animation: 0.5s ease-out 0s 1 normal none running fadeInFromNone;
+  cursor: pointer;
+  pointer-events: all;
+  position: relative;
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+  border-radius: 60px;
+  padding: 3px 15px;
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 1;
+  line-height: 19px;
+  margin-top: auto;
+  margin-bottom: 24px;
+  height: 55px;
+  touch-action: manipulation;
 }
+
 
 /* Media Query für kleinere Bildschirme */
 @media screen and (max-width: 768px) {
