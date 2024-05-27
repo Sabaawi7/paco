@@ -11,7 +11,9 @@ import { MaterialModule } from '../material/material.module';
     standalone: true,
     templateUrl: './landing-page.component.html',
     styleUrl: './landing-page.component.scss',
-    imports: [NavigationBarComponent,CookieBannerComponent,CommonModule, RouterLink, RouterLinkActive, RouterOutlet,MaterialModule]
+    imports: [NavigationBarComponent,CookieBannerComponent,CommonModule, RouterLink, RouterLinkActive, RouterOutlet,MaterialModule],
+  
+  
 })
 
 export class LandingPageComponent implements OnInit{
@@ -30,6 +32,7 @@ export class LandingPageComponent implements OnInit{
   kasten2_p:string='';
   kasten3_h3:string='';
   kasten3_p:string='';
+
 
   ngOnInit(): void {
      const selectedLang = localStorage.getItem('lang'); 
@@ -54,6 +57,11 @@ export class LandingPageComponent implements OnInit{
          this.kasten3_h3 = 'Support';
          this.kasten3_p = 'Receive prompt answers to all your questions.';
      }
+
+   
+  
+
+
   }
 
    // Variable, die den Zustand der Cookie-Benachrichtigung speichert

@@ -1,5 +1,4 @@
-/* Import Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 /* Navbar styling */
 .navbar {
@@ -11,6 +10,9 @@
     padding: 10px 20px; /* Consistent padding */
     height: max-content; /* Set consistent height for navbar */
     border-bottom: 1px solid #e0e0e0; /* Light border at the bottom for definition */
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .navbar-language {
@@ -47,7 +49,6 @@ a:visited{
 
 .navbar-title {
     margin-left: 20px;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 30px;
     display: inline-block;
@@ -70,7 +71,6 @@ a:visited{
 }
 
 .navItem a {
-    font-family: "Poppins", sans-serif; /* Matching font family */
     color: #333; /* Dark gray text color */
     padding: 8px 12px;
     border-radius: 4px; /* Subtle rounding */
