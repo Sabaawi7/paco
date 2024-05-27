@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CookieBannerComponent } from './cookie-banner.component';
 
 describe('CookieBannerComponent', () => {

@@ -3,8 +3,6 @@ import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MaterialModule } from '../../material/material.module';
 import { FormsModule } from '@angular/forms';
 
-
-
 @Component({
   selector: 'app-language-dialog',
   standalone: true,
@@ -53,10 +51,8 @@ export class LanguageDialogComponent {
     this.dialogRef.close(); // Schließe das Dialogfenster
   }
 
-
    reloadPage(): void {
     window.location.reload(); // Lädt die Seite neu
 }
- 
 }
 //<a href="https://www.flaticon.com/free-icons/germany" title="germany icons">Germany icons created by Dighital - Flaticon</a>

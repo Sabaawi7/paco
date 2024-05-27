@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
 /* Body styles */
@@ -12,9 +11,7 @@ body {
     background-image: url(../../assets/background.png);
     background-size: cover;
     height: fit-content;
-
 }
-
 
 /* Hero Section styles */
 .hero {
@@ -67,7 +64,6 @@ body {
 }
 
 .feature {
-    
     background-color: white;
     padding: 20px;
     border-radius: 5px;
@@ -95,11 +91,8 @@ body {
         flex-wrap: wrap;
         justify-content: center;
     }
+    
     .feature{
         max-width: 346px;
     }
-
 }
-
-
-

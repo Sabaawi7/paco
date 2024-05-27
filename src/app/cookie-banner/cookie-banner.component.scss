@@ -1,7 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
-  
- 
- 
 
   /* Hinzufügen eines halbtransparenten Overlays, um den Fokus auf die Cookie-Benachrichtigung zu lenken */
   .cookie-overlay {
@@ -12,7 +9,6 @@
     height: 100%; /* Volle Höhe des Viewports */
     background-color: rgba(0, 0, 0, 0.5); /* Halbtransparentes Overlay mit schwarzem Hintergrund */
     z-index: 999; /* Stelle sicher, dass das Overlay über anderen Inhalten liegt */
-
   }
   
   /* Stil für die Cookie-Benachrichtigung */
@@ -35,24 +31,19 @@
     text-align: center; /* Zentriere den Text horizontal */
     border-radius: 30px; /* Hinzufügen von abgerundeten Ecken */
     border: 1px solid #ccc; /* Hinzufügen einer Randlinie für visuelle Trennung */
-
-   
   }
 
   .cookie-buttons {
     display: flex; /* Verwende Flexbox für die Buttons */
     flex-direction: row; /* Stelle sicher, dass die Buttons nebeneinander angeordnet sind */
     justify-content: center; /* Zentriere die Buttons horizontal */
-   
-   
-
 }
+
 .cookie-buttons button:first-child { /*linke button;*/
     margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
     padding: 10px 20px; /* Innenabstand  */
     font-size: 16px; /* Schriftgröße  */
-    border-radius: 10px; /* Runde die Ecken d */
-    
+    border-radius: 10px; /* Runde die Ecken d */ 
 }
 
 .cookie-buttons button:hover {
@@ -60,12 +51,10 @@
 }
 
 .cookie-buttons button:last-child { /*rechte button;*/
-
     margin: 0 5px; /* Füge etwas Abstand zwischen den Buttons hinzu */
     padding: 10px 20px; /* Innenabstand  */
     font-size: 16px; /* Schriftgröße  */
     border-radius: 10px; /* Runde die Ecken  */
-
 }
 
 /* Media Query für kleinere Bildschirme */

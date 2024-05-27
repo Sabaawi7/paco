@@ -12,7 +12,6 @@
     min-height: 90vh;
     padding: 20px;
     background-color: #f0f0f0;
-
 }
 
 .login-form {
@@ -35,7 +34,6 @@
     background-size: 100% 49494%;
     flex-shrink: 0
 }
-
 
 /* Title */
 .login-title {
@@ -105,9 +103,6 @@ input {
     cursor: pointer;
 }
 
-
-
-
 /* Guest link */
 .guest-link {
     display: block;
@@ -126,8 +121,7 @@ input {
 .stay-logged-in {
     display: flex;
     align-items: center;
-    font-size: 14px;
-    
+    font-size: 14px; 
 }
 
 #stayLoggedInCheckbox {

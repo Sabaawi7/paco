@@ -11,22 +11,18 @@
     padding: 10px 20px; /* Consistent padding */
     height: max-content; /* Set consistent height for navbar */
     border-bottom: 1px solid #e0e0e0; /* Light border at the bottom for definition */
-  
 }
 
 .navbar-language {
     display: flex;
     flex-direction: column; /* Anordnung der Symbole in einer Spalte */
     align-items: center; /* Zentrierte Ausrichtung */
-
 }
 
 .navbar-language img {
     width: 30px;
     height: 30px;
     padding: 8px 12px; //8px:  padding für oberen und unteren Rand, 12px: Wert für linken und rechten Rand;
-
-  
 }
 
 .navbar-language img:hover{
@@ -34,9 +30,9 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
 a {
     text-decoration: none;
-
 }
 
 a:visited{

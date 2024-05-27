@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { NgFor, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-roleselection',
   standalone: true,
@@ -9,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './roleselection.component.html',
   styleUrl: './roleselection.component.scss'
 })
+
 export class RoleselectionComponent implements OnInit{
   selectedRole: string | undefined; // Die ausgewählte Rolle
   roles: string[] = ['SuperAdmin', 'InstitutionsAdmin', 'Studienberater:in']; // Liste der verfügbaren Rollen
@@ -36,8 +38,6 @@ export class RoleselectionComponent implements OnInit{
   }
   
   ngOnInit() {
+    
   }
-
-
-
 }

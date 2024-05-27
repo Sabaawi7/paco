@@ -1,11 +1,9 @@
-
 <div class="interview">
     <div class="questions">
       <div *ngIf="getQuestion(selectedQuestion)">
         <h2>{{ getQuestion(selectedQuestion).question }}</h2>
       </div>
     </div>
-  
   
     <div class="answers">
       <div *ngIf="getQuestion(selectedQuestion)">

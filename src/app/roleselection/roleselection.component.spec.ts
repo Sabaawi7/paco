@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RoleselectionComponent } from './roleselection.component';
 
 describe('RoleselectionComponent', () => {

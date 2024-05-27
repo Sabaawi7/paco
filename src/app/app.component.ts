@@ -14,11 +14,8 @@ import { CookieBannerComponent } from './cookie-banner/cookie-banner.component';
   styleUrl: './app.component.scss'
 })
 
-
 export class AppComponent {
  
-
   title = 'PACO';
 
-  
 }

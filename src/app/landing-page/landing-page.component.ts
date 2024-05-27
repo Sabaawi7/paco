@@ -5,6 +5,7 @@ import { NgIf } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
+
 @Component({
     selector: 'app-landing-page',
     standalone: true,
@@ -12,6 +13,7 @@ import { MaterialModule } from '../material/material.module';
     styleUrl: './landing-page.component.scss',
     imports: [NavigationBarComponent,CookieBannerComponent,CommonModule, RouterLink, RouterLinkActive, RouterOutlet,MaterialModule]
 })
+
 export class LandingPageComponent implements OnInit{
 
   /**
@@ -76,8 +78,4 @@ export class LandingPageComponent implements OnInit{
      this.onClose();
      // Weitere Logik hier ...
    }
-
-
-
-
 }
