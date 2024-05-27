@@ -1,4 +1,4 @@
-<div class="interview">
+<div class="interview" *ngIf="!isLoading">
     <div class="questions">
       <div *ngIf="getQuestion(selectedQuestion)">
         <h2>{{ getQuestion(selectedQuestion).question }}</h2>
@@ -50,7 +50,10 @@
       </div>
     </div>
 </div>
-<div class="NavigationButtons">
+<div *ngIf="isLoading" class="loading-bar">
+    <mat-progress-bar mode="determinate" [value]="loadingProgress"></mat-progress-bar>
+</div>
+<div class="NavigationButtons" *ngIf="!isLoading">
     <button mat-raised-button style ="background-color: var(--color-accent);color:white" (click)="navigateToPreviousQuestion()"> Zurück</button>
 
     <button mat-raised-button color="primary" (click)="navigateToNextQuestion(userSelection)">
