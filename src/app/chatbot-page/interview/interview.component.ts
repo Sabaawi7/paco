@@ -31,6 +31,8 @@ export class InterviewComponent implements OnInit {
       this.selectedQuestion = questionNumber;
     });
   }
+ 
+
 
   selectQuestion(questionNumber: number) {
     this.interviewService.selectQuestion(questionNumber);
@@ -55,6 +57,7 @@ export class InterviewComponent implements OnInit {
     } else {
       console.log(this.userSelection)
     }
+
 
 
     if (this.selectedQuestion < this.totalQuestions -1) {
@@ -83,4 +86,5 @@ export class InterviewComponent implements OnInit {
     }
     return [];
   }
+
 }

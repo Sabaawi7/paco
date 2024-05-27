@@ -15,6 +15,9 @@ export class InterviewService {
 
   constructor() {}
 
+
+
+
   markQuestionAsAnswered(questionNumber: number) {
     const answeredQuestions = this.answeredQuestionsSubject.value;
     if (!answeredQuestions.includes(questionNumber)) {
