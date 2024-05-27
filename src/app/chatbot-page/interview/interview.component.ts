@@ -6,11 +6,12 @@ import { InterviewService } from '../interview-service.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-interview',
   templateUrl: './interview.component.html',
-  imports: [MaterialModule, CommonModule, FormsModule],
+  imports: [MaterialModule, CommonModule, FormsModule, MatProgressSpinnerModule],
   standalone: true,
   styleUrls: ['./interview.component.scss']
 })
@@ -21,6 +22,7 @@ export class InterviewComponent implements OnInit {
   totalQuestions: number = this.interviewService.questions.length;
   selected: any;
   TextInput: String = '';
+  isLoading: boolean = false;
   
   constructor(private interviewService: InterviewService) { }
 
@@ -58,6 +60,8 @@ export class InterviewComponent implements OnInit {
 
     if (this.selectedQuestion < this.totalQuestions -1) {
       this.selectQuestion(this.selectedQuestion + 1);
+    } else {
+      this.showLoadingSpinner();
     }
 
     this.selected = undefined;
@@ -81,5 +85,12 @@ export class InterviewComponent implements OnInit {
       return answers;
     }
     return [];
+  }
+  showLoadingSpinner(): void {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      // Navigate to a different view or perform some action here
+    }, 3000); // Show spinner for 3 seconds
   }
 }
