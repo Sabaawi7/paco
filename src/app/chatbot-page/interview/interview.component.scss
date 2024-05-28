@@ -73,12 +73,12 @@ mat-button-toggle-group { //Rahmen in dem alle Antwort buttons sind;
    
     border: none;
     background-color: white;
-    border-radius: 30px;
+    border-radius: 60px;
     font-family: "Rubik", sans-serif;
     padding:24px 42px;   /* Du kannst die Polsterung hier hinzufügen oder ändern */
     margin: 0px 12px 12px 0px;  
     border: 1px solid black;  /* Du kannst die Rahmenfarbe und -breite hier ändern */
-    border-radius: 30px;
+
     font:14px;
     transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
@@ -91,7 +91,7 @@ mat-button-toggle-group { //Rahmen in dem alle Antwort buttons sind;
     font:14px;
     color:white !important;
     border: none !important;
-    border-radius: 30px;
+    border-radius: 60px;
     
 }
 
@@ -105,7 +105,7 @@ mat-button-toggle-group { //Rahmen in dem alle Antwort buttons sind;
 .mat-button-toggle-group-appearance-standard .mat-button-toggle-appearance-standard+.mat-button-toggle-appearance-standard {
     border: none;
     background-color: white;
-    border-radius: 30px;
+    border-radius: 60px;
     font-family: "Rubik", sans-serif;
     padding: 24px 42px; /* Du kannst die Polsterung hier hinzufügen oder ändern */
     margin: 0px 12px 12px 0px;    /* Du kannst den Abstand hier hinzufügen oder ändern */
