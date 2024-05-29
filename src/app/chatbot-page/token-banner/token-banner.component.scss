@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+* {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 10px 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+.h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+#token{
+  font-size: 26x;
+  font-weight: bold;
+  color: #333;
+}
+p {
+  margin-bottom: -20px; 
+}
+.button {
+  border-radius: 40px;
+  cursor: pointer;
+}
+.fa {
+  border-radius: 40px;
+  cursor: pointer;
+}

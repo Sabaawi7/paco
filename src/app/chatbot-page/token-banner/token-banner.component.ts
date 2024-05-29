@@ -17,15 +17,12 @@ export class TokenBannerComponent implements OnInit{
   value='';
   token='';
 
-
   constructor(private tokenService: TokenService) { }
 
 ngOnInit() {
-  this.tokenService.currentToken.subscribe(token => {
-    // Hier können Sie den Token-Wert verwenden
+    this.tokenService.currentToken.subscribe(token => {
     this.token = token;
     this.value = token;
-    console.log(token);
   });
  
 }
