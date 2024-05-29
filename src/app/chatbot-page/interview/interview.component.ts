@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit ,ViewChild } from '@angular/core';
 import interviewJson from '../../../assets/interview.json';
 import { Question } from './question.model';
 import { MaterialModule } from '../../material/material.module';
@@ -21,14 +21,28 @@ export class InterviewComponent implements OnInit {
   totalQuestions: number = this.interviewService.questions.length;
   selected: any;
   TextInput: String = '';
+
+  currentQuestionText: string = '';
   
   constructor(private interviewService: InterviewService) { }
 
+
+
   ngOnInit(): void {
-    // Subscribe to selectedQuestion$ to get notified of changes
+
     this.interviewService.selectedQuestion$.subscribe(questionNumber => {
       this.selectedQuestion = questionNumber;
+      this.currentQuestionText = this.getQuestion(this.selectedQuestion).question;
+      // Starten Sie hier die Typewriter-Animation
+      this.typeWriter(this.currentQuestionText, 0);
     });
+  }
+
+  typeWriter(text: string, i: number) {
+    if (i < text.length) {
+      this.currentQuestionText = text.substring(0, i + 1);
+      setTimeout(() => this.typeWriter(text, i + 1), 100);
+    }
   }
 
   selectQuestion(questionNumber: number) {
