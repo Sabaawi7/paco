@@ -21,6 +21,7 @@ export class InterviewComponent implements OnInit {
   totalQuestions: number = this.interviewService.questions.length;
   selected: any;
   TextInput: String = '';
+  timeoutId: any;
 
   currentQuestionText: string = '';
   
@@ -41,7 +42,7 @@ export class InterviewComponent implements OnInit {
   typeWriter(text: string, i: number) {
     if (i < text.length) {
       this.currentQuestionText = text.substring(0, i + 1);
-      setTimeout(() => this.typeWriter(text, i + 1), 100);
+      this.timeoutId= setTimeout(() => this.typeWriter(text, i + 1), 100);
     }
   }
 
@@ -54,6 +55,9 @@ export class InterviewComponent implements OnInit {
   }
 
   navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+    if(this.selectedQuestion!= this.totalQuestions-1){
+      clearTimeout(this.timeoutId)
+    }
     const currentValue = this.userSelection?.value;
     console.log(this.TextInput)
     if(this.userSelection !== undefined && this.userSelection.name.startsWith('mat-button-toggle-group') ){
@@ -81,6 +85,9 @@ export class InterviewComponent implements OnInit {
   }
 
   navigateToPreviousQuestion() {
+    if(this.selectedQuestion!=0){
+      clearTimeout(this.timeoutId)
+    }
     if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
     }
