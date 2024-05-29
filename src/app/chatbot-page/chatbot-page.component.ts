@@ -3,13 +3,12 @@ import { NgIf } from '@angular/common';
 import { NgClass } from '@angular/common';
 import  interviewJson from '../../assets/interview.json';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
-import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { InterviewComponent } from './interview/interview.component';
 
 @Component({
   selector: 'app-chatbot-page',
   standalone: true,
-  imports: [NgIf, NgClass, NavigationBarComponent,ProgressbarComponent, InterviewComponent],
+  imports: [NgIf, NgClass, NavigationBarComponent, InterviewComponent],
   templateUrl: './chatbot-page.component.html',
   styleUrl: './chatbot-page.component.scss'
 })

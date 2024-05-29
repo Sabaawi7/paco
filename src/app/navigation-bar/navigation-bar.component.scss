@@ -1,15 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 /* Navbar styling */
-.navbar {
-    background-color: #f2f2f2; /* Light gray background */
+.navbar { /* Light gray background */
     color: #333; /* Dark gray color for text */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px; /* Consistent padding */
     height: max-content; /* Set consistent height for navbar */
-    border-bottom: 1px solid #e0e0e0; /* Light border at the bottom for definition */
     font-family: "Rubik", sans-serif;
     font-weight: bold;
     font-size: 25px;
