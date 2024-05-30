@@ -2,7 +2,15 @@
     <div class="questions">
       <div *ngIf="getQuestion(selectedQuestion)">
         <h2>{{ getQuestion(selectedQuestion).question }}</h2>
-      </div>
+        
+        </div>
+        <div class="NavigationButtons">
+            <button mat-raised-button style ="background-color: black;color:white" (click)="navigateToPreviousQuestion()"> Zurück</button>
+        
+            <button mat-raised-button style ="background-color: white;color:black" (click)="navigateToNextQuestion(userSelection)">
+                Weiter
+            </button>
+        </div>
     </div>
   
     <div class="answers">
@@ -11,13 +19,13 @@
 
             <!-- Multiple Choice-->
             <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='multiple_choice'">
-                <mat-button-toggle-group #userSelection="matButtonToggleGroup" multiple>
+                <mat-button-toggle-group [hideMultipleSelectionIndicator]="true" #userSelection="matButtonToggleGroup" multiple>
                     <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">{{ answer }}</mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
             <!-- Single Choice-->
             <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">
-                <mat-button-toggle-group #userSelection="matButtonToggleGroup">
+                <mat-button-toggle-group [hideSingleSelectionIndicator]="true" #userSelection="matButtonToggleGroup">
                     <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">{{ answer }}</mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
@@ -50,11 +58,5 @@
       </div>
     </div>
 </div>
-<div class="NavigationButtons">
-    <button mat-raised-button style ="background-color: var(--color-accent);color:white" (click)="navigateToPreviousQuestion()"> Zurück</button>
 
-    <button mat-raised-button style ="background-color: var(--color-primary);color:white" (click)="navigateToNextQuestion(userSelection)">
-        Weiter
-    </button>
-</div>
   

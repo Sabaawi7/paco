@@ -1,29 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-
+* {
+    box-sizing: border-box;
+}
 
 .interview {
     display: flex;
-    gap: 40px;
+    justify-content: space-evenly;
+    gap: 20px;
 
 
   
     
 }
 
+@media (max-width: 768px) {
+    .interview {
+        flex-direction: column;
+    }
+
+
+
+}
+
 
 
 .interview .questions {
-    max-width: 50%;
-    flex-basis: 100%;
-    flex-wrap: wrap;
-    text-wrap: wrap;
-    margin-bottom: 10px;
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    width: 420px;
+    margin-right: 92px;
 }
 
 .interview .questions div h2 {
     font-size: 50px;
     animation: text-animation 1s ease-in-out;
     overflow: auto;
+}
+@media screen and (max-width: 768px) {
+    .interview .questions div h2 {
+        font-size: 30px;
+    }
+    
 }
 
 @keyframes text-animation {
@@ -38,8 +59,9 @@
 }
 
 .interview .answers {
+    display: flex;
     justify-content: center;
-    margin-top: 40px;
+    align-items: center;
     max-width: 50%;
     width: 50%;
     min-height: 100%;
@@ -48,6 +70,9 @@
 
 }
 
+.answers div {
+    width: 100%;
+}
 .MultipleChoiceAnswers {
     display: flex;
     flex-wrap: wrap;
@@ -91,7 +116,7 @@
     background-color: white;
     border-radius: 60px;
     font-family: "Rubik", sans-serif;
-    padding: 24px 42px; /* Du kannst die Polsterung hier hinzufügen oder ändern */
+    padding: 0px 0px; /* Du kannst die Polsterung hier hinzufügen oder ändern */
     margin: 0px 12px 12px 0px;    /* Du kannst den Abstand hier hinzufügen oder ändern */
     border: 1px solid black;  /* Du kannst die Rahmenfarbe und -breite hier ändern */
     font-size:14px;
@@ -105,8 +130,7 @@ mat-button-toggle-group {
     padding: 20px; /* Fügt innen Abstand hinzu und vergrößert somit den Rahmen */
     margin: 20px;  /* Fügt außen Abstand hinzu und vergrößert den Abstand um den Rahmen herum */
     box-shadow: 
-        rgba(0, 0, 0, 0.15) 0px 3px 8px,   /* subtle shadow */
-        rgba(0, 0, 0, 0.2) 0px 8px 15px !important;   /* medium shadow */
+        rgba(0, 0, 0, 0.07) 0px 0px 25px 5px !important;   /* medium shadow */
     border-radius: 30px; /* Fügt abgerundete Ecken hinzu */
     background-color: white; /* Optional: Set a background color for better contrast */
 }
@@ -136,13 +160,24 @@ textarea {
 
 .NavigationButtons {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    align-self: start;
+    margin-top: auto;
+    width: 100%;
 }
 
 .NavigationButtons button {
-    width: 150px;
-    border-radius: 5px;
+    animation: 0.5s ease-out 0s 1 normal none running fadeInFromNone;
     cursor: pointer;
-    font-family: "Rubik", sans-serif;
+    pointer-events: all;
+    position: relative;
+    text-align: center;
+    background: black;
+    color: white;
+    border-radius: 60px;
+    padding: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 1;
+    line-height: 19px;
+    margin: 0px 24px 0px 0px;
 }
