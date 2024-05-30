@@ -5,10 +5,10 @@
         
         </div>
         <div class="NavigationButtons">
-            <button mat-raised-button style ="background-color: black;color:white" (click)="navigateToPreviousQuestion()"> Zurück</button>
+            <button mat-raised-button style ="background-color: white;color:white" (click)="navigateToPreviousQuestion()"><img src="../../../assets/backwardsArrow.png"></button>
         
-            <button mat-raised-button style ="background-color: white;color:black" (click)="navigateToNextQuestion(userSelection)">
-                Weiter
+            <button mat-raised-button style ="background-color: black;color:white" (click)="navigateToNextQuestion(userSelection)">
+                <span>Weiter </span> 
             </button>
         </div>
     </div>
@@ -35,7 +35,11 @@
 
                 <mat-form-field>
                     <mat-label>Message</mat-label>
-                    <textarea matInput [(ngModel)]="TextInput" placeholder="In 5 Jahre sehe ich mich als Ingenieur"></textarea>
+                    <textarea matInput #message="ngModel" [(ngModel)]="TextInput" name="message" required maxlength="256" placeholder="In 5 Jahre sehe ich mich als Ingenieur"></textarea>
+                    <mat-hint align="end">{{message.value?.length || 0}} / 256</mat-hint>
+                    <mat-error *ngIf="message.invalid && (message.dirty || message.touched)">
+                        Message is required.
+                    </mat-error>
                 </mat-form-field>
             </div>
 
@@ -55,6 +59,13 @@
         <ng-template #noAnswers>
             <p>Keine Antworten vorhanden</p>
         </ng-template>
+        <div class="NavigationButtons">
+            <button mat-raised-button style ="background-color: white;color:white" (click)="navigateToPreviousQuestion()"><img src="../../../assets/backwardsArrow.png"></button>
+        
+            <button mat-raised-button style ="background-color: black;color:white" (click)="navigateToNextQuestion(userSelection)">
+                <span>Weiter </span> 
+            </button>
+        </div>
       </div>
     </div>
 </div>

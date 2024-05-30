@@ -16,6 +16,8 @@
 @media (max-width: 768px) {
     .interview {
         flex-direction: column;
+        max-width: none;
+        width: 100%;
     }
 
 
@@ -24,7 +26,7 @@
 
 
 
-.interview .questions {
+.questions {
     display: flex;
     -webkit-box-pack: start;
     justify-content: flex-start;
@@ -58,7 +60,7 @@
     }
 }
 
-.interview .answers {
+.answers {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,22 +88,22 @@
     background-color: white;
     border-radius: 60px;
     font-family: "Rubik", sans-serif;
-    padding:24px 42px;   /* Du kannst die Polsterung hier hinzufügen oder ändern */
+    padding: 0px 0px;   /* Du kannst die Polsterung hier hinzufügen oder ändern */
     margin: 0px 12px 12px 0px;  
     border: 1px solid black;  /* Du kannst die Rahmenfarbe und -breite hier ändern */
-    font-size:14px;
+    font-size:20px;
     transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
 .mat-button-toggle-checked {
     background-color: var(--color-primary) !important;
     font-family: "Rubik", sans-serif;
-    padding:24px 42px;   /* Du kannst die Polsterung hier hinzufügen oder ändern */
     margin: 0px 12px 12px 0px;  
-    font-size:14px;
+    font-size:20px;
     color:white !important;
     border: none !important;
     border-radius: 60px;
+    filter:contrast(1.5);
     
 }
 
@@ -119,7 +121,7 @@
     padding: 0px 0px; /* Du kannst die Polsterung hier hinzufügen oder ändern */
     margin: 0px 12px 12px 0px;    /* Du kannst den Abstand hier hinzufügen oder ändern */
     border: 1px solid black;  /* Du kannst die Rahmenfarbe und -breite hier ändern */
-    font-size:14px;
+    font-size:20px;
  
 }
 
@@ -180,4 +182,52 @@ textarea {
     opacity: 1;
     line-height: 19px;
     margin: 0px 24px 0px 0px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.NavigationButtons button:first-child img {
+    box-sizing: border-box;
+    width: 14px;
+    height: 12px;
+}
+.NavigationButtons button:last-child::after {
+    content: "  ";
+    margin-left: 12px;
+    right: 80px;
+    top: 21px;
+    width: 14px;
+    height: 12px;
+    background: url("../../../assets/ForwardArrow.png") 0% 0% / 100% 100%;
+}
+
+.answers .NavigationButtons {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .questions {
+        justify-content: center;
+        width: 100%;
+        margin: 0 12px;
+    }
+
+    .questions div h2 {
+        text-align: center;
+    }
+    .questions .NavigationButtons {
+        display: none;
+    }
+
+    .answers .NavigationButtons {
+        display: flex;
+        justify-content: center;
+    }
+
+    .answers {
+        width: 100%;
+        max-width: none;
+    }
+
+
 }
