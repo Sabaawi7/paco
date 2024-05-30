@@ -41,11 +41,11 @@ export class LandingPageComponent implements OnInit{
          this.title_p = 'Wir helfen Ihnen, Ihre Studienwahl zu treffen.'
          this.title_h2 = 'Merkmale';
          this.kasten1_h3 = 'Beratung';
-         this.kasten1_p = 'Individuelle Beratung, um Ihnen bei der Wahl des besten Weges zu helfen.';
+         this.kasten1_p = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
          this.kasten2_h3 = 'Ressourcen';
-         this.kasten2_p = 'Zugang zu einer Vielzahl von Bildungsressourcen.';
+         this.kasten2_p = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
          this.kasten3_h3 = 'Unterstützung';
-         this.kasten3_p = 'Erhalten Sie prompt Antworten auf all Ihre Fragen.';
+         this.kasten3_p = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';
      } else if (selectedLang === 'en' ) {
          this.title_h1 = 'Welcome to PACO';
          this.title_p = 'We will help you choose your major.';

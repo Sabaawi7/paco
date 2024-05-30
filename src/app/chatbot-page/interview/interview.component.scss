@@ -83,6 +83,19 @@
     
 }
 
+
+
+mat-button-toggle-group { //Rahmen in dem alle Antwort buttons sind;
+    flex-wrap: wrap;
+ 
+    gap: 10px;
+    outline: none;
+    padding: 20px; /* Fügt innen Abstand hinzu und vergrößert somit den Rahmen */
+    margin: 20px;  /* Fügt außen Abstand hinzu und vergrößert den Abstand um den Rahmen herum */
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 0px 25px 5px;
+    border-radius: 30px; /* Fügt abgerundete Ecken hinzu */
+    overflow-y: auto;
+}
 //nur für die Auswahl ,,Englisch"
 .mat-button-toggle { 
     background-color: white;
@@ -141,13 +154,13 @@ mat-button-toggle-group {
 
 .mat-mdc-form-field {
     min-width: 100%;
-
+   
    
 }
 
 textarea {
     min-height: 150px;
-  
+   
 }
 
 .dropdown-question {
