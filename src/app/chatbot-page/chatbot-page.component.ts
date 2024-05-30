@@ -48,13 +48,7 @@ export class ChatbotPageComponent implements OnInit {
 
   generateRandomToken(): void {
     let token = crypto.randomUUID()
-    const tokenElement = document.getElementById('token');
-    if (tokenElement) {
-        tokenElement.textContent = token;
-        this.tokenService.changeToken(tokenElement.innerText);
-        console.log(tokenElement.innerText);
-        console.log(token);
-    }
+    this.tokenService.changeToken(token);    
   }
 
   updateProgressValue(): void {
