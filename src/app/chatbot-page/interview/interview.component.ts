@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit ,ViewChild } from '@angular/core';
 import interviewJson from '../../../assets/interview.json';
 import { Question } from './question.model';
 import { MaterialModule } from '../../material/material.module';
@@ -21,14 +21,29 @@ export class InterviewComponent implements OnInit {
   totalQuestions: number = this.interviewService.questions.length;
   selected: any;
   TextInput: String = '';
+  timeoutId: any;
+
+  currentQuestionText: string = '';
   
   constructor(private interviewService: InterviewService) { }
 
+
+
   ngOnInit(): void {
-    // Subscribe to selectedQuestion$ to get notified of changes
+
     this.interviewService.selectedQuestion$.subscribe(questionNumber => {
       this.selectedQuestion = questionNumber;
+      this.currentQuestionText = this.getQuestion(this.selectedQuestion).question;
+      // Starten Sie hier die Typewriter-Animation
+      this.typeWriter(this.currentQuestionText, 0);
     });
+  }
+
+  typeWriter(text: string, i: number) {
+    if (i < text.length) {
+      this.currentQuestionText = text.substring(0, i + 1);
+      this.timeoutId= setTimeout(() => this.typeWriter(text, i + 1), 100);
+    }
   }
 
   selectQuestion(questionNumber: number) {
@@ -40,6 +55,9 @@ export class InterviewComponent implements OnInit {
   }
 
   navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+    if(this.selectedQuestion!= this.totalQuestions-1){
+      clearTimeout(this.timeoutId)
+    }
     const currentValue = this.userSelection?.value;
     console.log(this.TextInput)
     if(this.userSelection !== undefined && this.userSelection.name.startsWith('mat-button-toggle-group') ){
@@ -67,6 +85,9 @@ export class InterviewComponent implements OnInit {
   }
 
   navigateToPreviousQuestion() {
+    if(this.selectedQuestion!=0){
+      clearTimeout(this.timeoutId)
+    }
     if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
     }
