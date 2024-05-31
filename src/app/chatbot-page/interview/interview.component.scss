@@ -203,6 +203,8 @@ textarea {
     box-sizing: border-box;
     width: 14px;
     height: 12px;
+    
+    
 }
 .NavigationButtons button:last-child::after {
     content: "  ";
@@ -212,6 +214,7 @@ textarea {
     width: 14px;
     height: 12px;
     background: url("../../../assets/ForwardArrow.png") 0% 0% / 100% 100%;
+
 }
 
 .answers .NavigationButtons {

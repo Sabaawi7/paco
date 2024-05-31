@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #f5f5f5;
+  background-color: white;
   padding: 10px 0;
   font-family: 'Rubik', sans-serif;
   font-size: 14px;
@@ -27,8 +27,12 @@ p {
 .button {
   border-radius: 40px;
   cursor: pointer;
+  color: white  !important; 
+ background-color: black !important;
 }
 .fa {
   border-radius: 40px;
   cursor: pointer;
+  color: white  !important; 
+  background-color: black !important;
 }

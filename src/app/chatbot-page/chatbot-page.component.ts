@@ -13,7 +13,7 @@ import { TokenService } from './token.service';
 @Component({
   selector: 'app-chatbot-page',
   standalone: true,
-  imports: [NgIf, NgClass, NavigationBarComponent,ProgressbarComponent, InterviewComponent, MatButtonModule, MatDialogModule],
+  imports: [NgIf, NgClass, NavigationBarComponent,InterviewComponent, MatButtonModule, MatDialogModule],
   templateUrl: './chatbot-page.component.html',
   styleUrl: './chatbot-page.component.scss'
 })
