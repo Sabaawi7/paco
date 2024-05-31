@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<h2 mat-dialog-title>Dein Token</h2>
+<mat-dialog-content class="mat-typography">
+    <p>
+        Speichere dein Token, um später auf deine Antworten zugreifen zu können.
+    </p>
+    <p>Dein Token:</p>
+    <b id="token">  {{ token }}  </b>
+    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="button"  mat-raised-button mat-dialog-close >OK</button>
+  <button class="fa fa-copy" mat-raised-button [mat-dialog-close]="true"[cdkCopyToClipboard]="value" cdkFocusInitial> Copy</button>
+</mat-dialog-actions>
+
