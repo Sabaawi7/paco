@@ -3,13 +3,13 @@
     <!-- Quelle Bild: https://wordpress.org/plugins/cookie-notice/ -->
     <img src="./assets/icon-256x256.png" alt="Cookies Symbol">
 
-    <h2>  {{  cookie_h2 }} </h2>
+    <h1>  {{  cookie_h2 }} </h1>
     <p>{{ cookie_p  }}</p>
     
     <div class="cookie-buttons" >
 
-        <button mat-raised-button color="primary" (click)="onAccept()">{{ accept_button }}</button> 
-        <button mat-raised-button color="warn" (click)="onDecline()">{{ notaccept_button }}</button> <!--Event Binding-->
+        <button mat-raised-button (click)="onAccept()">{{ accept_button }}</button> 
+        <button mat-raised-button (click)="onDecline()">{{ notaccept_button }}</button> <!--Event Binding-->
         
     </div>
 </div>

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { NgClass } from '@angular/common';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
-import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { InterviewComponent } from './interview/interview.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
