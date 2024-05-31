@@ -1,0 +1,24 @@
+<!-- progressbar2.component.html -->
+<div class="progress-container" (mouseenter)="showOverview()" (mouseleave)="hideOverview()">
+  <div class="progress-text">
+    {{ progressText }}
+  </div>
+  <div class="question-overview" *ngIf="showQuestionOverview" (mouseenter)="showOverview()" (mouseleave)="hideOverview()">
+    <ul>
+      <li *ngFor="let question of questions; let i = index">
+        <a (click)="navigateToQuestion(i)">{{ question.question }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+  
+  
+  
+  
+  
+
+  
+  
+  

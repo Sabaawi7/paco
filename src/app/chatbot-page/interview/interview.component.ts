@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import interviewJson from '../../../assets/interview.json';
 import { Question } from './question.model';
 import { MaterialModule } from '../../material/material.module';
@@ -16,70 +16,36 @@ import { FormsModule } from '@angular/forms';
 })
 export class InterviewComponent implements OnInit {
 
-  @ViewChild('userSelection', { static: false }) userSelection: any;
-  selectedQuestion: number = 1; // Assuming the default selected question is 1
-  totalQuestions: number = this.interviewService.questions.length;
-  selected: any;
-  TextInput: String = '';
-  
+  @Input() questions: Question[] = [];
+  @Input() selectedQuestionIndex: number = 0;
+  currentQuestion: Question | null = null;
+  TextInput: string = '';
+  selected: string | number | null = null;
   constructor(private interviewService: InterviewService) { }
 
   ngOnInit(): void {
-    // Subscribe to selectedQuestion$ to get notified of changes
-    this.interviewService.selectedQuestion$.subscribe(questionNumber => {
-      this.selectedQuestion = questionNumber;
-    });
+    this.questions = interviewJson;
+    this.currentQuestion = this.getQuestion(this.selectedQuestionIndex);
   }
 
-  selectQuestion(questionNumber: number) {
-    this.interviewService.selectQuestion(questionNumber);
+  getQuestion(index: number): Question | null {
+    return this.questions[index] || null;
   }
 
-  isQuestionSelected(questionNumber: number): boolean {
-    return this.selectedQuestion === questionNumber;
+  navigateToQuestion(index: number): void {
+    this.selectedQuestionIndex = index;
+    this.currentQuestion = this.getQuestion(index);
   }
 
-  navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
-    const currentValue = this.userSelection?.value;
-    console.log(this.TextInput)
-    if(this.userSelection !== undefined && this.userSelection.name.startsWith('mat-button-toggle-group') ){
-      if (currentValue !== undefined && currentValue.length > 0) {
-        this.interviewService.markQuestionAsAnswered(this.selectedQuestion);
-      } 
-
-    } else if (this.selected !== undefined){
-      this.interviewService.markQuestionAsAnswered(this.selectedQuestion);
-    } else if (this.TextInput !== '') {
-      this.interviewService.markQuestionAsAnswered(this.selectedQuestion);
-    } else {
-      console.log(this.userSelection)
-    }
-
-
-    if (this.selectedQuestion < this.totalQuestions -1) {
-      this.selectQuestion(this.selectedQuestion + 1);
-    }
-
-    this.selected = undefined;
-    this.TextInput = '';
-
-    
-  }
-
-  navigateToPreviousQuestion() {
-    if (this.selectedQuestion > 0) {
-      this.selectQuestion(this.selectedQuestion - 1);
+  navigateToPreviousQuestion(): void {
+    if (this.selectedQuestionIndex > 0) {
+      this.navigateToQuestion(this.selectedQuestionIndex - 1);
     }
   }
 
-  getQuestion(questionNumber: number): Question {
-    return this.interviewService.getQuestion(questionNumber);
-  }
-
-  getAnswersArray(answers: string[] | number[]): (string | number)[] {
-    if (Array.isArray(answers)) {
-      return answers;
+  navigateToNextQuestion(): void {
+    if (this.selectedQuestionIndex < this.questions.length - 1) {
+      this.navigateToQuestion(this.selectedQuestionIndex + 1);
     }
-    return [];
   }
 }

@@ -1,0 +1,50 @@
+.progress-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .progress-text {
+    cursor: pointer;
+  }
+  
+  .question-overview {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 10;
+    width: 300px; /* Passe die Breite nach Bedarf an */
+  }
+  
+  .question-overview ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .question-overview li {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .question-overview li a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .question-overview li a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  

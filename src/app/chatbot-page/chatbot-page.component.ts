@@ -1,15 +1,24 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { NgClass } from '@angular/common';
-import  interviewJson from '../../assets/interview.json';
+import  questionsData from '../../assets/interview.json';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { InterviewComponent } from './interview/interview.component';
+import { Progressbar2Component } from './progressbar2/progressbar2.component';
+import { Question } from './interview/question.model';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-chatbot-page',
   standalone: true,
-  imports: [NgIf, NgClass, NavigationBarComponent,ProgressbarComponent, InterviewComponent],
+  imports: [NgIf, NgClass, NavigationBarComponent,ProgressbarComponent, InterviewComponent, Progressbar2Component, MatButtonToggleModule, MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule],
   templateUrl: './chatbot-page.component.html',
   styleUrl: './chatbot-page.component.scss'
 })
@@ -48,10 +57,10 @@ export class ChatbotPageComponent implements OnInit {
      * "answer_type" (String) ob multiple_choice, single_choice, writing oder dropdown ; 
      * "subtext_info" dieses Attribut haben nur writing-fragen, wo weitere infos gegeben sind.
      */
-    console.log(interviewJson);
-    console.log(interviewJson.length);
-    console.log(interviewJson[0].answers);
+    
    
+
+    this.questions = questionsData;
     this.generateRandomToken();
     this.updateProgressValue();
     
@@ -135,4 +144,17 @@ export class ChatbotPageComponent implements OnInit {
   updateProgressValue(): void {
     this.progressValue = (this.answeredQuestions / this.totalQuestions) * 100;
   }
+
+  questions: Question[] = questionsData;
+  currentQuestionIndex: number = 0;
+
+ 
+
+  navigateToQuestion(index: number): void {
+    this.currentQuestionIndex = index;
+  }
+
+ 
+
+  
 }
