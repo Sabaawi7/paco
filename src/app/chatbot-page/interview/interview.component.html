@@ -1,6 +1,7 @@
 <div class="interview">
     <div class="questions">
       <div *ngIf="getQuestion(selectedQuestion)">
+
         <h2>{{ getQuestion(selectedQuestion).question }}</h2>
         
         </div>
@@ -11,6 +12,10 @@
                 <span>Weiter </span> 
             </button>
         </div>
+
+        <h2>{{ currentQuestionText  }}</h2>
+      </div>
+
     </div>
   
     <div class="answers">
