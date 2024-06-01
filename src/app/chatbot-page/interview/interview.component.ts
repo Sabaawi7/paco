@@ -6,6 +6,8 @@ import { InterviewService } from '../interview-service.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
+import { AnswersService } from './answers.service';
+
 
 @Component({
   selector: 'app-interview',
@@ -22,12 +24,13 @@ export class InterviewComponent implements OnInit {
   selected: any;
   TextInput: String = '';
   timeoutId: any;
+  selectedAnswers: any[] = [];
 
   currentQuestionText: string = '';
   
-  constructor(private interviewService: InterviewService) { }
+  //constructor(private interviewService: InterviewService) { }
 
-
+  constructor(private answersService: AnswersService, private interviewService: InterviewService) { }
 
   ngOnInit(): void {
 
@@ -37,9 +40,17 @@ export class InterviewComponent implements OnInit {
       // Starten Sie hier die Typewriter-Animation
       this.typeWriter(this.currentQuestionText, 0);
     });
+    this.selectedAnswers = this.answersService.getAnswers(this.selectedQuestion);
+
   }
  
-
+  toggleAnswer(questionNumber: any, answer: any, isSelected: boolean) {
+    if (isSelected) {
+      this.answersService.saveAnswer( questionNumber, answer );
+    } else {
+      this.answersService.deleteAnswer( questionNumber, answer );
+    }
+  }
 
   typeWriter(text: string, i: number) {
     if (i < text.length) {
@@ -54,6 +65,10 @@ export class InterviewComponent implements OnInit {
 
   isQuestionSelected(questionNumber: number): boolean {
     return this.selectedQuestion === questionNumber;
+  }
+
+  isAnswerSelected(answer: any): boolean {
+    return this.selectedAnswers.includes(answer);
   }
 
   navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
