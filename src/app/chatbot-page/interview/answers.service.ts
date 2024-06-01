@@ -27,7 +27,6 @@ private answerdata: any []= [];
 
   // Füge die Antwort zur Frage hinzu
   questionData.answers.push(answer);
-  console.log(this.answerdata);
   }
 
   deleteAnswer(questionNumber: any, answer: any) {

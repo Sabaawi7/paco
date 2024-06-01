@@ -37,6 +37,7 @@ export class InterviewComponent implements OnInit {
     this.interviewService.selectedQuestion$.subscribe(questionNumber => {
       this.selectedQuestion = questionNumber;
       this.currentQuestionText = this.getQuestion(this.selectedQuestion).question;
+      
       // Starten Sie hier die Typewriter-Animation
       this.typeWriter(this.currentQuestionText, 0);
     });
@@ -95,11 +96,17 @@ export class InterviewComponent implements OnInit {
     if (this.selectedQuestion < this.totalQuestions -1) {
       this.selectQuestion(this.selectedQuestion + 1);
     }
+    this.resetToggleButtons();
 
     this.selected = undefined;
     this.TextInput = '';
 
     
+  }
+  resetToggleButtons() {
+    if (this.userSelection) {
+      this.userSelection._buttonToggles.forEach((toggle: any) => toggle.checked = false);
+    }
   }
 
   navigateToPreviousQuestion() {
@@ -109,6 +116,8 @@ export class InterviewComponent implements OnInit {
     if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
     }
+    this.resetToggleButtons();
+
   }
 
   getQuestion(questionNumber: number): Question {
