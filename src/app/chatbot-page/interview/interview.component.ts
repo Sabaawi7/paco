@@ -18,6 +18,7 @@ import { AnswersService } from './answers.service';
 })
 export class InterviewComponent implements OnInit {
 
+
   @ViewChild('userSelection', { static: false }) userSelection: any;
   selectedQuestion: number = 1; // Assuming the default selected question is 1
   totalQuestions: number = this.interviewService.questions.length;
@@ -40,6 +41,19 @@ export class InterviewComponent implements OnInit {
       
       // Starten Sie hier die Typewriter-Animation
       this.typeWriter(this.currentQuestionText, 0);
+
+      // Setzen Sie die ausgewählte Antwort, wenn es sich um eine Dropdown-Frage handelt
+    if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
+      this.selected = this.getSelectedAnswer(this.selectedQuestion);
+    } else {
+      this.selected = undefined;
+    }
+    //writing
+    if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
+      this.TextInput = this.getSelectedAnswer(this.selectedQuestion) || '';
+    } else {
+      this.TextInput = '';
+    }
     });
     this.selectedAnswers = this.answersService.getAnswers(this.selectedQuestion);
 
@@ -53,6 +67,11 @@ export class InterviewComponent implements OnInit {
     }
   }
 
+  saveAnswerText(arg0: any,arg1: any) {
+    this.answersService.saveAnswer(arg0,arg1);
+    }
+
+    
   typeWriter(text: string, i: number) {
     if (i < text.length) {
       this.currentQuestionText = text.substring(0, i + 1);
@@ -67,7 +86,10 @@ export class InterviewComponent implements OnInit {
   isQuestionSelected(questionNumber: number): boolean {
     return this.selectedQuestion === questionNumber;
   }
-
+  getSelectedAnswer(questionNumber: number): any {
+    const answers = this.answersService.getAnswers(questionNumber);
+    return answers.length > 0 ? answers[0] : null; 
+  }
   isAnswerSelected(answer: any): boolean {
     return this.selectedAnswers.includes(answer);
   }
