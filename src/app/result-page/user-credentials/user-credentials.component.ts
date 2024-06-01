@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './user-credentials.component.scss'
 })
 export class UserCredentialsComponent {
+  title:string="Session report";
 name: string= "Max Muster";
 email: string= "maxmuster@gmail.com";
 status: string="Student";

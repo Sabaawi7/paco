@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+.container{
+    padding:50px;
+ }
+
+ .main-content{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: "Rubik", sans-serif;
+
+  
+   
+ }
+
+ .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.feature h2{
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+  
+}
+
+ .feature{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #cccc;
+ }
+
+ .scale-container {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  
+  .scale-progress {
+    height: 100%;
+    background-color: #4caf50;
+    width: 0;
+    border-radius: 15px 0 0 15px;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 35px;
+  }
+  
+  .scale-labels div {
+    text-align: center;
+    width: 10%;
+    font-family: "Rubik", sans-serif;
+  }.colorful-progress {
+    background-color: var(--color-primary) !important; /* Setze hier die Farbe des gefärbten Teils */
+  }
