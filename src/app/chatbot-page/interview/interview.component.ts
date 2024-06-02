@@ -166,6 +166,8 @@ export class InterviewComponent implements OnInit {
   navigateToPreviousQuestion() {
     if (this.selectedQuestion != 0) {
       clearTimeout(this.timeoutId)
+    }else{
+      return;
     }
     if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
