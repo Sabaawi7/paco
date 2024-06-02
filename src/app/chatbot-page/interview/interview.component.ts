@@ -44,16 +44,21 @@ export class InterviewComponent implements OnInit {
 
       // Setzen Sie die ausgewählte Antwort, wenn es sich um eine Dropdown-Frage handelt
     if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
-      this.selected = this.getSelectedAnswer(this.selectedQuestion);
+      this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
     } else {
       this.selected = undefined;
     }
     //writing
     if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
-      this.TextInput = this.getSelectedAnswer(this.selectedQuestion) || '';
+      this.TextInput = this.answersService.getAnswers(this.selectedQuestion)[0];
     } else {
       this.TextInput = '';
     }
+
+        // Zurücksetzen der Auswahl für Multiple-Choice-Fragen
+        if (this.userSelection) {
+          this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
+        }
     });
 
   }
@@ -66,8 +71,16 @@ export class InterviewComponent implements OnInit {
     }
   }
 
+  toggleOnlyOneAnswer(questionNumber: any, answer: any, isSelected: boolean) {
+    if (isSelected) {
+      this.answersService.saveOnlyOneAnswer( questionNumber, answer );
+    } else {
+      this.answersService.deleteAnswer( questionNumber, answer );
+    }
+  }
+
   saveAnswerText(arg0: any,arg1: any) {
-    this.answersService.saveAnswer(arg0,arg1);
+    this.answersService.saveOnlyOneAnswer(arg0,arg1);
     }
 
     
@@ -124,7 +137,22 @@ export class InterviewComponent implements OnInit {
 
     this.selected = undefined;
     this.TextInput = '';
-
+      // Setzen Sie die ausgewählte Antwort, wenn es sich um eine Dropdown-Frage handelt
+      if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
+        this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
+      } else {
+        this.selected = undefined;
+      }
+      //writing
+      if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
+        this.TextInput = this.answersService.getAnswers(this.selectedQuestion)[0];
+      } else {
+        this.TextInput = '';
+      }
+          // Zurücksetzen der Auswahl für Multiple-Choice-Fragen
+    if (this.userSelection) {
+      this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
+    }
     
   }
   resetToggleButtons() {
@@ -141,7 +169,23 @@ export class InterviewComponent implements OnInit {
       this.selectQuestion(this.selectedQuestion - 1);
     }
     this.resetToggleButtons();
-
+  // Setzen Sie die ausgewählte Antwort, wenn es sich um eine Dropdown-Frage handelt
+  if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
+    this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
+  } else {
+    this.selected = undefined;
+  }
+  //writing
+  if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
+    this.TextInput = this.answersService.getAnswers(this.selectedQuestion)[0];
+  } else {
+    this.TextInput = '';
+    
+  }
+      // Zurücksetzen der Auswahl für Multiple-Choice-Fragen
+      if (this.userSelection) {
+        this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
+      }
   }
 
   getQuestion(questionNumber: number): Question {

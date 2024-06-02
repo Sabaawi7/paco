@@ -30,7 +30,7 @@
             <!-- Single Choice--> 
             <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">
                 <mat-button-toggle-group [hideSingleSelectionIndicator]="true" #userSelection="matButtonToggleGroup">
-                    <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
+                    <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleOnlyOneAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
 
