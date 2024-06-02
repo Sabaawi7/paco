@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 .container{
     padding:50px;
+ 
  }
 
  .main-content{
@@ -56,15 +57,33 @@
     background-color: var(--color-primary) !important; /* Setze hier die Farbe des gefärbten Teils */
   }
 
-/* Media Queries für verschiedene Bildschirmgrößen */
-@media screen and (min-width: 768px) {
-  .feature-grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* Media Queries für kleinere Bildschirme */
+  @media (max-width: 1024px) {
+    .feature-grid {
+        grid-template-columns: 1fr 1fr; /* Zwei Spalten für mittlere Bildschirme */
+    }
   }
-}
-
-@media screen and (min-width: 1024px) {
-  .feature-grid {
-    grid-template-columns: repeat(3, 1fr);
+  
+  @media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr; /* Eine Spalte für kleine Bildschirme */
+    }
   }
-}
+  
+  @media (max-width: 480px) {
+    .container {
+        padding: 20px; /* Weniger Padding für sehr kleine Bildschirme */
+    }
+  
+    .main-content {
+        padding: 10px; /* Weniger Padding für sehr kleine Bildschirme */
+    }
+  
+    .feature {
+        padding: 10px; /* Weniger Padding für sehr kleine Bildschirme */
+    }
+  
+    .scale-container {
+        width: 100%; /* Volle Breite für sehr kleine Bildschirme */
+    }
+  }
