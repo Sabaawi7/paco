@@ -25,7 +25,7 @@ export class InterviewComponent implements OnInit {
   selected: any;
   TextInput: String = '';
   timeoutId: any;
-  selectedAnswers: any[] = [];
+  //selectedAnswers: any[] = [];
 
   currentQuestionText: string = '';
   
@@ -55,7 +55,6 @@ export class InterviewComponent implements OnInit {
       this.TextInput = '';
     }
     });
-    this.selectedAnswers = this.answersService.getAnswers(this.selectedQuestion);
 
   }
  
@@ -91,7 +90,10 @@ export class InterviewComponent implements OnInit {
     return answers.length > 0 ? answers[0] : null; 
   }
   isAnswerSelected(answer: any): boolean {
-    return this.selectedAnswers.includes(answer);
+    const selectedAnswers = this.answersService.getAnswers(this.selectedQuestion);
+
+    //console.log(selectedAnswers)
+    return selectedAnswers.includes(answer);
   }
 
   navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
