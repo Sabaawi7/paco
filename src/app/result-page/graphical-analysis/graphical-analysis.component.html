@@ -1,87 +1,15 @@
 <div class="container">
-
   <h1>{{title}}</h1>
   
   <div class="main-content">
-
-      <div class="feature-grid">
-
-          <div class="feature">
-              <h2>{{featureOne_title}}</h2>
-              
-              <div class="scale-container">
-                  <div class="scale-progress" [style.width.%]="percentage"[ngClass]="{ 'colorful-progress': percentage >= 50 }"></div>
-                  <div class="scale-labels">
-                    <div *ngFor="let num of scaleValues">{{ num }}</div>
-                  </div>
-                </div>
-  
-          </div>
-          <div class="feature">
-              <h2>{{featureTwo_title}}</h2>
-
-              <div class="scale-container">
-                  <div class="scale-progress" [style.width.%]="percentage"[ngClass]="{ 'colorful-progress': percentage >= 50 }"></div>
-                  <div class="scale-labels">
-                    <div *ngFor="let num of scaleValues">{{ num }}</div>
-                  </div>
-                </div>
-  
-  
-          </div>
-          <div class="feature">
-              <h2>{{featureThree_title}}</h2>
-
-              <div class="scale-container">
-                  <div class="scale-progress" [style.width.%]="percentage"[ngClass]="{ 'colorful-progress': percentage >= 50 }"></div>
-                  <div class="scale-labels">
-                    <div *ngFor="let num of scaleValues">{{ num }}</div>
-                  </div>
-                </div>
-  
-  
-          </div>
-          <div class="feature">
-              <h2>{{featureFour_title}}</h2>
-
-              <div class="scale-container">
-                  <div class="scale-progress" [style.width.%]="percentage"[ngClass]="{ 'colorful-progress': percentage >= 50 }"></div>
-                  <div class="scale-labels">
-                    <div *ngFor="let num of scaleValues">{{ num }}</div>
-                  </div>
-                </div>
-  
-  
-          </div>
-          <div class="feature">
-              <h2>{{featureFive_title}}</h2>
-
-              <div class="scale-container">
-                  <div class="scale-progress" [style.width.%]="percentage"[ngClass]="{ 'colorful-progress': percentage >= 50 }"></div>
-                  <div class="scale-labels">
-                    <div *ngFor="let num of scaleValues">{{ num }}</div>
-                  </div>
-                </div>
-  
-  
-          </div>
-          <div class="feature">
-              <h2>{{featureSix_title}}</h2>
-
-              <div class="scale-container">
-                  <div class="scale-progress" [style.width.%]="percentage"[ngClass]="{ 'colorful-progress': percentage >= 50 }"></div>
-                  <div class="scale-labels">
-                    <div *ngFor="let num of scaleValues">{{ num }}</div>
-                  </div>
-                </div>
-  
-  
-          </div>
-
+    <div class="feature-grid">
+      <div class="feature" *ngFor="let feature of features; let i = index">
+        <h2>{{feature.title}}</h2>
+        <mat-progress-bar mode="determinate" [value]="(i + 1) * 10"></mat-progress-bar>
+        <div class="scale-labels">
+          <div *ngFor="let num of scaleValues">{{ num }}</div>
+        </div>
       </div>
-
-   
-  
+    </div>
   </div>
 </div>
-      
