@@ -10,12 +10,12 @@ import { NgFor } from '@angular/common';
 })
 export class GraphicalAnalysisComponent {
 title:string="Interview intelligence";
-featureOne_title: string="Attitude";
-featureTwo_title: string="Role-related knowledge";
-featureThree_title: string="Workplace culture";
-featureFour_title: string="Communication";
-featureFive_title: string="Confidence";
-featureSix_title: string="Problem-solving";
+featureOne_title: string="Praktisch-Anwendungsorientiert";
+featureTwo_title: string="Analytisch-Problemlösend";
+featureThree_title: string="Kreativ-Innovativ";
+featureFour_title: string="Kommunikativ-Interpersonell";
+featureFive_title: string="Selbstbewusst-Ambitioniert";
+featureSix_title: string="Fleißig-Diszipliniert";
 value = 7; // Example value
 maxValue = 10;
 percentage = 0;
