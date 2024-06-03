@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {MatTabsModule} from '@angular/material/tabs';
 @Component({
   selector: 'app-user-credentials',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive,RouterOutlet],
+  imports: [RouterLink,RouterLinkActive,RouterOutlet, MatTabsModule],
   templateUrl: './user-credentials.component.html',
   styleUrl: './user-credentials.component.scss'
 })
