@@ -16,13 +16,13 @@
                 <h2>{{ currentQuestion }}</h2>
             </div>
             <div>
-                <p>Der Fragentyp lautet: {{ currentAnswerType }}</p>
+                <p>Der Fragentyp lautet: <br> {{ currentAnswerType }}</p>
             </div>
-            <div>
-                <p>Deine Ausgewählten Antworten: {{ currentSelectedAnswer }}</p>
+            <div class="selectedAnswers">
+                <p>Deine Ausgewählten Antworten:  <br> {{ currentSelectedAnswer }}</p>
             </div>
-            <div  *ngIf="currentAnswerType == 'single_choice' || currentAnswerType == 'multiple_choice'">
-                <p>Deine nicht ausgewählten Antworten: {{ currentAnswer }}</p>
+            <div class="allAnswers" *ngIf="currentAnswerType == 'single_choice' || currentAnswerType == 'multiple_choice' || currentAnswerType == 'Multiple-Choice Frage' || currentAnswerType == 'Single-Choice Frage'">
+                <p>Deine nicht ausgewählten Antworten: <br> <br> {{ currentAnswer }}</p>
             </div>
         </div>
     </div>

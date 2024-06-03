@@ -21,8 +21,8 @@ export class ResponseOverviewComponent implements OnInit{
   questions: string[] = [];
   selectedIndex = 0; 
   currentQuestion: string = this.questions[this.selectedIndex]; 
-  currentAnswerType: string= this.interviewService.getQuestion(this.selectedIndex).answer_type;
-  currentSelectedAnswer: string = this.answersService.getAnswers(this.selectedIndex);
+  currentAnswerType: string= this.getQuestionTypeDisplay(this.interviewService.getQuestion(this.selectedIndex).answer_type);
+  currentSelectedAnswer: any = this.answersService.getAnswers(this.selectedIndex);
   currentAnswer: any[] = [];
   
   
@@ -31,21 +31,45 @@ ngOnInit(): void {
     this.questions.push(this.interviewService.getQuestion(i).question);
   }
   this.currentQuestion= this.questions[this.selectedIndex];
-  this.currentAnswerType= this.interviewService.getQuestion(this.selectedIndex).answer_type;
+  this.currentAnswerType= this.getQuestionTypeDisplay(this.interviewService.getQuestion(this.selectedIndex).answer_type);
   this.currentSelectedAnswer= this.answersService.getAnswers(this.selectedIndex); 
-  this.currentAnswer = this.getAnswersArray(this.getQuestion(this.selectedIndex).answers || []);
+  this.currentAnswer = this.addSpaceToArray(this.getAnswersArray(this.getQuestion(this.selectedIndex).answers || []));
 }
 
 showDetails(question: number): void {
-  this.currentAnswer = this.getAnswersArray(this.getQuestion(question).answers || []);
+  this.currentQuestion= this.questions[this.selectedIndex];
+  this.currentAnswerType= this.getQuestionTypeDisplay(this.interviewService.getQuestion(this.selectedIndex).answer_type);
+  this.currentSelectedAnswer= this.answersService.getAnswers(this.selectedIndex); 
+  this.currentAnswer = this.addSpaceToArray(this.getAnswersArray(this.getQuestion(question).answers || []));
 }
 
 selectButton(index: number): void {
   this.selectedIndex = index;
 }
 
+addSpaceAfterComma(inputString: string): string {
+  return inputString.replace(/,/g, ', ');
+}
 
+addSpaceToArray(inputArray: any): any {
+  console.log(inputArray)
+  return inputArray.map((entry: string) => ' '+entry );
+}
 
+getQuestionTypeDisplay(questionType: string): string {
+  switch (questionType) {
+      case 'single_choice':
+          return 'Single-Choice Frage';
+      case 'multiple_choice':
+          return 'Multiple-Choice Frage';
+      case 'dropdown':
+          return 'Dropdown auswahl';
+      case 'writing':
+          return 'Schreibfrage';
+      default:
+          return questionType;
+  }
+}
 
 
 
