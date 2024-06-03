@@ -19,10 +19,11 @@ import { MaterialModule } from '../material/material.module';
 export class LandingPageComponent implements OnInit{
 
   /**
-   * Text auf der Seite und die Übersetzung
+   * 
+Text on the page and the translation;
   */
  
-  //default werte
+  //default values;
   title_h1: string = '';
   title_p: string = ''; 
   title_h2: string = '';
@@ -35,6 +36,7 @@ export class LandingPageComponent implements OnInit{
 
 
   ngOnInit(): void {
+
      const selectedLang = localStorage.getItem('lang'); 
      if (selectedLang === 'de' || selectedLang== null) {
          this.title_h1 = 'Willkommen bei PACO';
@@ -64,26 +66,26 @@ export class LandingPageComponent implements OnInit{
 
   }
 
-   // Variable, die den Zustand der Cookie-Benachrichtigung speichert
+   
    showCookieNotification = true;
 
-   // Methode, die aufgerufen wird, wenn der Benutzer die Cookies akzeptiert oder ablehnt
+
    onClose(): void {
-     // Setze den Zustand von showCookieNotification auf false, um die Benachrichtigung auszublenden
+
      this.showCookieNotification = false;
    }
  
-   // Methode, die aufgerufen wird, wenn der Benutzer die Cookies akzeptiert
+
    onAccept(): void {
-     // Rufe die Methode onClose auf, um die Benachrichtigung auszublenden
+    
      this.onClose();
-     // Weitere Logik hier ...
+   
    }
  
-   // Methode, die aufgerufen wird, wenn der Benutzer die Cookies ablehnt
+ 
    onDecline(): void {
-     // Rufe die Methode onClose auf, um die Benachrichtigung auszublenden
+    
      this.onClose();
-     // Weitere Logik hier ...
+     
    }
 }

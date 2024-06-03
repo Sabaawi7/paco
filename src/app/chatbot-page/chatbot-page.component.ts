@@ -19,6 +19,7 @@ import { TokenService } from './token.service';
 })
 
 export class ChatbotPageComponent implements OnInit {
+  
   answeredQuestions = 3;
   totalQuestions = 10;
   progressValue!: number;

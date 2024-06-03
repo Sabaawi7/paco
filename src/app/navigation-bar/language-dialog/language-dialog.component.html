@@ -7,19 +7,18 @@
       <br />
       <mat-form-field>
         <mat-label>Choose your language</mat-label>
-        <!-- Hier wird das Dropdown-Menü mit den Sprachoptionen definiert -->
-
+        <!-- Here is the dropdown menu with the language selection defined -->
         <mat-select value="selectedOption" class="form-select" (selectionChange)="ChangeLang($event)">
-          <mat-option (click)="applyLanguage()" value="de" class="flag-option"> 
+          <mat-option (click)="applyLanguage()" value="de" class="flag-option">
             <span class="flag-icon germany"></span>
             German
           </mat-option>
-          <mat-option (click)="applyLanguage()" value="en" class="flag-option"> 
+          <mat-option (click)="applyLanguage()" value="en" class="flag-option">
             <span class="flag-icon uk"></span> <!-- Hinzugefügt: Span-Element für die Flagge -->
             English
           </mat-option>
         </mat-select>
-
       </mat-form-field>
-  
+    </div>
+  </div>
 </div>

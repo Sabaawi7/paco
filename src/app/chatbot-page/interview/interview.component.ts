@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import interviewJson from '../../../assets/interview.json';
 import { Question } from './question.model';
 import { MaterialModule } from '../../material/material.module';
 import { InterviewService } from '../interview-service.service';
@@ -7,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { AnswersService } from './answers.service';
-
 
 @Component({
   selector: 'app-interview',
@@ -18,57 +16,67 @@ import { AnswersService } from './answers.service';
 })
 export class InterviewComponent implements OnInit {
 
-
+  // ViewChild to access MatButtonToggleGroup;
   @ViewChild('userSelection', { static: false }) userSelection: any;
-  selectedQuestion: number = 1; // Assuming the default selected question is 1
+
+    // Default selected question and total number of questions;
+  selectedQuestion: number = 1; // Assuming the default selected question is 1;
   totalQuestions: number = this.interviewService.questions.length;
+    
+  // Variables for selected answer and text input;
   selected: any;
   TextInput: String = '';
   timeoutId: any;
-
   currentQuestionText: string = '';
 
   constructor(private answersService: AnswersService, private interviewService: InterviewService) { }
 
-
+    // Initialize component;
   ngOnInit(): void {
 
+     // Subscribe to selectedQuestion changes;
     this.interviewService.selectedQuestion$.subscribe(questionNumber => {
+
+        // Update selectedQuestion and currentQuestionText;
       this.selectedQuestion = questionNumber;
       this.currentQuestionText = this.getQuestion(this.selectedQuestion).question;
 
-      // Starten Sie hier die Typewriter-Animation
+      // Start typeWriter animation;
       this.typeWriter(this.currentQuestionText, 0);
 
-      // dropdown
+    
+      // Set selected and TextInput based on question type; 
       if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
         this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
       } else {
         this.selected = undefined;
       }
-      //writing
+      
       if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
         this.TextInput = this.answersService.getAnswers(this.selectedQuestion)[0];
       } else {
         this.TextInput = '';
       }
-      // Zurücksetzen der Auswahl für Multiple-Choice-Fragen
+         // Reset selection for multiple choice questions;
       if (this.userSelection) {
         this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
       }
     });
   }
 
-  
+    // Toggle multiple choice answer;
   toggleAnswer(questionNumber: any, answer: any, isSelected: boolean) {
+
     if (isSelected) {
       this.answersService.saveAnswer(questionNumber, answer);
     } else {
       this.answersService.deleteAnswer(questionNumber, answer);
     }
   }
-  
+
+    // Toggle single choice answer;
   toggleOnlyOneAnswer(questionNumber: any, answer: any, isSelected: boolean) {
+
     if (isSelected) {
       this.answersService.saveOnlyOneAnswer(questionNumber, answer);
     } else {
@@ -76,45 +84,59 @@ export class InterviewComponent implements OnInit {
     }
   }
 
-
-  //Nur eine einzige Antwort soll gespeichert werden (single choice, Text, dropdown)
+  
+  // Save single answer (single choice, text, dropdown);
   saveAnswerText(arg0: any, arg1: any) {
+
     this.answersService.saveOnlyOneAnswer(arg0, arg1);
   }
 
-  //Stream der Antworten
+  
+  // Typewriter animation for displaying question text;
   typeWriter(text: string, i: number) {
+
     if (i < text.length) {
       this.currentQuestionText = text.substring(0, i + 1);
       this.timeoutId = setTimeout(() => this.typeWriter(text, i + 1), 100);
     }
+
   }
 
+    // Select a specific question;
   selectQuestion(questionNumber: number) {
+
     this.interviewService.selectQuestion(questionNumber);
   }
 
+  // Check if a question is selected;
   isQuestionSelected(questionNumber: number): boolean {
+
     return this.selectedQuestion === questionNumber;
   }
 
-  //Gibt nur die erste Antwort zurück(Sinnvoll bei single choice, Text, dropdown)
+  // Get selected answer for a question;
   getSelectedAnswer(questionNumber: number): any {
+
     const answers = this.answersService.getAnswers(questionNumber);
     return answers.length > 0 ? answers[0] : null;
   }
 
-  //guckt ob eine Antwort einer speziellen frage ausgewählt wurde
+  // Check if an answer is selected for the current question;
   isAnswerSelected(answer: any): boolean {
+
     const selectedAnswers = this.answersService.getAnswers(this.selectedQuestion);
     return selectedAnswers.includes(answer);
   }
 
-
+    // Navigate to the next question;
   navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+
+        // Clear timeout if not the last question;
     if (this.selectedQuestion != this.totalQuestions - 1) {
       clearTimeout(this.timeoutId)
     }
+
+     // Mark question as answered based on user selection;
     const currentValue = this.userSelection?.value;
     if (this.userSelection !== undefined && this.userSelection.name.startsWith('mat-button-toggle-group')) {
       if (currentValue !== undefined && currentValue.length > 0) {
@@ -128,52 +150,55 @@ export class InterviewComponent implements OnInit {
       console.log(this.userSelection)
     }
 
+        // Navigate to the next question;
     if (this.selectedQuestion < this.totalQuestions - 1) {
       this.selectQuestion(this.selectedQuestion + 1);
     }
+
+       // Reset selections and prepare for the next question;
     this.resetToggleButtons();
 
     this.selected = undefined;
     this.TextInput = '';
-    // Setzen Sie die ausgewählte Antwort, wenn es sich um eine Dropdown-Frage handelt
+    // Set selected answer for dropdown and writing questions;
     if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
       this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
     } else {
       this.selected = undefined;
     }
-    //writing
+    //writing;
     if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
       this.TextInput = this.answersService.getAnswers(this.selectedQuestion)[0];
     } else {
       this.TextInput = '';
     }
-    // Zurücksetzen der Auswahl für Multiple-Choice-Fragen
+       // Reset selection for multiple choice questions;
     if (this.userSelection) {
       this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
     }
-
   }
 
-
-
+    // Reset toggle buttons for multiple choice questions
   resetToggleButtons() {
+
     if (this.userSelection) {
       this.userSelection._buttonToggles.forEach((toggle: any) => toggle.checked = false);
     }
   }
 
-
   navigateToPreviousQuestion() {
+
     if (this.selectedQuestion != 0) {
       clearTimeout(this.timeoutId)
-    }else{
+    } else {
       return;
     }
     if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
     }
     this.resetToggleButtons();
-    // Setzen Sie die ausgewählte Antwort, wenn es sich um eine Dropdown-Frage handelt
+
+    //Set the selected answer if it is a dropdown question;
     if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
       this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
     } else {
@@ -185,24 +210,23 @@ export class InterviewComponent implements OnInit {
     } else {
       this.TextInput = '';
     }
-    // Zurücksetzen der Auswahl für Multiple-Choice-Fragen
+   
+// Reset the selection for multiple choice questions;
     if (this.userSelection) {
       this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
     }
   }
 
-
   getQuestion(questionNumber: number): Question {
+
     return this.interviewService.getQuestion(questionNumber);
   }
 
-
   getAnswersArray(answers: string[] | number[]): (string | number)[] {
+    
     if (Array.isArray(answers)) {
       return answers;
     }
     return [];
   }
-
-
 }

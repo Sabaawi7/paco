@@ -14,7 +14,6 @@
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  
     width: 400px;
     height: 500px;
     display: flex;
@@ -32,13 +31,13 @@
     padding: 10px;
     cursor: pointer;
     position: absolute;
-    top: 10px; /* Abstand zum oberen Rand */
-    right: 10px; /* Abstand zum rechten Rand */
-    outline: none; /* Entfernt die Standard-Umrandung */
+    top: 10px; 
+    right: 10px; 
+    outline: none;
 }
 
 #title {
-    margin-top: 30%; /* Damit der Titel ganz oben ist */
+    margin-top: 30%; 
     font-size: 30px;
     color: black !important;
     font-weight: bold;
@@ -69,28 +68,28 @@
 
 
 .flag-option {
-    background-color: transparent; /* Hintergrundfarbe des Optionsfelds transparent machen */
+    background-color: transparent; 
     font-size: 20px;
    
   }
   
   .flag-icon {
     display: inline-block;
-   width: 20px; /* Breite der Flagge anpassen */
-   height: 20px; /* Höhe der Flagge anpassen */
+   width: 20px; 
+   height: 20px; 
    background-size: cover;
-   margin-right: 10px; /* Abstand zwischen Flagge und Text anpassen */
-   vertical-align: middle; /* Vertikale Ausrichtung der Flagge mittig */
+   margin-right: 10px;
+   vertical-align: middle; 
   }
   
-  //Bildquelle:<a href="https://www.flaticon.com/free-icons/germany" title="germany icons">Germany icons created by Freepik - Flaticon</a>
+  //image source:<a href="https://www.flaticon.com/free-icons/germany" title="germany icons">Germany icons created by Freepik - Flaticon</a>
   .germany {
     background-image: url('../../../assets/germany.png'); /* Pfad zur Deutschlandflagge */
   }
-  //Bildquelle: <a href="https://www.flaticon.com/free-icons/uk-flag" title="uk flag icons">Uk flag icons created by IconsBox - Flaticon</a>
+  //image source: <a href="https://www.flaticon.com/free-icons/uk-flag" title="uk flag icons">Uk flag icons created by IconsBox - Flaticon</a>
   
   .uk {
-    background-image: url('../../../assets/united-kingdom.png'); /* Pfad zur UK-Flagge */
+    background-image: url('../../../assets/united-kingdom.png'); /* link to uk flag */
   }
 
 @media screen and (max-width: 768px) {

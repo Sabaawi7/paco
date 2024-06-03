@@ -1,4 +1,4 @@
-#tokendiv{
+#tokendiv {
   background-color: var(--color-primary);
   color: white;
   max-width: fit-content;
@@ -9,10 +9,11 @@
 }
 
 .interview-container {
-  max-width: 100%; // Maximal so breit wie Chatfeld
-  width: 90%; // Volle Breite des Elternelements
-  margin: 0 auto; // Zentriert die Fortschrittsleiste
+  max-width: 100%; 
+  width: 90%; 
+  margin: 0 auto; 
 }
+
 @keyframes fade-up {
   0% {
     opacity: 0;
@@ -23,7 +24,8 @@
     transform: translate(0px) scale(1);
   }
 }
-.intro{
+
+.intro {
   padding-top: 125px;
   animation: fade-up 0.7s;
 }

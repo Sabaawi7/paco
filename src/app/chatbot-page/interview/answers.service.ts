@@ -1,30 +1,35 @@
-// answers.service.ts
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AnswersService {
 
   private answerdata: any[] = [];
 
-
+//Stores the answer for a question;
   saveAnswer(questionNumber: any, answer: any) {
-    // Suche die Frage in den Daten
+
+    // Search for the question in the data;
     let questionData = this.answerdata.find(q => q.question === questionNumber);
-    // Wenn die Frage nicht gefunden wurde, erstelle eine neue Frage
+
+    // If the question was not found, create a new question;
     if (!questionData) {
       questionData = { question: questionNumber, answers: [] };
       this.answerdata.push(questionData);
     }
-    // Füge die Antwort zur Frage hinzu
+    // Add the answer to the question;
     questionData.answers.push(answer);
+
     console.log(this.answerdata);
   }
 
 
-  //Speichert nur eine Antwort, wird für single choice, Text, dropdown verwendet
+  
+//Stores only one answer, used for single choice, text, dropdown;
   saveOnlyOneAnswer(questionNumber: any, answer: any) {
+
     let questionData = this.answerdata.find(q => q.question === questionNumber);
 
     if (!questionData) {
@@ -37,19 +42,20 @@ export class AnswersService {
   }
 
 
-
+//Deletes an answer for a question;
   deleteAnswer(questionNumber: any, answer: any) {
+
     let questionData = this.answerdata.find(q => q.question === questionNumber);
-    // Wenn die Frage nicht gefunden wurde, breche ab
+    //If the question was not found, cancel;
     if (!questionData) {
       return;
     }
-    // Lösche die Antwort aus der Frage
+    // Delete the answer from the question;
     const answerIndex = questionData.answers.indexOf(answer);
     if (answerIndex >= 0) {
       questionData.answers.splice(answerIndex, 1);
     }
-    // Wenn keine Antworten mehr vorhanden sind, lösche die Frage
+    // If there are no more answers, delete the question;
     if (questionData.answers.length === 0) {
       const questionIndex = this.answerdata.indexOf(questionData);
       this.answerdata.splice(questionIndex, 1);
@@ -58,12 +64,16 @@ export class AnswersService {
 
 
 
-  //Gibt die ausgewählten Antworten zu einer Frage zurück
+  //Returns the selected answers to a question;
   getAnswers(questionNumber: any) {
+
     let questionData = this.answerdata.find(q => q.question === questionNumber);
+
     if (!questionData) {
+
       return [];
     }
     return questionData.answers;
   }
+  
 }
