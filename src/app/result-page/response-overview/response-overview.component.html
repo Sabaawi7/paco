@@ -1,1 +1,30 @@
-<p>response-overview works!</p>
+<div class="container">
+    <h1>Response assessment</h1>
+    
+    <div class="main-content">
+        <div class="feature-grid">
+            <button mat-raised-button class="feature" *ngFor="let question of questions; let i = index"
+            [ngClass]="{'selected': selectedIndex === i}" 
+            (click)="selectButton(i); showDetails(i)">
+                <h2>{{question}}</h2>
+            </button>
+             
+            
+        </div>
+        <div class="question_details"> 
+            <div>
+                <h2>{{ currentQuestion }}</h2>
+            </div>
+            <div>
+                <p>Der Fragentyp lautet: {{ currentAnswerType }}</p>
+            </div>
+            <div>
+                <p>Deine Ausgewählten Antworten: {{ currentSelectedAnswer }}</p>
+            </div>
+            <div  *ngIf="currentAnswerType == 'single_choice' || currentAnswerType == 'multiple_choice'">
+                <p>Deine nicht ausgewählten Antworten: {{ currentAnswer }}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
