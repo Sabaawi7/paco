@@ -6,9 +6,6 @@
   <div class="interview-container">
     <div>
       <app-progressbar2 [currentQuestionIndex]="currentQuestionIndex" [questions]="questions" (navigate)="navigateToQuestion($event)"></app-progressbar2>
-      <div *ngIf="questions.length > 0">
-        <h2>{{ questions[currentQuestionIndex].question }}</h2>
-      </div>
     </div>
 
     <app-interview></app-interview>

@@ -6,11 +6,13 @@ import { InterviewService } from '../interview-service.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
+import { __importStar } from 'tslib';
+import { Progressbar2Component } from '../progressbar2/progressbar2.component';
 
 @Component({
   selector: 'app-interview',
   templateUrl: './interview.component.html',
-  imports: [MaterialModule, CommonModule, FormsModule],
+  imports: [MaterialModule, CommonModule, FormsModule, Progressbar2Component],
   standalone: true,
   styleUrls: ['./interview.component.scss']
 })
@@ -22,7 +24,9 @@ export class InterviewComponent implements OnInit {
   selected: any;
   TextInput: String = '';
   
-  constructor(private interviewService: InterviewService) { }
+  constructor(private interviewService: InterviewService) {
+    
+  }
 
   ngOnInit(): void {
     // Subscribe to selectedQuestion$ to get notified of changes
@@ -58,17 +62,19 @@ export class InterviewComponent implements OnInit {
 
     if (this.selectedQuestion < this.totalQuestions -1) {
       this.selectQuestion(this.selectedQuestion + 1);
+      this.interviewService.nextQuestion();
     }
 
     this.selected = undefined;
     this.TextInput = '';
-
+    
     
   }
 
   navigateToPreviousQuestion() {
     if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
+      this.interviewService.prevQuestion();
     }
   }
 

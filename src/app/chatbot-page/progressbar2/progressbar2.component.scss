@@ -5,6 +5,7 @@
   
   .progress-text {
     cursor: pointer;
+    font-size: 25px;
   }
   
   .question-overview {
@@ -12,9 +13,13 @@
     top: 100%;
     left: 0;
     background-color: white;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     z-index: 10;
     width: 300px; /* Passe die Breite nach Bedarf an */
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 0px 25px 5px;
+    border-radius: 28px;
+    padding: 15px ;
+    
   }
   
   .question-overview ul {
@@ -24,8 +29,8 @@
   }
   
   .question-overview li {
-    padding: 8px;
-    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    border-bottom: 1px solid black;
   }
   
   .question-overview li a {
