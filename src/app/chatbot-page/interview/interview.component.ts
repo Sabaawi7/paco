@@ -62,7 +62,7 @@ export class InterviewComponent implements OnInit {
 
     if (this.selectedQuestion < this.totalQuestions -1) {
       this.selectQuestion(this.selectedQuestion + 1);
-      this.interviewService.nextQuestion();
+      
     }
 
     this.selected = undefined;
@@ -74,7 +74,7 @@ export class InterviewComponent implements OnInit {
   navigateToPreviousQuestion() {
     if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
-      this.interviewService.prevQuestion();
+      
     }
   }
 

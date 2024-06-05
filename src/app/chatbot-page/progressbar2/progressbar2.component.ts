@@ -21,7 +21,7 @@ export class Progressbar2Component {
   constructor(private interviewService: InterviewService) { }
 
   get progressText(): string {
-    return `${"0" + this.interviewService.getQuestionIndex()}/${"0" + this.questions.length}`;
+    return `${"0" + this.interviewService.getQuestionIndex() }/${"0" + this.questions.length}`;
   }
 
   

@@ -15,33 +15,43 @@
     background-color: white;
     border: 1px solid black;
     z-index: 10;
-    width: 300px; /* Passe die Breite nach Bedarf an */
+    width: 300px; 
     box-shadow: rgba(0, 0, 0, 0.07) 0px 0px 25px 5px;
     border-radius: 28px;
     padding: 15px ;
-    
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   
   .question-overview ul {
     list-style: none;
     margin: 0;
     padding: 0;
+   
   }
   
   .question-overview li {
     padding: 10px;
     border-bottom: 1px solid black;
+    
+  }
+
+  .question-overview li:last-child{
+    border-bottom : none;
   }
   
   .question-overview li a {
     text-decoration: none;
     color: black;
-    cursor: pointer;
+   
   }
   
-  .question-overview li a:hover {
-    background-color: #f0f0f0;
+  .question-overview li:hover{
+    background-color: var(--color-primary);
+    cursor: pointer;
+    color: white;
   }
+  
   
   
   
