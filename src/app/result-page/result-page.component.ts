@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { UserCredentialsComponent } from './user-credentials/user-credentials.component';
+import { ResponseOverviewComponent } from './response-overview/response-overview.component';
 import { DateAnalysisComponent } from './date-analysis/date-analysis.component';
 
 @Component({
   selector: 'app-result-page',
   standalone: true,
-  imports: [NavigationBarComponent,UserCredentialsComponent,DateAnalysisComponent],
+  imports: [NavigationBarComponent, UserCredentialsComponent,ResponseOverviewComponent, DateAnalysisComponent],
   templateUrl: './result-page.component.html',
   styleUrl: './result-page.component.scss'
 })

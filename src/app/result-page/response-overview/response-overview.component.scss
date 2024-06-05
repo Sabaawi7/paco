@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+.container{
+    padding:50px;
+    box-sizing: border-box;
+ }
+
+ .main-content{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: "Rubik", sans-serif;
+
+ }
+ .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding:20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.feature h2{
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+}
+ .feature{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #cccc;
+    cursor: pointer;
+ }
+ .allAnswers{
+    margin-top: 15px;
+    background-color: rgb(243, 243, 243);
+    padding: 2px;
+    border-radius: 10px;
+    border: 1px solid #cccc;
+ }
+.selected {
+    box-shadow: 0 0 10px var(--color-primary);
+    animation: glow 1s infinite alternate;
+}
+ .question_details{
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #cccc;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    overflow: auto; 
+    
+}
+.selectedAnswers{
+    background-color: white;
+    padding: 2px;
+    border-radius: 10px;
+    border: 1px solid #cccc;
+}
+ 
+@media (max-width: 880px) {
+    .feature h2{
+        font-size: 11px;
+    }
+    .main-content {
+        grid-template-columns: 1fr; /* Nur eine Spalte */
+        grid-template-rows: auto 1fr; /* Erst feature-grid, dann question_details */
+    }
+
+    .feature-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 10px; /* Reduziertes Padding für bessere Anzeige auf kleinen Bildschirmen */
+        gap: 10px; 
+    }
+
+    .question_details {
+        grid-row: 2 / 3; /* Zweite Zeile im Grid */
+        padding: 20px; /* Weniger Padding für kleinere Bildschirme */
+        font-size: 11px;
+    }
+
+    .container {
+        padding: 20px; /* Weniger Padding für kleinere Bildschirme */
+    }
+    .feature{
+        padding: 10px;
+        min-width: 150px;
+    }
+}
