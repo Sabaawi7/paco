@@ -23,8 +23,7 @@ export class ResponseOverviewComponent implements OnInit{
   currentQuestion: string = this.questions[this.selectedIndex]; 
   currentAnswerType: string= this.getQuestionTypeDisplay(this.interviewService.getQuestion(this.selectedIndex).answer_type);
   currentSelectedAnswer: any = this.answersService.getAnswers(this.selectedIndex);
-  currentAnswer: any[] = [];
-  
+  currentAnswer: any[] = [];  
   
 ngOnInit(): void {
   for(let i=0; i < this.totalQuestions; i++){
@@ -32,15 +31,18 @@ ngOnInit(): void {
   }
   this.currentQuestion= this.questions[this.selectedIndex];
   this.currentAnswerType= this.getQuestionTypeDisplay(this.interviewService.getQuestion(this.selectedIndex).answer_type);
-  this.currentSelectedAnswer= this.answersService.getAnswers(this.selectedIndex); 
+  this.currentSelectedAnswer= this.addSpaceToArray(this.answersService.getAnswers(this.selectedIndex)); 
   this.currentAnswer = this.addSpaceToArray(this.getAnswersArray(this.getQuestion(this.selectedIndex).answers || []));
+  this.currentAnswer = this.compareArrays(this.currentAnswer, this.currentSelectedAnswer);
 }
 
 showDetails(question: number): void {
   this.currentQuestion= this.questions[this.selectedIndex];
   this.currentAnswerType= this.getQuestionTypeDisplay(this.interviewService.getQuestion(this.selectedIndex).answer_type);
-  this.currentSelectedAnswer= this.answersService.getAnswers(this.selectedIndex); 
+  this.currentSelectedAnswer= this.addSpaceToArray(this.answersService.getAnswers(this.selectedIndex)); 
+  console.log(this.currentSelectedAnswer)
   this.currentAnswer = this.addSpaceToArray(this.getAnswersArray(this.getQuestion(question).answers || []));
+  this.currentAnswer = this.compareArrays(this.currentAnswer, this.currentSelectedAnswer);
 }
 
 selectButton(index: number): void {
@@ -69,6 +71,10 @@ getQuestionTypeDisplay(questionType: string): string {
       default:
           return questionType;
   }
+}
+
+compareArrays(allArray: any[], selectedArray: any[]): any[] {
+  return allArray.filter(item => !selectedArray.includes(item));
 }
 
 
