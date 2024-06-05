@@ -8,6 +8,7 @@ import { ChatbotPageComponent } from './chatbot-page/chatbot-page.component';
 import { ConsultantPageComponent } from './consultant-page/consultant-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { ImpressumPageComponent } from './impressum-page/impressum-page.component';
+import { FaqPageComponent } from './faq-page/faq-page.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 
 export const routes: Routes = [
@@ -19,7 +20,8 @@ export const routes: Routes = [
     { path: 'chat', component: ChatbotPageComponent}, //Pfad für Chatseite
     { path: 'contact', component: ContactPageComponent}, //Pfad für Kontaktseite
     { path: 'impressum', component: ImpressumPageComponent}, //Pfad für Impressum seite
-    {path: 'result', component: ResultPageComponent }
+    { path: 'faq', component: FaqPageComponent},
+    { path: 'result', component: ResultPageComponent }
 
 ];
 
