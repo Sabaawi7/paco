@@ -9,15 +9,17 @@ import { ConsultantPageComponent } from './consultant-page/consultant-page.compo
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { ImpressumPageComponent } from './impressum-page/impressum-page.component';
 import { ResultPageComponent } from './result-page/result-page.component';
+
 export const routes: Routes = [
-    { path: '', component: ResultPageComponent},
+    { path: '', component: LandingPageComponent},
     { path: 'login', component: LoginPageComponent },
     { path: 'role', component: RoleselectionComponent}, // Rollenauswahlseite, Puffer um zu testen;
     { path: 'admin', component: AdminPageComponent }, // Pfad für die Admin-Komponente bleibt unverändert, zeigt entweder Superadmin oder Inst. Admin Seite;
     { path: 'consultant', component: ConsultantPageComponent}, //Pfad für Studienberater:in-Seite
     { path: 'chat', component: ChatbotPageComponent}, //Pfad für Chatseite
     { path: 'contact', component: ContactPageComponent}, //Pfad für Kontaktseite
-    { path: 'impressum', component: ImpressumPageComponent} //Pfad für Impressum seite
+    { path: 'impressum', component: ImpressumPageComponent}, //Pfad für Impressum seite
+    {path: 'result', component: ResultPageComponent }
 
 ];
 
