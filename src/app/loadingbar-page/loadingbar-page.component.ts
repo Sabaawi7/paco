@@ -11,22 +11,19 @@ import { NavigationBarComponent } from '../navigation-bar/navigation-bar.compone
 })
 export class LoadingbarPageComponent {
 
-  isLoading: boolean = false;
   loadingProgress: number = 0;
 
-  showLoadingBar(): void {
-    this.isLoading = true;
-    this.loadingProgress = 0;
+  ngOnInit() {
+    this.incrementProgress();
+  }
 
-    // Simulate a loading process
-    const loadingInterval = setInterval(() => {
-      if (this.loadingProgress < 100) {
-        this.loadingProgress += 10; // Increment progress
-      } else {
-        clearInterval(loadingInterval);
-        this.isLoading = false;
-        // Navigate to a different view or perform some action here
+  incrementProgress() {
+    const interval = setInterval(() => {
+      this.loadingProgress += 1;
+      if (this.loadingProgress >= 100) {
+        clearInterval(interval);
+        // Navigation zu einer anderen Seite oder Logik nach dem Laden
       }
-    }, 300); // Adjust the interval and increment as needed
+    }, 30);
   }
 }

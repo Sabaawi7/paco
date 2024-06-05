@@ -1,14 +1,36 @@
+.loading-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 55vh;
+    text-align: center;
+}
+
+.loading-bar-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+
+.loading-bar-container h2 {
+    font-size: 18px;
+    margin-bottom: 20px; /* Abstand zur Progress-Bar */
+    width: 100%;
+}
+
+
 .loading-bar {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 55vh;
-    
 }
 
-.loading-bar mat-progress-bar {
-    width: 50%; /* Breite der Ladeleiste auf 50% setzen */
+.custom-progress-bar {
+    width: 20%;
     height: 20px; /* Höhe der Ladeleiste */
     border-radius: 10px; /* Abgerundete Ecken */
 }
