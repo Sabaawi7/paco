@@ -1,0 +1,17 @@
+<app-navigation-bar></app-navigation-bar>
+
+<section class="faq-section">
+  <h1>Frequently Asked Questions</h1>
+  <mat-accordion class="faq-accordion">
+    <mat-expansion-panel *ngFor="let faq of faqs">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ faq.question }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="faq-answer">
+        <p>{{ faq.answer }}</p>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>

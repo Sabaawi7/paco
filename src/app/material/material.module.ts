@@ -7,6 +7,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   imports: [
@@ -17,7 +19,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatButtonToggleModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
 
   ],
   exports: [
@@ -28,7 +31,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatButtonToggleModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ]
 })
 

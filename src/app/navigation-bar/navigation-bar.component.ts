@@ -21,6 +21,7 @@ export class NavigationBarComponent {
   login_button: string = '';
   legalNotice_button: string = '';
   contact_button: string = '';
+  faq_button: string = '';
 
   ngOnInit(): void {
      const selectedLang = localStorage.getItem('lang'); 
@@ -28,10 +29,12 @@ export class NavigationBarComponent {
         this.login_button = 'Anmelden';
         this.legalNotice_button = 'Impressum';
         this.contact_button = 'Kontakt';
+        this.faq_button = 'FAQ';
      } else if (selectedLang === 'en' ) {
         this.login_button = 'Log in';
         this.legalNotice_button = 'Legal Notice';
-        this.contact_button = 'Contact';   
+        this.contact_button = 'Contact';
+        this.faq_button = 'FAQ';   
      }
   }
 
