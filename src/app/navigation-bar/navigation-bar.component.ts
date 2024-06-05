@@ -23,6 +23,7 @@ export class NavigationBarComponent {
   contact_button: string = '';
 
   ngOnInit(): void {
+    
      const selectedLang = localStorage.getItem('lang'); 
      if (selectedLang === 'de' || selectedLang== null) {
         this.login_button = 'Anmelden';

@@ -10,7 +10,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
   styleUrl: './graphical-analysis.component.scss'
 })
 export class GraphicalAnalysisComponent {
-  title: string = "Interview intelligence";
+ 
   features = [
     { title: 'Praktisch-Anwendungsorientiert' },
     { title: 'Analytisch-Problemlösend' },
