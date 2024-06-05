@@ -1,0 +1,39 @@
+html {
+    scroll-behavior: smooth;
+  }
+  
+  .tab-nav {
+    background-color: #3f51b5;
+    padding: 10px;
+  }
+  
+  .tab-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  
+  .tab-nav ul li {
+    margin: 0;
+  }
+  
+  .tab-nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: block;
+  }
+  
+  .tab-nav ul li a:hover {
+    background-color: #303f9f;
+  }
+  
+  .section {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+  }
