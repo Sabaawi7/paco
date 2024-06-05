@@ -6,6 +6,7 @@ import { InterviewService } from '../interview-service.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-interview',
@@ -22,9 +23,9 @@ export class InterviewComponent implements OnInit {
   selected: any;
   TextInput: String = '';
   isLoading: boolean = false;
-  loadingProgress: number = 0;
+  
 
-  constructor(private interviewService: InterviewService) { }
+  constructor(private interviewService: InterviewService, private router: Router) { }
 
   ngOnInit(): void {
     // Subscribe to selectedQuestion$ to get notified of changes
@@ -61,7 +62,7 @@ export class InterviewComponent implements OnInit {
     if (this.selectedQuestion < this.totalQuestions -1) {
       this.selectQuestion(this.selectedQuestion + 1);
     } else {
-      this.showLoadingBar(); // Show loading bar when all questions are answered
+      this.router.navigate(['/loading']);
     }
 
     this.selected = undefined;
@@ -86,20 +87,6 @@ export class InterviewComponent implements OnInit {
     }
     return [];
   }
-  showLoadingBar(): void {
-    this.isLoading = true;
-    this.loadingProgress = 0;
-
-    // Simulate a loading process
-    const loadingInterval = setInterval(() => {
-      if (this.loadingProgress < 100) {
-        this.loadingProgress += 10; // Increment progress
-      } else {
-        clearInterval(loadingInterval);
-        this.isLoading = false;
-        // Navigate to a different view or perform some action here
-      }
-    }, 300); // Adjust the interval and increment as needed
-  }
+ 
 
 }
