@@ -7,7 +7,7 @@ import { SupportInformationComponent } from './support-information/support-infor
 @Component({
   selector: 'app-result-page',
   standalone: true,
-  imports: [NavigationBarComponent, UserCredentialsComponent,ResponseOverviewComponent, DateAnalysisComponent,SupportInformationComponent],
+  imports: [NavigationBarComponent, UserCredentialsComponent,  ResponseOverviewComponent, DateAnalysisComponent, SupportInformationComponent],
   templateUrl: './result-page.component.html',
   styleUrl: './result-page.component.scss'
 })
