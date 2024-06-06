@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: "Rubik", sans-serif;
+    background-size: cover;
+    height: fit-content;
+}
+
+
+.contact {
+    padding: 50px;
+    text-align: center;
+}
+
+.contact-content h1 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+}
+
+.contact-item {
+    margin-bottom: 30px;
+}
+
+.contact-item h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.contact-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.contact-item p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.contact-item a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.map-placeholder {
+    background-color: #e0e0e0;
+    color: #777;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+.map-placeholder a img {
+    max-width: 100%;
+
+}
+
+@media (max-width: 768px) {
+    .contact-content h1 {
+        font-size: 2rem;
+    }
+
+    .contact-item h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .contact-item p {
+        font-size: 0.9rem;
+    }
+}

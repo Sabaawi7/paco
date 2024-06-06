@@ -1,0 +1,12 @@
+<div class="progress-container" (mouseenter)="showOverview()" (mouseleave)="hideOverview()">
+    <div class="progress-text">
+      {{ progressText }}
+    </div>
+    <div class="question-overview" *ngIf="showQuestionOverview" (mouseenter)="showOverview()" (mouseleave)="hideOverview()">
+      <ul>
+        <li *ngFor="let question of questions; let i = index"
+           (click)="navigateToQuestion(i)">{{ question.question }}
+        </li>
+      </ul>
+    </div>
+  </div>

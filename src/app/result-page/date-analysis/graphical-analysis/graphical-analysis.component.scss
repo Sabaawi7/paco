@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+ .main-content{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: "Rubik", sans-serif;
+
+  
+   
+ }
+
+ .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding:20px;
+}
+
+.feature h2{
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+  
+}
+
+ .feature{
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #cccc;
+ }
+
+ mat-progress-bar {
+  margin-top: 1.5rem;
+
+ 
+}
+
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.scale-labels div {
+  flex: 1;
+  text-align: center;
+}
+  .colorful-progress {
+    background-color: var(--color-primary) !important; /* Setze hier die Farbe des gefärbten Teils */
+  }
+
+  /* Media Queries für kleinere Bildschirme */
+  @media (max-width: 1024px) {
+    .feature-grid {
+        grid-template-columns: 1fr 1fr; /* Zwei Spalten für mittlere Bildschirme */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr; /* Eine Spalte für kleine Bildschirme */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+        padding: 20px; /* Weniger Padding für sehr kleine Bildschirme */
+    }
+  
+    .main-content {
+        padding: 10px; /* Weniger Padding für sehr kleine Bildschirme */
+    }
+  
+    .feature {
+        padding: 10px; /* Weniger Padding für sehr kleine Bildschirme */
+    }
+  
+    .scale-container {
+        width: 100%; /* Volle Breite für sehr kleine Bildschirme */
+    }
+  }

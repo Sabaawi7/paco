@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="main-content">
+    <div class="feature-grid">
+      <div class="feature" *ngFor="let feature of features; let i = index">
+        <h2>{{feature.title}}</h2>
+        <mat-progress-bar mode="determinate" [value]="(i + 1) * 10"></mat-progress-bar>
+        <div class="scale-labels">
+          <div *ngFor="let num of scaleValues">{{ num }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
