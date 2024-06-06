@@ -2,8 +2,17 @@
 
 
 <section class="intro">
-<div class="interview-container">
-  <app-interview></app-interview>
-</div>
+  <div class="interview-container">
+    <div>
+      <app-progressbar [currentQuestionIndex]="currentQuestionIndex" [questions]="questions" (navigate)="navigateToQuestion($event)"></app-progressbar>
+    </div>
+
+    <app-interview></app-interview>
+  </div>
 
 </section>
+
+
+
+
+

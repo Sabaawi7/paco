@@ -8,11 +8,13 @@ import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { AnswersService } from './answers.service';
 
+import { __importStar } from 'tslib';
+import { ProgressbarComponent } from '../progressbar/progressbar.component';
 
 @Component({
   selector: 'app-interview',
   templateUrl: './interview.component.html',
-  imports: [MaterialModule, CommonModule, FormsModule],
+  imports: [MaterialModule, CommonModule, FormsModule, ProgressbarComponent],
   standalone: true,
   styleUrls: ['./interview.component.scss']
 })
@@ -29,6 +31,8 @@ export class InterviewComponent implements OnInit {
   currentQuestionText: string = '';
 
   constructor(private answersService: AnswersService, private interviewService: InterviewService) { }
+
+  
 
 
   ngOnInit(): void {
@@ -130,6 +134,7 @@ export class InterviewComponent implements OnInit {
 
     if (this.selectedQuestion < this.totalQuestions - 1) {
       this.selectQuestion(this.selectedQuestion + 1);
+      
     }
     this.resetToggleButtons();
 
@@ -162,6 +167,9 @@ export class InterviewComponent implements OnInit {
     }
   }
 
+    
+    
+  
 
   navigateToPreviousQuestion() {
     if (this.selectedQuestion != 0) {
@@ -171,6 +179,7 @@ export class InterviewComponent implements OnInit {
     }
     if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
+      
     }
     this.resetToggleButtons();
     // Setzen Sie die ausgewählte Antwort, wenn es sich um eine Dropdown-Frage handelt
@@ -205,4 +214,6 @@ export class InterviewComponent implements OnInit {
   }
 
 
+
 }
+
