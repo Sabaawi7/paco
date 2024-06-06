@@ -20,7 +20,7 @@ export const routes: Routes = [
     { path: 'consultant', component: ConsultantPageComponent}, 
     { path: 'chat', component: ChatbotPageComponent}, 
     { path: 'contact', component: ContactPageComponent},
-    { path: 'impressum', component: ImpressumPageComponent} 
+    { path: 'impressum', component: ImpressumPageComponent},
     { path: 'faq', component: FaqPageComponent},
     { path: 'result', component: ResultPageComponent }
 
