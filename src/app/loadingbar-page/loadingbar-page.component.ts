@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loadingbar-page',
@@ -13,6 +14,8 @@ export class LoadingbarPageComponent {
 
   loadingProgress: number = 0;
 
+  constructor(private router: Router) {}
+
   ngOnInit() {
     this.incrementProgress();
   }
@@ -22,8 +25,8 @@ export class LoadingbarPageComponent {
       this.loadingProgress += 1;
       if (this.loadingProgress >= 100) {
         clearInterval(interval);
-        // Navigation zu einer anderen Seite oder Logik nach dem Laden
+        this.router.navigate(['/personal-question']);
       }
-    }, 30);
+    }, 10);
   }
 }

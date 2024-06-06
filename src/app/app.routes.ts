@@ -9,6 +9,7 @@ import { ConsultantPageComponent } from './consultant-page/consultant-page.compo
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { ImpressumPageComponent } from './impressum-page/impressum-page.component';
 import { LoadingbarPageComponent } from './loadingbar-page/loadingbar-page.component';
+import { PersonalquestionPageComponent } from './personalquestion-page/personalquestion-page.component';
 
 export const routes: Routes = [
     { path: '', component: LandingPageComponent},
@@ -19,7 +20,8 @@ export const routes: Routes = [
     { path: 'chat', component: ChatbotPageComponent}, //Pfad für Chatseite
     { path: 'contact', component: ContactPageComponent}, //Pfad für Kontaktseite
     { path: 'impressum', component: ImpressumPageComponent}, //Pfad für Impressum seite
-    {path: 'loading', component: LoadingbarPageComponent} 
+    { path: 'loading', component: LoadingbarPageComponent},
+    { path: 'personalquestion', component: PersonalquestionPageComponent}
 
 ];
 
