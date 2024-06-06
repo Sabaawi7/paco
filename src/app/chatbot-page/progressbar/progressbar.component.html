@@ -1,7 +1,12 @@
-<div class="progressbar">
-  <div *ngFor="let question of questions; let i = index"
-       [ngStyle]="{ 'background-color': getBackgroundColor(i) }"
-       (click)="navigateToQuestion(i)">
-    Frage {{ i + 1 }}
+<div class="progress-container" (mouseenter)="showOverview()" (mouseleave)="hideOverview()">
+    <div class="progress-text">
+      {{ progressText }}
+    </div>
+    <div class="question-overview" *ngIf="showQuestionOverview" (mouseenter)="showOverview()" (mouseleave)="hideOverview()">
+      <ul>
+        <li *ngFor="let question of questions; let i = index"
+           (click)="navigateToQuestion(i)">{{ question.question }}
+        </li>
+      </ul>
+    </div>
   </div>
-</div>

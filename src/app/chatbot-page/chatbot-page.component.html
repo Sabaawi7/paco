@@ -5,7 +5,7 @@
 <section class="intro">
   <div class="interview-container">
     <div>
-      <app-progressbar2 [currentQuestionIndex]="currentQuestionIndex" [questions]="questions" (navigate)="navigateToQuestion($event)"></app-progressbar2>
+      <app-progressbar [currentQuestionIndex]="currentQuestionIndex" [questions]="questions" (navigate)="navigateToQuestion($event)"></app-progressbar>
     </div>
 
     <app-interview></app-interview>

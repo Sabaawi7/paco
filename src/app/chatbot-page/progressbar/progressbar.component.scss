@@ -1,44 +1,56 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-/* progressbar.component.scss */
-.progressbar {
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none; /* Listenstil entfernen */
-   
-
+.progress-container {
+    position: relative;
+    display: inline-block;
+    font-family: "Rubik", sans-serif;
   }
   
-  .progressbar div {
-    font-family: "Poppins", sans-serif;
-    flex-grow: 1;
+  .progress-text {
     cursor: pointer;
-    background-color: #ccc;
+    font-size: 25px;
+  }
+  
+  .question-overview {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid black;
+    z-index: 10;
+    width: 300px; 
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 0px 25px 5px;
+    border-radius: 28px;
+    padding: 15px ;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .question-overview ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+   
+  }
+  
+  .question-overview li {
     padding: 10px;
-    text-align: center;
-    user-select: none; /* Deaktiviert die Textauswahl */
-    border: 1px solid #ffffff;
-  }
-  
-  .progressbar div:first-child {
-    border-top-left-radius: 10px; /* Abgerundete Ecken oben links */
-    border-bottom-left-radius: 10px; /* Abgerundete Ecken unten links */
+    border-bottom: 1px solid black;
+    
   }
 
-  .progressbar div:last-child {
-    border-top-right-radius: 10px; /* Abgerundete Ecken oben rechts */
-    border-bottom-right-radius: 10px; /* Abgerundete Ecken unten rechts */
-  }
-
-  .progressbar div.current {
-    background-color: var(--color-accent); /* Hintergrundfarbe für die aktuelle Frage */
+  .question-overview li:last-child{
+    border-bottom : none;
   }
   
-  .progressbar div.answered {
-    background-color: var(--color-primary); /* Hintergrundfarbe für beantwortete Fragen */
+  .question-overview li a {
+    text-decoration: none;
+    color: black;
+   
   }
   
-  .progressbar div.unanswered {
-    background-color: #ccc;
-    opacity: 0.5; /* Reduzierte Deckkraft für nicht beantwortete Fragen */
+  .question-overview li:hover{
+    background-color: var(--color-primary);
+    cursor: pointer;
+    color: white;
   }

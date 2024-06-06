@@ -7,12 +7,12 @@ import { CommonModule } from '@angular/common';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { __importStar } from 'tslib';
-import { Progressbar2Component } from '../progressbar2/progressbar2.component';
+import { ProgressbarComponent } from '../progressbar/progressbar.component';
 
 @Component({
   selector: 'app-interview',
   templateUrl: './interview.component.html',
-  imports: [MaterialModule, CommonModule, FormsModule, Progressbar2Component],
+  imports: [MaterialModule, CommonModule, FormsModule, ProgressbarComponent],
   standalone: true,
   styleUrls: ['./interview.component.scss']
 })

@@ -5,7 +5,6 @@ import  questionsData from '../../assets/interview.json';
 import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { InterviewComponent } from './interview/interview.component';
-import { Progressbar2Component } from './progressbar2/progressbar2.component';
 import { Question } from './interview/question.model';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-chatbot-page',
   standalone: true,
-  imports: [NgIf, NgClass, NavigationBarComponent,ProgressbarComponent, InterviewComponent, Progressbar2Component, MatButtonToggleModule, MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule],
+  imports: [NgIf, NgClass, NavigationBarComponent,ProgressbarComponent, InterviewComponent, MatButtonToggleModule, MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule],
   templateUrl: './chatbot-page.component.html',
   styleUrl: './chatbot-page.component.scss'
 })
