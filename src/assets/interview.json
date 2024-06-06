@@ -38,7 +38,7 @@
     },
     {
         "question": "Über welche Themenfelder möchtest du in deinem Studium mehr erfahren?",
-        "answers": ["datenanalyse","Finanzmanagement","Marketingstrategien","Verhaltensökonomie","Internationale Wirtschaft","Nachhaltigkeit & Umwelt","Start-Up Gründung","Sozialpsychologie","IT Projektmanagement","Algorithmen","Gesundheits-Management","Soziale Themen","Unternehmensführung"],
+        "answers": ["Datenanalyse","Finanzmanagement","Marketingstrategien","Verhaltensökonomie","Internationale Wirtschaft","Nachhaltigkeit & Umwelt","Start-Up Gründung","Sozialpsychologie","IT Projektmanagement","Algorithmen","Gesundheits-Management","Soziale Themen","Unternehmensführung"],
         "answer_type": "multiple_choice"
     }
 ]

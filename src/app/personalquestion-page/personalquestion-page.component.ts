@@ -1,12 +1,55 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
+import { MaterialModule } from '../material/material.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { AnswersService } from '../chatbot-page/interview/answers.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-personalquestion-page',
   standalone: true,
-  imports: [],
+  imports: [NavigationBarComponent, MaterialModule, CommonModule, FormsModule],
   templateUrl: './personalquestion-page.component.html',
   styleUrl: './personalquestion-page.component.scss'
 })
-export class PersonalquestionPageComponent {
+export class PersonalquestionPageComponent implements OnInit {
+
+  personalizedQuestion: string="Was für Tätigkeiten wünschst du dir später in deinem Beruf auszuführen?";
+  timeoutId: any;
+  TextInput: String = '';
+
+  constructor(private router:Router, private answersService: AnswersService) { }
+
+  ngOnInit(): void {
+
+         // Start typeWriter animation;
+         this.typeWriter(this.personalizedQuestion, 0);
+  }
+
+
+    // Typewriter animation for displaying question text;
+    typeWriter(text: string, i: number) {
+
+      if (i < text.length) {
+        this.personalizedQuestion = text.substring(0, i + 1);
+        this.timeoutId = setTimeout(() => this.typeWriter(text, i + 1), 100);
+      }
+  
+    }
+
+
+      // Save single answer (single choice, text, dropdown);
+  saveAnswerText(arg0: any, arg1: any) {
+
+    this.answersService.saveOnlyOneAnswer(arg0, arg1);
+  }
+
+
+  navigateToNextPage(){
+
+    this.router.navigate(['/loading']);
+
+  }
 
 }
+

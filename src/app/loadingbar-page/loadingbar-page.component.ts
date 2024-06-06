@@ -14,6 +14,7 @@ export class LoadingbarPageComponent {
 
   loadingProgress: number = 0;
 
+
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -27,6 +28,7 @@ export class LoadingbarPageComponent {
         console.log(this.loadingProgress);
         clearInterval(interval);
         this.router.navigate(['/personalquestion']);
+      
       }
     }, 30);
   }

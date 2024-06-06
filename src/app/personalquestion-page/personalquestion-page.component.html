@@ -1,1 +1,25 @@
-<p>personalquestion-page works!</p>
+<app-navigation-bar></app-navigation-bar>
+
+<div class="container">
+
+    <div class="question">
+       <h2>{{personalizedQuestion}}</h2>  
+    </div>
+    
+    <div class="answer">
+         <mat-form-field>
+            <mat-label>Message</mat-label>
+            <textarea matInput #message="ngModel" [(ngModel)]="TextInput" name="message" required maxlength="256" placeholder="In 5 Jahre sehe ich mich als Ingenieur" (blur)="saveAnswerText(personalizedQuestion, TextInput)"></textarea>
+            <mat-hint align="end">{{message.value?.length || 0}} / 256</mat-hint>
+            <mat-error *ngIf="message.invalid && (message.dirty || message.touched)">Message is required.</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="navigationButton">
+        <button mat-raised-button (click)="navigateToNextPage()" >
+          <span>Weiter </span> 
+        </button>
+      </div>
+ 
+
+</div>

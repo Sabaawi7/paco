@@ -1,67 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../material/material.module';
+import { Component, Input , Output, EventEmitter} from '@angular/core';
 import { Question } from '../interview/question.model';
 import interviewJson from '../../../assets/interview.json';
 import { InterviewService } from '../interview-service.service';
-
+import { NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-progressbar',
   standalone: true,
-  imports: [CommonModule, MaterialModule, FormsModule],
+  imports: [NgIf,NgFor],
   templateUrl: './progressbar.component.html',
   styleUrl: './progressbar.component.scss'
 })
-export class ProgressbarComponent implements OnInit{
-  questions: Question[] = interviewJson; // Direkter Zugriff auf das interviewJson-Array
-  currentQuestionIndex: number = 0;
-  answeredQuestions: Set<number> = new Set<number>();
+export class ProgressbarComponent {
 
-  currentQuestion: Question | null = null;
+  @Input() currentQuestionIndex: number = 1;
+  @Input() questions: Question[] = interviewJson;
+  @Output() navigate: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private interviewService: InterviewService) {}
+  showQuestionOverview: boolean = false;
+  
+  constructor(private interviewService: InterviewService) { }
 
-  ngOnInit(): void {
-    // Subscribe to answeredQuestions$ to get notified of changes
-    this.interviewService.answeredQuestions$.subscribe(questions => {
-      this.answeredQuestions = new Set<number>(questions);
-    });
-    this.interviewService.selectedQuestion$.subscribe(questionNumber => {
-      this.currentQuestionIndex = questionNumber;
-      this.currentQuestion = this.questions[questionNumber];
-    });
+  get progressText(): string {
+    return `${"0" + this.interviewService.getQuestionIndex() }/${"0" + this.questions.length}`;
   }
 
-  navigateToQuestion(questionNumber: number) {
-    this.currentQuestionIndex = questionNumber;
-    this.currentQuestion = this.questions[questionNumber];
-    this.interviewService.selectQuestion(questionNumber);
-    this.getBackgroundColor(questionNumber);
+  
 
+  navigateToQuestion(index: number): void {
+    this.interviewService.selectQuestion(index);
+    this.showQuestionOverview = false;
   }
 
-  isQuestionAnswered(questionNumber: number): boolean {
-    return this.answeredQuestions.has(questionNumber);
+  showOverview(): void {
+    this.showQuestionOverview = true;
   }
 
-  submitAnswer() {
-    this.interviewService.markQuestionAsAnswered(this.currentQuestionIndex);
-    // Hintergrund der aktuellen Frage aktualisieren, um sie als beantwortet anzuzeigen
-    this.getBackgroundColor(this.currentQuestionIndex);
+  hideOverview(): void {
+    this.showQuestionOverview = false;
   }
 
-  isChecked(index: number) {
-    return this.answeredQuestions.has(index) && this.currentQuestionIndex === index;
-  }
-
-  getBackgroundColor(index: number) {
-    if (index === this.currentQuestionIndex) {
-      return 'var(--color-accent)'; // Hintergrundfarbe für die aktuelle Frage
-    } else if (this.isQuestionAnswered(index)) {
-      return 'var(--color-primary)'; // Hintergrundfarbe für beantwortete Fragen
-    } else {
-      return '#ccc'; // Standard-Hintergrundfarbe für unbeantwortete Fragen
-    }
-  }
 }
+
+
+

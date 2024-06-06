@@ -1,20 +1,52 @@
-.interview {
-    display: flex;
-    gap: 40px;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+* {
+    box-sizing: border-box;
 }
 
-.interview .questions {
-    max-width: 50%;
-    flex-basis: 100%;
-    flex-wrap: wrap;
-    text-wrap: wrap;
-    margin-bottom: 10px;
+.interview {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+
+
+  
+    
+}
+
+@media (max-width: 768px) {
+    .interview {
+        flex-direction: column;
+        max-width: none;
+        width: 100%;
+    }
+
+
+
+}
+
+
+
+.questions {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    width: 420px;
+    margin-right: 92px;
 }
 
 .interview .questions div h2 {
     font-size: 50px;
     animation: text-animation 1s ease-in-out;
     overflow: auto;
+}
+@media screen and (max-width: 768px) {
+    .interview .questions div h2 {
+        font-size: 30px;
+    }
+    
 }
 
 @keyframes text-animation {
@@ -28,50 +60,107 @@
     }
 }
 
-.interview .answers {
+.answers {
+    display: flex;
     justify-content: center;
-    margin-top: 40px;
+    align-items: center;
     max-width: 50%;
     width: 50%;
-    min-height: 100%;;
+    min-height: 100%;
+
+ 
+
 }
 
+.answers div {
+    width: 100%;
+}
 .MultipleChoiceAnswers {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: left;
+    
 }
 
-mat-button-toggle-group {
+
+
+mat-button-toggle-group { //Rahmen in dem alle Antwort buttons sind;
     flex-wrap: wrap;
-    border: none;
+ 
     gap: 10px;
     outline: none;
+    padding: 20px; /* Fügt innen Abstand hinzu und vergrößert somit den Rahmen */
+    margin: 20px;  /* Fügt außen Abstand hinzu und vergrößert den Abstand um den Rahmen herum */
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 0px 25px 5px;
+    border-radius: 30px; /* Fügt abgerundete Ecken hinzu */
+    overflow-y: auto;
 }
-
-.mat-button-toggle {
-    background-color: #ccc;
-    border-radius: 5px;
-
+//nur für die Auswahl ,,Englisch"
+.mat-button-toggle { 
+    background-color: white;
+    border-radius: 60px;
+    font-family: "Rubik", sans-serif;
+    padding: 0px 0px;   /* Du kannst die Polsterung hier hinzufügen oder ändern */
+    margin: 0px 12px 12px 0px;  
+    border: 1px solid black;  /* Du kannst die Rahmenfarbe und -breite hier ändern */
+    font-size:20px;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
 .mat-button-toggle-checked {
     background-color: var(--color-primary) !important;
-    color: white;
+    font-family: "Rubik", sans-serif;
+    margin: 0px 12px 12px 0px;  
+    font-size:20px;
+    color:white !important;
+    border: none !important;
+    border-radius: 60px;
+    filter:contrast(1.5);
+    
 }
 
-.mat-button-toggle-group-appearance-standard .mat-button-toggle-appearance-standard+.mat-button-toggle-appearance-standard {
-    border: none;
-    border-radius: 5px;
+.mat-button-toggle:hover {
+    background-color:  var(--color-primary-lighter)!important; // Primärfarbe mit 80% Deckkraft für den Hover-Effekt
+    color: white !important;
+        border:none !important;
 }
+
+//Aussehen fuer jeden einzelnden Antwort button;
+.mat-button-toggle-group-appearance-standard .mat-button-toggle-appearance-standard+.mat-button-toggle-appearance-standard {
+    background-color: white;
+    border-radius: 60px;
+    font-family: "Rubik", sans-serif;
+    padding: 0px 0px; /* Du kannst die Polsterung hier hinzufügen oder ändern */
+    margin: 0px 12px 12px 0px;    /* Du kannst den Abstand hier hinzufügen oder ändern */
+    border: 1px solid black;  /* Du kannst die Rahmenfarbe und -breite hier ändern */
+    font-size:20px;
+ 
+}
+
+mat-button-toggle-group { 
+    flex-wrap: wrap;
+    gap: 10px;
+    outline: none;
+    padding: 20px; /* Fügt innen Abstand hinzu und vergrößert somit den Rahmen */
+    margin: 20px;  /* Fügt außen Abstand hinzu und vergrößert den Abstand um den Rahmen herum */
+    box-shadow: 
+        rgba(0, 0, 0, 0.07) 0px 0px 25px 5px !important;   /* medium shadow */
+    border-radius: 30px; /* Fügt abgerundete Ecken hinzu */
+    background-color: white; /* Optional: Set a background color for better contrast */
+}
+
+
 
 .mat-mdc-form-field {
     min-width: 100%;
+   
+   
 }
 
 textarea {
     min-height: 150px;
+   
 }
 
 .dropdown-question {
@@ -80,17 +169,81 @@ textarea {
     align-items: center;
     padding: 10px;
     border-radius: 5px;
+  
+  
 }
 
 .NavigationButtons {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    align-self: start;
+    margin-top: auto;
+    width: 100%;
 }
 
 .NavigationButtons button {
-    width: 150px;
-    border-radius: 5px;
+    animation: 0.5s ease-out 0s 1 normal none running fadeInFromNone;
     cursor: pointer;
+    pointer-events: all;
+    position: relative;
+    text-align: center;
+    background: black;
+    color: white;
+    border-radius: 60px;
+    padding: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 1;
+    line-height: 19px;
+    margin: 0px 24px 0px 0px;
+    width: fit-content;
+    height: fit-content;
 }
 
+.NavigationButtons button:first-child img {
+    box-sizing: border-box;
+    width: 14px;
+    height: 12px;
+    
+    
+}
+.NavigationButtons button:last-child::after {
+    content: "  ";
+    margin-left: 12px;
+    right: 80px;
+    top: 21px;
+    width: 14px;
+    height: 12px;
+    background: url("../../../assets/ForwardArrow.png") 0% 0% / 100% 100%;
+
+}
+
+.answers .NavigationButtons {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .questions {
+        justify-content: center;
+        width: 100%;
+        margin: 0 12px;
+    }
+
+    .questions div h2 {
+        text-align: center;
+    }
+    .questions .NavigationButtons {
+        display: none;
+    }
+
+    .answers .NavigationButtons {
+        display: flex;
+        justify-content: center;
+    }
+
+    .answers {
+        width: 100%;
+        max-width: none;
+    }
+
+
+}
