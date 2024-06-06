@@ -1,19 +1,18 @@
 <div class="interview">
     <div class="questions">
-      <div *ngIf="getQuestion(selectedQuestion)">
+      <div *ngIf="getQuestion(selectedQuestion)" class="question-container">
         <h2>{{ currentQuestionText }}</h2>
-      </div>
-  
-      <div class="NavigationButtons">
-        <button mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
-          <img src="../../../assets/backwardsArrow.png">
-        </button>
-  
-        <button mat-raised-button style="background-color: black; color: white" (click)="navigateToNextQuestion(userSelection)">
-          <span>Weiter</span> 
-        </button>
+        <div class="NavigationButtons" *ngIf="showButtons">
+          <button mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
+            <img src="assets/backwardsArrow.png">
+          </button>
+          <button mat-raised-button style="background-color: black; color: white" (click)="navigateToNextQuestion(userSelection)">
+            <span>Weiter</span>
+          </button>
+        </div>
       </div>
     </div>
+  
   
     <div class="answers">
       <div *ngIf="getQuestion(selectedQuestion)">
