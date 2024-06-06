@@ -23,10 +23,11 @@ export class LoadingbarPageComponent {
   incrementProgress() {
     const interval = setInterval(() => {
       this.loadingProgress += 1;
-      if (this.loadingProgress >= 100) {
+      if (this.loadingProgress >= 110) {
+        console.log(this.loadingProgress);
         clearInterval(interval);
-        this.router.navigate(['/personal-question']);
+        this.router.navigate(['/personalquestion']);
       }
-    }, 10);
+    }, 30);
   }
 }
