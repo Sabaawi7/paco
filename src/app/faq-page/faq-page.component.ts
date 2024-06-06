@@ -10,7 +10,6 @@ import { NgFor } from '@angular/common';
   styleUrl: './faq-page.component.scss'
 })
 export class FaqPageComponent {
-  
   faqs = [
     {
       question: 'Lorem ipsum dolor sit amet?',
