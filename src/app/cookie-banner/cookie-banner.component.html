@@ -1,16 +1,14 @@
 <div class="cookie-overlay" *ngIf="showCookieNotification">
-<div class="cookie-notification">
-    <!-- Quelle Bild: https://wordpress.org/plugins/cookie-notice/ -->
-    <img src="./assets/icon-256x256.png" alt="Cookies Symbol">
+    <div class="cookie-notification">
+        <!-- Quelle Bild: https://wordpress.org/plugins/cookie-notice/ -->
+        <img src="./assets/icon-256x256.png" alt="Cookies Symbol">
 
-    <h1>  {{  cookie_h2 }} </h1>
-    <p>{{ cookie_p  }}</p>
-    
-    <div class="cookie-buttons" >
-
-        <button mat-raised-button (click)="onAccept()">{{ accept_button }}</button> 
-        <button mat-raised-button (click)="onDecline()">{{ notaccept_button }}</button> <!--Event Binding-->
+        <h1>{{ cookie_h2 }}</h1>
+        <p>{{ cookie_p }}</p>
         
+        <div class="cookie-buttons">
+            <button mat-raised-button (click)="onAccept()">{{ accept_button }}</button> 
+            <button mat-raised-button (click)="onDecline()">{{ notaccept_button }}</button> <!-- Event Binding -->
+        </div>
     </div>
-</div>
 </div>

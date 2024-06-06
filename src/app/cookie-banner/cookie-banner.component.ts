@@ -11,15 +11,17 @@ import { MaterialModule } from '../material/material.module';
 })
 export class CookieBannerComponent {
   /**
-   * Text auf der Seite und die Übersetzung
+   *
+Text on the page and the translation;
   */
-  //default werte
+  //default values;
   cookie_h2: string = '';
   cookie_p: string = '';
   accept_button: string = '';
   notaccept_button: string = '';
 
   ngOnInit(): void {
+
      const selectedLang = localStorage.getItem('lang'); 
      if (selectedLang === 'de' || selectedLang== null) {
        this.cookie_h2 ='Cookie-Einstellungen';
@@ -35,18 +37,20 @@ export class CookieBannerComponent {
      }
   }
 
-    // Variable, die den Zustand der Cookie-Benachrichtigung speichert
+   
+// Variable that stores the state of the cookie notification
 showCookieNotification = true;
 
-// Methode, die aufgerufen wird, wenn der Benutzer die Cookies akzeptiert
+// Method called when the user accepts the cookies;
 onAccept(): void {
-  // Setze den Zustand von showCookieNotification auf false, um die Benachrichtigung auszublenden
+ 
   this.showCookieNotification = false;
 }
 
-// Methode, die aufgerufen wird, wenn der Benutzer die Cookies ablehnt
+
+// Method called when the user rejects the cookies;
 onDecline(): void {
-  // Setze den Zustand von showCookieNotification auf false, um die Benachrichtigung auszublenden
+
   this.showCookieNotification = false;
 }
 }

@@ -22,7 +22,4 @@ export class UserCredentialsComponent {
   order: string = "Wiederhole Interview";
 
   token = this.tokenService.getToken();
-
-
-
 }

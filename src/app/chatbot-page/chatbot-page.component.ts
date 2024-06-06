@@ -26,6 +26,7 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
 })
 
 export class ChatbotPageComponent implements OnInit {
+  
   answeredQuestions = 3;
   totalQuestions = 10;
   progressValue!: number;
