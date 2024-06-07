@@ -96,7 +96,7 @@ export class InterviewComponent implements OnInit {
   typeWriter(text: string, i: number) {
     if (i < text.length) {
       this.currentQuestionText = text.substring(0, i + 1);
-      this.timeoutId = setTimeout(() => this.typeWriter(text, i + 1), 100);
+      this.timeoutId = setTimeout(() => this.typeWriter(text, i + 1), 50);
     } else {
       this.showButtons = true; // Show buttons after text is fully rendered
     }
