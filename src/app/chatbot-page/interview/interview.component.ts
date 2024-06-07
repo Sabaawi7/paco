@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { AnswersService } from './answers.service';
+import { Router } from '@angular/router';
+import { __importStar } from 'tslib';
 import { ProgressbarComponent } from '../progressbar/progressbar.component';
 
 @Component({
@@ -31,11 +33,10 @@ export class InterviewComponent implements OnInit {
   currentQuestionText: string = '';
   showButtons: boolean = false; // Flag to control button visibility
 
-  constructor(
-    private answersService: AnswersService,
-    private interviewService: InterviewService,
-  ) { }
 
+  constructor(private answersService: AnswersService, private interviewService: InterviewService, private router: Router) { }
+
+  
   // Initialize component;
   ngOnInit(): void {
     // Subscribe to selectedQuestion changes;
@@ -145,9 +146,11 @@ export class InterviewComponent implements OnInit {
       console.log(this.userSelection)
     }
 
-    // Navigate to the next question;
-    if (this.selectedQuestion < this.totalQuestions - 1) {
+
+    if (this.selectedQuestion < this.totalQuestions -1) {
       this.selectQuestion(this.selectedQuestion + 1);
+    } else {
+      this.router.navigate(['/loading']);
     }
 
     // Reset selections and prepare for the next question;

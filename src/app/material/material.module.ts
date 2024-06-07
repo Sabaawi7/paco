@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 
+
 @NgModule({
   imports: [
     MatButtonModule,
@@ -22,6 +23,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatDialogModule,
     MatExpansionModule,
     MatProgressBarModule,
+    MatDialogModule,
+    MatProgressBarModule
   ],
   exports: [
     MatButtonModule,
@@ -34,6 +37,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatDialogModule,
     MatExpansionModule,
     MatProgressBarModule,
+    MatDialogModule,
+    MatProgressBarModule
   ]
 })
 
