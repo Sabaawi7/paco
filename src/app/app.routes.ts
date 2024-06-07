@@ -14,14 +14,15 @@ import { LoadingbarPageComponent } from './loadingbar-page/loadingbar-page.compo
 import { PersonalquestionPageComponent } from './personalquestion-page/personalquestion-page.component';
 
 export const routes: Routes = [
+
     { path: '', component: LandingPageComponent},
     { path: 'login', component: LoginPageComponent },
-    { path: 'role', component: RoleselectionComponent}, // Rollenauswahlseite, Puffer um zu testen;
-    { path: 'admin', component: AdminPageComponent }, // Pfad für die Admin-Komponente bleibt unverändert, zeigt entweder Superadmin oder Inst. Admin Seite;
-    { path: 'consultant', component: ConsultantPageComponent}, //Pfad für Studienberater:in-Seite
-    { path: 'chat', component: ChatbotPageComponent}, //Pfad für Chatseite
-    { path: 'contact', component: ContactPageComponent}, //Pfad für Kontaktseite
-    { path: 'impressum', component: ImpressumPageComponent}, //Pfad für Impressum seite
+    { path: 'role', component: RoleselectionComponent}, 
+    { path: 'admin', component: AdminPageComponent }, 
+    { path: 'consultant', component: ConsultantPageComponent}, 
+    { path: 'chat', component: ChatbotPageComponent}, 
+    { path: 'contact', component: ContactPageComponent},
+    { path: 'impressum', component: ImpressumPageComponent},
     { path: 'faq', component: FaqPageComponent},
     { path: 'result', component: ResultPageComponent },
     { path: 'impressum', component: ImpressumPageComponent}, //Pfad für Impressum seite

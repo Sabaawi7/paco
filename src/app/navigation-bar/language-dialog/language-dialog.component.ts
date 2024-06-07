@@ -11,23 +11,27 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './language-dialog.component.scss'
 })
 export class LanguageDialogComponent {
+
   selectedOption = 'de';
   lang='de';
-//MIN 12 GLOBAL IMPORTIEREN
+//MIN 12 GLOBAL IMPORT;
 
   ChangeLang(event: any) {
-    //falls fehler direkt von localstorage lesen
+   
+    //if errors occure, read directly from localstorage;
     const selectedValue = event.value;
     console.log('Selected value:', selectedValue);
     localStorage.setItem("lang",selectedValue);
     this.reloadPage();
 
-    // Hier können Sie die Logik für die Verarbeitung des ausgewählten Werts implementieren
+  
   }
   
   constructor(
+
     private dialogRef: MatDialogRef<LanguageDialogComponent>,
     private dialog: MatDialog
+
   ) {}
 
   changeLanguage(event: Event): void {
@@ -35,24 +39,22 @@ export class LanguageDialogComponent {
   }
 
   applyLanguage(): void {
-    this.closeLanguagePopup();
-    // Setze die ausgewählte Sprache im LanguageService
-  
 
-      // Schließe das Popup-Fenster
+    this.closeLanguagePopup();
+    //Set the selected language in LanguageService.ts;
+    
+
+      // Close popup window;
   this.closeLanguagePopup();
-    // Füge hier die Logik ein, um die Benutzeroberfläche basierend auf der ausgewählten Sprache zu aktualisieren
-    // Zum Beispiel könntest du eine Methode im LanguageService aufrufen, die die Benutzeroberfläche dynamisch anpasst.
-  
-    // Anmerkung: Die genaue Logik hängt von der Art deiner Anwendung und der Implementierung im LanguageService ab.
+    
   }
 
   closeLanguagePopup(): void {
-    this.dialogRef.close(); // Schließe das Dialogfenster
+    this.dialogRef.close();
   }
 
    reloadPage(): void {
-    window.location.reload(); // Lädt die Seite neu
+    window.location.reload(); 
 }
 }
 //<a href="https://www.flaticon.com/free-icons/germany" title="germany icons">Germany icons created by Dighital - Flaticon</a>

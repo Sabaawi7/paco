@@ -14,31 +14,25 @@ body {
     height: fit-content;
 }
 
+
 /* Hero Section styles */
 .hero {
     height: 70vh;
-    background-size:  cover;
+    background-size: cover;
     padding: 50px;
     text-align: center;
     align-content: center;
 }
 
-
-
 .hero-content h1 {
     font-size: 4rem;
     margin-bottom: 10px;
-    
-  
-  }
-
+}
 
 .hero-content p {
     font-size: 1.5rem;
     margin-bottom: 20px;
 }
-
-
 
 .cta-button {
     animation: 0.5s ease-out 0s 1 normal none running fadeInFromNone;
@@ -64,11 +58,11 @@ body {
 .cta-button:hover {
     padding: 18px 30px;
 }
+
 /* Features Section styles */
 .features {
     padding: 20px;
     text-align: center;
-
 }
 
 .features h2 {
@@ -76,10 +70,11 @@ body {
     margin-bottom: 30px;
 }
 
-.features h3{
+.features h3 {
     font-size: 20px;
 }
-.features p{
+
+.features p {
     font-size: 18px;
 }
 
@@ -108,6 +103,7 @@ body {
     .cta-button {
         font-size: 1.2rem;
     }
+
     nav ul {
         display: none;
     }
@@ -117,8 +113,8 @@ body {
         flex-wrap: wrap;
         justify-content: center;
     }
-    
-    .feature{
+
+    .feature {
         max-width: 346px;
     }
 }

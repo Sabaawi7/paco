@@ -17,33 +17,31 @@
     <section class="hero">
         <div class="hero-content">
             <h1>{{ title_h1 }}</h1>
-            <p>{{  title_p }}</p>
+            <p>{{ title_p }}</p>
             <br/><br/><br/><br/>
-            <a mat-raised-button  routerLink="/chat" routerLinkActive="active" class="cta-button">Chat</a>
+            <a mat-raised-button routerLink="/chat" routerLinkActive="active" class="cta-button">Chat</a>
         </div>
     </section>
     <app-cookie-banner *ngIf="showCookieNotification" (accept)="onAccept()" (decline)="onDecline()"></app-cookie-banner>
   
     <!-- Features Section -->
     <section class="features">
-       
-        <h2>{{  title_h2 }}</h2>
+        <h2>{{ title_h2 }}</h2>
         <div class="feature-grid">
             <div class="feature">
-                <h3>{{  kasten1_h3 }}</h3> <br/>
-                <p>{{  kasten1_p }}</p>
+                <h3>{{ kasten1_h3 }}</h3> <br/>
+                <p>{{ kasten1_p }}</p>
             </div>
             <div class="feature">
-                <h3>{{  kasten2_h3 }}</h3><br/>
-                <p>{{  kasten2_p }}</p>
+                <h3>{{ kasten2_h3 }}</h3><br/>
+                <p>{{ kasten2_p }}</p>
             </div>
             <div class="feature">
-                <h3>{{  kasten3_h3 }}</h3><br/>
-                <p>{{  kasten3_p }}</p>
+                <h3>{{ kasten3_h3 }}</h3><br/>
+                <p>{{ kasten3_p }}</p>
             </div>
         </div>
     </section>
-
 </body>
 
 </html>

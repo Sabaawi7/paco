@@ -5,7 +5,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 /* Container styles */
@@ -29,15 +28,14 @@
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
 }
 
-.bild{
+.bild {
     height: 40px; /* Höhe auf die Höhe der Schriftgröße einstellen */
     width: 1px; /* Automatische Breite basierend auf der Höhe */
     margin-right: 400px; /* Abstand zwischen Flagge und Text */
     background-size: 100% 49494%;
-    flex-shrink: 0
+    flex-shrink: 0;
 }
 
 /* Title */
@@ -66,7 +64,6 @@ input {
     display: flex;
     align-items: center;
     position: relative;
-
 }
 
 #passwordField {
@@ -97,7 +94,6 @@ input {
     display: flex;
     gap: 10px;
     justify-content: center;
-
 }
 
 .login-button,
@@ -128,7 +124,6 @@ input {
     text-decoration: none;
     font-size: 20px;
     margin-top: 10px;
-  
 }
 
 .guest-link:hover {

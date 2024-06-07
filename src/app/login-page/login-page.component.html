@@ -2,7 +2,7 @@
 <div class="login-container">
     <form class="login-form" (submit)="handleLogin()">
         <h1 class="login-title">Login</h1>
-        <p>{{  text_p }}</p>
+        <p>{{ text_p }}</p>
         
         <div class="input-group">
             <label for="emailInput">Email *:</label>
@@ -10,26 +10,25 @@
         </div>
 
         <div class="input-group">
-            <label for="passwordField">{{  password_field }}</label>
+            <label for="passwordField">{{ password_field }}</label>
             <div class="password-wrapper">
                 <input type="{{ passwordFieldType }}" [(ngModel)]="password" id="passwordField" name="password" required>
                 <span class="toggle-password" (click)="togglePasswordVisibility()">👁️</span>
             </div>
         </div>
 
-        <a href="passwort-vergessen.html" class="forgot-password-link">{{  forgot_password }}</a>
+        <a href="passwort-vergessen.html" class="forgot-password-link">{{ forgot_password }}</a>
 
         <div class="button-group">
             <button mat-raised-button color="primary" type="submit" class="login-button">Login</button>
             <button mat-raised-button color="primary" type="button" class="unikim-button" (click)="navigateToRoleSelection()">uniKIM</button>
         </div>
 
-        <a routerLink="/chat" routerLinkActive="active" class="guest-link">{{  guest_login }}</a>
+        <a routerLink="/chat" routerLinkActive="active" class="guest-link">{{ guest_login }}</a>
 
         <div class="stay-logged-in">
             <input type="checkbox" id="stayLoggedInCheckbox">
-            <label for="stayLoggedInCheckbox">{{  remain_signedIn }}</label>
+            <label for="stayLoggedInCheckbox">{{ remain_signedIn }}</label>
         </div>
     </form>
-   
 </div>
