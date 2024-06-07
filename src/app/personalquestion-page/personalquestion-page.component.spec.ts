@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PersonalquestionPageComponent } from './personalquestion-page.component';
 
+
+
 describe('PersonalquestionPageComponent', () => {
   let component: PersonalquestionPageComponent;
   let fixture: ComponentFixture<PersonalquestionPageComponent>;
@@ -20,4 +22,6 @@ describe('PersonalquestionPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });

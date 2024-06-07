@@ -17,6 +17,7 @@ export class PersonalquestionPageComponent implements OnInit {
   personalizedQuestion: string="Was für Tätigkeiten wünschst du dir später in deinem Beruf auszuführen?";
   timeoutId: any;
   TextInput: String = '';
+  showButton = false;  
 
   constructor(private router:Router, private answersService: AnswersService) { }
 
@@ -29,12 +30,12 @@ export class PersonalquestionPageComponent implements OnInit {
 
     // Typewriter animation for displaying question text;
     typeWriter(text: string, i: number) {
-
       if (i < text.length) {
         this.personalizedQuestion = text.substring(0, i + 1);
-        this.timeoutId = setTimeout(() => this.typeWriter(text, i + 1), 100);
+        this.timeoutId = setTimeout(() => this.typeWriter(text, i + 1), 50);
+      } else {
+        this.showButton = true; // Set showButton to true after the animation is complete
       }
-  
     }
 
 
@@ -47,9 +48,13 @@ export class PersonalquestionPageComponent implements OnInit {
 
   navigateToNextPage(){
 
-    this.router.navigate(['/loading']);
+    this.router.navigate(['/dashboard']);
 
   }
+
+ 
+
+ 
 
 }
 

@@ -12,6 +12,7 @@ import { FaqPageComponent } from './faq-page/faq-page.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { LoadingbarPageComponent } from './loadingbar-page/loadingbar-page.component';
 import { PersonalquestionPageComponent } from './personalquestion-page/personalquestion-page.component';
+import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 
 export const routes: Routes = [
     { path: '', component: LandingPageComponent},
@@ -26,7 +27,8 @@ export const routes: Routes = [
     { path: 'result', component: ResultPageComponent },
     { path: 'impressum', component: ImpressumPageComponent}, //Pfad für Impressum seite
     { path: 'loading', component: LoadingbarPageComponent},
-    { path: 'personalquestion', component: PersonalquestionPageComponent}
+    { path: 'personalquestion', component: PersonalquestionPageComponent},
+    { path: 'dashboard', component: DashboardPageComponent}
 
 ];
 

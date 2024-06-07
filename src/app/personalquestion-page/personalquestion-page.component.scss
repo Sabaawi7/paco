@@ -5,42 +5,48 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   
 }
 
 .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding-top: 150px; 
-    flex-wrap: wrap;  
-    padding-bottom: 30px; /* Add margin at the bottom */
+    padding-top: 150px;
+    padding-bottom: 30px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .question {
-    flex: 1; 
+    flex: 1;
     padding: 20px;
     text-align: center;
     font-size: 30px;
-   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .answer {
-    flex: 1;  
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    min-height: 100%;
-   
 }
 
+.navigationButton {
+    margin-top: 20px;
+}
 
 .navigationButton button {
     animation: 0.5s ease-out 0s 1 normal none running fadeInFromNone;
     cursor: pointer;
     pointer-events: all;
-    position: relative;
     text-align: center;
     background: black;
     color: white;
@@ -50,51 +56,38 @@ body {
     font-weight: 500;
     opacity: 1;
     line-height: 19px;
-    margin: 0px 24px 0px 0px;
     width: fit-content;
     height: fit-content;
-  }
-
-
-
+}
 
 mat-form-field {
-    width: 80%; 
+    width: 80%;
 }
 
 textarea {
-    min-height: 200px;  
+    min-height: 200px;
 }
-
-
-
-
-
 
 @media screen and (max-width: 768px) {
-
-    .container{
-        margin-bottom: 10px;
+    .content {
+        flex-direction: column;
+        align-items: center;
     }
-
-
 
     .question {
-      justify-content: center;
-      width: 100%;
-      margin: 0 20px;
-      font-size: 20px;
-     
+        width: 100%;
+        margin: 0 20px;
+        font-size: 20px;
     }
 
-    
+    .answer {
+        width: 100%;
+    }
 
-    
-
-   
-
-   
- 
-    
+    mat-form-field {
+        width: 90%;
+    }
 }
+
+
 
