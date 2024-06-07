@@ -39,7 +39,7 @@ export class LoadingbarPageComponent {
 
   navigateBasedOnPersonalQuestion() {
     if (hasPersonalQuestionBeenAsked) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/result']);
     } else {
       this.router.navigate(['/personalquestion']);
     }
