@@ -22,6 +22,7 @@ export class NavigationBarComponent {
   legalNotice_button: string = '';
   contact_button: string = '';
   faq_button: string = '';
+  privacypolicy_button: string = '';
 
   ngOnInit(): void {
     
@@ -31,11 +32,13 @@ export class NavigationBarComponent {
         this.legalNotice_button = 'Impressum';
         this.contact_button = 'Kontakt';
         this.faq_button = 'FAQ';
+        this.privacypolicy_button = 'Datenschutzerklärung';
      } else if (selectedLang === 'en' ) {
         this.login_button = 'Log in';
         this.legalNotice_button = 'Legal Notice';
         this.contact_button = 'Contact';
         this.faq_button = 'FAQ';   
+        this.privacypolicy_button = 'Privacy Policy';
      }
   }
 

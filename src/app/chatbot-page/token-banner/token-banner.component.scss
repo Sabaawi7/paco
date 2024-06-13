@@ -36,6 +36,13 @@ p {
   background-color: black !important;
   font-family: 'Rubik', sans-serif;
 }
-.img{
+
+.img {
   max-height: 5px !important;
+}
+
+.hint {
+  color: red;
+  margin-top: 10px;
+  font-size: 0.9rem;
 }
