@@ -1,16 +1,21 @@
-
 <h2 mat-dialog-title>Dein Token</h2>
 
 <mat-dialog-content class="mat-typography">
-    <p>
-        Speichere dein Token, um später auf deine Antworten zugreifen zu können.
-    </p>
-    <p>Dein Token:</p> 
-    <b id="token">{{ token }}</b>
+  <p>
+    Speichere dein Token, um später auf deine Antworten zugreifen zu können.
+  </p>
+  <p>Dein Token:</p>
+  <b id="token">{{ token }}</b>
+
+  <mat-checkbox [(ngModel)]="acceptedPolicy">
+    Ich akzeptiere die Datenschutzerklärung
+  </mat-checkbox>
+  <div *ngIf="!acceptedPolicy && showHint" class="hint">
+    Sie müssen die Datenschutzerklärung akzeptieren, um fortzufahren.
+  </div>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-    <button class="button" color="black" mat-raised-button mat-dialog-close>OK</button>
-    <button class="fa fa-copy" color="primary" mat-raised-button [mat-dialog-close]="true" [cdkCopyToClipboard]="value" cdkFocusInitial> Copy</button>
+  <button class="button" color="black" mat-raised-button (click)="onOkClick()">OK</button>
+  <button class="fa fa-copy" color="primary" mat-raised-button [mat-dialog-close]="true" [cdkCopyToClipboard]="value" cdkFocusInitial>Copy</button>
 </mat-dialog-actions>
-

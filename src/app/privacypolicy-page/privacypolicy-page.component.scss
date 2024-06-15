@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: "Rubik", sans-serif;
+    background-size: cover;
+    height: fit-content;
+}
+
+.privacy-policy {
+    padding: 50px;
+    text-align: center;
+}
+
+.privacy-content h1 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+}
+
+.privacy-item {
+    margin-bottom: 30px;
+}
+
+.privacy-item h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.privacy-item p, .privacy-item ul {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-align: left;
+    display: inline-block;
+    width: 100%;
+}
+
+.privacy-item a {
+    color: blue;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .privacy-content h1 {
+        font-size: 2rem;
+    }
+
+    .privacy-item h2 {
+        font-size: 1.5rem;
+    }
+
+    .privacy-item p, .privacy-item ul {
+        font-size: 0.9rem;
+    }
+}
