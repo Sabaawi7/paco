@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -17,7 +16,6 @@ import { NgIf } from '@angular/common';
 })
 export class TokenBannerComponent implements OnInit {
 
-  value = '';
   token = '';
   acceptedPolicy = false;
   showHint = false;
@@ -30,16 +28,14 @@ export class TokenBannerComponent implements OnInit {
   ngOnInit() {
     this.tokenService.currentToken.subscribe(token => {
       this.token = token;
-      this.value = token;
     });
   }
 
   onOkClick() {
-    if (!this.acceptedPolicy) {
-      this.showHint = true;
+    if (this.acceptedPolicy) {
+      this.dialogRef.close(this.token); // Close the dialog and return the token if policy is accepted
     } else {
-      this.showHint = false;
-      this.dialogRef.close(); // Close the dialog if policy is accepted
+      this.showHint = true; // Show a hint if the policy is not accepted
     }
   }
 }
