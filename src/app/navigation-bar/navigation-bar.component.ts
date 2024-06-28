@@ -4,11 +4,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { LanguageDialogComponent } from './language-dialog/language-dialog.component';
 import { NgIf } from '@angular/common';
 import { NgFor } from '@angular/common';
+import { MaterialModule } from '../material/material.module';
+
 
 @Component({
   selector: 'app-navigation-bar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, NgIf,NgFor],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, NgIf,NgFor,MaterialModule],
   templateUrl: './navigation-bar.component.html',
   styleUrl: './navigation-bar.component.scss'
 })
