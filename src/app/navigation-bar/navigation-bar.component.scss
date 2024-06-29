@@ -5,7 +5,6 @@
     color: black; 
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 10px 20px; 
     height: max-content; 
     font-family: "Rubik", sans-serif;
@@ -21,6 +20,7 @@
     flex-direction: column; 
     align-items: center; 
     margin-top: 10px;
+    display: inline-block;
 }
 
 .navbar-language img {
@@ -60,10 +60,10 @@ a:visited {
 /* Navigation link styling */
 .navItem {
     padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
+    margin-top: 10px;
 }
+
 
 .navItem a {
     color: black; 
@@ -71,6 +71,7 @@ a:visited {
     border-radius: 4px; 
     display: inline-block; 
     overflow: hidden; 
+
 }
 
 /* Navigation item hover effect */
@@ -99,6 +100,12 @@ a:visited {
     margin: 4px 0;
     transition: all 0.2s ease-in-out;
 }
+.navbar-menu {
+    display: flex;
+    justify-content: flex-end; /* Inhalte rechts ausrichten */
+    align-items: center; /* Vertikal zentrieren */
+    height: 100%; /* Höhe der Navbar */
+}
 
 /* Media query for larger screens */
 @media (min-width: 769px) {
@@ -106,23 +113,36 @@ a:visited {
         display: none;
     }
     .navbar-menu {
-        display: flex;
+        display: flex-end;
     }
     mat-menu {
         display: none;
     }
 
+      
+    .language-icon{
+        width: 20px; 
+        height: 20px; 
+    }
+
     
 }
 
+
+
 /* Media query for smaller screens */
 @media (max-width: 768px) {
-    .navbar-hamburger {
-        display: flex;
-    }
+   
     .navbar-menu {
         display: none;
     }
+
+    .navbar-hamburger {
+        display: flex;
+        justify-content: center;
+       margin-top: 30px;
+    }
+
      
     .language-icon{
         width: 20px; 
