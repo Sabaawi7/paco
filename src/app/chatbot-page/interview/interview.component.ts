@@ -9,9 +9,12 @@ import { AnswersService } from './answers.service';
 import { Router } from '@angular/router';
 import { __importStar } from 'tslib';
 import { ProgressbarComponent } from '../progressbar/progressbar.component';
-
+import { TokenService } from '../token.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-interview',
+
   templateUrl: './interview.component.html',
   imports: [MaterialModule, CommonModule, FormsModule, ProgressbarComponent],
   standalone: true,
@@ -32,13 +35,18 @@ export class InterviewComponent implements OnInit {
   timeoutId: any;
   currentQuestionText: string = '';
   showButtons: boolean = false; // Flag to control button visibility
+  userid: string = ''; // Benutzer-ID hier speichern
 
+  private apiUrl = 'http://localhost:8000/api/answers'; // Hier die URL Ihrer Backend-API einfügen
 
-  constructor(private answersService: AnswersService, private interviewService: InterviewService, private router: Router) { }
+  constructor(private answersService: AnswersService, private interviewService: InterviewService, 
+    private tokenService: TokenService, private router: Router,
+    private http: HttpClient) { }
 
   
   // Initialize component;
   ngOnInit(): void {
+    this.loadInitialAnswers(); // Lade die Antworten beim Initialisieren
     // Subscribe to selectedQuestion changes;
     this.interviewService.selectedQuestion$.subscribe(questionNumber => {
       // Update selectedQuestion and currentQuestionText;
@@ -74,6 +82,7 @@ export class InterviewComponent implements OnInit {
   toggleAnswer(questionNumber: any, answer: any, isSelected: boolean) {
     if (isSelected) {
       this.answersService.saveAnswer(questionNumber, answer);
+
     } else {
       this.answersService.deleteAnswer(questionNumber, answer);
     }
@@ -146,10 +155,16 @@ export class InterviewComponent implements OnInit {
       console.log(this.userSelection)
     }
 
+    this.saveAnswerToBackend();
+
+
+
+
 
     if (this.selectedQuestion < this.totalQuestions -1) {
       this.selectQuestion(this.selectedQuestion + 1);
     } else {
+   
       this.router.navigate(['/loading']);
     }
 
@@ -223,4 +238,41 @@ export class InterviewComponent implements OnInit {
     }
     return [];
   }
+
+  saveAnswerToBackend() {
+    const questionType = 1; // Set the appropriate question type
+    const answers = this.answersService.getAnswers(this.selectedQuestion);
+    this.answersService.saveAnswersToBackend(questionType, this.selectedQuestion, answers).subscribe({
+      next: (response) => {
+        console.log('Antworten erfolgreich gespeichert:', response);
+      },
+      error: (error) => {
+        console.error('Fehler beim Speichern der Antworten:', error);
+      }
+    });
+  }
+
+  loadInitialAnswers() {
+    const userid = this.tokenService.getToken();
+    this.http.post<any>(`${this.apiUrl}`, {
+      userid: userid,
+      question_type_id: 1, // Passen Sie dies an Ihre Bedürfnisse an
+      question_id: 1, // Passen Sie dies an Ihre Bedürfnisse an
+      request_type: 'get'
+    }).subscribe({
+      next: (response) => {
+        console.log('Antworten erfolgreich abgerufen:', response);
+        // Antworten im answersService speichern
+        response.data.forEach((answer: any) => {
+          this.answersService.saveAnswer(answer.question_id, answer.answer);
+        });
+      },
+      error: (error) => {
+        console.error('Fehler beim Abrufen der Antworten:', error);
+      }
+    });
+  }
+
+
+
 }

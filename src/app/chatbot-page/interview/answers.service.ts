@@ -1,12 +1,35 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { TokenService } from '../token.service';
 @Injectable({
   providedIn: 'root'
 })
 
 export class AnswersService {
-
+/*answerdata: Dies ist das Array, in dem die Daten gespeichert werden.
+Jedes Element in answerdata repräsentiert eine Frage und die dazugehörigen Antworten.
+Beispiel: { question: 1, answers: ['Option A', 'Option C'] }
+Hierbei wird für die Frage mit der Nummer 1 die Antworten "Option A" und "Option C" gespeichert.
+*/
   private answerdata: any[] = [];
+
+  private apiUrl = 'http://localhost:8000/api/answers'; // Hier die URL Ihrer Backend-API einfügen
+
+  constructor(private http: HttpClient, private tokenService: TokenService) { }
+
+  // Methode zum Speichern von Antworten im Backend
+  saveAnswersToBackend(questionType: number, questionId: number, answers: any[]): Observable<any> {
+    const userid = this.tokenService.getToken(); // Hier wird die aktuelle Benutzer-ID abgerufen
+    const payload = {
+      userid: userid,
+      question_type_id: questionType,
+      question_id: questionId,
+      request_type: 'post',
+      dataToPost: answers
+    };
+    return this.http.post<any>(`${this.apiUrl}`, payload);
+  }
 
 //Stores the answer for a question;
   saveAnswer(questionNumber: any, answer: any) {
