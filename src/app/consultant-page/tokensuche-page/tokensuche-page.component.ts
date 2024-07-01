@@ -21,4 +21,7 @@ export class TokensuchePageComponent {
     console.log('Personalized Question:', personalizedQuestion);
     console.log('Text Input:', textInput);
 }
+searchToken(){
+
+}
 }
