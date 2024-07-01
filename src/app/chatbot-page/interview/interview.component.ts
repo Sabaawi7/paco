@@ -127,6 +127,7 @@ export class InterviewComponent implements OnInit {
 
   // Navigate to the next question;
   navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+    this.interviewService.getApiAnswer();
     // Clear timeout if not the last question;
     if (this.selectedQuestion != this.totalQuestions - 1) {
       clearTimeout(this.timeoutId)
@@ -215,6 +216,7 @@ export class InterviewComponent implements OnInit {
 
   getQuestion(questionNumber: number): Question {
     return this.interviewService.getQuestion(questionNumber);
+    //return this.interviewService.getApiAnswer();
   }
 
   getAnswersArray(answers: string[] | number[]): (string | number)[] {
@@ -223,4 +225,18 @@ export class InterviewComponent implements OnInit {
     }
     return [];
   }
+
+
+  async getQuestion2(selectedQuestion: number): Promise<void> {
+    try {
+      const question = await this.interviewService.getApiAnswerAsync();
+      this.currentQuestionText = question.question; // Aktualisiere die Frage in der Komponente
+      // Andere Verarbeitungsschritte, die du hier tun möchtest
+    } catch (error) {
+      console.error('Error fetching question:', error);
+      // Behandlung des Fehlers in der Komponente (z. B. Fehlermeldung anzeigen)
+    }
+  }
+  
 }
+  
