@@ -72,81 +72,58 @@ export class InterviewService implements OnInit{
 
 
 
-  getApiAnswer(): Question{
-    this.tokenService.currentToken.subscribe(token => {
-      this.token = token;
-      });
-   
-      if (!this.token) throw new Error('Token not available');
-
-      const payload = {
-        "userid": this.token,
-        "question_type_id": 1,
-        "question_id": this.questionIndex,
-        "request_type": 'get'
-      };
-      var question: Question= { question: '', answers: null, answer_type: '', subtext_info: null };
-      console.log(payload);
-      const response =  this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe(response => {
+  getApiAnswer(): Promise<Question> {
+    return new Promise((resolve, reject) => {
+      this.tokenService.currentToken.subscribe(token => {
+        this.token = token;
         
-        
-        console.log("response", response  )
-        console.log("questionTitle", response.question_title  )
-        question = {
-          question: String(response.question_title),
-          answers: response.all_elements,
-          answer_type: "multiple_choice",
-         // subtext_info: String(response.subtext_info) || null
-        };
-        console.log('Type of question:', typeof question.question);
-        console.log('Type of answers:', Array.isArray(question.answers) ? 'array' : typeof question.answers);
-        console.log('Type of answer_type:', typeof question.answer_type);
-        //console.log('Type of subtext_info:', typeof question.subtext_info);
-        console.log(question);
-        return
-      });
-      console.log('Type of question:', typeof question.question);
-      console.log('Type of answers:', Array.isArray(question.answers) ? 'array' : typeof question.answers);
-      console.log('Type of answer_type:', typeof question.answer_type);
-     // console.log('Type of subtext_info:', typeof question.subtext_info);
-      console.log(question);
-      return question;
-    } 
-
-
-
-
-
-    async getApiAnswerAsync(): Promise<Question> {
-      try {
-        const token = await this.tokenService.currentToken.toPromise();
-        if (!token) {
-          throw new Error('Token not available');
+        if (!this.token) {
+          reject(new Error('Token not available'));
+          return;
         }
-      
+  
         const payload = {
-          "userid": token,
+          "userid": this.token,
           "question_type_id": 1,
           "question_id": this.questionIndex,
           "request_type": 'get'
         };
-      
-        const response = await this.httpClient.post<any>("http://localhost:8000/api/answers", payload).toPromise();
-        
-        const question: Question = {
-          question: String(response.question_title),
-          answers: response.all_elements,
-          answer_type: "multiple_choice",
-          // subtext_info: String(response.subtext_info) || null
-        };
-        
-        return question; // Erfolgreich abgerufene Frage zurückgeben
-      } catch (error) {
-        console.error('Error fetching API answer:', error);
-        throw error; // Fehler weiterleiten, um in der Aufruferkomponente behandelt zu werden
-      }
-    }
-    
+  
+        console.log(payload);
+  
+        this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe({
+          next: (response) => {
+            console.log("response", response);
+            console.log("questionTitle", response.question_title);
+  
+            const question: Question = {
+              question: String(response.question_title),
+              answers: response.all_elements,
+              answer_type: "multiple_choice",
+            };
+  
+            console.log('Type of question:', typeof question.question);
+            console.log('Type of answers:', Array.isArray(question.answers) ? 'array' : typeof question.answers);
+            console.log('Type of answer_type:', typeof question.answer_type);
+            console.log("question",question);
+
+            console.log("selectedQuestion", this.selectedQuestionSubject.value);
+  
+            resolve(question);
+          },
+          error: (error) => {
+            reject(error);
+          }
+        });
+      });
+    });
+  }
+  
+
+
+
+
+
     
 
   

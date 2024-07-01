@@ -26,24 +26,31 @@ export class InterviewComponent implements OnInit {
   selectedQuestion: number = 1; // Assuming the default selected question is 1;
   totalQuestions: number = this.interviewService.questions.length;
   
+ 
   // Variables for selected answer and text input;
+  question: Question = {question: 'h', answers: [], answer_type: '', subtext_info: ''};
+
   selected: any;
   TextInput: String = '';
   timeoutId: any;
-  currentQuestionText: string = '';
+  currentQuestionText: string = this.question.question;
   showButtons: boolean = false; // Flag to control button visibility
-
 
   constructor(private answersService: AnswersService, private interviewService: InterviewService, private router: Router) { }
 
   
   // Initialize component;
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.question = await this.interviewService.getApiAnswer();
+    console.log("question2", this.question)
+
     // Subscribe to selectedQuestion changes;
     this.interviewService.selectedQuestion$.subscribe(questionNumber => {
       // Update selectedQuestion and currentQuestionText;
       this.selectedQuestion = questionNumber;
-      this.currentQuestionText = this.getQuestion(this.selectedQuestion).question;
+      this.currentQuestionText = this.question.question;
+      console.log("question3", this.question)
+
 
       // Start typeWriter animation;
       this.typeWriter(this.currentQuestionText, 0);
@@ -227,16 +234,7 @@ export class InterviewComponent implements OnInit {
   }
 
 
-  async getQuestion2(selectedQuestion: number): Promise<void> {
-    try {
-      const question = await this.interviewService.getApiAnswerAsync();
-      this.currentQuestionText = question.question; // Aktualisiere die Frage in der Komponente
-      // Andere Verarbeitungsschritte, die du hier tun möchtest
-    } catch (error) {
-      console.error('Error fetching question:', error);
-      // Behandlung des Fehlers in der Komponente (z. B. Fehlermeldung anzeigen)
-    }
-  }
+
   
 }
   

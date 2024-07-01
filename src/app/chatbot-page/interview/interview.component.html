@@ -2,7 +2,7 @@
     <div class="questions">
       <div *ngIf="getQuestion(selectedQuestion)" class="question-container">
         <h2>{{ currentQuestionText }}</h2>
-        <div class="NavigationButtons" *ngIf="showButtons">
+        <div class="NavigationButtons" >
           <button mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
             <img src="assets/backwardsArrow.png">
           </button>
