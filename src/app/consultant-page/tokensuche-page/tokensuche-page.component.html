@@ -1,0 +1,8 @@
+<div class="container">
+    <h1>Tokensuche</h1>
+    <mat-form-field>
+        <mat-label>Token</mat-label>
+        <textarea matInput #message="ngModel" [(ngModel)]="TextInput" name="message" required maxlength="256" placeholder="Token" (blur)="saveAnswerText(CheckedToken, TextInput)"></textarea>
+        <mat-error *ngIf="message.invalid && (message.dirty || message.touched)">Token is required.</mat-error>
+    </mat-form-field>
+</div>
