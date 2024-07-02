@@ -31,7 +31,7 @@ export class InterviewService implements OnInit{
 
   nextQuestion() : void {
     this.questionIndex += 1;
-    this.getApiAnswer();
+    //this.getApiAnswer();
   }
 
   prevQuestion() : void {
@@ -72,7 +72,7 @@ export class InterviewService implements OnInit{
 
 
 
-  getApiAnswer(): Promise<Question> {
+  getApiAnswer(number : number): Promise<Question> {
     return new Promise((resolve, reject) => {
       this.tokenService.currentToken.subscribe(token => {
         this.token = token;
@@ -85,7 +85,7 @@ export class InterviewService implements OnInit{
         const payload = {
           "userid": this.token,
           "question_type_id": 1,
-          "question_id": this.questionIndex,
+          "question_id": number,
           "request_type": 'get'
         };
   

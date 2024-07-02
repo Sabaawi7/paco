@@ -41,13 +41,13 @@ export class InterviewComponent implements OnInit {
   
   // Initialize component;
   async ngOnInit(): Promise<void> {
-    this.question = await this.interviewService.getApiAnswer();
+    this.question = await this.interviewService.getApiAnswer(this.selectedQuestion);
     console.log("question2", this.question)
 
     // Subscribe to selectedQuestion changes;
     this.interviewService.selectedQuestion$.subscribe(questionNumber => {
       // Update selectedQuestion and currentQuestionText;
-      this.selectedQuestion = questionNumber;
+      //this.selectedQuestion = questionNumber;
       this.currentQuestionText = this.question.question;
       console.log("question3", this.question)
 
@@ -77,6 +77,8 @@ export class InterviewComponent implements OnInit {
     });
   }
 
+
+  
   // Toggle multiple choice answer;
   toggleAnswer(questionNumber: any, answer: any, isSelected: boolean) {
     if (isSelected) {
@@ -133,15 +135,21 @@ export class InterviewComponent implements OnInit {
   }
 
   // Navigate to the next question;
-  navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
-    this.interviewService.getApiAnswer();
-    // Clear timeout if not the last question;
-    if (this.selectedQuestion != this.totalQuestions - 1) {
-      clearTimeout(this.timeoutId)
+  async navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+    this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
+    this.selectedQuestion = this.selectedQuestion + 1;
+    console.log("selectedQuestiom",this.selectedQuestion)
+    const p = document.querySelector('h2');
+    if (p) {
+      p.textContent=this.question.question;
     }
+    // Clear timeout if not the last question;
+    //if (this.selectedQuestion != this.totalQuestions - 1) {
+    //  clearTimeout(this.timeoutId)
+    //}
 
     // Mark question as answered based on user selection;
-    const currentValue = this.userSelection?.value;
+    /*const currentValue = this.userSelection?.value;
     if (this.userSelection !== undefined && this.userSelection.name.startsWith('mat-button-toggle-group')) {
       if (currentValue !== undefined && currentValue.length > 0) {
         this.interviewService.markQuestionAsAnswered(this.selectedQuestion);
@@ -153,21 +161,21 @@ export class InterviewComponent implements OnInit {
     } else {
       console.log(this.userSelection)
     }
-
-
+*/
+/*
     if (this.selectedQuestion < this.totalQuestions -1) {
       this.selectQuestion(this.selectedQuestion + 1);
     } else {
       this.router.navigate(['/loading']);
     }
-
+*/
     // Reset selections and prepare for the next question;
-    this.resetToggleButtons();
+    //this.resetToggleButtons();
 
-    this.selected = undefined;
-    this.TextInput = '';
+    //this.selected = undefined;
+    //this.TextInput = '';
     // Set selected answer for dropdown and writing questions;
-    if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
+   /* if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
       this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
     } else {
       this.selected = undefined;
@@ -182,6 +190,7 @@ export class InterviewComponent implements OnInit {
     if (this.userSelection) {
       this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
     }
+      */
   }
 
   // Reset toggle buttons for multiple choice questions
