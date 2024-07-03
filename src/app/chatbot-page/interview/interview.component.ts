@@ -35,6 +35,8 @@ export class InterviewComponent implements OnInit {
   timeoutId: any;
   currentQuestionText: string = this.question.question;
   showButtons: boolean = false; // Flag to control button visibility
+  allSelectedAnswers: String[] = [];
+
 
   constructor(private answersService: AnswersService, private interviewService: InterviewService, private router: Router) { }
 
@@ -98,6 +100,26 @@ export class InterviewComponent implements OnInit {
     }
   }
 
+  toggleAnswer2(answer: any, isSelected: boolean) {
+    if (isSelected) {
+      this.saveAnswer2(this.selectedQuestion, answer);
+    } else {
+      this.deleteAnswer2(this.selectedQuestion, answer);
+    }
+  }
+
+  saveAnswer2(questionNumber: any, answer: any){
+    this.allSelectedAnswers.push(answer);
+  }
+  
+  deleteAnswer2(questionNumber: any, answer: any){
+    const answerIndex = this.allSelectedAnswers.indexOf(answer);
+    if (answerIndex >= 0) {
+      this.allSelectedAnswers.splice(answerIndex, 1);
+    }
+  }
+
+
   // Toggle single choice answer;
   toggleOnlyOneAnswer(questionNumber: any, answer: any, isSelected: boolean) {
     if (isSelected) {
@@ -110,6 +132,15 @@ export class InterviewComponent implements OnInit {
   // Save single answer (single choice, text, dropdown);
   saveAnswerText(arg0: any, arg1: any) {
     this.answersService.saveOnlyOneAnswer(arg0, arg1);
+  }
+
+  saveAnswerText2(arg1: any) {
+    if( this.question.selected_elements != undefined && this.question.selected_elements.length > 0 ){
+    this.allSelectedAnswers[0] = arg1;
+    }else{
+    //this.allSelectedAnswers.push(arg1);
+    this.allSelectedAnswers=[arg1];
+    }
   }
 
   // Typewriter animation for displaying question text;
@@ -156,6 +187,19 @@ export class InterviewComponent implements OnInit {
 
   // Navigate to the next question;
   async navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+    console.log("NEXT show allSelectedAnswers",this.allSelectedAnswers)
+   //dropdown;
+   if (this.question.answer_type === 'numerical' && this.allSelectedAnswers != null) {
+    this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
+  } //writing; 
+    else if (this.question.answer_type === 'editable' && this.allSelectedAnswers != null) {
+    this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
+    } else{
+    this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
+    }
+
+    this.allSelectedAnswers = [];
+
     this.selectedQuestion = this.selectedQuestion + 1;
     this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     console.log("selectedQuestion NACH NEXT",this.selectedQuestion)
@@ -164,6 +208,9 @@ export class InterviewComponent implements OnInit {
     if(this.question.answer_type==='generated'){
       this.router.navigate(['/loading']);
       console.log("GENERATED AND ROUTER TO LOADING")
+    }
+    if(this.question.selected_elements != undefined){
+    this.allSelectedAnswers = this.question.selected_elements;
     }
     //this.updateToggleButtons();
     // Clear timeout if not the last question;
@@ -201,14 +248,14 @@ export class InterviewComponent implements OnInit {
     // Set selected answer for dropdown and writing questions;
     
    //dropdown;
-   if (this.question.answer_type === 'numerical' && this.question.selected_elements != undefined) {
+   if (this.question.answer_type === 'numerical' && this.question.selected_elements != undefined && this.question.selected_elements.length > 0) {
     this.selected = this.question.selected_elements[0];
   } else {
     this.selected = undefined;
   }
       
     //writing;
-    if (this.question.answer_type === 'editable' && this.question.selected_elements != undefined) {
+    if (this.question.answer_type === 'editable' && this.question.selected_elements != undefined && this.question.selected_elements.length > 0) {
       this.TextInput = this.question.selected_elements[0];
     } else {
       this.TextInput = '';
@@ -229,10 +276,25 @@ export class InterviewComponent implements OnInit {
   }
 
   async navigateToPreviousQuestion() {
+    console.log("PREVIOUS show allSelectedAnswers",this.allSelectedAnswers)
+       //dropdown;
+   if (this.question.answer_type === 'numerical' && this.allSelectedAnswers != null) {
+    await this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
+  } //writing;
+    else if (this.question.answer_type === 'editable' && this.allSelectedAnswers != null) {
+    await this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
+    } else{
+    await this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
+    }
+    this.allSelectedAnswers = [];
+
     this.selectedQuestion = this.selectedQuestion - 1;
     this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     console.log("selectedQuestion NACH PREVIUOS",this.selectedQuestion)
     this.changeAnswerText();
+    if(this.question.selected_elements != undefined){
+      this.allSelectedAnswers = this.question.selected_elements;
+      }
     /*
     if (this.selectedQuestion != 0) {
       clearTimeout(this.timeoutId)
@@ -247,14 +309,14 @@ export class InterviewComponent implements OnInit {
     this.resetToggleButtons();
 */
   //dropdown;
-   if (this.question.answer_type === 'numerical' && this.question.selected_elements != undefined) {
+   if (this.question.answer_type === 'numerical' && this.question.selected_elements != undefined && this.question.selected_elements.length > 0) {
     this.selected = this.question.selected_elements[0];
   } else {
     this.selected = undefined;
   }
     
    //writing;
-    if (this.question.answer_type === 'editable' && this.question.selected_elements != undefined) {
+    if (this.question.answer_type === 'editable' && this.question.selected_elements != undefined && this.question.selected_elements.length > 0  ) {
       this.TextInput = this.question.selected_elements[0];
     } else {
       this.TextInput = '';
@@ -280,7 +342,7 @@ export class InterviewComponent implements OnInit {
   }
 
   getAnswersArray2():(string | number)[] {
-    console.log("question answers on GETANSWERSARRAY2",this.question.answers)
+    //console.log("question answers on GETANSWERSARRAY2",this.question.answers)
     if (Array.isArray(this.question.answers)) {
       return this.question.answers;
     }

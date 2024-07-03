@@ -45,8 +45,8 @@ export class PersonalquestionPageComponent implements OnInit {
 
       // Save single answer (single choice, text, dropdown);
   saveAnswerText(arg0: any, arg1: any) {
-
-    this.answersService.saveOnlyOneAnswer(arg0, arg1);
+    this.interviewService.postApiAnswer(11, arg1); // 11 IST hardcoded ( einfacher fürs erste) , sonst ka wie mans machen soll, da die question_id in der interview-component.ts hoch gezählt wird
+    //this.answersService.saveOnlyOneAnswer(arg0, arg1);
   }
 
 

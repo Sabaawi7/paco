@@ -142,6 +142,7 @@ export class InterviewService implements OnInit{
             console.log('Type of answers:', Array.isArray(question.answers) ? 'array' : typeof question.answers);
             console.log('Type of answer_type:', typeof question.answer_type);
             console.log("question", question);
+            console.log("GETTING SELECTED ELEMENTS", question.selected_elements)
 
             resolve(question);
           },
@@ -158,9 +159,30 @@ export class InterviewService implements OnInit{
   
 
 
-
-
-
+  async postApiAnswer(number: number, answer: string[] | any[]): Promise<void> {
+    console.log("ICH BIN IN DER API ZUM POSTEN");
+  
+    this.ensureToken().then(() => {
+      const payload = {
+        userid: this.token,
+        question_type_id: 1,
+        question_id: number,
+        request_type: 'post',
+        dataToPost: answer
+      };
+      console.log(payload);
+  
+      this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe({
+        next: () => { console.log("Answer posted successfully",answer);},
+        error: (error: any) => {
+          console.error("Error in postApiAnswer:", error);
+        }
+      });
+    }).catch(error => {
+      console.error("Token retrieval error:", error);
+    });
+  }
+  
     
 
   
