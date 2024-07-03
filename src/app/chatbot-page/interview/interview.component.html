@@ -13,26 +13,26 @@
       </div>
     </div>
   
-   <!-- 
+   
     <div class="answers">
       <div >
         <ng-container>
-          -- Multiple Choice--
-          <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='multiple_choice'">
+          <!-- Multiple Choice-->
+          <div class="MultipleChoiceAnswers" *ngIf="canIShowButtons()=='selectable'">
             <mat-button-toggle-group [hideMultipleSelectionIndicator]="true" #userSelection="matButtonToggleGroup" multiple>
-              <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
+              <mat-button-toggle *ngFor="let answer of getAnswersArray2()" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
-  -- 
-          !-- Single Choice-- 
+  
+          <!-- Single Choice--
           <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">
             <mat-button-toggle-group [hideSingleSelectionIndicator]="true" #userSelection="matButtonToggleGroup">
               <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleOnlyOneAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
             </mat-button-toggle-group>
-          </div>
+          </div>-->
   
-          !-- Writing --
-          <div *ngIf="getQuestion(selectedQuestion).answer_type=='writing'">
+          <!-- Writing -->
+          <div *ngIf="canIShowButtons()=='editable'">
             <mat-form-field>
               <mat-label>Message</mat-label>
               <textarea matInput #message="ngModel" [(ngModel)]="TextInput" name="message" required maxlength="256" placeholder="In 5 Jahre sehe ich mich als Ingenieur" (blur)="saveAnswerText(selectedQuestion, TextInput)"></textarea>
@@ -41,15 +41,21 @@
             </mat-form-field>
           </div>
   
-          !-- Dropdown --
-          <div *ngIf="getQuestion(selectedQuestion).answer_type=='dropdown'">
+          <!-- Dropdown -->
+          <div *ngIf="canIShowButtons()=='numerical'">
             <mat-form-field>
               <mat-select placeholder="Antwort" [(value)]="selected" (selectionChange)="saveAnswerText(selectedQuestion, $event.value)">
-                <mat-option *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">{{ answer }}</mat-option>
+                <mat-option *ngFor="let answer of  getAnswersArray2()" [value]="answer">{{ answer }}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
+
+          <div *ngIf="canIShowButtons()!='selectable' || canIShowButtons()!='numerical' || canIShowButtons()!='editable'">
+
+          </div>
+        
         </ng-container>
+        
         <ng-template #noAnswers>
           <p>Keine Antworten vorhanden</p>
         </ng-template>
@@ -62,8 +68,9 @@
             <span>Weiter</span> 
           </button>
         </div>
+        
       </div>
     </div> 
-  -->
+  
   </div>
   

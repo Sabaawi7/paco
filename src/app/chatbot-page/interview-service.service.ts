@@ -117,14 +117,15 @@ export class InterviewService implements OnInit{
         console.log(payload);
 
         this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe({
-          next: (response: { question_title: any; all_elements: any; }) => {
+          next: (response: { question_title: any; all_elements: any;io_type: any; answer_label:any }) => {
             console.log("response", response);
             console.log("questionTitle", response.question_title);
 
             const question: Question = {
               question: String(response.question_title),
               answers: response.all_elements,
-              answer_type: "multiple_choice",
+              answer_type: response.io_type,
+              answer_label: response.answer_label
             };
 
             console.log('Type of question:', typeof question.question);

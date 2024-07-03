@@ -47,7 +47,6 @@ export class InterviewComponent implements OnInit {
         this.question = await this.interviewService.getApiAnswer(this.selectedQuestion);
         console.log("NGONINIT NACH API AUFRUF");
         console.log("question2", this.question);
-        this.selectedQuestion=this.selectedQuestion+1;
         console.log("selectedQuestion NACH NGONINIT", this.selectedQuestion)
         this.changeAnswerText();
       } catch (error) {
@@ -147,10 +146,16 @@ export class InterviewComponent implements OnInit {
 
   // Navigate to the next question;
   async navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
-    this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     this.selectedQuestion = this.selectedQuestion + 1;
+    this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     console.log("selectedQuestion NACH NEXT",this.selectedQuestion)
     this.changeAnswerText();
+    console.log("SEE IO TYPE",this.question.answer_type)
+    if(this.question.answer_label==='generated'){
+      this.router.navigate(['/loading']);
+      console.log("GENERATED AND ROUTER TO LOADING")
+    }
+    //this.updateToggleButtons();
     // Clear timeout if not the last question;
     //if (this.selectedQuestion != this.totalQuestions - 1) {
     //  clearTimeout(this.timeoutId)
@@ -208,7 +213,12 @@ export class InterviewComponent implements OnInit {
     }
   }
 
-  navigateToPreviousQuestion() {
+  async navigateToPreviousQuestion() {
+    this.selectedQuestion = this.selectedQuestion - 1;
+    this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
+    console.log("selectedQuestion NACH PREVIUOS",this.selectedQuestion)
+    this.changeAnswerText();
+    /*
     if (this.selectedQuestion != 0) {
       clearTimeout(this.timeoutId)
     } else {
@@ -218,7 +228,7 @@ export class InterviewComponent implements OnInit {
     if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
     }
-      */
+      *
     this.resetToggleButtons();
 
     //Set the selected answer if it is a dropdown question;
@@ -238,6 +248,7 @@ export class InterviewComponent implements OnInit {
     if (this.userSelection) {
       this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
     }
+      */
   }
 
   getQuestion(questionNumber: number): Question {
@@ -252,7 +263,13 @@ export class InterviewComponent implements OnInit {
     return [];
   }
 
-
+  getAnswersArray2():(string | number)[] {
+    console.log("question answers on GETANSWERSARRAY2",this.question.answers)
+    if (Array.isArray(this.question.answers)) {
+      return this.question.answers;
+    }
+    return [];
+  }
 
 
   changeAnswerText(){
@@ -264,7 +281,26 @@ export class InterviewComponent implements OnInit {
     }
   }
 
+  updateToggleButtons(): void {
+    console.log("updateToggleButtons", this.question.answers)
+    if (this.userSelection) {
+      const toggleGroup = this.userSelection.nativeElement;
+      const buttons = toggleGroup.querySelectorAll('mat-button-toggle');
 
+      buttons.forEach((button: HTMLElement, index: number) => {
+        if (this.question.answers != null) {
+        button.textContent = String(this.question.answers[index] || '');
+        }
+      });
+    
+  }
+  }
+
+
+
+  canIShowButtons(): String {
+  return this.question.answer_type;
+  }
 
   
 }
