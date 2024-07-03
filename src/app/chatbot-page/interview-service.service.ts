@@ -35,6 +35,11 @@ export class InterviewService implements OnInit{
   questionIndex = 1;
   token='';
 
+  personalQuestion: Question = {question: 'a', answers: [], answer_type: '', subtext_info: ''};
+
+
+
+
   ngOnInit() {
     this.tokenService.currentToken.subscribe(token => {
     this.token = token;
@@ -127,6 +132,9 @@ export class InterviewService implements OnInit{
               answer_type: response.io_type,
               answer_label: response.answer_label
             };
+            if(response.io_type === 'generated'){
+              this.personalQuestion = question;
+            }
 
             console.log('Type of question:', typeof question.question);
             console.log('Type of answers:', Array.isArray(question.answers) ? 'array' : typeof question.answers);

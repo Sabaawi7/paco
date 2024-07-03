@@ -151,7 +151,7 @@ export class InterviewComponent implements OnInit {
     console.log("selectedQuestion NACH NEXT",this.selectedQuestion)
     this.changeAnswerText();
     console.log("SEE IO TYPE",this.question.answer_type)
-    if(this.question.answer_label==='generated'){
+    if(this.question.answer_type==='generated'){
       this.router.navigate(['/loading']);
       console.log("GENERATED AND ROUTER TO LOADING")
     }

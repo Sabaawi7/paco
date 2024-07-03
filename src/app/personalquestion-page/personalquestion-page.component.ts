@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnswersService } from '../chatbot-page/interview/answers.service';
 import { Router } from '@angular/router';
+import { InterviewService } from '../chatbot-page/interview-service.service';
 
 export let hasPersonalQuestionBeenAsked = false;
 
@@ -17,12 +18,12 @@ export let hasPersonalQuestionBeenAsked = false;
 })
 export class PersonalquestionPageComponent implements OnInit {
 
-  personalizedQuestion: string="Was für Tätigkeiten wünschst du dir später in deinem Beruf auszuführen?";
+  personalizedQuestion: string=this.interviewService.personalQuestion.question;
   timeoutId: any;
   TextInput: String = '';
   showButton = false;
 
-  constructor(private router:Router, private answersService: AnswersService) { }
+  constructor(private router:Router, private answersService: AnswersService, private interviewService: InterviewService) { }
 
   ngOnInit(): void {
 
