@@ -17,10 +17,10 @@
     <div class="answers">
       <div >
         <ng-container>
-          <!-- Multiple Choice-->
+          <!-- Multiple Choice bzw Selectable-->
           <div class="MultipleChoiceAnswers" *ngIf="canIShowButtons()=='selectable'">
             <mat-button-toggle-group [hideMultipleSelectionIndicator]="true" #userSelection="matButtonToggleGroup" multiple>
-              <mat-button-toggle *ngFor="let answer of getAnswersArray2()" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
+              <mat-button-toggle *ngFor="let answer of getAnswersArray2()" [value]="answer" [checked]="isAnswerSelected2(answer)" #toggleButton (click)="toggleAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
   
@@ -31,7 +31,7 @@
             </mat-button-toggle-group>
           </div>-->
   
-          <!-- Writing -->
+          <!-- Writing bzw editable-->
           <div *ngIf="canIShowButtons()=='editable'">
             <mat-form-field>
               <mat-label>Message</mat-label>
@@ -41,7 +41,7 @@
             </mat-form-field>
           </div>
   
-          <!-- Dropdown -->
+          <!-- Dropdown bzw numerical-->
           <div *ngIf="canIShowButtons()=='numerical'">
             <mat-form-field>
               <mat-select placeholder="Antwort" [(value)]="selected" (selectionChange)="saveAnswerText(selectedQuestion, $event.value)">

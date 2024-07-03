@@ -122,7 +122,8 @@ export class InterviewService implements OnInit{
         console.log(payload);
 
         this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe({
-          next: (response: { question_title: any; all_elements: any;io_type: any; answer_label:any }) => {
+          next: (response: { question_title: any; all_elements: any;io_type: any; 
+            answer_label:any ; selected_elements:any}) => {
             console.log("response", response);
             console.log("questionTitle", response.question_title);
 
@@ -130,7 +131,8 @@ export class InterviewService implements OnInit{
               question: String(response.question_title),
               answers: response.all_elements,
               answer_type: response.io_type,
-              answer_label: response.answer_label
+              answer_label: response.answer_label,
+              selected_elements: response.selected_elements
             };
             if(response.io_type === 'generated'){
               this.personalQuestion = question;

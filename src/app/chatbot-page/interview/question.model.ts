@@ -7,5 +7,6 @@ export interface Question {
     answer_type: string; // Typ der Antwort
     subtext_info?: string | null; // Zusätzliche Information zur Frage
     answer_label?: string; // Label der Antwortmöglichkeiten
+    selected_elements?: string[] ; // Ausgewählte Elemente
   }
   

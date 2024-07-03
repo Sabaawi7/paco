@@ -31,7 +31,7 @@ export class InterviewComponent implements OnInit {
   question: Question = {question: 'h', answers: [], answer_type: '', subtext_info: ''};
 
   selected: any;
-  TextInput: String = '';
+  TextInput: String = 'TEST TEST';
   timeoutId: any;
   currentQuestionText: string = this.question.question;
   showButtons: boolean = false; // Flag to control button visibility
@@ -144,6 +144,16 @@ export class InterviewComponent implements OnInit {
     return selectedAnswers.includes(answer);
   }
 
+  
+  isAnswerSelected2(answer: any): boolean {
+    if(this.question.selected_elements!=undefined){
+    const selectedAnswers = this.question.selected_elements;
+    return selectedAnswers.includes(answer);
+    }
+    return false;
+  }
+
+
   // Navigate to the next question;
   async navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
     this.selectedQuestion = this.selectedQuestion + 1;
@@ -187,18 +197,23 @@ export class InterviewComponent implements OnInit {
 
     //this.selected = undefined;
     //this.TextInput = '';
+
     // Set selected answer for dropdown and writing questions;
-   /* if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
-      this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
-    } else {
-      this.selected = undefined;
-    }
+    
+   //dropdown;
+   if (this.question.answer_type === 'numerical' && this.question.selected_elements != undefined) {
+    this.selected = this.question.selected_elements[0];
+  } else {
+    this.selected = undefined;
+  }
+      
     //writing;
-    if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
-      this.TextInput = this.answersService.getAnswers(this.selectedQuestion)[0];
+    if (this.question.answer_type === 'editable' && this.question.selected_elements != undefined) {
+      this.TextInput = this.question.selected_elements[0];
     } else {
       this.TextInput = '';
     }
+    /*
     // Reset selection for multiple choice questions;
     if (this.userSelection) {
       this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
@@ -230,20 +245,21 @@ export class InterviewComponent implements OnInit {
     }
       *
     this.resetToggleButtons();
-
-    //Set the selected answer if it is a dropdown question;
-    if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
-      this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
-    } else {
-      this.selected = undefined;
-    }
-    //writing
-    if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
-      this.TextInput = this.answersService.getAnswers(this.selectedQuestion)[0];
+*/
+  //dropdown;
+   if (this.question.answer_type === 'numerical' && this.question.selected_elements != undefined) {
+    this.selected = this.question.selected_elements[0];
+  } else {
+    this.selected = undefined;
+  }
+    
+   //writing;
+    if (this.question.answer_type === 'editable' && this.question.selected_elements != undefined) {
+      this.TextInput = this.question.selected_elements[0];
     } else {
       this.TextInput = '';
     }
-
+    /*
     // Reset the selection for multiple choice questions;
     if (this.userSelection) {
       this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
