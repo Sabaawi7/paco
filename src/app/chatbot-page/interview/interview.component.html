@@ -1,6 +1,6 @@
 <div class="interview">
     <div class="questions">
-      <div *ngIf="getQuestion(selectedQuestion)" class="question-container">
+      <div  class="question-container">
         <h2>{{ currentQuestionText }}</h2>
         <div class="NavigationButtons" >
           <button mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
@@ -13,25 +13,25 @@
       </div>
     </div>
   
-  
+   <!-- 
     <div class="answers">
-      <div *ngIf="getQuestion(selectedQuestion)">
+      <div >
         <ng-container>
-          <!-- Multiple Choice-->
+          -- Multiple Choice--
           <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='multiple_choice'">
             <mat-button-toggle-group [hideMultipleSelectionIndicator]="true" #userSelection="matButtonToggleGroup" multiple>
               <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
-  
-          <!-- Single Choice--> 
+  -- 
+          !-- Single Choice-- 
           <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">
             <mat-button-toggle-group [hideSingleSelectionIndicator]="true" #userSelection="matButtonToggleGroup">
               <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleOnlyOneAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
   
-          <!-- Writing -->
+          !-- Writing --
           <div *ngIf="getQuestion(selectedQuestion).answer_type=='writing'">
             <mat-form-field>
               <mat-label>Message</mat-label>
@@ -41,7 +41,7 @@
             </mat-form-field>
           </div>
   
-          <!-- Dropdown -->
+          !-- Dropdown --
           <div *ngIf="getQuestion(selectedQuestion).answer_type=='dropdown'">
             <mat-form-field>
               <mat-select placeholder="Antwort" [(value)]="selected" (selectionChange)="saveAnswerText(selectedQuestion, $event.value)">
@@ -63,6 +63,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> 
+  -->
   </div>
   

@@ -41,14 +41,25 @@ export class InterviewComponent implements OnInit {
   
   // Initialize component;
   async ngOnInit(): Promise<void> {
-    this.question = await this.interviewService.getApiAnswer(this.selectedQuestion);
-    console.log("question2", this.question)
-
+    (async () => { 
+      try {
+        console.log("ICH BIN IM NGONINIT");
+        this.question = await this.interviewService.getApiAnswer(this.selectedQuestion);
+        console.log("NGONINIT NACH API AUFRUF");
+        console.log("question2", this.question);
+        this.selectedQuestion=this.selectedQuestion+1;
+        console.log("selectedQuestion NACH NGONINIT", this.selectedQuestion)
+        this.changeAnswerText();
+      } catch (error) {
+        console.error("Fehler in ngOnInit:", error);
+      }
+    })();
+  
     // Subscribe to selectedQuestion changes;
     this.interviewService.selectedQuestion$.subscribe(questionNumber => {
       // Update selectedQuestion and currentQuestionText;
       //this.selectedQuestion = questionNumber;
-      this.currentQuestionText = this.question.question;
+      //this.currentQuestionText = this.question.question;
       console.log("question3", this.question)
 
 
@@ -69,10 +80,10 @@ export class InterviewComponent implements OnInit {
       }
 
       // Reset selection for multiple choice questions;
-      if (this.userSelection) {
+     /* if (this.userSelection) {
         this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
       }
-
+*/
       this.showButtons = false; // Hide buttons initially
     });
   }
@@ -111,12 +122,12 @@ export class InterviewComponent implements OnInit {
       this.showButtons = true; // Show buttons after text is fully rendered
     }
   }
-
+/*
   // Select a specific question;
   selectQuestion(questionNumber: number) {
     this.interviewService.selectQuestion(questionNumber);
   }
-
+*/
   // Check if a question is selected;
   isQuestionSelected(questionNumber: number): boolean {
     return this.selectedQuestion === questionNumber;
@@ -138,11 +149,8 @@ export class InterviewComponent implements OnInit {
   async navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
     this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     this.selectedQuestion = this.selectedQuestion + 1;
-    console.log("selectedQuestiom",this.selectedQuestion)
-    const p = document.querySelector('h2');
-    if (p) {
-      p.textContent=this.question.question;
-    }
+    console.log("selectedQuestion NACH NEXT",this.selectedQuestion)
+    this.changeAnswerText();
     // Clear timeout if not the last question;
     //if (this.selectedQuestion != this.totalQuestions - 1) {
     //  clearTimeout(this.timeoutId)
@@ -206,9 +214,11 @@ export class InterviewComponent implements OnInit {
     } else {
       return;
     }
+    /*
     if (this.selectedQuestion > 0) {
       this.selectQuestion(this.selectedQuestion - 1);
     }
+      */
     this.resetToggleButtons();
 
     //Set the selected answer if it is a dropdown question;
@@ -240,6 +250,18 @@ export class InterviewComponent implements OnInit {
       return answers;
     }
     return [];
+  }
+
+
+
+
+  changeAnswerText(){
+    const p = document.querySelector('h2');
+    console.log("p", p)
+    if (p) {
+      p.textContent=this.question.question;
+      console.log("ICH ÄNDERE P")
+    }
   }
 
 
