@@ -5,39 +5,39 @@
         "answer_type": "multiple_choice"
     },
     {
-        "question": "Was ?",
+        "question": "Wfrage ?",
         "answers": ["Mathe anwenden","Schwere Matheprobleme lösen","Kurse geben","Ethische Fragen diskutieren","Anderen etwas beibringen","Projekte leiten","Präsentieren","Umweltthemen diskutieren","Unternehmen verstehen","Theorien verstehen","Events organisieren","Aktienmärkte verstehen","Soziale Probleme diskutieren","Programmieren","Wirtschaftspolitik verstehen"],
         "answer_type": "multiple_choice"
     },
     {
-        "question": "Was nt?",
+        "question": "Wfrage",
         "answers": ["Mathe anwenden","Schwere Matheprobleme lösen","Kurse geben","Ethische Fragen diskutieren","Anderen etwas beibringen","Projekte leiten","Präsentieren","Umweltthemen diskutieren","Unternehmen verstehen","Theorien verstehen","Events organisieren","Aktienmärkte verstehen","Soziale Probleme diskutieren","Programmieren","Wirtschaftspolitik verstehen"],
         "answer_type": "multiple_choice"
     },    
     {
-        "question": "Wo nitt im Abitur?",
+        "question": "frage?",
         "answers": [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0],
         "answer_type": "dropdown"
     },
     {
-        "question": "Wie sliche Zukunft?",
+        "question": "frage?",
         "answers": null,
         "subtext_info": "Sag mir bitte, ob du einen konkreten Berufswunsch hast, ob dich gewisse Branchen interessieren und ob du konkrete Arbeitgeber im Blick hast. Oder möchtest du ein Startup gründen? Je mehr ich über deine Berufsziele weiß, desto besser kann ich dich beraten!",
         "answer_type": "writing"
     },
     {
-        "question": "Welcheses Unterrichtsfach?",
+        "question": "frage?",
         "answers": ["Mathe","Deutsch","Biologie","Physik","Kunst","Geschichte","Englisch"],
         "answer_type": "single_choice"
     },
     {
-        "question": "Gibtissen sollte?",
+        "question": "frage ?",
         "answers": null,
         "subtext_info":"Gibt es weitere Dinge, die mir helfen, den passenden Studiengang für dich zu finden. Das könnte z.B. deine Stärken und Schwächen oder Interessen außerhalb der Schule sein.",
         "answer_type": "writing"
     },
     {
-        "question": "Über erfahren?",
+        "question": "frage?",
         "answers": ["Datenanalyse","Finanzmanagement","Marketingstrategien","Verhaltensökonomie","Internationale Wirtschaft","Nachhaltigkeit & Umwelt","Start-Up Gründung","Sozialpsychologie","IT Projektmanagement","Algorithmen","Gesundheits-Management","Soziale Themen","Unternehmensführung"],
         "answer_type": "multiple_choice"
     }

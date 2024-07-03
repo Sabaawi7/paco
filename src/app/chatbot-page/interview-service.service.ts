@@ -45,38 +45,18 @@ export class InterviewService implements OnInit{
     this.token = token;
     });
   }
-/*
-  nextQuestion() : void {
-    this.questionIndex += 1;
-    //this.getApiAnswer();
-  }
 
-  prevQuestion() : void {
-    this.questionIndex -= 1;
-  }
-*/
   getQuestionIndex() : number {
     return this.questionIndex; 
   }
-/*
-  markQuestionAsAnswered(questionNumber: number) {
-    const answeredQuestions = this.answeredQuestionsSubject.value;
-    if (!answeredQuestions.includes(questionNumber)) {
-      answeredQuestions.push(questionNumber);
-      this.answeredQuestionsSubject.next(answeredQuestions);
-    }
-  }
-*/
+
   selectQuestion(questionNumber: number) {
     this.selectedQuestionSubject.next(questionNumber);
     this.questionIndex = questionNumber + 1;
   }
 
   getQuestion(questionNumber: number): Question {
-    //console.log(this.questions[questionNumber])
-    //console.log(this.questions)
 
-    //return this.getApiAnswer();
     return this.questions[questionNumber];
     
   }
@@ -109,7 +89,6 @@ export class InterviewService implements OnInit{
 
 
   getApiAnswer(number: number): Promise<Question> {
-    console.log("ICH BIN IN DER API");
     return this.ensureToken().then(() => {
       return new Promise<Question>((resolve, reject) => {
         const payload = {
@@ -119,13 +98,10 @@ export class InterviewService implements OnInit{
           "request_type": 'get'
         };
 
-        console.log(payload);
 
         this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe({
           next: (response: { question_title: any; all_elements: any;io_type: any; 
             answer_label:any ; selected_elements:any}) => {
-            console.log("response", response);
-            console.log("questionTitle", response.question_title);
 
             const question: Question = {
               question: String(response.question_title),
@@ -137,12 +113,6 @@ export class InterviewService implements OnInit{
             if(response.io_type === 'generated'){
               this.personalQuestion = question;
             }
-
-            console.log('Type of question:', typeof question.question);
-            console.log('Type of answers:', Array.isArray(question.answers) ? 'array' : typeof question.answers);
-            console.log('Type of answer_type:', typeof question.answer_type);
-            console.log("question", question);
-            console.log("GETTING SELECTED ELEMENTS", question.selected_elements)
 
             resolve(question);
           },
@@ -160,7 +130,6 @@ export class InterviewService implements OnInit{
 
 
   async postApiAnswer(number: number, answer: string[] | any[]): Promise<void> {
-    console.log("ICH BIN IN DER API ZUM POSTEN");
   
     this.ensureToken().then(() => {
       const payload = {
@@ -170,10 +139,9 @@ export class InterviewService implements OnInit{
         request_type: 'post',
         dataToPost: answer
       };
-      console.log(payload);
   
       this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe({
-        next: () => { console.log("Answer posted successfully",answer);},
+        next: () => {},
         error: (error: any) => {
           console.error("Error in postApiAnswer:", error);
         }
