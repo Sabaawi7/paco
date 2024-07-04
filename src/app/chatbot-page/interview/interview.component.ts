@@ -24,7 +24,7 @@ export class InterviewComponent implements OnInit {
 
   // Default selected question and total number of questions;
   selectedQuestion: number = 1; // Assuming the default selected question is 1;
-  totalQuestions: number = this.interviewService.questions.length;
+ // totalQuestions: number = this.interviewService.questions.length;
   
  
   // Variables for selected answer and text input;
@@ -103,7 +103,7 @@ export class InterviewComponent implements OnInit {
     this.allSelectedAnswers=[arg1];
     }
   }
-
+/*
   // Typewriter animation for displaying question text;
   typeWriter(text: string, i: number) {
     if (i < text.length) {
@@ -113,7 +113,7 @@ export class InterviewComponent implements OnInit {
       this.showButtons = true; // Show buttons after text is fully rendered
     }
   }
-
+*/
   // Check if a question is selected;
   isQuestionSelected(questionNumber: number): boolean {
     return this.selectedQuestion === questionNumber;
@@ -138,6 +138,7 @@ export class InterviewComponent implements OnInit {
 
   // Navigate to the next question;
   async navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+    this.showButtons = false;
    //dropdown;
    if (this.question.answer_type === 'numerical' && this.allSelectedAnswers != null) {
     this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
@@ -178,6 +179,7 @@ export class InterviewComponent implements OnInit {
 
 
   async navigateToPreviousQuestion() {
+    this.showButtons = false;
        //dropdown;
    if (this.question.answer_type === 'numerical' && this.allSelectedAnswers != null) {
     await this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
@@ -227,12 +229,25 @@ export class InterviewComponent implements OnInit {
 
 
   changeAnswerText(){
-    const p = document.querySelector('h2');
-    if (p) {
-      p.textContent=this.question.question;
+    this.showButtons = false;
+    if (this.question && this.question.question) {
+      // Initial delay before starting the typewriter effect
+      setTimeout(() => {
+        this.typeWriter(this.question.question, 0);
+      }, );
     }
+    //this.showButtons = true;
   }
 
+  typeWriter(text: string, i: number) {
+    const p = document.querySelector('h2');
+    if (p && i < text.length) {
+      p.textContent = text.substring(0, i + 1);
+      this.timeoutId = setTimeout(() => this.typeWriter(text, i + 1), 50);
+    } else if (p) {
+      this.showButtons = true; // Show buttons after text is fully rendered
+    }
+  }
   updateToggleButtons(): void {
     if (this.userSelection) {
       const toggleGroup = this.userSelection.nativeElement;

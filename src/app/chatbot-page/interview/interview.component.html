@@ -2,16 +2,16 @@
     <div class="questions">
       <div  class="question-container">
         <h2>{{ currentQuestionText }}</h2>
-        <div class="NavigationButtons" >
-          <button mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
+        <div  *ngIf="showButtons" class="NavigationButtons" >
+          <button  *ngIf="showButtons" mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
             <img src="assets/backwardsArrow.png">
           </button>
-          <button mat-raised-button style="background-color: black; color: white" (click)="navigateToNextQuestion(userSelection)">
+          <button  *ngIf="showButtons" mat-raised-button style="background-color: black; color: white" (click)="navigateToNextQuestion(userSelection)">
             <span>Weiter</span>
-          </button>
+          </button> 
         </div>
       </div>
-    </div>
+    </div> 
   
    
     <div class="answers">
@@ -23,13 +23,7 @@
               <mat-button-toggle *ngFor="let answer of getAnswersArray2()" [value]="answer" [checked]="isAnswerSelected2(answer)" #toggleButton (click)="toggleAnswer2(answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
-  
-          <!-- Single Choice--
-          <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">
-            <mat-button-toggle-group [hideSingleSelectionIndicator]="true" #userSelection="matButtonToggleGroup">
-              <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleOnlyOneAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
-            </mat-button-toggle-group>
-          </div>-->
+
   
           <!-- Writing bzw editable-->
           <div *ngIf="canIShowButtons()=='editable'">
@@ -59,12 +53,12 @@
         <ng-template #noAnswers>
           <p>Keine Antworten vorhanden</p>
         </ng-template>
-        <div class="NavigationButtons">
-          <button mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
+        <div  *ngIf="showButtons" class="NavigationButtons">
+          <button  *ngIf="showButtons" mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
             <img src="../../../assets/backwardsArrow.png">
           </button>
   
-          <button mat-raised-button style="background-color: black; color: white" (click)="navigateToNextQuestion(userSelection)">
+          <button   *ngIf="showButtons" mat-raised-button style="background-color: black; color: white" (click)="navigateToNextQuestion(userSelection)">
             <span>Weiter</span> 
           </button>
         </div>
