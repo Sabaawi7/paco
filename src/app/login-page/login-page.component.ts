@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit {
   password: string = ''; // Variable for the password
   passwordFieldType: string = 'password'; // Variable for the type of password field (hidden by default)
   registrationSuccessful: boolean = false; // Variable to track registration status
+  loginError: string = ''; // Variable to track login error message
 
   constructor(private router: Router, private loginService: LoginService) { }
 
@@ -47,9 +48,23 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
-  // Method to handle login (not implemented)
-  handleLogin() {
-    throw new Error('Method not implemented.');
+  // Method to handle login
+  handleLogin(event: Event) {
+    event.preventDefault(); // Prevent form submission
+    this.loginService.login(this.email, this.password).subscribe({
+      next: (response) => {
+        console.log('Login successful', response);
+        this.loginService.saveTokens(response.access, response.refresh);
+        this.router.navigate(['/']); // Navigate to the dashboard or desired route
+      },
+      error: (error) => {
+        console.error('Login failed', error);
+        this.loginError = 'Login failed. Please check your credentials and try again.';
+      },
+      complete: () => {
+        console.log('Login request completed');
+      }
+    });
   }
 
   // Method to register a new user
