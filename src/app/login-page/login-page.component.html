@@ -1,12 +1,17 @@
 <app-navigation-bar></app-navigation-bar>
 <div class="login-container">
-    <form class="login-form" (submit)="handleLogin()">
+    <form class="login-form" (submit)="handleLogin($event)">
         <h1 class="login-title">Login</h1>
         <p>{{ text_p }}</p>
 
         <!-- Success message for registration -->
         <div *ngIf="registrationSuccessful" class="success-message">
             Registration successful! You can now log in.
+        </div>
+
+        <!-- Error message for login -->
+        <div *ngIf="loginError" class="error-message">
+            {{ loginError }}
         </div>
 
         <div class="input-group">
