@@ -30,6 +30,14 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Success message */
+.success-message {
+    text-align: center;
+    color: green;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
 .bild {
     height: 40px; /* Höhe auf die Höhe der Schriftgröße einstellen */
     width: 1px; /* Automatische Breite basierend auf der Höhe */
