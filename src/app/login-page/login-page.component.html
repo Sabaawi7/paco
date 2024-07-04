@@ -3,7 +3,12 @@
     <form class="login-form" (submit)="handleLogin()">
         <h1 class="login-title">Login</h1>
         <p>{{ text_p }}</p>
-        
+
+        <!-- Success message for registration -->
+        <div *ngIf="registrationSuccessful" class="success-message">
+            Registration successful! You can now log in.
+        </div>
+
         <div class="input-group">
             <label for="emailInput">Email *:</label>
             <input type="email" [(ngModel)]="email" id="emailInput" name="email" required>
@@ -20,6 +25,7 @@
         <a href="passwort-vergessen.html" class="forgot-password-link">{{ forgot_password }}</a>
 
         <div class="button-group">
+            <button mat-raised-button color="primary" type="button" class="unikim-button" (click)="register()">Register</button>
             <button mat-raised-button color="primary" type="submit" class="login-button">Login</button>
             <button mat-raised-button color="primary" type="button" class="unikim-button" (click)="navigateToRoleSelection()">uniKIM</button>
         </div>
