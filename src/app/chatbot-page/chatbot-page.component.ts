@@ -60,17 +60,13 @@ export class ChatbotPageComponent implements OnInit {
    
 
     this.questions = questionsData;
-    this.generateRandomToken();
     this.updateProgressValue();
   }
 
   
 
 
-  generateRandomToken(): void {
-    let token = crypto.randomUUID()
-    this.tokenService.changeToken(token);    
-  }
+
 
   updateProgressValue(): void {
     this.progressValue = (this.answeredQuestions / this.totalQuestions) * 100;
