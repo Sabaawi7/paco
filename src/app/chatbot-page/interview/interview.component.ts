@@ -229,6 +229,9 @@ export class InterviewComponent implements OnInit {
 
 
   changeAnswerText(){
+    if(this.question.answer_type === 'generated'){
+      return;
+    }
     this.showButtons = false;
     if (this.question && this.question.question) {
       // Initial delay before starting the typewriter effect
