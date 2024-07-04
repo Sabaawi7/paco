@@ -12,20 +12,5 @@
     </div>
 
 
-    <div>
-        <mat-form-field>
-          <mat-label>Enter Token</mat-label>
-          <input matInput [(ngModel)]="TextInput">
-        </mat-form-field>
-        <button mat-raised-button color="primary" (click)="searchToken()">Search</button>
-      
-        <div *ngIf="getAnswerKeys().length">
-          <h2>Answers:</h2>
-          <ul>
-            <li *ngFor="let question of getAnswerKeys()">
-              <strong>{{ question }}:</strong> {{ answers[question] }}
-            </li>
-          </ul>
-        </div>
-      </div>
+ 
 </div>

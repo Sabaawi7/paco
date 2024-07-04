@@ -31,22 +31,21 @@ searchToken(){
     alert('Please enter a token');
     return;
   }
+   
+    this.tokenSuche.getAnswers(this.TextInput).subscribe({
+      next: (response) => {
+        console.log('Search successful', response);
+        this.answers = response;
 
-  this.http.post('localhost:8000/api/answers', {
-    token: this.TextInput,
-    request_type: 'getSelectedAnswers',
-    question_type_id: 1
-  }).subscribe(
-    (response: any) => {
-      this.answers = response;
-      console.log('Answers:', this.answers);
-    },
-    (error) => {
-      console.error('Error fetching answers:', error);
-    }
-  );
-}
-getAnswerKeys() {
-  return Object.keys(this.answers);
+      },
+      error: (error) => {
+        console.error('Search failed', error);
+      },
+      complete: () => {
+        console.log('Search request completed');
+      }
+    });
+  
+  
 }
 }
