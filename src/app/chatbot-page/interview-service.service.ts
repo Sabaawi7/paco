@@ -151,20 +151,30 @@ export class InterviewService implements OnInit{
       console.error("Token retrieval error:", error);
     });
   }
+
   
-     // Neue Methode um die menue_pages Daten zu holen
-  getMenuePages(): Promise<any[]> {
+/*Wird sichergestellt, dass ein Token vorhanden ist.
+Ein POST-Request wird an das Backend gesendet, um die menue_pages-Daten abzurufen.
+Die menue_pages-Daten werden in der Variablen menuePages gespeichert.
+Die title-Eigenschaften aus menuePages werden extrahiert und in einer neuen Variablen titles gespeichert.
+Die titles-Variablen werden zurückgegeben.
+*/
+   // Neue Methode um die menue_pages Daten zu holen und die "title" zu filtern
+  getMenuePages(): Promise<string[]> {
     return this.ensureToken().then(() => {
-      return new Promise<any[]>((resolve, reject) => {
+      return new Promise<string[]>((resolve, reject) => {
         const payload = {
           userid: this.token,
-          request_type: 'get_menue_pages'
+          question_type_id: 1,
+          question_id: 1,
+          request_type: 'get'
         };
 
-        this.httpClient.post<any>("http://localhost:8000/api/menue_pages", payload).subscribe({
+        this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe({
           next: (response: { menue_pages: any[] }) => {
             this.menuePages = response.menue_pages;
-            resolve(this.menuePages);
+            const titles = this.menuePages.map(page => page.title);
+            resolve(titles);
           },
           error: (error: any) => {
             reject(error);
@@ -175,9 +185,4 @@ export class InterviewService implements OnInit{
       return Promise.reject(error);
     });
   }
-
-  
-
-
 }
-  
