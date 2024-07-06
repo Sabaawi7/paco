@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef , Output, EventEmitter } from '@angular/core';
 import { Question } from './question.model';
 import { MaterialModule } from '../../material/material.module';
 import { InterviewService } from '../interview-service.service';
@@ -58,7 +58,12 @@ export class InterviewComponent implements OnInit {
       this.typeWriter(this.currentQuestionText, 0);
       this.showButtons = false; // Hide buttons initially
     });
+
+   
   }
+
+
+
 
 
   
@@ -154,6 +159,7 @@ export class InterviewComponent implements OnInit {
     this.selectedQuestion = this.selectedQuestion + 1;
     this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     this.changeAnswerText();
+   
     if(this.question.answer_type==='generated'){
       this.router.navigate(['/loading']);
     }

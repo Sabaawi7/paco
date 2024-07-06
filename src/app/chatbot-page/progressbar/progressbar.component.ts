@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ProgressbarComponent {
 
-  @Input() currentQuestionIndex: number = 1;
+  @Input() currentQuestionIndex: number = 2;
   @Input() questions: Question[] = interviewJson;
   @Output() navigate: EventEmitter<number> = new EventEmitter<number>();
 

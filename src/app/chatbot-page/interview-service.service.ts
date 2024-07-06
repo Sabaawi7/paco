@@ -26,7 +26,8 @@ export class InterviewService implements OnInit{
       }
     );
   }
-  
+
+  menuePages: any[] = [];
   questions: Question[] = interviewJson;
   private answeredQuestionsSubject = new BehaviorSubject<number[]>([]);
   answeredQuestions$ = this.answeredQuestionsSubject.asObservable();
@@ -151,7 +152,29 @@ export class InterviewService implements OnInit{
     });
   }
   
-    
+     // Neue Methode um die menue_pages Daten zu holen
+  getMenuePages(): Promise<any[]> {
+    return this.ensureToken().then(() => {
+      return new Promise<any[]>((resolve, reject) => {
+        const payload = {
+          userid: this.token,
+          request_type: 'get_menue_pages'
+        };
+
+        this.httpClient.post<any>("http://localhost:8000/api/menue_pages", payload).subscribe({
+          next: (response: { menue_pages: any[] }) => {
+            this.menuePages = response.menue_pages;
+            resolve(this.menuePages);
+          },
+          error: (error: any) => {
+            reject(error);
+          }
+        });
+      });
+    }).catch(error => {
+      return Promise.reject(error);
+    });
+  }
 
   
 

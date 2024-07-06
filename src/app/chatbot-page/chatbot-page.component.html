@@ -4,10 +4,9 @@
   <div class="interview-container">
 
     <div>
-      <app-progressbar [currentQuestionIndex]="currentQuestionIndex" [questions]="questions" (navigate)="navigateToQuestion($event)"></app-progressbar>
+      <app-progressbar [currentQuestionIndex]="answeredQuestions - 1" [questions]="totalQuestions"></app-progressbar>
     </div>
 
-    <app-interview></app-interview>
+    <app-interview (questionIndexChanged)="handleQuestionIndexChanged($event)"></app-interview>
   </div>
-
 </section>

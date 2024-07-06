@@ -81,6 +81,13 @@ export class ChatbotPageComponent implements OnInit {
     this.currentQuestionIndex = index;
   }
 
+  
+   // Event-Handler für das questionIndexChanged Event aus der InterviewComponent
+   handleQuestionIndexChanged(newIndex: number): void {
+    this.answeredQuestions = newIndex + 1; // Setze die beantworteten Fragen auf den aktualisierten Index
+    this.updateProgressValue(); // Aktualisiere den Fortschrittsbalken
+  }
+
  
 
   
