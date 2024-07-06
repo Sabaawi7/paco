@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ProgressbarComponent implements OnInit{
   
-  menuTitles: string[] = [];
+  @Input() menuTitles: string[] = [];
   @Input() currentQuestionIndex: number = 1;
   @Input() questions: Question[] = interviewJson;
   @Output() navigate: EventEmitter<number> = new EventEmitter<number>();
@@ -40,7 +40,7 @@ export class ProgressbarComponent implements OnInit{
 
 
   get progressText(): string {
-    return `${("0" + this.interviewService.getQuestionIndex()).slice(-2)}/${("0" + this.questions.length).slice(-2)}`;
+    return `${("0" + this.interviewService.getQuestionIndex()).slice(-2)}/${("0" + this.menuTitles.length).slice(-2)}`;
   }
 
   navigateToQuestion(index: number): void {

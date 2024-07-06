@@ -27,6 +27,7 @@ export class InterviewService implements OnInit{
     );
   }
 
+ 
   menuePages: any[] = [];
   questions: Question[] = interviewJson;
   private answeredQuestionsSubject = new BehaviorSubject<number[]>([]);
@@ -152,7 +153,7 @@ export class InterviewService implements OnInit{
     });
   }
 
-  
+
 /*Wird sichergestellt, dass ein Token vorhanden ist.
 Ein POST-Request wird an das Backend gesendet, um die menue_pages-Daten abzurufen.
 Die menue_pages-Daten werden in der Variablen menuePages gespeichert.
