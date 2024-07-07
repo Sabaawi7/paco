@@ -1,5 +1,5 @@
-import {  Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import {  EventEmitter, Injectable, OnInit } from '@angular/core';
+import { BehaviorSubject, firstValueFrom, Observable } from 'rxjs';
 import { Question } from './interview/question.model';
 import interviewJson from '../../assets/interview.json';
 import { HttpClient } from '@angular/common/http';
@@ -28,7 +28,8 @@ export class InterviewService implements OnInit{
   }
 
  
-  menuePages: any[] = [];
+  private menuPagesSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  public menuPages$ = this.menuPagesSubject.asObservable();  
   questions: Question[] = interviewJson;
   private answeredQuestionsSubject = new BehaviorSubject<number[]>([]);
   answeredQuestions$ = this.answeredQuestionsSubject.asObservable();
@@ -36,10 +37,30 @@ export class InterviewService implements OnInit{
   selectedQuestion$ = this.selectedQuestionSubject.asObservable();
   questionIndex = 1;
   token='';
+  i=false; //damit menuPages nur einmal initialisert wird
 
   personalQuestion: Question = {question: 'a', answers: [], answer_type: '', subtext_info: ''};
 
+/*
+  private selectedQuestionSubject2 = new BehaviorSubject<number>(1);
+  selectedQuestion2$: Observable<number> = this.selectedQuestionSubject.asObservable();
 
+
+  updateSelectedQuestion(question: number) {
+    this.selectedQuestionSubject2.next(question);
+  }
+
+  getCurrentSelectedQuestion(): number {
+    return this.selectedQuestionSubject.getValue();
+  }
+*/
+  private navigateToQuestionSource: EventEmitter<number> = new EventEmitter<number>();
+  navigateToQuestion$ = this.navigateToQuestionSource.asObservable();
+
+  triggerNavigateToQuestion(index: any) {
+    console.log("Navigating to question2:", index);
+    this.navigateToQuestionSource.emit(index);
+  }
 
 
   ngOnInit() {
@@ -103,7 +124,7 @@ export class InterviewService implements OnInit{
 
         this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe({
           next: (response: { question_title: any; all_elements: any;io_type: any; 
-            answer_label:any ; selected_elements:any}) => {
+            answer_label:any ; selected_elements:any ; menue_pages: any}) => {
 
             const question: Question = {
               question: String(response.question_title),
@@ -112,6 +133,13 @@ export class InterviewService implements OnInit{
               answer_label: response.answer_label,
               selected_elements: response.selected_elements
             };
+            if(!this.i){//Menupages initialisiren nur einmal
+              this.i=true;
+              const menuPages= response.menue_pages;
+              menuPages.splice(-2,2)
+              this.menuPagesSubject.next(menuPages);
+              console.log("Menu pages:", this.menuPages$);
+            }
             if(response.io_type === 'generated'){
               this.personalQuestion = question;
             }
@@ -161,29 +189,14 @@ Die title-Eigenschaften aus menuePages werden extrahiert und in einer neuen Vari
 Die titles-Variablen werden zurückgegeben.
 */
    // Neue Methode um die menue_pages Daten zu holen und die "title" zu filtern
-  getMenuePages(): Promise<string[]> {
-    return this.ensureToken().then(() => {
-      return new Promise<string[]>((resolve, reject) => {
-        const payload = {
-          userid: this.token,
-          question_type_id: 1,
-          question_id: 1,
-          request_type: 'get'
-        };
-
-        this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe({
-          next: (response: { menue_pages: any[] }) => {
-            this.menuePages = response.menue_pages;
-            const titles = this.menuePages.map(page => page.title);
-            resolve(titles);
-          },
-          error: (error: any) => {
-            reject(error);
-          }
-        });
-      });
-    }).catch(error => {
-      return Promise.reject(error);
-    });
+   async getMenuePages(): Promise<any[]> {
+    await this.menuPages$.toPromise(); // Warten, bis menuPages initialisiert ist
+    console.log("Menu pages: in getmenupages", this.menuPagesSubject.getValue());
+    return this.menuPagesSubject.getValue();
   }
+
+
+
+
+
 }

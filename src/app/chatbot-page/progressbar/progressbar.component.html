@@ -7,8 +7,8 @@
   </div>
   <div class="question-overview" *ngIf="showQuestionOverview">
     <ul>
-      <li *ngFor="let title of menuTitles; let i = index" (click)="navigateToQuestion(i)">
-        {{ title }}
+      <li *ngFor="let menuItem of menuTitles; let i = index" (click)="navigateToQuestion(menuItem.id)">
+        {{ menuItem.title }}
       </li>
     </ul>
   </div>

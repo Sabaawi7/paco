@@ -9,6 +9,7 @@ import { AnswersService } from './answers.service';
 import { Router } from '@angular/router';
 import { __importStar } from 'tslib';
 import { ProgressbarComponent } from '../progressbar/progressbar.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-interview',
@@ -24,6 +25,7 @@ export class InterviewComponent implements OnInit {
 
   // Default selected question and total number of questions;
   selectedQuestion: number = 1; // Assuming the default selected question is 1;
+  
  // totalQuestions: number = this.interviewService.questions.length;
   
  
@@ -36,6 +38,7 @@ export class InterviewComponent implements OnInit {
   currentQuestionText: string = this.question.question;
   showButtons: boolean = false; // Flag to control button visibility
   allSelectedAnswers: String[] = [];
+  private navigateToQuestionSubscription: Subscription | undefined;
 
 
   constructor(private answersService: AnswersService, private interviewService: InterviewService, private router: Router) { }
@@ -58,13 +61,32 @@ export class InterviewComponent implements OnInit {
       this.typeWriter(this.currentQuestionText, 0);
       this.showButtons = false; // Hide buttons initially
     });
+    this.navigateToQuestionSubscription = this.interviewService.navigateToQuestion$.subscribe((index: any) => {
+      this.navigateToQuestion(index);
+    });      
+
+ 
+
 
    
   }
+  /*
+  private selectedQuestionSubscription!: Subscription;
+
+  updateSelectedQuestion(questionId: number) {
+    this.interviewService.updateSelectedQuestion(questionId);
+  }
+*/
 
 
 
 
+  navigateToQuestion(index: any): void {
+    console.log('Navigating to question in InterviewComponent', index);
+    this.selectedQuestion = index-1;
+    //this.updateSelectedQuestion(this.selectedQuestion);
+    this.navigateToNextQuestion(this.userSelection);
+  }
 
   
   
@@ -157,6 +179,7 @@ export class InterviewComponent implements OnInit {
     this.allSelectedAnswers = [];
 
     this.selectedQuestion = this.selectedQuestion + 1;
+   // this.updateSelectedQuestion(this.selectedQuestion);
     this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     this.changeAnswerText();
    
@@ -198,6 +221,7 @@ export class InterviewComponent implements OnInit {
     this.allSelectedAnswers = [];
 
     this.selectedQuestion = this.selectedQuestion - 1;
+   // this.updateSelectedQuestion(this.selectedQuestion);
     this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     this.changeAnswerText();
     if(this.question.selected_elements != undefined){

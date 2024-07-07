@@ -7,6 +7,7 @@ import { NgIf } from '@angular/common';
 import { NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-progressbar',
@@ -17,7 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ProgressbarComponent implements OnInit{
   
-  @Input() menuTitles: string[] = [];
+  @Input() menuTitles: any[] = [];
+  menuPagesSubscription: Subscription | undefined;
   @Input() currentQuestionIndex: number = 1;
   @Input() questions: Question[] = interviewJson;
   @Output() navigate: EventEmitter<number> = new EventEmitter<number>();
@@ -26,16 +28,28 @@ export class ProgressbarComponent implements OnInit{
 
   constructor(private interviewService: InterviewService) { }
 
-  ngOnInit() {
-    this.loadMenuTitles();
+  async ngOnInit() {
+    this.menuPagesSubscription = this.interviewService.menuPages$.subscribe(
+      menuPages => {
+        this.menuTitles = menuPages;
+        console.log("Menu titles updated:", this.menuTitles);
+      },
+      error => {
+        console.error("Error loading menu titles:", error);
+      }
+    );
   }
 
-  loadMenuTitles() {
-    this.interviewService.getMenuePages().then(titles => {
+
+
+  async loadMenuTitles() {
+    try {
+      const titles = await this.interviewService.getMenuePages();
       this.menuTitles = titles;
-    }).catch(error => {
+      console.log("Menu titles loaded:", this.menuTitles);
+    } catch (error) {
       console.error("Error loading menu titles:", error);
-    });
+    }
   }
 
 
@@ -43,9 +57,10 @@ export class ProgressbarComponent implements OnInit{
     return `${("0" + this.interviewService.getQuestionIndex()).slice(-2)}/${("0" + this.menuTitles.length).slice(-2)}`;
   }
 
-  navigateToQuestion(index: number): void {
-    this.interviewService.selectQuestion(index);
-    this.showQuestionOverview = false;
+  navigateToQuestion(index: any): void {
+    console.log("Navigating to question1: ", index);
+    this.hideOverview();
+    this.interviewService.triggerNavigateToQuestion(index);
   }
 
   showOverview(): void {
