@@ -41,19 +41,21 @@ export class InterviewService implements OnInit{
 
   personalQuestion: Question = {question: 'a', answers: [], answer_type: '', subtext_info: ''};
 
-/*
-  private selectedQuestionSubject2 = new BehaviorSubject<number>(1);
-  selectedQuestion2$: Observable<number> = this.selectedQuestionSubject.asObservable();
+
+  private selectedQuestionSubject2: BehaviorSubject<number> = new BehaviorSubject<number>(1);
 
 
-  updateSelectedQuestion(question: number) {
-    this.selectedQuestionSubject2.next(question);
+  setSelectedQuestion(questionNumber: number): void {
+    this.selectedQuestionSubject2.next(questionNumber);
   }
 
-  getCurrentSelectedQuestion(): number {
-    return this.selectedQuestionSubject.getValue();
+  getSelectedQuestion(): Observable<number> {
+    return this.selectedQuestionSubject2.asObservable();
   }
-*/
+
+
+
+
   private navigateToQuestionSource: EventEmitter<number> = new EventEmitter<number>();
   navigateToQuestion$ = this.navigateToQuestionSource.asObservable();
 

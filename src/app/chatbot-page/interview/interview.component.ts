@@ -70,13 +70,9 @@ export class InterviewComponent implements OnInit {
 
    
   }
-  /*
-  private selectedQuestionSubscription!: Subscription;
-
-  updateSelectedQuestion(questionId: number) {
-    this.interviewService.updateSelectedQuestion(questionId);
+  updateSelectedQuestion(): void {
+    this.interviewService.setSelectedQuestion(this.selectedQuestion);
   }
-*/
 
 
 
@@ -84,7 +80,7 @@ export class InterviewComponent implements OnInit {
   navigateToQuestion(index: any): void {
     console.log('Navigating to question in InterviewComponent', index);
     this.selectedQuestion = index-1;
-    //this.updateSelectedQuestion(this.selectedQuestion);
+    this.updateSelectedQuestion();
     this.navigateToNextQuestion(this.userSelection);
   }
 
@@ -179,7 +175,7 @@ export class InterviewComponent implements OnInit {
     this.allSelectedAnswers = [];
 
     this.selectedQuestion = this.selectedQuestion + 1;
-   // this.updateSelectedQuestion(this.selectedQuestion);
+    this.updateSelectedQuestion();
     this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     this.changeAnswerText();
    
@@ -221,7 +217,7 @@ export class InterviewComponent implements OnInit {
     this.allSelectedAnswers = [];
 
     this.selectedQuestion = this.selectedQuestion - 1;
-   // this.updateSelectedQuestion(this.selectedQuestion);
+    this.updateSelectedQuestion();
     this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     this.changeAnswerText();
     if(this.question.selected_elements != undefined){
