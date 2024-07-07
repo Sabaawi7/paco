@@ -60,7 +60,6 @@ export class InterviewService implements OnInit{
   navigateToQuestion$ = this.navigateToQuestionSource.asObservable();
 
   triggerNavigateToQuestion(index: any) {
-    console.log("Navigating to question2:", index);
     this.navigateToQuestionSource.emit(index);
   }
 
@@ -140,7 +139,6 @@ export class InterviewService implements OnInit{
               const menuPages= response.menue_pages;
               menuPages.splice(-2,2)
               this.menuPagesSubject.next(menuPages);
-              console.log("Menu pages:", this.menuPages$);
             }
             if(response.io_type === 'generated'){
               this.personalQuestion = question;
@@ -193,7 +191,6 @@ Die titles-Variablen werden zurückgegeben.
    // Neue Methode um die menue_pages Daten zu holen und die "title" zu filtern
    async getMenuePages(): Promise<any[]> {
     await this.menuPages$.toPromise(); // Warten, bis menuPages initialisiert ist
-    console.log("Menu pages: in getmenupages", this.menuPagesSubject.getValue());
     return this.menuPagesSubject.getValue();
   }
 

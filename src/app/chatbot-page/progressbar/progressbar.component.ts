@@ -33,7 +33,6 @@ export class ProgressbarComponent implements OnInit{
     this.menuPagesSubscription = this.interviewService.menuPages$.subscribe(
       menuPages => {
         this.menuTitles = menuPages;
-        console.log("Menu titles updated:", this.menuTitles);
       },
       error => {
         console.error("Error loading menu titles:", error);
@@ -57,7 +56,6 @@ export class ProgressbarComponent implements OnInit{
     try {
       const titles = await this.interviewService.getMenuePages();
       this.menuTitles = titles;
-      console.log("Menu titles loaded:", this.menuTitles);
     } catch (error) {
       console.error("Error loading menu titles:", error);
     }
@@ -69,7 +67,6 @@ export class ProgressbarComponent implements OnInit{
   }
 
   navigateToQuestion(index: any): void {
-    console.log("Navigating to question1: ", index);
     this.hideOverview();
     this.interviewService.triggerNavigateToQuestion(index);
   }

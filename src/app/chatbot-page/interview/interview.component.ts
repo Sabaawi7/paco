@@ -78,7 +78,6 @@ export class InterviewComponent implements OnInit {
 
 
   navigateToQuestion(index: any): void {
-    console.log('Navigating to question in InterviewComponent', index);
     this.selectedQuestion = index-1;
     this.updateSelectedQuestion();
     this.navigateToNextQuestion(this.userSelection);
