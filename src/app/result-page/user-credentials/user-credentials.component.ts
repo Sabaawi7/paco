@@ -14,9 +14,6 @@ export class UserCredentialsComponent {
   constructor(private tokenService: TokenService) { }
 
   title: string = "Session report";
-  name: string = "Max Muster";
-  email: string = "maxmuster@gmail.com";
-  status: string = "Student";
   date: string = "31/05/2024";
   time: string = "15:15";
   order: string = "Wiederhole Interview";
