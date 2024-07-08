@@ -6,7 +6,7 @@
             <button mat-raised-button class="feature" *ngFor="let question of questions; let i = index"
             [ngClass]="{'selected': selectedIndex === i}" 
             (click)="selectButton(i); showDetails(i)">
-                <h2>{{question}}</h2>
+                <h2>{{question.question}}</h2>
             </button>
              
             
@@ -21,7 +21,7 @@
             <div class="selectedAnswers">
                 <p>Deine Ausgewählten Antworten:  <br> {{ currentSelectedAnswer }}</p>
             </div>
-            <div class="allAnswers" *ngIf="currentAnswerType == 'single_choice' || currentAnswerType == 'multiple_choice' || currentAnswerType == 'Multiple-Choice Frage' || currentAnswerType == 'Single-Choice Frage'">
+            <div class="allAnswers" *ngIf="currentAnswerType == 'selectable'">
                 <p>Deine nicht ausgewählten Antworten: <br> <br> {{ currentAnswer }}</p>
             </div>
         </div>

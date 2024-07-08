@@ -5,6 +5,7 @@ import interviewJson from '../../assets/interview.json';
 import { HttpClient } from '@angular/common/http';
 import { TokenService } from './token.service';
 import { filter, first } from 'rxjs/operators';
+import { STRING_TYPE } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class InterviewService implements OnInit{
   token='';
   i=false; //damit menuPages nur einmal initialisert wird
 
-  personalQuestion: Question = {question: 'a', answers: [], answer_type: '', subtext_info: ''};
+  personalQuestion: Question = {question: 'a', answers: [], answer_type: '', answer_label: '', selected_elements: [] || String};
 
 
   private selectedQuestionSubject2: BehaviorSubject<number> = new BehaviorSubject<number>(1);
