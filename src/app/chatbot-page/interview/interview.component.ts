@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef , Output, EventEmitter } from '@angular/core';
 import { Question } from './question.model';
 import { MaterialModule } from '../../material/material.module';
 import { InterviewService } from '../interview-service.service';
@@ -9,6 +9,7 @@ import { AnswersService } from './answers.service';
 import { Router } from '@angular/router';
 import { __importStar } from 'tslib';
 import { ProgressbarComponent } from '../progressbar/progressbar.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-interview',
@@ -24,60 +25,89 @@ export class InterviewComponent implements OnInit {
 
   // Default selected question and total number of questions;
   selectedQuestion: number = 1; // Assuming the default selected question is 1;
-  totalQuestions: number = this.interviewService.questions.length;
   
+ // totalQuestions: number = this.interviewService.questions.length;
+  
+ 
   // Variables for selected answer and text input;
+  question: Question = {question: '', answers: [], answer_type: '', subtext_info: ''};
+
   selected: any;
-  TextInput: String = '';
+  TextInput: String = 'TEST TEST';
   timeoutId: any;
-  currentQuestionText: string = '';
+  currentQuestionText: string = this.question.question;
   showButtons: boolean = false; // Flag to control button visibility
+  allSelectedAnswers: String[] = [];
+  private navigateToQuestionSubscription: Subscription | undefined;
 
 
   constructor(private answersService: AnswersService, private interviewService: InterviewService, private router: Router) { }
 
   
   // Initialize component;
-  ngOnInit(): void {
-    // Subscribe to selectedQuestion changes;
+  async ngOnInit(): Promise<void> {
+    (async () => { 
+      try {
+        this.question = await this.interviewService.getApiAnswer(this.selectedQuestion);
+        this.changeAnswerText();
+      } catch (error) {
+        console.error("Fehler in ngOnInit:", error);
+      }
+    })();
+  
     this.interviewService.selectedQuestion$.subscribe(questionNumber => {
-      // Update selectedQuestion and currentQuestionText;
-      this.selectedQuestion = questionNumber;
-      this.currentQuestionText = this.getQuestion(this.selectedQuestion).question;
 
       // Start typeWriter animation;
       this.typeWriter(this.currentQuestionText, 0);
-
-      // Set selected and TextInput based on question type;
-      if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
-        this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
-      } else {
-        this.selected = undefined;
-      }
-
-      if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
-        this.TextInput = this.answersService.getAnswers(this.selectedQuestion)[0];
-      } else {
-        this.TextInput = '';
-      }
-
-      // Reset selection for multiple choice questions;
-      if (this.userSelection) {
-        this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
-      }
-
       this.showButtons = false; // Hide buttons initially
     });
+    this.navigateToQuestionSubscription = this.interviewService.navigateToQuestion$.subscribe((index: any) => {
+      this.navigateToQuestion(index);
+    });      
+
+ 
+
+
+   
+  }
+  updateSelectedQuestion(): void {
+    this.interviewService.setSelectedQuestion(this.selectedQuestion);
   }
 
-  // Toggle multiple choice answer;
-  toggleAnswer(questionNumber: any, answer: any, isSelected: boolean) {
+
+selectedIndex=0;
+selectedIndex2=false;
+
+  navigateToQuestion(index: any): void {
+    this.selectedIndex2=true; 
+    this.selectedIndex=index;
+    //this.selectedQuestion = index-1;
+    //this.updateSelectedQuestion();
+    this.navigateToNextQuestion(this.userSelection);
+  }
+
+  
+  
+
+  toggleAnswer2(answer: any, isSelected: boolean) {
     if (isSelected) {
-      this.answersService.saveAnswer(questionNumber, answer);
+      this.saveAnswer2(this.selectedQuestion, answer);
     } else {
-      this.answersService.deleteAnswer(questionNumber, answer);
+      this.deleteAnswer2(this.selectedQuestion, answer);
+    }
+  } 
+
+  saveAnswer2(questionNumber: any, answer: any){
+    this.allSelectedAnswers.push(answer);
+  }
+  
+  deleteAnswer2(questionNumber: any, answer: any){
+    const answerIndex = this.allSelectedAnswers.indexOf(answer);
+    if (answerIndex >= 0) {
+      this.allSelectedAnswers.splice(answerIndex, 1);
     }
   }
+
 
   // Toggle single choice answer;
   toggleOnlyOneAnswer(questionNumber: any, answer: any, isSelected: boolean) {
@@ -88,11 +118,17 @@ export class InterviewComponent implements OnInit {
     }
   }
 
-  // Save single answer (single choice, text, dropdown);
-  saveAnswerText(arg0: any, arg1: any) {
-    this.answersService.saveOnlyOneAnswer(arg0, arg1);
-  }
 
+
+  saveAnswerText2(arg1: any) {
+    if( this.question.selected_elements != undefined && this.question.selected_elements.length > 0 ){
+    this.allSelectedAnswers[0] = arg1;
+    }else{
+    //this.allSelectedAnswers.push(arg1);
+    this.allSelectedAnswers=[arg1];
+    }
+  }
+/*
   // Typewriter animation for displaying question text;
   typeWriter(text: string, i: number) {
     if (i < text.length) {
@@ -102,12 +138,7 @@ export class InterviewComponent implements OnInit {
       this.showButtons = true; // Show buttons after text is fully rendered
     }
   }
-
-  // Select a specific question;
-  selectQuestion(questionNumber: number) {
-    this.interviewService.selectQuestion(questionNumber);
-  }
-
+*/
   // Check if a question is selected;
   isQuestionSelected(questionNumber: number): boolean {
     return this.selectedQuestion === questionNumber;
@@ -119,108 +150,162 @@ export class InterviewComponent implements OnInit {
     return answers.length > 0 ? answers[0] : null;
   }
 
-  // Check if an answer is selected for the current question;
-  isAnswerSelected(answer: any): boolean {
-    const selectedAnswers = this.answersService.getAnswers(this.selectedQuestion);
+ 
+  
+  isAnswerSelected2(answer: any): boolean {
+    if(this.question.selected_elements!=undefined){
+    const selectedAnswers = this.question.selected_elements;
     return selectedAnswers.includes(answer);
+    }
+    return false;
   }
+
 
   // Navigate to the next question;
-  navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
-    // Clear timeout if not the last question;
-    if (this.selectedQuestion != this.totalQuestions - 1) {
-      clearTimeout(this.timeoutId)
+  async navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+    clearTimeout(this.timeoutId)
+    this.showButtons = false;
+   //dropdown;
+   if (this.question.answer_type === 'numerical' && this.allSelectedAnswers != null) {
+    this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
+  } //writing; 
+    else if (this.question.answer_type === 'editable' && this.allSelectedAnswers != null) {
+    this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
+    } else{
+    this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
     }
 
-    // Mark question as answered based on user selection;
-    const currentValue = this.userSelection?.value;
-    if (this.userSelection !== undefined && this.userSelection.name.startsWith('mat-button-toggle-group')) {
-      if (currentValue !== undefined && currentValue.length > 0) {
-        this.interviewService.markQuestionAsAnswered(this.selectedQuestion);
-      }
-    } else if (this.selected !== undefined) {
-      this.interviewService.markQuestionAsAnswered(this.selectedQuestion);
-    } else if (this.TextInput !== '') {
-      this.interviewService.markQuestionAsAnswered(this.selectedQuestion);
-    } else {
-      console.log(this.userSelection)
+    this.allSelectedAnswers = [];
+    if(this.selectedIndex2){//änderung des wertes aufgrund von progressbar aufruf
+      this.selectedIndex2=false;
+      this.selectedQuestion = this.selectedIndex-1;//-1 da er gleich +1 macht
     }
-
-
-    if (this.selectedQuestion < this.totalQuestions -1) {
-      this.selectQuestion(this.selectedQuestion + 1);
-    } else {
+    this.selectedQuestion = this.selectedQuestion + 1;
+    this.updateSelectedQuestion();
+    this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
+    this.changeAnswerText();
+    if(this.question.answer_type==='generated'){
       this.router.navigate(['/loading']);
     }
-
-    // Reset selections and prepare for the next question;
-    this.resetToggleButtons();
-
-    this.selected = undefined;
-    this.TextInput = '';
-    // Set selected answer for dropdown and writing questions;
-    if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
-      this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
-    } else {
-      this.selected = undefined;
+    if(this.question.selected_elements != undefined){
+    this.allSelectedAnswers = this.question.selected_elements;
     }
+        
+   //dropdown;
+   if (this.question.answer_type === 'numerical' && this.question.selected_elements != undefined && this.question.selected_elements.length > 0) {
+    this.selected = this.question.selected_elements[0];
+  } else {
+    this.selected = undefined;
+  }
+      
     //writing;
-    if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
-      this.TextInput = this.answersService.getAnswers(this.selectedQuestion)[0];
+    if (this.question.answer_type === 'editable' && this.question.selected_elements != undefined && this.question.selected_elements.length > 0) {
+      this.TextInput = this.question.selected_elements[0];
     } else {
       this.TextInput = '';
     }
-    // Reset selection for multiple choice questions;
-    if (this.userSelection) {
-      this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
-    }
   }
 
-  // Reset toggle buttons for multiple choice questions
-  resetToggleButtons() {
-    if (this.userSelection) {
-      this.userSelection._buttonToggles.forEach((toggle: any) => toggle.checked = false);
-    }
-  }
 
-  navigateToPreviousQuestion() {
-    if (this.selectedQuestion != 0) {
-      clearTimeout(this.timeoutId)
-    } else {
+
+  async navigateToPreviousQuestion() {
+    if(this.selectedQuestion === 1){
       return;
     }
-    if (this.selectedQuestion > 0) {
-      this.selectQuestion(this.selectedQuestion - 1);
+    clearTimeout(this.timeoutId)
+    this.showButtons = false;
+       //dropdown;
+   if (this.question.answer_type === 'numerical' && this.allSelectedAnswers != null) {
+    await this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
+  } //writing;
+    else if (this.question.answer_type === 'editable' && this.allSelectedAnswers != null) {
+    await this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
+    } else{
+    await this.interviewService.postApiAnswer(this.selectedQuestion, this.allSelectedAnswers);
     }
-    this.resetToggleButtons();
+    this.allSelectedAnswers = [];
 
-    //Set the selected answer if it is a dropdown question;
-    if (this.getQuestion(this.selectedQuestion).answer_type === 'dropdown') {
-      this.selected = this.answersService.getAnswers(this.selectedQuestion)[0];
-    } else {
-      this.selected = undefined;
-    }
-    //writing
-    if (this.getQuestion(this.selectedQuestion).answer_type === 'writing') {
-      this.TextInput = this.answersService.getAnswers(this.selectedQuestion)[0];
+    this.selectedQuestion = this.selectedQuestion - 1;
+    this.updateSelectedQuestion();
+    this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
+    this.changeAnswerText();
+    if(this.question.selected_elements != undefined){
+      this.allSelectedAnswers = this.question.selected_elements;
+      }
+    
+  //dropdown;
+   if (this.question.answer_type === 'numerical' && this.question.selected_elements != undefined && this.question.selected_elements.length > 0) {
+    this.selected = this.question.selected_elements[0];
+  } else {
+    this.selected = undefined;
+  }
+    
+   //writing;
+    if (this.question.answer_type === 'editable' && this.question.selected_elements != undefined && this.question.selected_elements.length > 0  ) {
+      this.TextInput = this.question.selected_elements[0];
     } else {
       this.TextInput = '';
     }
 
-    // Reset the selection for multiple choice questions;
-    if (this.userSelection) {
-      this.userSelection.value = this.answersService.getAnswers(this.selectedQuestion);
-    }
   }
 
   getQuestion(questionNumber: number): Question {
     return this.interviewService.getQuestion(questionNumber);
   }
 
-  getAnswersArray(answers: string[] | number[]): (string | number)[] {
-    if (Array.isArray(answers)) {
-      return answers;
+  
+
+  getAnswersArray2():(string | number)[] {
+    if (Array.isArray(this.question.answers)) {
+      return this.question.answers;
     }
     return [];
   }
+
+
+  changeAnswerText(){
+    if(this.question.answer_type === 'generated'){
+      return;
+    }
+    this.showButtons = false;
+    if (this.question && this.question.question) {
+      // Initial delay before starting the typewriter effect
+      setTimeout(() => {
+        this.typeWriter(this.question.question, 0);
+      }, );
+    }
+    //this.showButtons = true;
+  }
+
+  typeWriter(text: string, i: number) {
+    const p = document.querySelector('h2');
+    if (p && i < text.length) {
+      p.textContent = text.substring(0, i + 1);
+      this.timeoutId = setTimeout(() => this.typeWriter(text, i + 1), 50);
+    } else if (p) {
+      this.showButtons = true; // Show buttons after text is fully rendered
+    }
+  }
+  updateToggleButtons(): void {
+    if (this.userSelection) {
+      const toggleGroup = this.userSelection.nativeElement;
+      const buttons = toggleGroup.querySelectorAll('mat-button-toggle');
+
+      buttons.forEach((button: HTMLElement, index: number) => {
+        if (this.question.answers != null) {
+        button.textContent = String(this.question.answers[index] || '');
+        }
+      });
+    
+  }
+  }
+
+
+
+  canIShowButtons(): String {
+  return this.question.answer_type;
+  }
+
+  
 }
+  

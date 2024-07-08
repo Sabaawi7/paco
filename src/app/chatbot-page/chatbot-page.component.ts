@@ -27,61 +27,65 @@ import { ProgressbarComponent } from './progressbar/progressbar.component';
 
 export class ChatbotPageComponent implements OnInit {
   
-  answeredQuestions = 3;
-  totalQuestions = 10;
-  progressValue!: number;
 
-  constructor(public dialog: MatDialog, private tokenService: TokenService) {
-    this.openDialog();
-  }
   
-
-  openDialog() {
-    const dialogRef = this.dialog.open(TokenBannerComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-
-  ngOnInit(): void {
-    /**
-     * Die JSON Datei wurde oben importiert über den Pfad im Projekt. Die Datei wurde in der
-     * Variable "interviewJson" gespeichert. Durch diese Variable kann man auf den Inhalt
-     * der JSON Datei zugreifen und es nutzen um das Interview zu gestalten.
-     * Die Attribute der JSON sind : 
-     * "question" (String); 
-     * "answers" (Array an Antwortmöglichkeiten) answers=null, falls Schreibantwort gefordert ist ;
-     * "answer_type" (String) ob multiple_choice, single_choice, writing oder dropdown ; 
-     * "subtext_info" dieses Attribut haben nur writing-fragen, wo weitere infos gegeben sind.
-     */
+    answeredQuestions = 3;
+    totalQuestions = 10;
+    progressValue!: number;
+  
+    constructor(public dialog: MatDialog, private tokenService: TokenService) {
+      this.openDialog();
+    }
     
+  
+    openDialog() {
+      const dialogRef = this.dialog.open(TokenBannerComponent);
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    }
+  
+  
+    ngOnInit(): void {
+      /**
+       * Die JSON Datei wurde oben importiert über den Pfad im Projekt. Die Datei wurde in der
+       * Variable "interviewJson" gespeichert. Durch diese Variable kann man auf den Inhalt
+       * der JSON Datei zugreifen und es nutzen um das Interview zu gestalten.
+       * Die Attribute der JSON sind : 
+       * "question" (String); 
+       * "answers" (Array an Antwortmöglichkeiten) answers=null, falls Schreibantwort gefordert ist ;
+       * "answer_type" (String) ob multiple_choice, single_choice, writing oder dropdown ; 
+       * "subtext_info" dieses Attribut haben nur writing-fragen, wo weitere infos gegeben sind.
+       */
+      
+     
+  
+      this.questions = questionsData;
+      this.updateProgressValue();
+    }
+  
+    
+  
+  
+  
+  
+    updateProgressValue(): void {
+      this.progressValue = (this.answeredQuestions / this.totalQuestions) * 100;
+    }
+  
+    questions: Question[] = questionsData;
+    currentQuestionIndex: number = 0;
+  
    
-
-    this.questions = questionsData;
-    this.updateProgressValue();
+  
+    navigateToQuestion(index: number): void {
+      this.currentQuestionIndex = index;
+    }
+  
+   
+  
+    
   }
-
   
 
-
-
-
-  updateProgressValue(): void {
-    this.progressValue = (this.answeredQuestions / this.totalQuestions) * 100;
-  }
-
-  questions: Question[] = questionsData;
-  currentQuestionIndex: number = 0;
-
- 
-
-  navigateToQuestion(index: number): void {
-    this.currentQuestionIndex = index;
-  }
-
- 
-
-  
-}
