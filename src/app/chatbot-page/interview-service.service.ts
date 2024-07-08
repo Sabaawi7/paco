@@ -169,7 +169,6 @@ export class InterviewService implements OnInit{
         request_type: 'post',
         dataToPost: answer
       };
-      console.log("POST ANFRAGE",answer,number)
   
       this.httpClient.post<any>("http://localhost:8000/api/answers", payload).subscribe({
         next: () => {},

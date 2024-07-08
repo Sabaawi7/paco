@@ -79,7 +79,6 @@ selectedIndex=0;
 selectedIndex2=false;
 
   navigateToQuestion(index: any): void {
-    console.log("INDEX: ", index);  
     this.selectedIndex2=true; 
     this.selectedIndex=index;
     //this.selectedQuestion = index-1;
@@ -164,7 +163,6 @@ selectedIndex2=false;
 
   // Navigate to the next question;
   async navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
-    console.log("SELECTEDQUESTION BEI ANFANG VON NEXT", this.selectedQuestion);
     clearTimeout(this.timeoutId)
     this.showButtons = false;
    //dropdown;
@@ -186,7 +184,6 @@ selectedIndex2=false;
     this.updateSelectedQuestion();
     this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     this.changeAnswerText();
-   console.log("SELECTEDQUESTION BEI ENDE VON NEXT", this.selectedQuestion);
     if(this.question.answer_type==='generated'){
       this.router.navigate(['/loading']);
     }
