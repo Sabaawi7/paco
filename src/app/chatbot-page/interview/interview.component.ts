@@ -75,11 +75,15 @@ export class InterviewComponent implements OnInit {
   }
 
 
-
+selectedIndex=0;
+selectedIndex2=false;
 
   navigateToQuestion(index: any): void {
-    this.selectedQuestion = index-1;
-    this.updateSelectedQuestion();
+    console.log("INDEX: ", index);  
+    this.selectedIndex2=true; 
+    this.selectedIndex=index;
+    //this.selectedQuestion = index-1;
+    //this.updateSelectedQuestion();
     this.navigateToNextQuestion(this.userSelection);
   }
 
@@ -160,6 +164,7 @@ export class InterviewComponent implements OnInit {
 
   // Navigate to the next question;
   async navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+    console.log("SELECTEDQUESTION BEI ANFANG VON NEXT", this.selectedQuestion);
     clearTimeout(this.timeoutId)
     this.showButtons = false;
    //dropdown;
@@ -173,12 +178,15 @@ export class InterviewComponent implements OnInit {
     }
 
     this.allSelectedAnswers = [];
-
+    if(this.selectedIndex2){//änderung des wertes aufgrund von progressbar aufruf
+      this.selectedIndex2=false;
+      this.selectedQuestion = this.selectedIndex-1;//-1 da er gleich +1 macht
+    }
     this.selectedQuestion = this.selectedQuestion + 1;
     this.updateSelectedQuestion();
     this.question= await this.interviewService.getApiAnswer(this.selectedQuestion);
     this.changeAnswerText();
-   
+   console.log("SELECTEDQUESTION BEI ENDE VON NEXT", this.selectedQuestion);
     if(this.question.answer_type==='generated'){
       this.router.navigate(['/loading']);
     }
