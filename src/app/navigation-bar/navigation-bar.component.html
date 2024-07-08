@@ -6,26 +6,33 @@
         </div>
     </a>
 
-    <!-- Checkbox input for the menu button -->
-    <input type="checkbox" id="menu-btn" class="menu-btn" (change)="toggleMenu()" />
-
-    <!-- Label for the checkbox input (Hamburger menu icon) -->
-    <label for="menu-btn" class="navbar-hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-
-    <!-- Navigation links container -->
-<div class="navbar-menu" [class.show]="isMenuOpen">
+    <!-- Navigation links for larger screens -->
+    <div class="navbar-menu">
         <div class="navItem"><a [routerLink]="['/login']" routerLinkActive="active">{{ login_button }}</a></div>
         <div class="navItem"><a [routerLink]="['/impressum']" routerLinkActive="active">{{ legalNotice_button }}</a></div>
         <div class="navItem"><a [routerLink]="['/contact']" routerLinkActive="active">{{ contact_button }}</a></div> 
         <div class="navItem"><a [routerLink]="['/privacypolicy']" routerLinkActive="active">{{ privacypolicy_button }}</a></div> 
         <div class="navItem"><a [routerLink]="['/faq']" routerLinkActive="active">{{ faq_button }}</a></div>
-
         <div class="navbar-language">
             <img src="assets/900782.png" alt="Sprachauswahl" (click)="openLanguagePopup()">
         </div>
     </div>
+
+    <!-- Icon button for the menu (Hamburger menu icon) -->
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="navbar-hamburger" aria-label="Example icon-button with a menu">
+        <mat-icon>dialpad</mat-icon>
+    </button>
+
+    <!-- Mat menu -->
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/login']" routerLinkActive="active">{{ login_button }}</button>
+        <button mat-menu-item [routerLink]="['/impressum']" routerLinkActive="active">{{ legalNotice_button }}</button>
+        <button mat-menu-item [routerLink]="['/contact']" routerLinkActive="active">{{ contact_button }}</button>
+        <button mat-menu-item [routerLink]="['/privacypolicy']" routerLinkActive="active">{{ privacypolicy_button }}</button>
+        <button mat-menu-item [routerLink]="['/faq']" routerLinkActive="active">{{ faq_button }}</button>
+        <button mat-menu-item (click)="openLanguagePopup()">
+            <img src="assets/900782.png" alt="Sprachauswahl"  class="language-icon">
+        </button>
+    </mat-menu>
+
 </nav>

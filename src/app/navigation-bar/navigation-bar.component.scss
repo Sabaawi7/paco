@@ -13,13 +13,14 @@
     font-size: 25px;
     background-color: white; 
     border-bottom: 1px solid #ccc;
-    
+    cursor: pointer;
 }
 
 .navbar-language {
     display: flex;
     flex-direction: column; 
     align-items: center; 
+    margin-top: 10px;
 }
 
 .navbar-language img {
@@ -68,6 +69,8 @@ a:visited {
     color: black; 
     padding: 8px 12px;
     border-radius: 4px; 
+    display: inline-block; 
+    overflow: hidden; 
 }
 
 /* Navigation item hover effect */
@@ -77,14 +80,8 @@ a:visited {
     cursor: pointer;
 }
 
-/* Checkbox input for menu button */
-.menu-btn {
-    display: none; 
-}
-
 /* Hamburger menu icon styling */
 .navbar-hamburger {
-
     display: none; 
     flex-direction: column;
     justify-content: center;
@@ -103,55 +100,33 @@ a:visited {
     transition: all 0.2s ease-in-out;
 }
 
-/* Toggle icon appearance when the menu is open */
-.menu-btn:checked ~ .navbar-hamburger span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 5px);
-}
+/* Media query for larger screens */
+@media (min-width: 769px) {
+    .navbar-hamburger {
+        display: none;
+    }
+    .navbar-menu {
+        display: flex;
+    }
+    mat-menu {
+        display: none;
+    }
 
-.menu-btn:checked ~ .navbar-hamburger span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-btn:checked ~ .navbar-hamburger span:nth-child(3) {
-    transform: rotate(45deg) translate(-8px, -9px);
-}
-
-/* Navigation links container */
-.navbar-menu {
-    display: flex;
-    flex-direction: row; 
-    align-items: center;
-}
-
-.menu-btn:checked ~ .navbar-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 10px;
+    
 }
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
-  
     .navbar-hamburger {
         display: flex;
     }
-
-  
     .navbar-menu {
         display: none;
     }
-
-  
-    .menu-btn:checked ~ .navbar-menu {
-        background-color: #f2f2f2;
-        display: block;
-        padding-top: 20px;
+     
+    .language-icon{
+        width: 20px; 
+        height: 20px; 
     }
-
-    .navItem {
-        margin-left: 0;
-        margin-bottom: 10px;
-        padding: 0;
-    }
+    
 }
