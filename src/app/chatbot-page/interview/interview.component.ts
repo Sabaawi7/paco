@@ -278,7 +278,7 @@ selectedIndex2=false;
   }
 
   typeWriter(text: string, i: number) {
-    const p = document.querySelector('h2');
+    const p = document.querySelector('#h2');
     if (p && i < text.length) {
       p.textContent = text.substring(0, i + 1);
       this.timeoutId = setTimeout(() => this.typeWriter(text, i + 1), 50);

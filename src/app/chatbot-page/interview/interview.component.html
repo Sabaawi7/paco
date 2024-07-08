@@ -1,7 +1,7 @@
 <div class="interview">
     <div class="questions">
       <div  class="question-container">
-        <h2>{{ currentQuestionText }}</h2>
+        <h2 id="h2">{{ currentQuestionText }}</h2>
         <div  *ngIf="showButtons" class="NavigationButtons" >
           <button  *ngIf="showButtons" mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
             <img src="assets/backwardsArrow.png">
