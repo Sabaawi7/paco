@@ -74,6 +74,11 @@ textarea {
   word-wrap: break-word;
   width: 100%;
   box-sizing: border-box;
+  min-height: 100px; /* Added to ensure minimum height for each box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .allAnswers {
@@ -140,5 +145,6 @@ textarea {
   .feature {
     padding: 10px;
     min-width: 150px;
+    min-height: 100px; /* Added to ensure minimum height for each box on small screens */
   }
 }

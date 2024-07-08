@@ -66,11 +66,12 @@ export class TokensuchePageComponent implements OnInit {
     }
 
     try {
-      this.answers = await this.tokenSuche.getAnswers(this.TextInput).toPromise();
+      this.answers = await this.tokenSuche.getAnswers(this.TextInput, 1).toPromise();
       console.log('Search successful', this.answers);
 
+      this.questions = [];
       const promises = this.question_ids.map(async id => {
-        const question = await this.interviewService.getApiAnswer(id);
+        const question = await this.tokenSuche.getApiAnswer(this.TextInput, id);
         this.questions.push(question);
       });
 
@@ -83,6 +84,7 @@ export class TokensuchePageComponent implements OnInit {
       console.error('Search failed', error);
     }
   }
+
 
   showDetails(index: number): void {
     this.selectedIndex = index;
