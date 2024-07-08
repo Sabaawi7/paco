@@ -30,7 +30,7 @@ export class InterviewComponent implements OnInit {
   
  
   // Variables for selected answer and text input;
-  question: Question = {question: 'h', answers: [], answer_type: '', subtext_info: ''};
+  question: Question = {question: '', answers: [], answer_type: '', subtext_info: ''};
 
   selected: any;
   TextInput: String = 'TEST TEST';
@@ -160,6 +160,7 @@ export class InterviewComponent implements OnInit {
 
   // Navigate to the next question;
   async navigateToNextQuestion(userSelection: MatButtonToggleGroup | undefined) {
+    clearTimeout(this.timeoutId)
     this.showButtons = false;
    //dropdown;
    if (this.question.answer_type === 'numerical' && this.allSelectedAnswers != null) {
@@ -203,6 +204,10 @@ export class InterviewComponent implements OnInit {
 
 
   async navigateToPreviousQuestion() {
+    if(this.selectedQuestion === 1){
+      return;
+    }
+    clearTimeout(this.timeoutId)
     this.showButtons = false;
        //dropdown;
    if (this.question.answer_type === 'numerical' && this.allSelectedAnswers != null) {
