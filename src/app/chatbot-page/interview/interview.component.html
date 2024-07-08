@@ -1,68 +1,70 @@
 <div class="interview">
     <div class="questions">
-      <div *ngIf="getQuestion(selectedQuestion)" class="question-container">
+      <div  class="question-container">
         <h2>{{ currentQuestionText }}</h2>
-        <div class="NavigationButtons" *ngIf="showButtons">
-          <button mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
+        <div  *ngIf="showButtons" class="NavigationButtons" >
+          <button  *ngIf="showButtons" mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
             <img src="assets/backwardsArrow.png">
           </button>
-          <button mat-raised-button style="background-color: black; color: white" (click)="navigateToNextQuestion(userSelection)">
+          <button  *ngIf="showButtons" mat-raised-button style="background-color: black; color: white" (click)="navigateToNextQuestion(userSelection)">
             <span>Weiter</span>
-          </button>
+          </button> 
         </div>
       </div>
-    </div>
+    </div> 
   
-  
+   
     <div class="answers">
-      <div *ngIf="getQuestion(selectedQuestion)">
+      <div >
         <ng-container>
-          <!-- Multiple Choice-->
-          <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='multiple_choice'">
+          <!-- Multiple Choice bzw Selectable-->
+          <div class="MultipleChoiceAnswers" *ngIf="canIShowButtons()=='selectable'">
             <mat-button-toggle-group [hideMultipleSelectionIndicator]="true" #userSelection="matButtonToggleGroup" multiple>
-              <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
+              <mat-button-toggle *ngFor="let answer of getAnswersArray2()" [value]="answer" [checked]="isAnswerSelected2(answer)" #toggleButton (click)="toggleAnswer2(answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
+
   
-          <!-- Single Choice--> 
-          <div class="MultipleChoiceAnswers" *ngIf="getQuestion(selectedQuestion).answer_type=='single_choice'">
-            <mat-button-toggle-group [hideSingleSelectionIndicator]="true" #userSelection="matButtonToggleGroup">
-              <mat-button-toggle *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer" [checked]="isAnswerSelected(answer)" #toggleButton (click)="toggleOnlyOneAnswer(selectedQuestion, answer, toggleButton.checked)">{{ answer }}</mat-button-toggle>
-            </mat-button-toggle-group>
-          </div>
-  
-          <!-- Writing -->
-          <div *ngIf="getQuestion(selectedQuestion).answer_type=='writing'">
+          <!-- Writing bzw editable-->
+          <div *ngIf="canIShowButtons()=='editable'">
             <mat-form-field>
               <mat-label>Message</mat-label>
-              <textarea matInput #message="ngModel" [(ngModel)]="TextInput" name="message" required maxlength="256" placeholder="In 5 Jahre sehe ich mich als Ingenieur" (blur)="saveAnswerText(selectedQuestion, TextInput)"></textarea>
+              <textarea matInput #message="ngModel" [(ngModel)]="TextInput" name="message" required maxlength="256" placeholder="In 5 Jahre sehe ich mich als Ingenieur" (blur)="saveAnswerText2(TextInput)"></textarea>
               <mat-hint align="end">{{message.value?.length || 0}} / 256</mat-hint>
               <mat-error *ngIf="message.invalid && (message.dirty || message.touched)">Message is required.</mat-error>
             </mat-form-field>
           </div>
   
-          <!-- Dropdown -->
-          <div *ngIf="getQuestion(selectedQuestion).answer_type=='dropdown'">
+          <!-- Dropdown bzw numerical-->
+          <div *ngIf="canIShowButtons()=='numerical'">
             <mat-form-field>
-              <mat-select placeholder="Antwort" [(value)]="selected" (selectionChange)="saveAnswerText(selectedQuestion, $event.value)">
-                <mat-option *ngFor="let answer of getAnswersArray(getQuestion(selectedQuestion).answers || [])" [value]="answer">{{ answer }}</mat-option>
+              <mat-select placeholder="Antwort" [(value)]="selected" (selectionChange)="saveAnswerText2($event.value)">
+                <mat-option *ngFor="let answer of  getAnswersArray2()" [value]="answer">{{ answer }}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
+
+          <div *ngIf="canIShowButtons()!='selectable' || canIShowButtons()!='numerical' || canIShowButtons()!='editable'">
+
+          </div>
+        
         </ng-container>
+        
         <ng-template #noAnswers>
           <p>Keine Antworten vorhanden</p>
         </ng-template>
-        <div class="NavigationButtons">
-          <button mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
+        <div  *ngIf="showButtons" class="NavigationButtons">
+          <button  *ngIf="showButtons" mat-raised-button style="background-color: white; color: white" (click)="navigateToPreviousQuestion()">
             <img src="../../../assets/backwardsArrow.png">
           </button>
   
-          <button mat-raised-button style="background-color: black; color: white" (click)="navigateToNextQuestion(userSelection)">
+          <button   *ngIf="showButtons" mat-raised-button style="background-color: black; color: white" (click)="navigateToNextQuestion(userSelection)">
             <span>Weiter</span> 
           </button>
         </div>
+        
       </div>
-    </div>
+    </div> 
+  
   </div>
   

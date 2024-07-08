@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class AnswersService {
 
   private answerdata: any[] = [];
+  allSelectedAnswers: any[] = [];
 
 //Stores the answer for a question;
   saveAnswer(questionNumber: any, answer: any) {
@@ -76,4 +77,19 @@ export class AnswersService {
     return questionData.answers;
   }
   
+
+saveAnswer2(questionNumber: any, answer: any,allSelectedAnswers:any[]){
+  allSelectedAnswers.push(answer);
+}
+
+deleteAnswer2(questionNumber: any, answer: any,allSelectedAnswers:any[]){
+  const answerIndex = allSelectedAnswers.indexOf(answer);
+  if (answerIndex >= 0) {
+    allSelectedAnswers.splice(answerIndex, 1);
+  }
+}
+
+
+
+
 }
