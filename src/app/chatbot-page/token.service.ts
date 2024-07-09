@@ -24,7 +24,7 @@ export class TokenService {
   }
 
   fetchToken() {
-    this.httpClient.post<{ userid: string; message: string }>("http://localhost:8000/api/userid", {})
+    this.httpClient.post<{ userid: string; message: string }>("http://localhost:8000/api/userid", {}, {withCredentials : true})
       .subscribe({
         next: (response) => {
           this.changeToken(response.userid); // Set new token

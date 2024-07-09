@@ -1,0 +1,62 @@
+<div class="container">
+    <h1>Tokensuche</h1>
+    <mat-form-field>
+      <mat-label>Token</mat-label>
+      <textarea
+        matInput
+        #message="ngModel"
+        [(ngModel)]="TextInput"
+        name="message"
+        required
+        maxlength="256"
+        placeholder="Token"
+        (blur)="saveAnswerText(CheckedToken, TextInput)"
+      ></textarea>
+      <mat-error *ngIf="message.invalid && (message.dirty || message.touched)">
+        Token is required.
+      </mat-error>
+    </mat-form-field>
+    <div class="navigationButton">
+      <button mat-raised-button (click)="searchToken()">
+        <span>Weiter</span>
+      </button>
+    </div>
+  
+    <div class="main-content" *ngIf="questions.length > 0">
+      <div class="feature-grid">
+        <button
+          mat-raised-button
+          class="feature"
+          *ngFor="let question of questions; let i = index"
+          [ngClass]="{ selected: selectedIndex === i }"
+          (click)="selectButton(i); showDetails(i)"
+        >
+          <h2>{{ question.question }}</h2>
+        </button>
+      </div>
+      <div class="question_details">
+        <div>
+          <h2>{{ currentQuestion }}</h2>
+        </div>
+        <div>
+          <p>
+            Der Fragentyp lautet: <br />
+            {{ currentAnswerType }}
+          </p>
+        </div>
+        <div class="selectedAnswers">
+          <p>
+            Deine Ausgewählten Antworten: <br />
+            {{ currentSelectedAnswer }}
+          </p>
+        </div>
+        <div class="allAnswers" *ngIf="currentAnswerType == 'selectable'">
+          <p>
+            Deine nicht ausgewählten Antworten: <br /><br />
+            {{ currentAnswer }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
