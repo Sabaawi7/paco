@@ -15,7 +15,9 @@
   </div>
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
+<mat-dialog-actions align="center">
+  <div class="button-container">
   <button class="button" mat-raised-button [disabled]="!acceptedPolicy" (click)="onOkClick()">OK</button>
   <button class="fa fa-copy" mat-raised-button [cdkCopyToClipboard]="token" cdkFocusInitial>Copy</button>
+</div>
 </mat-dialog-actions>
